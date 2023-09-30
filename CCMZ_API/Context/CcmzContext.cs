@@ -22,7 +22,7 @@ public partial class CcmzContext : DbContext
 
     public virtual DbSet<TbBloco> TbBlocos { get; set; }
 
-    public virtual DbSet<TbCasai> TbCasais { get; set; }
+    public virtual DbSet<TbCasal> TbCasais { get; set; }
 
     public virtual DbSet<TbComunidade> TbComunidades { get; set; }
 
@@ -57,7 +57,7 @@ public partial class CcmzContext : DbContext
                 .HasColumnName("BLO_NOME");
         });
 
-        modelBuilder.Entity<TbCasai>(entity =>
+        modelBuilder.Entity<TbCasal>(entity =>
         {
             entity.HasKey(e => e.CasCodigo);
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace CCMZ_API.Models;
 
-public partial class TbCasai
+public partial class TbCasal
 {
     public int CasCodigo { get; set; }
 

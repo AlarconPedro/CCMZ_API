@@ -1,4 +1,5 @@
 ﻿using CCMZ_API.Models;
+using CCMZ_API.Models.Painel.Pessoas;
 using CCMZ_API.Services.Pessoas;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,9 +18,15 @@ public class PessoaController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IEnumerable<TbPessoa>> GetPessoas()
+    public async Task<IEnumerable<Pessoas>> GetPessoas(int skip, int take)
     {
-        return await _pessoasService.GetPessoas();
+        return await _pessoasService.GetPessoas(skip, take);
+    }
+
+    [HttpGet("{idPessoa:int}")]
+    public async Task<PessoaDetalhes> GetPessoaDetalhe(int idPessoa)
+    {
+        return await _pessoasService.GetPessoaDetalhe(idPessoa);
     }
 
     [HttpPost]

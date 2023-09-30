@@ -15,9 +15,9 @@ public partial class TbPessoa
 
     public virtual TbComunidade? ComCodigoNavigation { get; set; }
 
-    public virtual ICollection<TbCasai> TbCasaiCasEsposaNavigations { get; set; } = new List<TbCasai>();
+    public virtual ICollection<TbCasal> TbCasaiCasEsposaNavigations { get; set; } = new List<TbCasal>();
 
-    public virtual ICollection<TbCasai> TbCasaiCasEsposoNavigations { get; set; } = new List<TbCasai>();
+    public virtual ICollection<TbCasal> TbCasaiCasEsposoNavigations { get; set; } = new List<TbCasal>();
 
     public virtual ICollection<TbEventoPessoa> TbEventoPessoas { get; set; } = new List<TbEventoPessoa>();
 

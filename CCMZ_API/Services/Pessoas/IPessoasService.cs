@@ -1,11 +1,12 @@
-﻿using CCMZ_API.Models;
-
-namespace CCMZ_API.Services.Pessoas;
+﻿namespace CCMZ_API.Services.Pessoas;
+using CCMZ_API.Models;
+using CCMZ_API.Models.Painel.Pessoas;
 
 public interface IPessoasService
 {
     //GET
-    Task<IEnumerable<TbPessoa>> GetPessoas();
+    Task<IEnumerable<Pessoas>> GetPessoas(int skip, int take);
+    Task<PessoaDetalhes> GetPessoaDetalhe(int idPessoa);
     //POST
     Task PostPessoas(TbPessoa tbPessoa);
     //PUT
