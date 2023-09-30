@@ -1,6 +1,28 @@
+using CCMZ_API;
+using Microsoft.EntityFrameworkCore;
+
+var PainelCCMZ = "PainelCCMZ";
+
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: PainelCCMZ, 
+        policy =>
+        {
+            policy.AllowAnyHeader();
+            policy.AllowAnyMethod();
+            policy.WithOrigins("http://localhost:3000");
+        });
+});
+
 // Add services to the container.
+
+var connectionString = builder.Configuration.GetConnectionString("CCMZConnection");
+
+builder.Services.AddDbContext<CcmzContext>(options => options.UseSqlServer(connectionString));
+
+builder.Services.AddAuthorization();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -17,6 +39,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors(PainelCCMZ);
 
 app.UseAuthorization();
 
