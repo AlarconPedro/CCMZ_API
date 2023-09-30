@@ -22,6 +22,8 @@ var connectionString = builder.Configuration.GetConnectionString("CCMZConnection
 
 builder.Services.AddDbContext<CcmzContext>(options => options.UseSqlServer(connectionString));
 
+builder.Services.AddScoped<IPessoasService, PessoasService>();
+
 builder.Services.AddAuthorization();
 
 builder.Services.AddControllers();
