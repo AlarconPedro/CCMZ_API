@@ -1,4 +1,5 @@
 using CCMZ_API;
+using CCMZ_API.Services.Pessoas;
 using Microsoft.EntityFrameworkCore;
 
 var PainelCCMZ = "PainelCCMZ";

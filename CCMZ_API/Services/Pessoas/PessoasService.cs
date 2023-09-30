@@ -1,4 +1,5 @@
 ﻿using CCMZ_API.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CCMZ_API.Services.Pessoas;
 
@@ -10,23 +11,27 @@ public class PessoasService : IPessoasService
     {
         _context = context;
     }
-    public Task DeletePessoas(TbPessoa tbPessoa)
+
+    public async Task<IEnumerable<TbPessoa>> GetPessoas()
     {
-        throw new NotImplementedException();
+        return await _context.TbPessoas.ToListAsync();
     }
 
-    public Task<IEnumerable<TbPessoa>> GetPessoas()
+    public async Task PostPessoas(TbPessoa tbPessoa)
     {
-        throw new NotImplementedException();
+        _context.TbPessoas.Add(tbPessoa);
+        await _context.SaveChangesAsync();
     }
 
-    public Task PostPessoas(TbPessoa tbPessoa)
+    public async Task PutPessoas(TbPessoa tbPessoa)
     {
-        throw new NotImplementedException();
+        _context.Entry(tbPessoa).State = EntityState.Modified;
+        await _context.SaveChangesAsync();
+    }
+    public async Task DeletePessoas(TbPessoa tbPessoa)
+    {
+        _context.TbPessoas.Remove(tbPessoa);
+        await _context.SaveChangesAsync();
     }
 
-    public Task PutPessoas(TbPessoa tbPessoa)
-    {
-        throw new NotImplementedException();
-    }
 }
