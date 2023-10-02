@@ -1,5 +1,5 @@
 ﻿namespace CCMZ_API.Services.Quartos;
 
-public class QuartosService
+public class QuartosService : IQuartosService
 {
 }

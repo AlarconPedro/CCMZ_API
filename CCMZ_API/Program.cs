@@ -1,5 +1,6 @@
 using CCMZ_API;
 using CCMZ_API.Services.Pessoas;
+using CCMZ_API.Services.Quartos;
 using Microsoft.EntityFrameworkCore;
 
 var PainelCCMZ = "PainelCCMZ";
@@ -24,6 +25,7 @@ var connectionString = builder.Configuration.GetConnectionString("CCMZConnection
 builder.Services.AddDbContext<CcmzContext>(options => options.UseSqlServer(connectionString));
 
 builder.Services.AddScoped<IPessoasService, PessoasService>();
+builder.Services.AddScoped<IQuartosService, QuartosService>();
 
 builder.Services.AddAuthorization();
 
