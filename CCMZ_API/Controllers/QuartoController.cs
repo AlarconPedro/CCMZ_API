@@ -19,34 +19,62 @@ public class QuartoController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<TbQuarto>>> GetQuartos()
     {
-        return Ok(await _service.GetQuartos()); 
+        try
+        {
+            return Ok(await _service.GetQuartos());
+
+        }
+        catch
+        {
+            return BadRequest("Request Inválido !");
+        }
     }
 
     [HttpPost]
     public async Task<ActionResult> PostQuarto(TbQuarto tbQuarto)
     {
-        await _service.PostQuarto(tbQuarto);
-        return Ok("Usuário cadastrado com sucesso !");
+        try
+        {
+            await _service.PostQuarto(tbQuarto);
+            return Ok("Usuário cadastrado com sucesso !");
+        }
+        catch
+        {
+            return BadRequest("Request Inválido !");
+        }
     }
 
     [HttpPut]
     public async Task<ActionResult> UpdateQuarto(TbQuarto tbQuarto)
     {
-        await _service.UpdateQuarto(tbQuarto);
-        return Ok("Usuário atualizado com sucesso !");
+        try {
+            await _service.UpdateQuarto(tbQuarto);
+            return Ok("Usuário atualizado com sucesso !");
+        } catch
+        {
+            return BadRequest("Request Inválido !");
+        }
     }
 
     [HttpDelete("{id}")]
     public async Task<ActionResult> DeleteQuarto(int id)
     {
-        var quarto = await _service.GetQuartoById(id);
-        if (quarto != null)
+        try
         {
-            await _service.DeleteQuarto(quarto);
-            return Ok("Usuário Excluído com sucesso !");
-        } else
+            var quarto = await _service.GetQuartoById(id);
+            if (quarto != null)
+            {
+                await _service.DeleteQuarto(quarto);
+                return Ok("Usuário Excluído com sucesso !");
+            }
+            else
+            {
+                return BadRequest("Usuário não encontrado !");
+            }
+        } catch
         {
-            return BadRequest("Usuário não encontrado !");
+            return BadRequest("Request Inválido !");
         }
+       
     }
 }
