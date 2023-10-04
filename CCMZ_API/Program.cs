@@ -1,5 +1,6 @@
 using CCMZ_API;
 using CCMZ_API.Services.Comunidade;
+using CCMZ_API.Services.Eventos;
 using CCMZ_API.Services.Pessoas;
 using CCMZ_API.Services.Quartos;
 using Microsoft.EntityFrameworkCore;
@@ -28,6 +29,7 @@ builder.Services.AddDbContext<CcmzContext>(options => options.UseSqlServer(conne
 builder.Services.AddScoped<IPessoasService, PessoasService>();
 builder.Services.AddScoped<IQuartosService, QuartosService>();
 builder.Services.AddScoped<IComunidadeService, ComunidadeService>();
+builder.Services.AddScoped<IEventosService, EventosService>();
 
 builder.Services.AddAuthorization();
 
