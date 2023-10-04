@@ -6,15 +6,15 @@ using Microsoft.Extensions.Configuration;
 
 namespace CCMZ_API;
 
-public partial class CcmzContext : DbContext
+public partial class CCMZContext : DbContext
 {
     protected readonly IConfiguration Configuration;
 
-    public CcmzContext()
+    public CCMZContext()
     {
     }
 
-    public CcmzContext(DbContextOptions<CcmzContext> options, IConfiguration configuration)
+    public CCMZContext(DbContextOptions<CCMZContext> options, IConfiguration configuration)
         : base(options)
     {
         Configuration = configuration;

@@ -6,9 +6,9 @@ using Microsoft.EntityFrameworkCore;
 
 public class PessoasService : IPessoasService
 {
-    private readonly CcmzContext _context;
+    private readonly CCMZContext _context;
 
-    public PessoasService(CcmzContext context)
+    public PessoasService(CCMZContext context)
     {
         _context = context;
     }

@@ -58,15 +58,11 @@ public class ComunidadeController : ControllerBase
         }
     }
 
-    [HttpPut("{comunidadeId:int}")]
-    public async Task<ActionResult> UpdateComunidade(int comunidadeId)
+    [HttpPut]
+    public async Task<ActionResult> UpdateComunidade(TbComunidade comunidade)
     {
         try
         {
-            var comunidade = await _service.GetComunidade(comunidadeId);
-            if (comunidade == null)
-                return NotFound($"Comunidade de id {comunidadeId} não encontrada !");
-
             await _service.UpdateComunidade(comunidade);
             return Ok("Comunidade atualizada com sucesso !");
         }catch

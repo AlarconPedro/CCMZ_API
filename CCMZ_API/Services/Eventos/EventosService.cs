@@ -5,9 +5,9 @@ namespace CCMZ_API.Services.Eventos;
 
 public class EventosService : IEventosService
 {
-    private readonly CcmzContext _context;
+    private readonly CCMZContext _context;
 
-    public EventosService(CcmzContext context)
+    public EventosService(CCMZContext context)
     {
         _context = context;
     }

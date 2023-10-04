@@ -5,9 +5,9 @@ namespace CCMZ_API.Services.Comunidade;
 
 public class ComunidadeService : IComunidadeService
 {
-    private readonly CcmzContext _context;
+    private readonly CCMZContext _context;
 
-    public ComunidadeService(CcmzContext context)
+    public ComunidadeService(CCMZContext context)
     {
         _context = context;
     }

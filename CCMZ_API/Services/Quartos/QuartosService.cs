@@ -6,9 +6,9 @@ namespace CCMZ_API.Services.Quartos;
 public class QuartosService : IQuartosService
 {
 
-    private readonly CcmzContext _context;
+    private readonly CCMZContext _context;
 
-    public QuartosService(CcmzContext context)
+    public QuartosService(CCMZContext context)
     {
         _context = context;
     }
