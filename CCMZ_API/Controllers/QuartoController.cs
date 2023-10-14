@@ -17,7 +17,7 @@ public class QuartoController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<TbQuarto>>> GetQuartos()
+    public async Task<ActionResult<IEnumerable<TbQuarto>>> GetQuartos() 
     {
         try
         {

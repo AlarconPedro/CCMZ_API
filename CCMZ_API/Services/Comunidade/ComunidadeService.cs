@@ -24,8 +24,22 @@ public class ComunidadeService : IComunidadeService
 
     public async Task PostComunidade(TbComunidade comunidade)
     {
-        _context.TbComunidades.Add(comunidade);
-        await _context.SaveChangesAsync();
+        if (comunidade.ComCodigo == 0)
+        {
+            var lastComunidade = await _context.TbComunidades.FirstOrDefaultAsync();
+            if (lastComunidade != null)
+            {
+                comunidade.ComCodigo = await _context.TbComunidades.MaxAsync(c => c.ComCodigo) + 1;
+            } else
+            {
+                comunidade.ComCodigo = 1;
+            }
+            _context.TbComunidades.Add(comunidade);
+            await _context.SaveChangesAsync();
+        }else 
+        { 
+            await UpdateComunidade(comunidade);
+        }
     }
 
     public async Task UpdateComunidade(TbComunidade comunidade)
