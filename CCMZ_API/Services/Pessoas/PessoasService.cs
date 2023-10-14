@@ -47,8 +47,22 @@ public class PessoasService : IPessoasService
 
     public async Task PostPessoas(TbPessoa tbPessoa)
     {
-        _context.TbPessoas.Add(tbPessoa);
-        await _context.SaveChangesAsync();
+        if (tbPessoa.PesCodigo == 0)
+        {
+            var lastPessoa = await _context.TbPessoas.FirstOrDefaultAsync();
+            if (lastPessoa != null)
+            {
+                tbPessoa.PesCodigo = await _context.TbPessoas.MaxAsync(p => p.PesCodigo) + 1;
+            } else
+            {
+                  tbPessoa.PesCodigo = 1;
+            }
+            _context.TbPessoas.Add(tbPessoa);
+            await _context.SaveChangesAsync();
+        } else
+        {
+            await PutPessoas(tbPessoa);
+        }
     }
 
     public async Task PutPessoas(TbPessoa tbPessoa)
