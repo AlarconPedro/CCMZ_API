@@ -5,7 +5,8 @@ using CCMZ_API.Models.Painel.Pessoas;
 public interface IPessoasService
 {
     //GET
-    Task<IEnumerable<Pessoas>> GetPessoas(int skip, int take);
+    Task<IEnumerable<Pessoas>> GetPessoas();
+    Task<TbPessoa> GetPessoaId(int idPessoa);
     Task<PessoaDetalhes> GetPessoaDetalhe(int idPessoa);
     //POST
     Task PostPessoas(TbPessoa tbPessoa);

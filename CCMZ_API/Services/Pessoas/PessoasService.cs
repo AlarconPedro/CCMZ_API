@@ -13,15 +13,20 @@ public class PessoasService : IPessoasService
         _context = context;
     }
 
-    public async Task<IEnumerable<Pessoas>> GetPessoas(int skip, int take)
+    public async Task<IEnumerable<Pessoas>> GetPessoas()
     {
-        return await _context.TbPessoas.Skip(skip).Take(take).Select(x => new Pessoas
+        return await _context.TbPessoas.Select(x => new Pessoas
         {
             PesCodigo = x.PesCodigo,
             PesNome = x.PesNome,
             PesGenero = x.PesGenero,
             Comunidade = _context.TbComunidades.Where(c => c.ComCodigo == x.ComCodigo).Select(c => c.ComNome).FirstOrDefault()
         }).ToListAsync();
+    }
+
+    public async Task<TbPessoa> GetPessoaId(int idPessoa)
+    {
+        return await _context.TbPessoas.FirstOrDefaultAsync(p => p.PesCodigo == idPessoa);
     }
 
     public async Task<PessoaDetalhes> GetPessoaDetalhe(int idPessoa)
