@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CCMZ_API.Services.Comunidade;
 
+using CCMZ_API.Models.Painel.Comunidade;
+
 public class ComunidadeService : IComunidadeService
 {
     private readonly CCMZContext _context;
@@ -12,9 +14,16 @@ public class ComunidadeService : IComunidadeService
         _context = context;
     }
 
-    public async Task<IEnumerable<TbComunidade>> GetComunidades()
+    public async Task<IEnumerable<Comunidade>> GetComunidades()
     {
-        return await _context.TbComunidades.ToListAsync();
+        return await _context.TbComunidades.Select(x => new Comunidade
+        {
+            ComCodigo = x.ComCodigo,
+            ComCidade = x.ComCidade,
+            ComUf = x.ComUf,
+            ComNome = x.ComNome,
+            QtdPessoas = _context.TbPessoas.Where(p => p.ComCodigo == x.ComCodigo).Sum(p => p.PesCodigo)
+        }).ToListAsync();
     }
 
     public async Task<TbComunidade> GetComunidade(int id)

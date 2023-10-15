@@ -2,10 +2,12 @@
 
 namespace CCMZ_API.Services.Blocos;
 
+using CCMZ_API.Models.Painel.Bloco;
+
 public interface IBlocosService
 {
     //GET
-    Task<IEnumerable<TbBloco>> GetBlocos();
+    Task<IEnumerable<Bloco>> GetBlocos();
     Task<TbBloco> GetBloco(int id);
     //POST
     Task PostBloco(TbBloco bloco);

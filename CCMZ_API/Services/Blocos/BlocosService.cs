@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CCMZ_API.Services.Blocos;
 
+using CCMZ_API.Models.Painel.Bloco;
+
 public class BlocosService : IBlocosService
 {
     private readonly CCMZContext _context;
@@ -11,9 +13,16 @@ public class BlocosService : IBlocosService
     {
         _context = context;
     }
-    public async Task<IEnumerable<TbBloco>> GetBlocos()
+    public async Task<IEnumerable<Bloco>> GetBlocos()
     {
-        return await _context.TbBlocos.ToListAsync();
+        return await _context.TbBlocos.Select(x => new Bloco
+        {
+            BloCodigo = x.BloCodigo,
+            BloNome = x.BloNome,
+            QtdQuartos = _context.TbQuartos.Where(q => q.BloCodigo == x.BloCodigo).Count(),
+            QtdLivres = _context.TbQuartos.Where(q => q.BloCodigo == x.BloCodigo && q.QuaQtdcamas != 0).Count(),
+            QtdOcupados = _context.TbQuartos.Where(q => q.BloCodigo == x.BloCodigo && q.QuaQtdcamas == 0).Count()
+        }).ToListAsync();
     }
     public async Task<TbBloco> GetBloco(int id)
     {
