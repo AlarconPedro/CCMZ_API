@@ -36,7 +36,7 @@ public class QuartoController : ControllerBase
         try
         {
             await _service.PostQuarto(tbQuarto);
-            return Ok("Usuário cadastrado com sucesso !");
+            return Ok("Quarto cadastrado com sucesso !");
         }
         catch
         {
@@ -49,7 +49,7 @@ public class QuartoController : ControllerBase
     {
         try {
             await _service.UpdateQuarto(tbQuarto);
-            return Ok("Usuário atualizado com sucesso !");
+            return Ok("Quarto atualizado com sucesso !");
         } catch
         {
             return BadRequest("Request Inválido !");
@@ -65,11 +65,11 @@ public class QuartoController : ControllerBase
             if (quarto != null)
             {
                 await _service.DeleteQuarto(quarto);
-                return Ok("Usuário Excluído com sucesso !");
+                return Ok("Quarto Excluído com sucesso !");
             }
             else
             {
-                return BadRequest("Usuário não encontrado !");
+                return BadRequest("Quarto não encontrado !");
             }
         } catch
         {
