@@ -31,9 +31,23 @@ public class QuartosService : IQuartosService
         return await _context.TbQuartos.FirstOrDefaultAsync(q => q.QuaCodigo == id);
     }
 
-    public async Task PostQuarto(TbQuarto tbQuarto)
+    public async Task PostQuarto(TbQuarto quarto)
     {
-        _context.TbQuartos.Add(tbQuarto);
+        if (quarto.QuaCodigo == 0)
+        {
+            var lastQuarto = await _context.TbQuartos.FirstOrDefaultAsync();
+            if (lastQuarto != null)
+            {
+                quarto.QuaCodigo = await _context.TbQuartos.MaxAsync(q => q.QuaCodigo) + 1;
+            }else
+            {
+                quarto.QuaCodigo = 1;
+            }
+        } else
+        {
+            await UpdateQuarto(quarto);
+        }
+        _context.TbQuartos.Add(quarto);
         await _context.SaveChangesAsync();
     }
 
