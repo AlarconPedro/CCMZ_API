@@ -31,6 +31,19 @@ public class BlocosService : IBlocosService
 
     public async Task PostBloco(TbBloco bloco)
     {
+        if (bloco.BloCodigo == 0)
+        {
+            var blocoLast = await _context.TbBlocos.FirstOrDefaultAsync();
+            if (blocoLast != null)
+            {
+                bloco.BloCodigo = await _context.TbBlocos.MaxAsync(b => b.BloCodigo) + 1;
+            } else {
+                bloco.BloCodigo = 1;
+            }
+        } else
+        {
+            await UpdateBloco(bloco);
+        }
         _context.TbBlocos.Add(bloco);
         await _context.SaveChangesAsync();
     }

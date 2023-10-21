@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CCMZ_API.Services.Quartos;
 
+using CCMZ_API.Models.Painel.Quartos;
+
 public class QuartosService : IQuartosService
 {
 
@@ -13,9 +15,15 @@ public class QuartosService : IQuartosService
         _context = context;
     }
 
-    public async Task<IEnumerable<TbQuarto>> GetQuartos()
+    public async Task<IEnumerable<Quartos>> GetQuartos()
     {
-        return await _context.TbQuartos.ToListAsync();
+        return await _context.TbQuartos.Select(x => new Quartos
+        {
+            QuaCodigo = x.QuaCodigo,
+            QuaNome = x.QuaNome,
+            QuaQtdcamas = x.QuaQtdcamas,
+            Bloco = _context.TbBlocos.FirstOrDefault(b => b.BloCodigo == x.BloCodigo).BloNome
+        }).ToListAsync();
     }
 
     public async Task<TbQuarto> GetQuartoById(int id)
