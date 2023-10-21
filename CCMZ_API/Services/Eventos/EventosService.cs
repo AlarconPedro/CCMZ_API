@@ -24,6 +24,20 @@ public class EventosService : IEventosService
 
     public async Task PostEvento(TbEvento evento)
     {
+        if (evento.EveCodigo == 0)
+        {
+            var lastEvento = await _context.TbEventos.FirstOrDefaultAsync();
+            if (lastEvento != null)
+            {
+                evento.EveCodigo = await _context.TbEventos.MaxAsync(e => e.EveCodigo) + 1;
+            } else
+            {
+                evento.EveCodigo = 1;
+            }
+        } else
+        {
+            await UpdateEvento(evento);
+        }
         _context.TbEventos.Add(evento);
         await _context.SaveChangesAsync();
     }
