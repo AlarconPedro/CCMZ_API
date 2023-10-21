@@ -30,6 +30,27 @@ public class QuartoController : ControllerBase
         }
     }
 
+    [HttpGet("{id}")]
+    public async Task<ActionResult<TbQuarto>> GetQuartoById(int id)
+    {
+        try
+        {
+            var quarto = await _service.GetQuartoById(id);
+            if (quarto != null)
+            {
+                return Ok(quarto);
+            }
+            else
+            {
+                return BadRequest("Quarto não encontrado !");
+            }
+        }
+        catch
+        {
+            return BadRequest("Request Inválido !");
+        }
+    }
+
     [HttpPost]
     public async Task<ActionResult> PostQuarto(TbQuarto tbQuarto)
     {
