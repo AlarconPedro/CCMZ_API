@@ -20,7 +20,11 @@ public class PessoasService : IPessoasService
             PesCodigo = x.PesCodigo,
             PesNome = x.PesNome,
             PesGenero = x.PesGenero,
-            Comunidade = _context.TbComunidades.Where(c => c.ComCodigo == x.ComCodigo).Select(c => c.ComNome).FirstOrDefault()
+            Comunidade = _context.TbComunidades.Where(c => c.ComCodigo == x.ComCodigo).Select(c => c.ComNome).FirstOrDefault(),
+            PesCatequista = x.PesCatequista,
+            PesResponsavel = x.PesResponsavel,
+            PesSalmista = x.PesSalmista,
+            PesObservacao = x.PesObservacao
         }).ToListAsync();
     }
 
