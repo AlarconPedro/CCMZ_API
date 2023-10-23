@@ -22,7 +22,7 @@ public partial class CCMZContext : DbContext
 
     public virtual DbSet<TbBloco> TbBlocos { get; set; }
 
-    public virtual DbSet<TbCasal> TbCasais { get; set; }
+    public virtual DbSet<TbCasai> TbCasais { get; set; }
 
     public virtual DbSet<TbComunidade> TbComunidades { get; set; }
 
@@ -57,7 +57,7 @@ public partial class CCMZContext : DbContext
                 .HasColumnName("BLO_NOME");
         });
 
-        modelBuilder.Entity<TbCasal>(entity =>
+        modelBuilder.Entity<TbCasai>(entity =>
         {
             entity.HasKey(e => e.CasCodigo);
 
@@ -170,6 +170,10 @@ public partial class CCMZContext : DbContext
                 .ValueGeneratedNever()
                 .HasColumnName("PES_CODIGO");
             entity.Property(e => e.ComCodigo).HasColumnName("COM_CODIGO");
+            entity.Property(e => e.PesCatequista)
+                .HasMaxLength(1)
+                .IsUnicode(false)
+                .HasColumnName("PES_CATEQUISTA");
             entity.Property(e => e.PesGenero)
                 .HasMaxLength(1)
                 .IsUnicode(false)
@@ -178,6 +182,18 @@ public partial class CCMZContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("PES_NOME");
+            entity.Property(e => e.PesObservacao)
+                .HasMaxLength(1)
+                .IsUnicode(false)
+                .HasColumnName("PES_OBSERVACAO");
+            entity.Property(e => e.PesResponsavel)
+                .HasMaxLength(1)
+                .IsUnicode(false)
+                .HasColumnName("PES_RESPONSAVEL");
+            entity.Property(e => e.PesSalmista)
+                .HasMaxLength(1)
+                .IsUnicode(false)
+                .HasColumnName("PES_SALMISTA");
 
             entity.HasOne(d => d.ComCodigoNavigation).WithMany(p => p.TbPessoas)
                 .HasForeignKey(d => d.ComCodigo)

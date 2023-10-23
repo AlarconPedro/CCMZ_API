@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CCMZ_API.Models;
+namespace CCMZ_API;
 
 public partial class TbQuartoPessoa
 {
