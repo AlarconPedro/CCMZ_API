@@ -1,4 +1,7 @@
 ﻿using CCMZ_API.Models;
+using CCMZ_API.Models.Painel.Bloco;
+using CCMZ_API.Models.Painel.Comunidade;
+using CCMZ_API.Models.Painel.Quartos;
 using Microsoft.EntityFrameworkCore;
 
 namespace CCMZ_API.Services.Eventos;
@@ -20,6 +23,32 @@ public class EventosService : IEventosService
     public async Task<TbEvento> GetEvento(int id)
     {
         return await _context.TbEventos.FirstOrDefaultAsync(e => e.EveCodigo == id);
+    }
+    public async Task<IEnumerable<BlocoNome>> GetPavilhoes()
+    {
+        return await _context.TbBlocos.Select(b => new BlocoNome
+        {
+            BloCodigo = b.BloCodigo,
+            BloNome = b.BloNome
+        }).ToListAsync();
+    }
+
+    public async Task<IEnumerable<QuartoPavilhao>> GetQuartosPavilhao(int codigoPavilhao)
+    {
+        return await _context.TbQuartos.Where(q => q.BloCodigo == codigoPavilhao).Select(q => new QuartoPavilhao
+        {
+            QuaCodigo = q.QuaCodigo,
+            QuaNome = q.QuaNome
+        }).ToListAsync();   
+    }
+
+    public async Task<IEnumerable<ComunidadeNome>> GetComunidades()
+    {
+        return await _context.TbComunidades.Select(c => new ComunidadeNome
+        {
+            ComCodigo = c.ComCodigo,
+            ComNome = c.ComNome
+        }).ToListAsync();
     }
 
     public async Task PostEvento(TbEvento evento)

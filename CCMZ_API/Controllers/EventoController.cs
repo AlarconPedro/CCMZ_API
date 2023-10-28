@@ -1,4 +1,7 @@
 ﻿using CCMZ_API.Models;
+using CCMZ_API.Models.Painel.Bloco;
+using CCMZ_API.Models.Painel.Comunidade;
+using CCMZ_API.Models.Painel.Quartos;
 using CCMZ_API.Services.Eventos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -48,6 +51,54 @@ public class EventoController : ControllerBase
         }
     }
 
+    [HttpGet("pavilhoes")]
+    public async Task<ActionResult<IEnumerable<BlocoNome>>> GetPavilhoes()
+    {
+        try
+        {
+            var pavilhoes = await _service.GetPavilhoes();
+            if (pavilhoes == null)
+                return NotFound("Nenhum pavilhão encontrado !");
+
+            return Ok(pavilhoes);
+        } catch
+        {
+            return BadRequest("Erro ao trazer os pavilhões !");
+        }
+    }
+
+    [HttpGet("quartos/{codigoPavilhao:int}")]
+    public async Task<ActionResult<IEnumerable<QuartoPavilhao>>> GetQuartosPavilhao(int codigoPavilhao)
+    {
+        try
+        {
+            var quartos = await _service.GetQuartosPavilhao(codigoPavilhao);
+            if (quartos == null)
+                return NotFound($"Nenhum quarto encontrado para o pavilhão com o código {codigoPavilhao} !");
+
+            return Ok(quartos);
+        } catch
+        {
+            return BadRequest($"Erro ao trazer os quartos do pavilhão com o código {codigoPavilhao} !");
+        }
+    }
+
+    [HttpGet("comunidades")]
+    public async Task<ActionResult<IEnumerable<ComunidadeNome>>> GetComunidades()
+    {
+        try
+        {
+            var comunidades = await _service.GetComunidades();
+            if (comunidades == null)
+                return NotFound("Nenhuma comunidade encontrada !");
+
+            return Ok(comunidades);
+        } catch
+        {
+            return BadRequest("Erro ao trazer as comunidades !");
+        }
+    }
+
     [HttpPost]
     public async Task<ActionResult> PostEvento(TbEvento evento)
     {
@@ -75,7 +126,7 @@ public class EventoController : ControllerBase
         }
     }
 
-    [HttpDelete("int:idEvento")]
+    [HttpDelete("{idEvento:int}")]
     public async Task<ActionResult> DeleteEvento(int idEvento)
     {
         try
