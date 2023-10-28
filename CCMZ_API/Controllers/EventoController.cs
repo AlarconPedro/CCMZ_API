@@ -112,6 +112,19 @@ public class EventoController : ControllerBase
         }
     }
 
+    [HttpPost("quartos")]
+    public async Task<ActionResult> PostQuartos(List<TbEventoQuarto> eventoQuarto)
+    {
+        try
+        {
+            await _service.PostQuartos(eventoQuarto);
+            return Ok("Quartos cadastrados com sucesso !");
+        }catch
+        {
+            return BadRequest("Erro ao cadastrar os quartos !");
+        }
+    }
+
     [HttpPut]
     public async Task<ActionResult> UpdateEvento(TbEvento evento)
     {

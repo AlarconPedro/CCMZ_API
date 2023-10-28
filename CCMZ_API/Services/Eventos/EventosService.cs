@@ -71,9 +71,39 @@ public class EventosService : IEventosService
         await _context.SaveChangesAsync();
     }
 
+
+    public async Task PostQuartos(List<TbEventoQuarto> eventoQuarto)
+    {
+        foreach (var item in eventoQuarto)
+        {
+            if (item.EvqCodigo == 0)
+            {
+                var lastEventoQuarto = await _context.TbEventoQuartos.FirstOrDefaultAsync();
+                if (lastEventoQuarto != null)
+                {
+                    item.EvqCodigo = await _context.TbEventoQuartos.MaxAsync(e => e.EvqCodigo) + 1;
+                } else
+                {
+                    item.EvqCodigo = 1;
+                }
+            } else
+            {
+                await UpdateEventoQuarto(item);
+            }
+            _context.TbEventoQuartos.Add(item);
+            await _context.SaveChangesAsync();
+        }
+    }
+
     public async Task UpdateEvento(TbEvento evento)
     {
-        _context.Entry(evento).State = EntityState.Modified;
+        _context.TbEventos.Update(evento);
+        await _context.SaveChangesAsync();
+    }
+
+    public async Task UpdateEventoQuarto(TbEventoQuarto eventoQuarto)
+    {
+        _context.TbEventoQuartos.Update(eventoQuarto);
         await _context.SaveChangesAsync();
     }
 
