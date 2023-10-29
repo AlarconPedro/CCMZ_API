@@ -83,7 +83,7 @@ public class EventoController : ControllerBase
         }
     }
 
-    [HttpGet("quartos/{codigoPavilhao:int}/{codigoEvento:int}")]
+    [HttpGet("quartos/alocados/{codigoPavilhao:int}/{codigoEvento:int}")]
     public async Task<ActionResult<IEnumerable<QuartoPavilhao>>> GetQuartosAlocados(int codigoPavilhao, int codigoEvento)
     {
         try
