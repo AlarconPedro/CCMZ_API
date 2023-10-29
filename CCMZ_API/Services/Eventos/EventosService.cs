@@ -42,6 +42,18 @@ public class EventosService : IEventosService
         }).ToListAsync();   
     }
 
+    public async Task<IEnumerable<QuartoPavilhao>> GetQuartosAlocados(int codigoPavilhao, int codigoEvento)
+    {
+        return await _context.TbEventoQuartos.Where(eq => eq.EveCodigo == codigoEvento)
+            .Join(_context.TbQuartos, eq => eq.QuaCodigo, q => q.QuaCodigo, (eq, q) => new { eq, q })
+            .Where(eq => eq.q.BloCodigo == codigoPavilhao)
+            .Select(eq => new QuartoPavilhao
+            {
+                QuaCodigo = eq.q.QuaCodigo,
+                QuaNome = eq.q.QuaNome
+            }).ToListAsync();
+    }
+
     public async Task<IEnumerable<ComunidadeNome>> GetComunidades()
     {
         return await _context.TbComunidades.Select(c => new ComunidadeNome

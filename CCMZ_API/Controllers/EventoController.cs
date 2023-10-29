@@ -83,6 +83,22 @@ public class EventoController : ControllerBase
         }
     }
 
+    [HttpGet("quartos/{codigoPavilhao:int}/{codigoEvento:int}")]
+    public async Task<ActionResult<IEnumerable<QuartoPavilhao>>> GetQuartosAlocados(int codigoPavilhao, int codigoEvento)
+    {
+        try
+        {
+            var quartos = await _service.GetQuartosAlocados(codigoPavilhao, codigoEvento);
+            if (quartos == null)
+                return NotFound($"Nenhum quarto encontrado para o pavilhão com o código {codigoPavilhao} !");
+
+            return Ok(quartos);
+        } catch
+        {
+            return BadRequest($"Erro ao trazer os quartos do pavilhão com o código {codigoPavilhao} !");
+        }
+    }
+
     [HttpGet("comunidades")]
     public async Task<ActionResult<IEnumerable<ComunidadeNome>>> GetComunidades()
     {
