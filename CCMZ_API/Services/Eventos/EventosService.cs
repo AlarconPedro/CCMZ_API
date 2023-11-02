@@ -1,6 +1,7 @@
 ﻿using CCMZ_API.Models;
 using CCMZ_API.Models.Painel.Bloco;
 using CCMZ_API.Models.Painel.Comunidade;
+using CCMZ_API.Models.Painel.Pessoas;
 using CCMZ_API.Models.Painel.Quartos;
 using Microsoft.EntityFrameworkCore;
 
@@ -56,6 +57,17 @@ public class EventosService : IEventosService
             }).ToListAsync();
     }
 
+    public async Task<IEnumerable<PessoaQuarto>> GetPessoaQuartos(int codigoComunidade)
+    {
+        return await _context.TbPessoas
+            .Where(p => p.ComCodigo == codigoComunidade)
+            .Select(x => new PessoaQuarto
+        {
+            PesCodigo = x.PesCodigo,
+            PesNome = x.PesNome,
+        }).ToListAsync();
+    }
+
     public async Task<IEnumerable<ComunidadeNome>> GetComunidades()
     {
         return await _context.TbComunidades.Select(c => new ComunidadeNome
@@ -91,28 +103,24 @@ public class EventosService : IEventosService
         await _context.TbEventoQuartos.Where(eq => eq.QuaCodigoNavigation.BloCodigo == codigo).ExecuteDeleteAsync();
         foreach (var item in eventoQuarto)
         {
-           /* List<TbEventoQuarto> evento = await _context.TbEventoQuartos.ToListAsync();
-            if (!evento.Any(e => e.QuaCodigo == item.QuaCodigo))
-            {*/
-                if (item.EvqCodigo == 0)
+            if (item.EvqCodigo == 0)
+            {
+                var lastEventoQuarto = await _context.TbEventoQuartos.FirstOrDefaultAsync();
+                if (lastEventoQuarto != null)
                 {
-                    var lastEventoQuarto = await _context.TbEventoQuartos.FirstOrDefaultAsync();
-                    if (lastEventoQuarto != null)
-                    {
-                        item.EvqCodigo = await _context.TbEventoQuartos.MaxAsync(e => e.EvqCodigo) + 1;
-                    }
-                    else
-                    {
-                        item.EvqCodigo = 1;
-                    }
+                    item.EvqCodigo = await _context.TbEventoQuartos.MaxAsync(e => e.EvqCodigo) + 1;
                 }
                 else
                 {
-                    await UpdateEventoQuarto(item);
+                    item.EvqCodigo = 1;
                 }
-                _context.TbEventoQuartos.Add(item);
-                await _context.SaveChangesAsync();
-            /*}*/ 
+            }
+            else
+            {
+                await UpdateEventoQuarto(item);
+            }
+            _context.TbEventoQuartos.Add(item);
+            await _context.SaveChangesAsync();
         }
     }
 

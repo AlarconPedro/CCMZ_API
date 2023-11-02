@@ -1,6 +1,7 @@
 ﻿using CCMZ_API.Models;
 using CCMZ_API.Models.Painel.Bloco;
 using CCMZ_API.Models.Painel.Comunidade;
+using CCMZ_API.Models.Painel.Pessoas;
 using CCMZ_API.Models.Painel.Quartos;
 using CCMZ_API.Services.Eventos;
 using Microsoft.AspNetCore.Http;
@@ -96,6 +97,22 @@ public class EventoController : ControllerBase
         } catch
         {
             return BadRequest($"Erro ao trazer os quartos do pavilhão com o código {codigoPavilhao} !");
+        }
+    }
+
+    [HttpGet("pessoas/{codigoComunidade:int}")]
+    public async Task<ActionResult<IEnumerable<PessoaQuarto>>> GetPessoaQuartos(int codigoComunidade)
+    {
+        try
+        {
+            var pessoas = await _service.GetPessoaQuartos(codigoComunidade);
+            if (pessoas == null)
+                return NotFound($"Nenhuma pessoa encontrada para a comunidade com o código {codigoComunidade} !");
+
+            return Ok(pessoas);
+        } catch
+        {
+            return BadRequest($"Erro ao trazer as pessoas da comunidade com o código {codigoComunidade} !");
         }
     }
 
