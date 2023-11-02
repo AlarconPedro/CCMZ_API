@@ -128,12 +128,12 @@ public class EventoController : ControllerBase
         }
     }
 
-    [HttpPost("quartos")]
-    public async Task<ActionResult> PostQuartos(List<TbEventoQuarto> eventoQuarto)
+    [HttpPost("quartos/{codigo:int}")]
+    public async Task<ActionResult> PostQuartos(List<TbEventoQuarto> eventoQuarto, int codigo)
     {
         try
         {
-            await _service.PostQuartos(eventoQuarto);
+            await _service.PostQuartos(eventoQuarto, codigo);
             return Ok("Quartos cadastrados com sucesso !");
         }catch
         {

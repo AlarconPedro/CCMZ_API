@@ -86,13 +86,14 @@ public class EventosService : IEventosService
     }
 
 
-    public async Task PostQuartos(List<TbEventoQuarto> eventoQuarto)
+    public async Task PostQuartos(List<TbEventoQuarto> eventoQuarto, int codigo)
     {
+        await _context.TbEventoQuartos.Where(eq => eq.QuaCodigoNavigation.BloCodigo == codigo).ExecuteDeleteAsync();
         foreach (var item in eventoQuarto)
         {
-            List<TbEventoQuarto> evento = await _context.TbEventoQuartos.ToListAsync();
+           /* List<TbEventoQuarto> evento = await _context.TbEventoQuartos.ToListAsync();
             if (!evento.Any(e => e.QuaCodigo == item.QuaCodigo))
-            {
+            {*/
                 if (item.EvqCodigo == 0)
                 {
                     var lastEventoQuarto = await _context.TbEventoQuartos.FirstOrDefaultAsync();
@@ -111,7 +112,7 @@ public class EventosService : IEventosService
                 }
                 _context.TbEventoQuartos.Add(item);
                 await _context.SaveChangesAsync();
-            } 
+            /*}*/ 
         }
     }
 

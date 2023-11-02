@@ -16,7 +16,7 @@ public interface IEventosService
     Task<IEnumerable<ComunidadeNome>> GetComunidades();
     //POST
     Task PostEvento(TbEvento evento);
-    Task PostQuartos (List<TbEventoQuarto> eventoQuarto);
+    Task PostQuartos (List<TbEventoQuarto> eventoQuarto, int codigo);
     //PUT
     Task UpdateEvento(TbEvento evento);
     Task UpdateEventoQuarto(TbEventoQuarto eventoQuarto);
