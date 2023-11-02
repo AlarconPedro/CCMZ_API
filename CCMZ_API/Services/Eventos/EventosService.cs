@@ -88,10 +88,10 @@ public class EventosService : IEventosService
 
     public async Task PostQuartos(List<TbEventoQuarto> eventoQuarto)
     {
-        List<TbEventoQuarto> evento = await _context.TbEventoQuartos.ToListAsync();
         foreach (var item in eventoQuarto)
         {
-            if (item.QuaCodigo != evento.AsQueryable().Where(e => e.QuaCodigo == item.QuaCodigo).FirstOrDefault().QuaCodigo)
+            List<TbEventoQuarto> evento = await _context.TbEventoQuartos.ToListAsync();
+            if (!evento.Any(e => e.QuaCodigo == item.QuaCodigo))
             {
                 if (item.EvqCodigo == 0)
                 {
@@ -111,10 +111,7 @@ public class EventosService : IEventosService
                 }
                 _context.TbEventoQuartos.Add(item);
                 await _context.SaveChangesAsync();
-            } else
-            {
-                await UpdateEventoQuarto(item);
-            }
+            } 
         }
     }
 
