@@ -35,7 +35,8 @@ public class EventosService : IEventosService
 
     public async Task<IEnumerable<QuartoPavilhao>> GetQuartosPavilhao(int codigoPavilhao)
     {
-        return await _context.TbQuartos.Where(q => q.BloCodigo == codigoPavilhao && !q.TbEventoQuartos.Any())
+        return await _context.TbQuartos.Where(q => q.BloCodigo == codigoPavilhao)
+        /*&& !q.TbEventoQuartos.Any())*/
           .Select(q => new QuartoPavilhao
           {
               QuaCodigo = q.QuaCodigo,
@@ -87,24 +88,33 @@ public class EventosService : IEventosService
 
     public async Task PostQuartos(List<TbEventoQuarto> eventoQuarto)
     {
+        List<TbEventoQuarto> evento = await _context.TbEventoQuartos.ToListAsync();
         foreach (var item in eventoQuarto)
         {
-            if (item.EvqCodigo == 0)
+            if (item.QuaCodigo != evento.AsQueryable().Where(e => e.QuaCodigo == item.QuaCodigo).FirstOrDefault().QuaCodigo)
             {
-                var lastEventoQuarto = await _context.TbEventoQuartos.FirstOrDefaultAsync();
-                if (lastEventoQuarto != null)
+                if (item.EvqCodigo == 0)
                 {
-                    item.EvqCodigo = await _context.TbEventoQuartos.MaxAsync(e => e.EvqCodigo) + 1;
-                } else
-                {
-                    item.EvqCodigo = 1;
+                    var lastEventoQuarto = await _context.TbEventoQuartos.FirstOrDefaultAsync();
+                    if (lastEventoQuarto != null)
+                    {
+                        item.EvqCodigo = await _context.TbEventoQuartos.MaxAsync(e => e.EvqCodigo) + 1;
+                    }
+                    else
+                    {
+                        item.EvqCodigo = 1;
+                    }
                 }
+                else
+                {
+                    await UpdateEventoQuarto(item);
+                }
+                _context.TbEventoQuartos.Add(item);
+                await _context.SaveChangesAsync();
             } else
             {
                 await UpdateEventoQuarto(item);
             }
-            _context.TbEventoQuartos.Add(item);
-            await _context.SaveChangesAsync();
         }
     }
 
