@@ -124,6 +124,32 @@ public class EventosService : IEventosService
         }
     }
 
+    public async Task PostPessoas(List<TbEventoPessoa> eventoPessoa, int codigo)
+    {
+        await _context.TbEventoPessoas.Where(ep => ep.EveCodigo == codigo).ExecuteDeleteAsync();
+        foreach (var item in eventoPessoa)
+        {
+            if (item.EvpCodigo == 0)
+            {
+                var lastEventoPessoa = await _context.TbEventoPessoas.FirstOrDefaultAsync();
+                if (lastEventoPessoa != null)
+                {
+                    item.EvpCodigo = await _context.TbEventoPessoas.MaxAsync(e => e.EvpCodigo) + 1;
+                }
+                else
+                {
+                    item.EvpCodigo = 1;
+                }
+            }
+            else
+            {
+                await UpdateEventoPessoa(item);
+            }
+            _context.TbEventoPessoas.Add(item);
+            await _context.SaveChangesAsync();
+        }
+    }
+
     public async Task UpdateEvento(TbEvento evento)
     {
         _context.TbEventos.Update(evento);
@@ -133,6 +159,12 @@ public class EventosService : IEventosService
     public async Task UpdateEventoQuarto(TbEventoQuarto eventoQuarto)
     {
         _context.TbEventoQuartos.Update(eventoQuarto);
+        await _context.SaveChangesAsync();
+    }
+
+    public async Task UpdateEventoPessoa(TbEventoPessoa eventoPessoa)
+    {
+        _context.TbEventoPessoas.Update(eventoPessoa);
         await _context.SaveChangesAsync();
     }
 

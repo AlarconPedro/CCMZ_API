@@ -158,6 +158,19 @@ public class EventoController : ControllerBase
         }
     }
 
+    [HttpPost("pessoas/{codigo:int}")]
+    public async Task<ActionResult> PostPessoas(List<TbEventoPessoa> eventoPessoa, int codigo)
+    {
+        try
+        {
+            await _service.PostPessoas(eventoPessoa, codigo);
+            return Ok("Pessoas cadastradas com sucesso !");
+        }catch
+        {
+            return BadRequest("Erro ao cadastrar as pessoas !");
+        }
+    }
+
     [HttpPut]
     public async Task<ActionResult> UpdateEvento(TbEvento evento)
     {
@@ -169,6 +182,34 @@ public class EventoController : ControllerBase
         catch
         {
             return BadRequest($"Erro ao atualizar o Evento com o id {evento.EveCodigo} !");
+        }
+    }
+
+    [HttpPut("quartos")]
+    public async Task<ActionResult> UpdateEventoQuarto(TbEventoQuarto eventoQuarto)
+    {
+        try
+        {
+            await _service.UpdateEventoQuarto(eventoQuarto);
+            return Ok("Quarto Atualizado com sucesso !");
+        }
+        catch
+        {
+            return BadRequest($"Erro ao atualizar o Quarto com o id {eventoQuarto.EvqCodigo} !");
+        }
+    }
+
+    [HttpPut("pessoas")]
+    public async Task<ActionResult> UpdateEventoPessoa(TbEventoPessoa eventoPessoa)
+    {
+        try
+        {
+            await _service.UpdateEventoPessoa(eventoPessoa);
+            return Ok("Pessoa Atualizada com sucesso !");
+        }
+        catch
+        {
+            return BadRequest($"Erro ao atualizar a Pessoa com o id {eventoPessoa.EvpCodigo} !");
         }
     }
 

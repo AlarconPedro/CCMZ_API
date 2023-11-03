@@ -19,9 +19,11 @@ public interface IEventosService
     //POST
     Task PostEvento(TbEvento evento);
     Task PostQuartos (List<TbEventoQuarto> eventoQuarto, int codigo);
+    Task PostPessoas(List<TbEventoPessoa> eventoPessoa, int codigo);
     //PUT
     Task UpdateEvento(TbEvento evento);
     Task UpdateEventoQuarto(TbEventoQuarto eventoQuarto);
+    Task UpdateEventoPessoa(TbEventoPessoa eventoPessoa);
     //DELETE
     Task DeleteEvento(TbEvento evento);
 }
