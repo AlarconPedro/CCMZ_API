@@ -138,7 +138,7 @@ public class EventosService : IEventosService
 
     public async Task PostPessoas(List<TbEventoPessoa> eventoPessoa, int codigo)
     {
-        await _context.TbEventoPessoas.Where(ep => ep.EveCodigo == codigo).ExecuteDeleteAsync();
+        await _context.TbEventoPessoas.Where(ep => ep.PesCodigoNavigation.ComCodigo == codigo).ExecuteDeleteAsync();
         foreach (var item in eventoPessoa)
         {
             if (item.EvpCodigo == 0)
