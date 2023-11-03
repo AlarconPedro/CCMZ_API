@@ -116,6 +116,22 @@ public class EventoController : ControllerBase
         }
     }
 
+    [HttpGet("pessoas/alocadas/{codigoComunidade:int}/{codigoEvento:int}")]
+    public async Task<ActionResult<IEnumerable<PessoaQuarto>>> GetPessoasAlocadas(int codigoComunidade, int codigoEvento)
+    {
+        try
+        {
+            var pessoas = await _service.GetPessoasAlocadas(codigoComunidade, codigoEvento);
+            if (pessoas == null)
+                return NotFound($"Nenhuma pessoa encontrada para a comunidade com o código {codigoComunidade} !");
+
+            return Ok(pessoas);
+        } catch
+        {
+            return BadRequest($"Erro ao trazer as pessoas da comunidade com o código {codigoComunidade} !");
+        }
+    }
+
     [HttpGet("comunidades")]
     public async Task<ActionResult<IEnumerable<ComunidadeNome>>> GetComunidades()
     {
