@@ -33,6 +33,31 @@ public class PessoasService : IPessoasService
         return await _context.TbPessoas.FirstOrDefaultAsync(p => p.PesCodigo == idPessoa);
     }
 
+    public async Task<bool> GetPessoaPodeExcluir(int idPessoa)
+    {
+        var pessoa = await _context.TbPessoas.FirstOrDefaultAsync(p => p.PesCodigo == idPessoa);
+        if (pessoa == null)
+        {
+            return false;
+        }
+        var casal = await _context.TbCasais.FirstOrDefaultAsync(c => c.CasEsposo == idPessoa || c.CasEsposa == idPessoa);
+        if (casal != null)
+        {
+            return false;
+        }
+        var quarto = await _context.TbQuartoPessoas.FirstOrDefaultAsync(qp => qp.PesCodigo == idPessoa);
+        if (quarto != null)
+        {
+            return false;
+        }
+        var evento = await _context.TbEventoPessoas.FirstOrDefaultAsync(ep => ep.PesCodigo == idPessoa);
+        if (evento != null)
+        {
+            return false;
+        }
+        return true;
+    }
+
     public async Task<PessoaDetalhes> GetPessoaDetalhe(int idPessoa)
     {
         return await _context.TbPessoas.Where(p => p.PesCodigo == idPessoa).Select(x => new PessoaDetalhes

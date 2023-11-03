@@ -7,6 +7,7 @@ public interface IPessoasService
     //GET
     Task<IEnumerable<Pessoas>> GetPessoas();
     Task<TbPessoa> GetPessoaId(int idPessoa);
+    Task<bool> GetPessoaPodeExcluir(int idPessoa);
     Task<PessoaDetalhes> GetPessoaDetalhe(int idPessoa);
     //POST
     Task PostPessoas(TbPessoa tbPessoa);

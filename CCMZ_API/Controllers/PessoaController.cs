@@ -89,17 +89,24 @@ public class PessoaController : ControllerBase
     [HttpDelete("{idPessoa:int}")]
     public async Task<ActionResult> DeletePessoas(int idPessoa)
     {
-        try
-        {
-            var pessoa = await _service.GetPessoaId(idPessoa);
-            if (pessoa == null)
-                return NotFound("Pessoa não encontrada !");
+        var podeExcluir = await _service.GetPessoaPodeExcluir(idPessoa);
+        if (podeExcluir) {
+            try
+            {
+                var pessoa = await _service.GetPessoaId(idPessoa);
+                if (pessoa == null)
+                    return NotFound("Pessoa não encontrada !");
 
-            await _service.DeletePessoas(pessoa);
-            return Ok("Pessoa deletada com sucesso !");
-        } catch
+                await _service.DeletePessoas(pessoa);
+                return Ok("Pessoa deletada com sucesso !");
+            }
+            catch
+            {
+                return BadRequest("Erro ao deletar a pessoa !");
+            }
+        } else
         {
-            return BadRequest("Erro ao deletar a pessoa !");
+            return BadRequest("Não é possível excluir essa pessoa, pois ela está vinculada há alguma atividade !");
         }
     }
 }
