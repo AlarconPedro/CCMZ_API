@@ -1,4 +1,5 @@
 using CCMZ_API;
+using CCMZ_API.Services.Alocacao;
 using CCMZ_API.Services.Blocos;
 using CCMZ_API.Services.Comunidade;
 using CCMZ_API.Services.Eventos;
@@ -32,6 +33,7 @@ builder.Services.AddScoped<IQuartosService, QuartosService>();
 builder.Services.AddScoped<IComunidadeService, ComunidadeService>();
 builder.Services.AddScoped<IEventosService, EventosService>();
 builder.Services.AddScoped<IBlocosService, BlocosService>();
+builder.Services.AddScoped<IAlocacaoService, AlocacaoService>();
 
 builder.Services.AddAuthorization();
 
