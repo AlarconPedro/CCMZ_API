@@ -51,10 +51,14 @@ public class AlocacaoService : IAlocacaoService
 
     public async Task<IEnumerable<QuartosNome>> GetQuartos(int codigoEvento)
     {
-        return await _context.TbQuartos.Select(q => new QuartosNome
-        {
-            QuaCodigo = q.QuaCodigo,
-            QuaNome = q.QuaNome
-        }).ToListAsync();
+        return await _context.TbQuartos
+            .Join(_context.TbEventoQuartos, q => q.QuaCodigo, eq => eq.QuaCodigo, (q, eq) => new {q, eq})
+            .Join(_context.TbEventos, x => x.eq.EveCodigo, e => e.EveCodigo, (x, e) => new {x, e})
+            .Where(x => x.e.EveCodigo == codigoEvento)
+            .Select(x => new QuartosNome
+            {
+                QuaCodigo = x.x.q.QuaCodigo,
+                QuaNome = x.x.q.QuaNome
+            }).Distinct().ToListAsync();
     }
 }
