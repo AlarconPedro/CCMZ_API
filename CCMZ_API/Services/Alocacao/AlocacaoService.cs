@@ -45,7 +45,8 @@ public class AlocacaoService : IAlocacaoService
             .Select(y => new ComunidadeNome
             {
                 ComCodigo = y.z.x.c.ComCodigo,
-                ComNome = y.z.x.c.ComNome
+                ComNome = y.z.x.c.ComNome,
+                ComCidade = y.z.x.c.ComCidade
             }).Distinct().ToListAsync();
     }
 
