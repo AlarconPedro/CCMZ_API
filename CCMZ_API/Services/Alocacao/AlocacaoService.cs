@@ -41,7 +41,7 @@ public class AlocacaoService : IAlocacaoService
             .Join(_context.TbPessoas, c => c.ComCodigo, p => p.ComCodigo, (c, p) => new {c, p})
             .Join(_context.TbEventoPessoas, x => x.p.PesCodigo, ep => ep.PesCodigo, (x, ep) => new {x, ep})
             .Join(_context.TbEventos, z => z.ep.EveCodigo, e => e.EveCodigo, (z, e) => new {z, e})
-            .Where(y => y.e.EveCodigo == codigoEvento)
+            .Where(y => y.e.EveCodigo == codigoEvento && y.z.x.p.PesCodigo == y.z.ep.PesCodigo)
             .Select(y => new ComunidadeNome
             {
                 ComCodigo = y.z.x.c.ComCodigo,
