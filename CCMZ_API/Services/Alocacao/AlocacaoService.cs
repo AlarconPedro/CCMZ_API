@@ -40,25 +40,13 @@ public class AlocacaoService : IAlocacaoService
         return await _context.TbComunidades.Where(c => c.TbPessoas.Any())
             .Join(_context.TbPessoas, c => c.ComCodigo, p => p.ComCodigo, (c, p) => new { c, p })
             .Join(_context.TbEventoPessoas, x => x.p.PesCodigo, ep => ep.PesCodigo, (x, ep) => new { x, ep })
-            .Join(_context.TbEventos, z => z.ep.EveCodigo, e => e.EveCodigo, (z, e) => new { z, e })
-            .Where(y => y.e.EveCodigo == codigoEvento && y.z.x.p.PesCodigo == y.z.ep.PesCodigo)
+            .Where(y => y.ep.EveCodigo == codigoEvento && y.x.p.PesCodigo == y.ep.PesCodigo)
             .Select(c => new ComunidadeNome
             {
-                ComCodigo = c.z.x.c.ComCodigo,
-                ComNome = c.z.x.c.ComNome,
-                ComCidade = c.z.x.c.ComCidade
+                ComCodigo = c.x.c.ComCodigo,
+                ComNome = c.x.c.ComNome,
+                ComCidade = c.x.c.ComCidade
             }).ToListAsync();
-        /*return await _context.TbComunidades
-            .Join(_context.TbPessoas, c => c.ComCodigo, p => p.ComCodigo, (c, p) => new {c, p})
-            .Join(_context.TbEventoPessoas, x => x.p.PesCodigo, ep => ep.PesCodigo, (x, ep) => new {x, ep})
-            .Join(_context.TbEventos, z => z.ep.EveCodigo, e => e.EveCodigo, (z, e) => new {z, e})
-            .Where(y => y.e.EveCodigo == codigoEvento && y.z.x.p.PesCodigo == y.z.ep.PesCodigo)
-            .Select(y => new ComunidadeNome
-            {
-                ComCodigo = y.z.x.c.ComCodigo,
-                ComNome = y.z.x.c.ComNome,
-                ComCidade = y.z.x.c.ComCidade
-            }).Distinct().ToListAsync();*/
     }
 
     public async Task<IEnumerable<QuartosNome>> GetQuartos(int codigoEvento)
