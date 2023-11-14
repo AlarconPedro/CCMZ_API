@@ -1,4 +1,5 @@
 ﻿using CCMZ_API.Models.Painel.Alocacao;
+using CCMZ_API.Models.Painel.Pessoas;
 using Microsoft.EntityFrameworkCore;
 
 namespace CCMZ_API.Services.Alocacao;
@@ -46,6 +47,18 @@ public class AlocacaoService : IAlocacaoService
                 ComCodigo = c.x.c.ComCodigo,
                 ComNome = c.x.c.ComNome,
                 ComCidade = c.x.c.ComCidade
+            }).ToListAsync();
+    }
+
+    public async Task<IEnumerable<PessoasNome>> GetPessoasComunidade(int codigoEvento, int codigoComunidde)
+    {
+        return await _context.TbPessoas.Where(p => p.ComCodigo == codigoComunidde)
+            .Join(_context.TbEventoPessoas, p => p.PesCodigo, ep => ep.PesCodigo, (p, ep) => new {p, ep})
+            .Where(x => x.ep.EveCodigo == codigoEvento)
+            .Select(x => new PessoasNome
+            {
+                PesCodigo = x.p.PesCodigo,
+                PesNome = x.p.PesNome
             }).ToListAsync();
     }
 
