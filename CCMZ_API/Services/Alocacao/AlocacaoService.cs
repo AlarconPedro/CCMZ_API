@@ -23,11 +23,11 @@ public class AlocacaoService : IAlocacaoService
 
     public async Task<IEnumerable<BlocoNome>> GetBlocos(int codigoEvento)
     {
-        return await _context.TbBlocos
+        return await _context.TbBlocos.Where(b => b.TbQuartos.Any())
             .Join(_context.TbQuartos, b => b.BloCodigo, q => q.BloCodigo, (b, q) => new {b, q})
             .Join(_context.TbEventoQuartos, x => x.q.QuaCodigo, eq => eq.QuaCodigo, (x, eq) => new {x, eq})
             .Join(_context.TbEventos, x => x.eq.EveCodigo, e => e.EveCodigo, (x, e) => new {x, e})
-            .Where(x => x.e.EveCodigo == codigoEvento)
+            .Where(x => x.e.EveCodigo == codigoEvento && x.x.x.q.QuaCodigo == x.x.eq.QuaCodigo)
             .Select(x => new BlocoNome
             {
                 BloCodigo = x.x.x.b.BloCodigo,
