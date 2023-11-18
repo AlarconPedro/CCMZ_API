@@ -47,7 +47,7 @@ public class AlocacaoService : IAlocacaoService
                 ComCodigo = c.x.c.ComCodigo,
                 ComNome = c.x.c.ComNome,
                 ComCidade = c.x.c.ComCidade
-            }).ToListAsync();
+            }).GroupBy(c => c.ComCodigo).Select(c => c.First()).ToListAsync();
     }
 
     public async Task<IEnumerable<PessoasNome>> GetPessoasComunidade(int codigoEvento, int codigoComunidde)
