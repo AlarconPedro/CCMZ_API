@@ -87,3 +87,4 @@ C:\Desenvolvimento\C#\Web API\CCMZ_API\CCMZ_API\obj\Debug\net6.0\refint\CCMZ_API
 C:\Desenvolvimento\C#\Web API\CCMZ_API\CCMZ_API\obj\Debug\net6.0\CCMZ_API.pdb
 C:\Desenvolvimento\C#\Web API\CCMZ_API\CCMZ_API\obj\Debug\net6.0\CCMZ_API.genruntimeconfig.cache
 C:\Desenvolvimento\C#\Web API\CCMZ_API\CCMZ_API\obj\Debug\net6.0\ref\CCMZ_API.dll
+C:\Desenvolvimento\C#\Web API\CCMZ_API\CCMZ_API\obj\Debug\net6.0\CCMZ_API.sourcelink.json
