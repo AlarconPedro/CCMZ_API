@@ -71,12 +71,12 @@ public class AlocacaoController : ControllerBase
         }
     }
 
-    [HttpGet("quartos/{codigoEvento}")]
-    public async Task<IActionResult> GetQuartos(int codigoEvento)
+    [HttpGet("quartos/{codigoEvento}/{codigoBloco}")]
+    public async Task<IActionResult> GetQuartos(int codigoEvento, int codigoBloco)
     {
         try
         {
-            var quartos = await _alocacaoService.GetQuartos(codigoEvento);
+            var quartos = await _alocacaoService.GetQuartos(codigoEvento, codigoBloco);
             return Ok(quartos);
         }
         catch (Exception e)
