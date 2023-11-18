@@ -22,7 +22,7 @@ public class ComunidadeService : IComunidadeService
             ComCidade = x.ComCidade,
             ComUf = x.ComUf,
             ComNome = x.ComNome,
-            QtdPessoas = _context.TbPessoas.Where(p => p.ComCodigo == x.ComCodigo).Sum(p => p.PesCodigo)
+            QtdPessoas = _context.TbPessoas.Where(p => p.ComCodigo == x.ComCodigo).Count()
         }).ToListAsync();
     }
 
