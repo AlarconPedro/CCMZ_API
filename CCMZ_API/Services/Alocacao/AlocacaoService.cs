@@ -74,4 +74,15 @@ public class AlocacaoService : IAlocacaoService
                 QuaNome = x.x.q.QuaNome
             }).Distinct().ToListAsync();
     }
+
+    public async Task<IEnumerable<PessoasAlocadas>> GetPessoasQuarto(int codigoQuarto)
+    {
+        return await _context.TbPessoas.Where(p => p.TbQuartoPessoas.Any(q => q.QuaCodigo == codigoQuarto))
+            .Select(x => new PessoasAlocadas
+            {
+                PesCodigo = x.PesCodigo,
+                PesNome = x.PesNome,
+                QtdCamas = x.TbQuartoPessoas.Count(q => q.QuaCodigo == codigoQuarto)
+            }).ToListAsync();
+    }
 }

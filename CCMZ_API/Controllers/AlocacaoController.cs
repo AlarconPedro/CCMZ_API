@@ -57,7 +57,7 @@ public class AlocacaoController : ControllerBase
         }
     }
 
-    [HttpGet("pessoas/{codigoEvento}/{codigoComunidade}")]
+    [HttpGet("pessoas/comunidade/{codigoEvento}/{codigoComunidade}")]
     public async Task<IActionResult> GetPessoasComunidade(int codigoEvento, int codigoComunidade)
     {
         try
@@ -78,6 +78,20 @@ public class AlocacaoController : ControllerBase
         {
             var quartos = await _alocacaoService.GetQuartos(codigoEvento);
             return Ok(quartos);
+        }
+        catch (Exception e)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
+        }
+    }
+
+    [HttpGet("pessoas/quarto/{codigoQuarto}")]
+    public async Task<IActionResult> GetPessoasQuarto(int codigoQuarto)
+    {
+        try
+        {
+            var pessoas = await _alocacaoService.GetPessoasQuarto(codigoQuarto);
+            return Ok(pessoas);
         }
         catch (Exception e)
         {
