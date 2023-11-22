@@ -98,4 +98,46 @@ public class AlocacaoController : ControllerBase
             return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
         }
     }
+
+    [HttpPost("pessoa/quarto")]
+    public async Task<IActionResult> AddPessoaQuarto(TbQuartoPessoa quartoPessoa)
+    {
+        try
+        {
+            await _alocacaoService.AddPessoaQuarto(quartoPessoa);
+            return Ok("Pessoa adicionada ao quarto com Sucesso !");
+        }
+        catch (Exception e)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
+        }
+    }
+
+    [HttpPut("pessoa/quarto")]
+    public async Task<IActionResult> AtualizarPessoaQuarto(TbQuartoPessoa quartoPessoa)
+    {
+        try
+        {
+            await _alocacaoService.AtualizarPessoaQuarto(quartoPessoa);
+            return Ok("Pessoa atualizada com Sucesso !");
+        }
+        catch (Exception e)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
+        }
+    }
+
+    [HttpDelete("pessoa/quarto")]
+    public async Task<IActionResult> RemoverPessoaQuarto(TbQuartoPessoa quartoPessoa)
+    {
+        try
+        {
+            await _alocacaoService.RemoverPessoaQuarto(quartoPessoa);
+            return Ok("Pessoa removida do quarto com Sucesso !");
+        }
+        catch (Exception e)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
+        }
+    }
 }

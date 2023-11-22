@@ -84,4 +84,44 @@ public class AlocacaoService : IAlocacaoService
                 QtdCamas = x.TbQuartoPessoas.Count(q => q.QuaCodigo == codigoQuarto)
             }).ToListAsync();
     }
+
+    public async Task AddPessoaQuarto(TbQuartoPessoa quartoPessoa)
+    {
+        if (quartoPessoa.QupCodigo == 0)
+        {
+            var lastQuartoPessoa = await _context.TbQuartoPessoas.OrderByDescending(qp => qp.QupCodigo).FirstOrDefaultAsync();
+            if (lastQuartoPessoa != null)
+            {
+                quartoPessoa.QupCodigo = await _context.TbQuartoPessoas.MaxAsync(qp => qp.QupCodigo) + 1;
+            } else
+            {
+                quartoPessoa.QupCodigo = 1;
+            }
+             _context.TbQuartoPessoas.Add(quartoPessoa);
+            await _context.SaveChangesAsync();
+        } else
+        {
+            await AtualizarPessoaQuarto(quartoPessoa);
+        }
+        /*var quartoPessoa = new TbQuartoPessoa
+        {
+            QupCodigo = 0,
+            PesCodigo = codigoPessoa,
+            QuaCodigo = codigoQuarto
+        };
+        await _context.TbQuartoPessoas.AddAsync(quartoPessoa);
+        await _context.SaveChangesAsync();*/
+    }
+
+    public async Task AtualizarPessoaQuarto(TbQuartoPessoa quartoPessoa)
+    {
+        _context.TbQuartoPessoas.Update(quartoPessoa);
+        await _context.SaveChangesAsync();
+    }
+
+    public async Task RemoverPessoaQuarto(TbQuartoPessoa quartoPessoa)
+    {
+        _context.TbQuartoPessoas.Remove(quartoPessoa);
+        await _context.SaveChangesAsync();
+    }
 }
