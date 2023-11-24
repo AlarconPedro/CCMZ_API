@@ -8,11 +8,11 @@ namespace CCMZ_API.Controllers;
 [ApiController]
 public class AlocacaoController : ControllerBase
 {
-    private readonly IAlocacaoService _alocacaoService;
+    private readonly IAlocacaoService _service;
 
     public AlocacaoController(IAlocacaoService alocacaoService)
     {
-        _alocacaoService = alocacaoService;
+        _service = alocacaoService;
     }
 
     [HttpGet("eventos")]
@@ -20,7 +20,7 @@ public class AlocacaoController : ControllerBase
     {
         try
         {
-            var eventos = await _alocacaoService.GetEventos();
+            var eventos = await _service.GetEventos();
             return Ok(eventos);
         }
         catch (Exception e)
@@ -34,7 +34,7 @@ public class AlocacaoController : ControllerBase
     {
         try
         {
-            var blocos = await _alocacaoService.GetBlocos(codigoEvento);
+            var blocos = await _service.GetBlocos(codigoEvento);
             return Ok(blocos);
         }
         catch (Exception e)
@@ -48,7 +48,7 @@ public class AlocacaoController : ControllerBase
     {
         try
         {
-            var comunidades = await _alocacaoService.GetComunidades(codigoEvento);
+            var comunidades = await _service.GetComunidades(codigoEvento);
             return Ok(comunidades);
         }
         catch (Exception e)
@@ -62,7 +62,7 @@ public class AlocacaoController : ControllerBase
     {
         try
         {
-            var pessoas = await _alocacaoService.GetPessoasComunidade(codigoEvento, codigoComunidade);
+            var pessoas = await _service.GetPessoasComunidade(codigoEvento, codigoComunidade);
             return Ok(pessoas);
         }
         catch (Exception e)
@@ -76,7 +76,7 @@ public class AlocacaoController : ControllerBase
     {
         try
         {
-            var quartos = await _alocacaoService.GetQuartos(codigoEvento, codigoBloco);
+            var quartos = await _service.GetQuartos(codigoEvento, codigoBloco);
             return Ok(quartos);
         }
         catch (Exception e)
@@ -90,7 +90,7 @@ public class AlocacaoController : ControllerBase
     {
         try
         {
-            var pessoas = await _alocacaoService.GetPessoasQuarto(codigoQuarto);
+            var pessoas = await _service.GetPessoasQuarto(codigoQuarto);
             return Ok(pessoas);
         }
         catch (Exception e)
@@ -104,7 +104,7 @@ public class AlocacaoController : ControllerBase
     {
         try
         {
-            await _alocacaoService.AddPessoaQuarto(quartoPessoa);
+            await _service.AddPessoaQuarto(quartoPessoa);
             return Ok("Pessoa adicionada ao quarto com Sucesso !");
         }
         catch (Exception e)
@@ -118,7 +118,7 @@ public class AlocacaoController : ControllerBase
     {
         try
         {
-            await _alocacaoService.AtualizarPessoaQuarto(quartoPessoa);
+            await _service.AtualizarPessoaQuarto(quartoPessoa);
             return Ok("Pessoa atualizada com Sucesso !");
         }
         catch (Exception e)
@@ -127,13 +127,19 @@ public class AlocacaoController : ControllerBase
         }
     }
 
-    [HttpDelete("pessoa/quarto")]
-    public async Task<IActionResult> RemoverPessoaQuarto(TbQuartoPessoa quartoPessoa)
+    [HttpDelete("pessoa/quarto/{codigoPessoa:int}")]
+    public async Task<IActionResult> RemoverPessoaQuarto(int codigoPessoa)
     {
         try
         {
-            await _alocacaoService.RemoverPessoaQuarto(quartoPessoa);
-            return Ok("Pessoa removida do quarto com Sucesso !");
+            var quarto = await _service.GetPessoaAlocada(codigoPessoa);
+            if (quarto != null)
+            {
+                await _service.RemoverPessoaQuarto(quarto);
+                return Ok("Pessoa removida do quarto com Sucesso !");
+            }
+           
+            return NotFound("Pessoa não encontrada !");
         }
         catch (Exception e)
         {

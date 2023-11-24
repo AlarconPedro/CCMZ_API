@@ -85,6 +85,11 @@ public class AlocacaoService : IAlocacaoService
             }).ToListAsync();
     }
 
+    public async Task<TbQuartoPessoa> GetPessoaAlocada(int codigoPessoa)
+    {
+        return await _context.TbQuartoPessoas.FirstOrDefaultAsync(qp => qp.PesCodigo == codigoPessoa);
+    }
+
     public async Task AddPessoaQuarto(TbQuartoPessoa quartoPessoa)
     {
         if (quartoPessoa.QupCodigo == 0)
