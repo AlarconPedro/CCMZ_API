@@ -16,7 +16,7 @@ public class AlocacaoController : ControllerBase
     }
 
     [HttpGet("eventos")]
-    public async Task<IActionResult> GetEventos()
+    public async Task<ActionResult> GetEventos()
     {
         try
         {
@@ -30,7 +30,7 @@ public class AlocacaoController : ControllerBase
     }
 
     [HttpGet("blocos/{codigoEvento}")]
-    public async Task<IActionResult> GetBlocos(int codigoEvento)
+    public async Task<ActionResult> GetBlocos(int codigoEvento)
     {
         try
         {
@@ -44,7 +44,7 @@ public class AlocacaoController : ControllerBase
     }
 
     [HttpGet("comunidades/{codigoEvento}")]
-    public async Task<IActionResult> GetComunidades(int codigoEvento)
+    public async Task<ActionResult> GetComunidades(int codigoEvento)
     {
         try
         {
@@ -58,7 +58,7 @@ public class AlocacaoController : ControllerBase
     }
 
     [HttpGet("pessoas/comunidade/{codigoEvento}/{codigoComunidade}")]
-    public async Task<IActionResult> GetPessoasComunidade(int codigoEvento, int codigoComunidade)
+    public async Task<ActionResult> GetPessoasComunidade(int codigoEvento, int codigoComunidade)
     {
         try
         {
@@ -72,7 +72,7 @@ public class AlocacaoController : ControllerBase
     }
 
     [HttpGet("quartos/{codigoEvento}/{codigoBloco}")]
-    public async Task<IActionResult> GetQuartos(int codigoEvento, int codigoBloco)
+    public async Task<ActionResult> GetQuartos(int codigoEvento, int codigoBloco)
     {
         try
         {
@@ -86,7 +86,7 @@ public class AlocacaoController : ControllerBase
     }
 
     [HttpGet("pessoas/quarto/{codigoQuarto}")]
-    public async Task<IActionResult> GetPessoasQuarto(int codigoQuarto)
+    public async Task<ActionResult> GetPessoasQuarto(int codigoQuarto)
     {
         try
         {
@@ -100,7 +100,7 @@ public class AlocacaoController : ControllerBase
     }
 
     [HttpPost("pessoa/quarto")]
-    public async Task<IActionResult> AddPessoaQuarto(TbQuartoPessoa quartoPessoa)
+    public async Task<ActionResult> AddPessoaQuarto(TbQuartoPessoa quartoPessoa)
     {
         try
         {
@@ -114,7 +114,7 @@ public class AlocacaoController : ControllerBase
     }
 
     [HttpPut("pessoa/quarto")]
-    public async Task<IActionResult> AtualizarPessoaQuarto(TbQuartoPessoa quartoPessoa)
+    public async Task<ActionResult> AtualizarPessoaQuarto(TbQuartoPessoa quartoPessoa)
     {
         try
         {
@@ -128,7 +128,7 @@ public class AlocacaoController : ControllerBase
     }
 
     [HttpDelete("pessoa/quarto/{codigoPessoa:int}")]
-    public async Task<IActionResult> RemoverPessoaQuarto(int codigoPessoa)
+    public async Task<ActionResult> RemoverPessoaQuarto(int codigoPessoa)
     {
         try
         {
@@ -140,6 +140,20 @@ public class AlocacaoController : ControllerBase
             }
            
             return NotFound("Pessoa não encontrada !");
+        }
+        catch (Exception e)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
+        }
+    }
+
+    [HttpDelete("pessoas/quarto/{codigoQuarto:int}")]
+    public async Task<ActionResult> LimpaPessoasAlocadas(int codigoQuarto)
+    {
+        try
+        {
+            await _service.LimpaPessoasAlocadas(codigoQuarto);
+            return Ok("Pessoas removidas do quarto com Sucesso !");
         }
         catch (Exception e)
         {

@@ -20,4 +20,5 @@ public interface IAlocacaoService
     Task AtualizarPessoaQuarto(TbQuartoPessoa quartoPessoa);
     //DELETE
     Task RemoverPessoaQuarto(TbQuartoPessoa quartoPessoa);
+    Task LimpaPessoasAlocadas(int codigoQuarto);
 }

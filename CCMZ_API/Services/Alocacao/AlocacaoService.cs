@@ -129,4 +129,11 @@ public class AlocacaoService : IAlocacaoService
         _context.TbQuartoPessoas.Remove(quartoPessoa);
         await _context.SaveChangesAsync();
     }
+
+    public async Task LimpaPessoasAlocadas(int codigoQuarto)
+    {
+        var pessoas = await _context.TbQuartoPessoas.Where(qp => qp.QuaCodigo == codigoQuarto).ToListAsync();
+        _context.TbQuartoPessoas.RemoveRange(pessoas);
+        await _context.SaveChangesAsync();
+    }
 }
