@@ -89,6 +89,21 @@ public class EventosService : IEventosService
         }).ToListAsync();
     }
 
+    public async Task<IEnumerable<Hospedes>> GetHospedes(int codigoEvento)
+    {
+        return await _context.TbPessoas
+            .Join(_context.TbEventoPessoas, p => p.PesCodigo, ep => ep.PesCodigo, (p, ep) => new { p, ep })
+            .Where(p => p.ep.EveCodigo == codigoEvento)
+            .Select(x => new Hospedes
+            {
+                PesCodigo = x.p.PesCodigo,
+                PesNome = x.p.PesNome,
+                Comunidade = _context.TbComunidades.Where(c => c.ComCodigo == x.p.ComCodigo).Select(c => c.ComNome).FirstOrDefault(),
+                Pagante = x.ep.EvpPagante,
+                Cobrante = x.ep.EvpCobrante
+            }).ToListAsync();
+    }
+
     public async Task PostEvento(TbEvento evento)
     {
         if (evento.EveCodigo == 0)

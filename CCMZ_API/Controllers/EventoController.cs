@@ -148,6 +148,22 @@ public class EventoController : ControllerBase
         }
     }
 
+    [HttpGet("hospedes/{codigoEvento:int}")]
+    public async Task<ActionResult<IEnumerable<Hospedes>>> GetHospedes(int codigoEvento)
+    {
+        try
+        {
+            var hospedes = await _service.GetHospedes(codigoEvento);
+            if (hospedes == null)
+                return NotFound($"Nenhum hospede encontrado para o evento com o código {codigoEvento} !");
+
+            return Ok(hospedes);
+        } catch
+        {
+            return BadRequest($"Erro ao trazer os hospedes do evento com o código {codigoEvento} !");
+        }
+    }
+
     [HttpPost]
     public async Task<ActionResult> PostEvento(TbEvento evento)
     {

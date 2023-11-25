@@ -17,6 +17,7 @@ public interface IEventosService
     Task<IEnumerable<PessoaQuarto>> GetPessoaQuartos(int codigoComunidade);
     Task<IEnumerable<PessoaQuarto>> GetPessoasAlocadas(int codigoComunidade, int codigoEvento);
     Task<IEnumerable<ComunidadeNome>> GetComunidades();
+    Task<IEnumerable<Hospedes>> GetHospedes(int codigoEvento);
     //POST
     Task PostEvento(TbEvento evento);
     Task PostQuartos (List<TbEventoQuarto> eventoQuarto, int codigo);
