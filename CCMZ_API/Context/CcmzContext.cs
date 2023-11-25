@@ -133,6 +133,8 @@ public partial class CCMZContext : DbContext
                 .HasColumnName("EVP_CODIGO");
             entity.Property(e => e.EveCodigo).HasColumnName("EVE_CODIGO");
             entity.Property(e => e.PesCodigo).HasColumnName("PES_CODIGO");
+            entity.Property(e => e.EvpPagante).HasColumnName("EVP_PAGANTE");
+            entity.Property(e => e.EvpCobrante).HasColumnName("EVP_COBRANTE");
 
             entity.HasOne(d => d.PesCodigoNavigation).WithMany(p => p.TbEventoPessoas)
                 .HasForeignKey(d => d.PesCodigo)
