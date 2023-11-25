@@ -50,10 +50,12 @@ public class AlocacaoService : IAlocacaoService
             }).GroupBy(c => c.ComCodigo).Select(c => c.First()).ToListAsync();
     }
 
-    public async Task<IEnumerable<PessoasNome>> GetPessoasComunidade(int codigoEvento, int codigoComunidde)
+    public async Task<IEnumerable<PessoasNome>> GetPessoasComunidade(int codigoEvento, int codigoComunidade)
     {
         var listaPessoas = await _context.TbQuartoPessoas.ToListAsync();
-        return await _context.TbPessoas.Where(p => p.ComCodigo == codigoComunidde && !p.TbQuartoPessoas.Any())
+        return await _context.TbPessoas
+/*            .Where(p => p.ComCodigo == codigoComunidade)
+*/            .Where(p => p.ComCodigo == codigoComunidade && !p.TbQuartoPessoas.Any())
             .Join(_context.TbEventoPessoas, p => p.PesCodigo, ep => ep.PesCodigo, (p, ep) => new {p, ep})
             .Where(y => y.ep.EveCodigo == codigoEvento)
             .Select(x => new PessoasNome
