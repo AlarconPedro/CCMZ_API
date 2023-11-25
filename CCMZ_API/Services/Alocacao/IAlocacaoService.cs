@@ -12,6 +12,7 @@ public interface IAlocacaoService
     Task<IEnumerable<BlocoNome>> GetBlocos(int codigoEvento);
     Task<IEnumerable<QuartosNome>> GetQuartos(int codigoEvento, int codigoBloco);
     Task<IEnumerable<PessoasAlocadas>> GetPessoasQuarto(int codigoQuarto);
+    Task<IEnumerable<PessoasNome>> GetPessoasTotal(int codigoEvento, int codigoComunidde);
     Task<TbQuartoPessoa> GetPessoaAlocada(int codigoPessoa);
     //INSERT
 /*    Task AddPessoaQuarto(int codigoQuarto, int codigoPessoa);*/    

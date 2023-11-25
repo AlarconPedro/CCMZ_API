@@ -54,8 +54,7 @@ public class AlocacaoService : IAlocacaoService
     {
         var listaPessoas = await _context.TbQuartoPessoas.ToListAsync();
         return await _context.TbPessoas
-/*            .Where(p => p.ComCodigo == codigoComunidade)
-*/            .Where(p => p.ComCodigo == codigoComunidade && !p.TbQuartoPessoas.Any())
+            .Where(p => p.ComCodigo == codigoComunidade && !p.TbQuartoPessoas.Any())
             .Join(_context.TbEventoPessoas, p => p.PesCodigo, ep => ep.PesCodigo, (p, ep) => new {p, ep})
             .Where(y => y.ep.EveCodigo == codigoEvento)
             .Select(x => new PessoasNome
@@ -85,6 +84,18 @@ public class AlocacaoService : IAlocacaoService
                 PesCodigo = x.PesCodigo,
                 PesNome = x.PesNome,
                 QtdCamas = x.TbQuartoPessoas.Count(q => q.QuaCodigo == codigoQuarto)
+            }).ToListAsync();
+    }
+
+    public async Task<IEnumerable<PessoasNome>> GetPessoasTotal(int codigoEvento, int codigoComunidade)
+    {
+        return await _context.TbPessoas.Where(p => p.ComCodigo == codigoComunidade)
+            .Join(_context.TbEventoPessoas, p => p.PesCodigo, ep => ep.PesCodigo, (p, ep) => new {p, ep})
+            .Where(y => y.ep.EveCodigo == codigoEvento)
+            .Select(x => new PessoasNome
+            {
+                PesCodigo = x.p.PesCodigo,
+                PesNome = x.p.PesNome
             }).ToListAsync();
     }
 

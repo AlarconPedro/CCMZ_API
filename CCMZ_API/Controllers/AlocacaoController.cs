@@ -85,6 +85,20 @@ public class AlocacaoController : ControllerBase
         }
     }
 
+    [HttpGet("pessoas/total/{codigoEvento}/{codigoComunidade}")]
+    public async Task<ActionResult> GetPessoasTotal(int codigoEvento, int codigoComunidade)
+    {
+        try
+        {
+            var pessoas = await _service.GetPessoasTotal(codigoEvento, codigoComunidade);
+            return Ok(pessoas);
+        }
+        catch (Exception e)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
+        }
+    }
+
     [HttpGet("pessoas/quarto/{codigoQuarto}")]
     public async Task<ActionResult> GetPessoasQuarto(int codigoQuarto)
     {
