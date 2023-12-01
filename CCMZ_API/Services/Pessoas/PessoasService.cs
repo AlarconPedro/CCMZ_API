@@ -24,7 +24,7 @@ public class PessoasService : IPessoasService
             PesCatequista = x.PesCatequista,
             PesResponsavel = x.PesResponsavel,
             PesSalmista = x.PesSalmista,
-            PesObservacao = x.PesObservacao
+/*            PesObservacao = x.PesObservacao*/        
         }).ToListAsync();
     }
 

@@ -8,7 +8,7 @@ public partial class TbPessoa
 {
     public int PesCodigo { get; set; }
 
-    public string? PesNome { get; set; }
+    public string? PesNome { get; set; }    
 
     public string? PesGenero { get; set; }
 

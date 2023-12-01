@@ -9,5 +9,5 @@ public class Pessoas
     public string? PesResponsavel { get; set; }
     public string? PesCatequista { get; set; }
     public string? PesSalmista { get; set; }
-    public string? PesObservacao { get; set; }
+/*    public string? PesObservacao { get; set; }*/
 }
