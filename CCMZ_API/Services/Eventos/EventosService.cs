@@ -41,7 +41,9 @@ public class EventosService : IEventosService
           .Select(q => new QuartoPavilhao
           {
               QuaCodigo = q.QuaCodigo,
-              QuaNome = q.QuaNome
+              QuaNome = q.QuaNome,
+              QuaQtdcamas = q.QuaQtdcamas,
+              QuaQtdcamasdisponiveis = _context.TbQuartos.Where(x => x.QuaCodigo == q.QuaCodigo).Select(x => x.QuaQtdcamas - x.TbQuartoPessoas.Count).FirstOrDefault()
           }).ToListAsync();
     }
 
@@ -53,7 +55,8 @@ public class EventosService : IEventosService
             .Select(eq => new QuartoPavilhao
             {
                 QuaCodigo = eq.q.QuaCodigo,
-                QuaNome = eq.q.QuaNome
+                QuaNome = eq.q.QuaNome,
+                QuaQtdcamas = eq.q.QuaQtdcamas,
             }).ToListAsync();
     }
 
