@@ -43,7 +43,7 @@ public class EventosService : IEventosService
               QuaCodigo = q.QuaCodigo,
               QuaNome = q.QuaNome,
               QuaQtdcamas = q.QuaQtdcamas,
-              QuaQtdcamasdisponiveis = _context.TbQuartos.Where(x => x.QuaCodigo == q.QuaCodigo).Select(x => x.QuaQtdcamas - x.TbQuartoPessoas.Count).FirstOrDefault()
+              QuaQtdcamasdisponiveis = _context.TbQuartos.Where(x => x.QuaCodigo == q.QuaCodigo).Select(x => x.QuaQtdcamas - x.TbQuartoPessoas.Count).FirstOrDefault(),
           }).ToListAsync();
     }
 
