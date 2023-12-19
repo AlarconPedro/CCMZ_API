@@ -1,6 +1,5 @@
 ﻿using CCMZ_API.Models;
-using CCMZ_API.Models.Painel.Bloco;
-using CCMZ_API.Models.Painel.Comunidade;
+using CCMZ_API.Models.Painel.Alocacao;
 using CCMZ_API.Models.Painel.Pessoas;
 using CCMZ_API.Models.Painel.Quartos;
 
@@ -10,6 +9,7 @@ public interface IEventosService
 {
     //GET
     Task<IEnumerable<TbEvento>> GetEventos();
+    Task<IEnumerable<EventosNome>> GetEventoNome();
     Task<TbEvento> GetEvento(int id);
     Task<IEnumerable<BlocoNome>> GetPavilhoes();
     Task<IEnumerable<QuartoPavilhao>> GetQuartosPavilhao(int codigoPavilhao);

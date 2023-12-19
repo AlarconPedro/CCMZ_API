@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CCMZ_API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+855ef71f2dbc5f52543183d5a422bf9d721265da")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+16fffd64b23110615d5dbb87a25f8a4f4203a095")]
 [assembly: System.Reflection.AssemblyProductAttribute("CCMZ_API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CCMZ_API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

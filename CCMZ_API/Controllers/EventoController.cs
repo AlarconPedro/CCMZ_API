@@ -1,6 +1,5 @@
 ﻿using CCMZ_API.Models;
-using CCMZ_API.Models.Painel.Bloco;
-using CCMZ_API.Models.Painel.Comunidade;
+using CCMZ_API.Models.Painel.Alocacao;
 using CCMZ_API.Models.Painel.Pessoas;
 using CCMZ_API.Models.Painel.Quartos;
 using CCMZ_API.Services.Eventos;
@@ -26,6 +25,22 @@ public class EventoController : ControllerBase
         try
         {
             var eventos = await _service.GetEventos();
+            if (eventos == null)
+                return NotFound("Nenhum evento encontrado !");
+
+            return Ok(eventos);
+        } catch
+        {
+            return BadRequest("Erro ao trazer os eventos !");
+        }
+    }
+
+    [HttpGet("nomes")]
+    public async Task<ActionResult<IEnumerable<EventosNome>>> GetEventoNome()
+    {
+        try
+        {
+            var eventos = await _service.GetEventoNome();
             if (eventos == null)
                 return NotFound("Nenhum evento encontrado !");
 

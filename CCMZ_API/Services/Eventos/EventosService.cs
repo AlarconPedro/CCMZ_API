@@ -1,6 +1,5 @@
 ﻿using CCMZ_API.Models;
-using CCMZ_API.Models.Painel.Bloco;
-using CCMZ_API.Models.Painel.Comunidade;
+using CCMZ_API.Models.Painel.Alocacao;
 using CCMZ_API.Models.Painel.Pessoas;
 using CCMZ_API.Models.Painel.Quartos;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +18,15 @@ public class EventosService : IEventosService
     public async Task<IEnumerable<TbEvento>> GetEventos()
     {
         return await _context.TbEventos.ToListAsync();
+    }
+
+    public async Task<IEnumerable<EventosNome>> GetEventoNome()
+    {
+        return await _context.TbEventos.Select(e => new EventosNome
+        {
+            EveCodigo = e.EveCodigo,
+            EveNome = e.EveNome
+        }).ToListAsync();
     }
 
     public async Task<TbEvento> GetEvento(int id)
