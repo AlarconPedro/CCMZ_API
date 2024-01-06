@@ -65,17 +65,29 @@ public class EventosService : IEventosService
                 QuaCodigo = eq.q.QuaCodigo,
                 QuaNome = eq.q.QuaNome,
                 QuaQtdcamas = eq.q.QuaQtdcamas,
+                QuaQtdcamasdisponiveis = _context.TbQuartos.Where(x => x.QuaCodigo == eq.q.QuaCodigo).Select(x => x.QuaQtdcamas - x.TbQuartoPessoas.Count).FirstOrDefault(),
+                PessoasQuarto = _context.TbQuartoPessoas.Where(qp => qp.QuaCodigo == eq.q.QuaCodigo)
+                .Join(_context.TbPessoas, p => p.PesCodigo, qp => qp.PesCodigo, (p, qp) => new { p, qp }).Select(x =>  new PessoasNome
+                {
+                    PesCodigo = x.qp.PesCodigo,
+                    PesNome = x.qp.PesNome,
+                    PesGenero = x.qp.PesGenero,
+                }).ToList(),
             }).ToListAsync();
     }
 
-    public async Task<IEnumerable<PessoaQuarto>> GetPessoaQuartos(int codigoComunidade)
+    public async Task<IEnumerable<Hospedes>> GetPessoaEvento(int codigoComunidade)
     {
         return await _context.TbPessoas
             .Where(p => p.ComCodigo == codigoComunidade)
-            .Select(x => new PessoaQuarto
-        {
+            .Select(x => new Hospedes
+            {
             PesCodigo = x.PesCodigo,
             PesNome = x.PesNome,
+            PesGenero = x.PesGenero,
+            Comunidade = _context.TbComunidades.Where(c => c.ComCodigo == x.ComCodigo).Select(c => c.ComNome).FirstOrDefault(),
+            Cobrante = _context.TbEventoPessoas.Where(ep => ep.PesCodigo == x.PesCodigo).Select(ep => ep.EvpCobrante).FirstOrDefault(),
+            Pagante = _context.TbEventoPessoas.Where(ep => ep.PesCodigo == x.PesCodigo).Select(ep => ep.EvpPagante).FirstOrDefault()
         }).ToListAsync();
     }
 
@@ -90,6 +102,28 @@ public class EventosService : IEventosService
                 PesNome = ep.p.PesNome
             }).ToListAsync();
     }
+
+    public async Task<IEnumerable<PessoaQuarto>> GetPessoasQuarto(int codigoQuarto)
+    {
+        return await _context.TbPessoas.Where(p => p.TbQuartoPessoas.Any(qp => qp.QuaCodigo == codigoQuarto))
+            .Select(ep => new PessoaQuarto
+            {
+                PesCodigo = ep.PesCodigo,
+                PesNome = ep.PesNome
+            }).ToListAsync();
+    }
+
+/*    public async Task<IEnumerable<QuartosNome>> GetQuartos(int codigoEvento, int codigoBloco)
+    {
+        return await _context.TbQuartos.Where(q => q.BloCodigo == codigoBloco)
+            .Join(_context.TbEventoQuartos, q => q.QuaCodigo, eq => eq.QuaCodigo, (q, eq) => new { q, eq })
+            .Where(x => x.eq.EveCodigo == codigoEvento)
+            .Select(x => new QuartosNome
+            {
+                QuaCodigo = x.q.QuaCodigo,
+                QuaNome = x.q.QuaNome
+            }).GroupBy(q => q.QuaNome).Select(q => q.First()).ToListAsync();
+    }*/
 
     public async Task<IEnumerable<ComunidadeNome>> GetComunidades()
     {

@@ -120,7 +120,7 @@ public class EventoController : ControllerBase
     {
         try
         {
-            var pessoas = await _service.GetPessoaQuartos(codigoComunidade);
+            var pessoas = await _service.GetPessoaEvento(codigoComunidade);
             if (pessoas == null)
                 return NotFound($"Nenhuma pessoa encontrada para a comunidade com o código {codigoComunidade} !");
 
@@ -146,6 +146,36 @@ public class EventoController : ControllerBase
             return BadRequest($"Erro ao trazer as pessoas da comunidade com o código {codigoComunidade} !");
         }
     }
+
+    [HttpGet("pessoas/quarto/{codigoQuarto:int}")]
+    public async Task<ActionResult<IEnumerable<PessoaQuarto>>> GetPessoasQuarto(int codigoQuarto)
+    {
+        try
+        {
+            var pessoas = await _service.GetPessoasQuarto(codigoQuarto);
+            if (pessoas == null)
+                return NotFound($"Nenhuma pessoa encontrada para o quarto com o código {codigoQuarto} !");
+
+            return Ok(pessoas);
+        } catch
+        {
+            return BadRequest($"Erro ao trazer as pessoas do quarto com o código {codigoQuarto} !");
+        }
+    }
+
+/*    [HttpGet("quartos/{codigoEvento}/{codigoBloco}")]
+    public async Task<ActionResult> GetQuartos(int codigoEvento, int codigoBloco)
+    {
+        try
+        {
+            var quartos = await _service.GetQuartos(codigoEvento, codigoBloco);
+            return Ok(quartos);
+        }
+        catch (Exception e)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
+        }
+    }*/
 
     [HttpGet("comunidades")]
     public async Task<ActionResult<IEnumerable<ComunidadeNome>>> GetComunidades()

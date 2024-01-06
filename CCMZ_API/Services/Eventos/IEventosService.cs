@@ -12,15 +12,17 @@ public interface IEventosService
     Task<IEnumerable<EventosNome>> GetEventoNome();
     Task<TbEvento> GetEvento(int id);
     Task<IEnumerable<BlocoNome>> GetPavilhoes();
+/*    Task<IEnumerable<QuartosNome>> GetQuartos(int codigoEvento, int codigoBloco);*/    
     Task<IEnumerable<QuartoPavilhao>> GetQuartosPavilhao(int codigoPavilhao);
     Task<IEnumerable<QuartoPavilhao>> GetQuartosAlocados(int codigoPavilhao, int codigoEvento);
-    Task<IEnumerable<PessoaQuarto>> GetPessoaQuartos(int codigoComunidade);
+    Task<IEnumerable<Hospedes>> GetPessoaEvento(int codigoComunidade);
     Task<IEnumerable<PessoaQuarto>> GetPessoasAlocadas(int codigoComunidade, int codigoEvento);
+    Task<IEnumerable<PessoaQuarto>> GetPessoasQuarto(int codigoQuarto);
     Task<IEnumerable<ComunidadeNome>> GetComunidades();
     Task<IEnumerable<Hospedes>> GetHospedes(int codigoEvento);
     //POST
     Task PostEvento(TbEvento evento);
-    Task PostQuartos (List<TbEventoQuarto> eventoQuarto, int codigo);
+    Task PostQuartos (List<TbEventoQuarto> eventoQuarto, int codigo);   
     Task PostPessoas(List<TbEventoPessoa> eventoPessoa, int codigo);
     //PUT
     Task UpdateEvento(TbEvento evento);

@@ -61,19 +61,8 @@ public class AlocacaoService : IAlocacaoService
             {
                 PesCodigo = x.p.PesCodigo,
                 PesNome = x.p.PesNome,
+                PesGenero = x.p.PesGenero,
             }).ToListAsync();
-    }
-
-    public async Task<IEnumerable<QuartosNome>> GetQuartos(int codigoEvento, int codigoBloco)
-    {
-        return await _context.TbQuartos.Where(q => q.BloCodigo == codigoBloco)
-            .Join(_context.TbEventoQuartos, q => q.QuaCodigo, eq => eq.QuaCodigo, (q, eq) => new {q, eq})
-            .Where(x => x.eq.EveCodigo == codigoEvento)
-            .Select(x => new QuartosNome
-            {
-                QuaCodigo = x.q.QuaCodigo,
-                QuaNome = x.q.QuaNome
-            }).GroupBy(q => q.QuaNome).Select(q => q.First()).ToListAsync();
     }
 
     public async Task<IEnumerable<PessoasAlocadas>> GetPessoasQuarto(int codigoQuarto)
