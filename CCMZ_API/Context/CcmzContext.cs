@@ -234,6 +234,8 @@ public partial class CCMZContext : DbContext
                 .HasColumnName("QUP_CODIGO");
             entity.Property(e => e.PesCodigo).HasColumnName("PES_CODIGO");
             entity.Property(e => e.QuaCodigo).HasColumnName("QUA_CODIGO");
+            entity.Property(e => e.PesChave).HasColumnName("PES_CHAVE");
+            entity.Property(e => e.PesCheckin).HasColumnName("PES_CHECKIN");
 
             entity.HasOne(d => d.PesCodigoNavigation).WithMany(p => p.TbQuartoPessoas)
                 .HasForeignKey(d => d.PesCodigo)

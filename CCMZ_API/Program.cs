@@ -4,6 +4,7 @@ using CCMZ_API.Services.Blocos;
 using CCMZ_API.Services.Comunidade;
 using CCMZ_API.Services.Eventos;
 using CCMZ_API.Services.Pessoas;
+using CCMZ_API.Services.QuartoPessoa;
 using CCMZ_API.Services.Quartos;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,7 +19,7 @@ builder.Services.AddCors(options =>
         {
             policy.AllowAnyHeader();
             policy.AllowAnyMethod();
-            policy.WithOrigins("http://localhost:3000", "http://localhost:61235");
+            policy.WithOrigins("http://localhost:3000", "http://localhost:51793");
         });
 });
 
@@ -34,6 +35,7 @@ builder.Services.AddScoped<IComunidadeService, ComunidadeService>();
 builder.Services.AddScoped<IEventosService, EventosService>();
 builder.Services.AddScoped<IBlocosService, BlocosService>();
 builder.Services.AddScoped<IAlocacaoService, AlocacaoService>();
+builder.Services.AddScoped<IQuartoPessoaService, QuartoPessoaService>();
 
 builder.Services.AddAuthorization();
 

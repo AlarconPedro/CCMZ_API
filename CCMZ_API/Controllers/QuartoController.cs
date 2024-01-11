@@ -22,7 +22,6 @@ public class QuartoController : ControllerBase
         try
         {
             return Ok(await _service.GetQuartos());
-
         }
         catch
         {
