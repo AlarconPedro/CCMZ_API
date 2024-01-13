@@ -8,5 +8,5 @@ public class QuartoPessoas
 
     public int? BloCodigo { get; set; }
 
-    public IEnumerable<PessoaCheckin>? PessoasQuarto { get; set; }
+    public List<PessoaCheckin>? PessoasQuarto { get; set; }
 }

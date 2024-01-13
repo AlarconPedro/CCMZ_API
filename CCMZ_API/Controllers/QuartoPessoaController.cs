@@ -16,16 +16,16 @@ public class QuartoPessoaController : ControllerBase
         _service = quartoPessoa;
     }
 
-    [HttpGet("{codigoBloco:int}")]
-    public async Task<ActionResult<IEnumerable<QuartoPessoas>>> GetQuartoPessoas(int codigoBloco)
+    [HttpGet("{codigoBloco:int}/{codigoEvento:int}")]
+    public async Task<ActionResult<IEnumerable<QuartoPessoas>>> GetQuartoPessoas(int codigoBloco, int codigoEvento)
     {
         try
         {
-            return Ok(await _service.GetQuartoPessoas(codigoBloco));
+            return Ok(await _service.GetQuartoPessoas(codigoBloco, codigoEvento));
         }
-        catch
+        catch(Exception ex)
         {
-            return BadRequest("Request Inválido !");
+            return StatusCode(StatusCodes.Status500InternalServerError, $"Request Inválido ! {ex}");
         }
     }
 }
