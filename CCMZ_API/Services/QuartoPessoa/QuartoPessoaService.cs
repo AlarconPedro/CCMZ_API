@@ -15,14 +15,17 @@ public class QuartoPessoaService : IQuartoPessoaService
 
     public async Task<IEnumerable<QuartoPessoas>> GetQuartoPessoas(int codigoBloco, int codigoEvento)
     {
-        /*return await _context.TbQuartoPessoas
-            .Where(qp => qp.QuaCodigoNavigation.BloCodigo == codigoBloco && qp.QuaCodigoNavigation.TbEventoQuartos.Any(eq => eq.EveCodigo == codigoEvento)).Select(qp => new QuartoPessoas
+        return await _context.TbEventoQuartos.Where(eq => eq.EveCodigo == codigoEvento)
+            .Join(_context.TbQuartos, eq => eq.QuaCodigo, q => q.QuaCodigo, (eq, q) => new { eq, q })
+            .Where(eq => eq.q.BloCodigo == codigoBloco)
+            .Select(eq => new QuartoPessoas
             {
-                BloCodigo = qp.QuaCodigoNavigation.BloCodigo,
-                QuaCodigo = qp.QuaCodigo,
-                QuaNome = qp.QuaCodigoNavigation.QuaNome,
+                BloCodigo = eq.q.BloCodigo,
+                QuaCodigo = eq.q.QuaCodigo,
+                QuaNome = eq.q.QuaNome,
+                Vagas = _context.TbQuartos.Where(x => x.QuaCodigo == eq.q.QuaCodigo).Select(x => x.QuaQtdcamas - x.TbQuartoPessoas.Count).FirstOrDefault(),
                 PessoasQuarto = _context.TbQuartoPessoas
-                .Where(qp => qp.QuaCodigo == qp.QuaCodigo)
+                .Where(qp => qp.QuaCodigo == eq.q.QuaCodigo)
                 .Select(x => new PessoaCheckin
                 {
                     PesCodigo = x.PesCodigo,
@@ -31,10 +34,11 @@ public class QuartoPessoaService : IQuartoPessoaService
                     QupCodigo = x.QupCodigo,
                     PesNome = x.PesCodigoNavigation.PesNome,
                 }).ToList()
-            }).ToListAsync();*/
-        return await _context.TbQuartoPessoas.Where(qp => qp.QuaCodigoNavigation.BloCodigo == codigoBloco)
+            }).ToListAsync();
+
+        /*return await _context.TbQuartoPessoas.Where(qp => qp.QuaCodigoNavigation.BloCodigo == codigoBloco)
             .Join(_context.TbEventoQuartos, qp => qp.QuaCodigo, eq => eq.QuaCodigo, (qp, eq) => new { qp, eq })
-            .Where(x => x.eq.QuaCodigo == x.eq.QuaCodigo && x.eq.EveCodigo == codigoEvento && x.eq.QuaCodigoNavigation.BloCodigo == codigoBloco)
+            .Where(x => x.eq.QuaCodigo == x.qp.QuaCodigo && x.eq.EveCodigo == codigoEvento && x.eq.QuaCodigoNavigation.BloCodigo == codigoBloco && x.qp.PesCodigo != 0)
             .Select(x => new QuartoPessoas
             {
                 BloCodigo = x.qp.QuaCodigoNavigation.BloCodigo,
@@ -49,6 +53,6 @@ public class QuartoPessoaService : IQuartoPessoaService
                     QupCodigo = x.QupCodigo,
                     PesNome = x.PesCodigoNavigation.PesNome,
                 }).ToList()
-            }).ToListAsync();
+            }).ToListAsync();*/
     }
 }

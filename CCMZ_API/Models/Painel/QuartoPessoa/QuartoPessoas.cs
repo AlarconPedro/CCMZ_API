@@ -8,5 +8,7 @@ public class QuartoPessoas
 
     public int? BloCodigo { get; set; }
 
+    public int? Vagas { get; set; }
+
     public List<PessoaCheckin>? PessoasQuarto { get; set; }
 }
