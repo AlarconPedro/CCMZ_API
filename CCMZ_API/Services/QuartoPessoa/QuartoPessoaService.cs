@@ -30,6 +30,7 @@ public class QuartoPessoaService : IQuartoPessoaService
                 {
                     PesCodigo = x.PesCodigo,
                     PesChave = x.PesChave,
+                    QuaCodigo = x.QuaCodigo,
                     PesCheckin = x.PesCheckin,
                     QupCodigo = x.QupCodigo,
                     PesNome = x.PesCodigoNavigation.PesNome,
@@ -54,5 +55,12 @@ public class QuartoPessoaService : IQuartoPessoaService
                     PesNome = x.PesCodigoNavigation.PesNome,
                 }).ToList()
             }).ToListAsync();*/
+    }
+
+    public async Task UpdateQuartoPessoa(TbQuartoPessoa quartoPessoa)
+    {
+        /*_context.Entry(quartoPessoa).State = EntityState.Modified;*/
+        _context.TbQuartoPessoas.Update(quartoPessoa);
+        await _context.SaveChangesAsync();
     }
 }

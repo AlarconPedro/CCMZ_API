@@ -6,6 +6,8 @@ public class PessoaCheckin
 
     public int? PesCodigo { get; set; }
 
+    public int? QuaCodigo { get; set; }
+
     public bool? PesChave { get; set; }
 
     public bool? PesCheckin { get; set; }

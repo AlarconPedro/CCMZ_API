@@ -28,4 +28,18 @@ public class QuartoPessoaController : ControllerBase
             return StatusCode(StatusCodes.Status500InternalServerError, $"Request Inválido ! {ex}");
         }
     }
+
+    [HttpPut]
+    public async Task<ActionResult> UpdateQuartoPessoa(TbQuartoPessoa quartoPessoa)
+    {
+        try
+        {
+            await _service.UpdateQuartoPessoa(quartoPessoa);
+            return Ok("Quarto Atualizado com Sucesso !");
+        }
+        catch(Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, $"Request Inválido ! {ex}");
+        }
+    }
 }
