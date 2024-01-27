@@ -17,12 +17,12 @@ public class PessoaController : ControllerBase
         _service = pessoasService;
     }
 
-    [HttpGet]
-    public async Task<ActionResult<IEnumerable<Pessoas>>> GetPessoas()
+    [HttpGet("comunidade/{codigoComunidade:int}")]
+    public async Task<ActionResult<IEnumerable<Pessoas>>> GetPessoas(int codigoComunidade)
     {
         try
         {
-            var pessoas =  await _service.GetPessoas();
+            var pessoas =  await _service.GetPessoas(codigoComunidade);
             return Ok(pessoas);
         }
         catch

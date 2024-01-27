@@ -13,9 +13,9 @@ public class PessoasService : IPessoasService
         _context = context;
     }
 
-    public async Task<IEnumerable<Pessoas>> GetPessoas()
+    public async Task<IEnumerable<Pessoas>> GetPessoas(int codigoComunidade)
     {
-        return await _context.TbPessoas.Select(x => new Pessoas
+        return await _context.TbPessoas.Where(p => p.ComCodigo == codigoComunidade).Select(x => new Pessoas
         {
             PesCodigo = x.PesCodigo,
             PesNome = x.PesNome,

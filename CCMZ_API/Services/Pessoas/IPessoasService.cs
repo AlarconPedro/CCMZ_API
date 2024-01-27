@@ -5,7 +5,7 @@ using CCMZ_API.Models.Painel.Pessoas;
 public interface IPessoasService
 {
     //GET
-    Task<IEnumerable<Pessoas>> GetPessoas();
+    Task<IEnumerable<Pessoas>> GetPessoas(int codigoComunidade);
     Task<TbPessoa> GetPessoaId(int idPessoa);
     Task<bool> GetPessoaPodeExcluir(int idPessoa);
     Task<PessoaDetalhes> GetPessoaDetalhe(int idPessoa);
