@@ -31,6 +31,20 @@ public class PessoaController : ControllerBase
         }
     }
 
+    [HttpGet("comunidade/{codigoComunidade:int}/busca/{busca}")]
+    public async Task<ActionResult<IEnumerable<Pessoas>>> GetPessoasBusca(int codigoComunidade, string busca)
+    {
+        try
+        {
+            var pessoas =  await _service.GetPessoasBusca(codigoComunidade, busca);
+            return Ok(pessoas);
+        }
+        catch
+        {
+            return BadRequest("Erro ao trazer as pessoas !");
+        }
+    }
+
     [HttpGet("{idPessoa:int}")]
     public async Task<ActionResult<TbPessoa>> GetPessoaId(int idPessoa)
     {

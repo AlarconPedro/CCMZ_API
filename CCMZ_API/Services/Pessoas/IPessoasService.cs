@@ -6,6 +6,7 @@ public interface IPessoasService
 {
     //GET
     Task<IEnumerable<Pessoas>> GetPessoas(int codigoComunidade);
+    Task<IEnumerable<Pessoas>> GetPessoasBusca(int codigoComunidade, string busca);
     Task<TbPessoa> GetPessoaId(int idPessoa);
     Task<bool> GetPessoaPodeExcluir(int idPessoa);
     Task<PessoaDetalhes> GetPessoaDetalhe(int idPessoa);

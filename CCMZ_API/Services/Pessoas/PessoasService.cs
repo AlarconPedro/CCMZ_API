@@ -28,6 +28,20 @@ public class PessoasService : IPessoasService
         }).ToListAsync();
     }
 
+    public async Task<IEnumerable<Pessoas>> GetPessoasBusca(int codigoComunidade, string busca)
+    {
+        return await _context.TbPessoas.Where(p => p.ComCodigo == codigoComunidade && p.PesNome.Contains(busca)).Select(x => new Pessoas
+        {
+            PesCodigo = x.PesCodigo,
+            PesNome = x.PesNome,
+            PesGenero = x.PesGenero,
+            Comunidade = _context.TbComunidades.Where(c => c.ComCodigo == x.ComCodigo).Select(c => c.ComNome).FirstOrDefault(),
+            PesCatequista = x.PesCatequista,
+            PesResponsavel = x.PesResponsavel,
+            PesSalmista = x.PesSalmista,
+        }).ToListAsync();
+    }
+
     public async Task<TbPessoa> GetPessoaId(int idPessoa)
     {
         return await _context.TbPessoas.FirstOrDefaultAsync(p => p.PesCodigo == idPessoa);
