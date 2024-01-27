@@ -26,6 +26,15 @@ public class ComunidadeService : IComunidadeService
         }).ToListAsync();
     }
 
+    public async Task<IEnumerable<ComunidadeNome>> GetComunidadesNomes()
+    {
+        return await _context.TbComunidades.Select(x => new ComunidadeNome
+        {
+            ComCodigo = x.ComCodigo,
+            ComNome = x.ComNome
+        }).ToListAsync();
+    }
+
     public async Task<TbComunidade> GetComunidade(int id)
     {
         return await _context.TbComunidades.FirstOrDefaultAsync(c => c.ComCodigo == id);

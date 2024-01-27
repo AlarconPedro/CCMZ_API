@@ -29,6 +29,19 @@ public class ComunidadeController : ControllerBase
         }
     }
 
+    [HttpGet("nomes")]
+    public async Task<ActionResult<IEnumerable<TbComunidade>>> GetComunidadesNomes()
+    {
+        try
+        {
+            var comunidades = await _service.GetComunidadesNomes();
+            return Ok(comunidades);
+        }catch
+        {
+            return BadRequest("Erro ao trazer as comunidades !");
+        }
+    }
+
     [HttpGet("{id:int}")]
     public async Task<ActionResult<TbComunidade>> GetComunidade(int id)
     {
