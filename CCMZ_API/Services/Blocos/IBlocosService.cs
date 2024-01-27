@@ -8,6 +8,7 @@ public interface IBlocosService
 {
     //GET
     Task<IEnumerable<Bloco>> GetBlocos();
+    Task<IEnumerable<BlocoNome>> GetBlocosNomes();
     Task<TbBloco> GetBloco(int id);
     //POST
     Task PostBloco(TbBloco bloco);

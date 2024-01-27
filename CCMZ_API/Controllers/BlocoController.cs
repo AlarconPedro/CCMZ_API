@@ -32,6 +32,23 @@ public class BlocoController : ControllerBase
         }
     }
 
+    [HttpGet("nomes")]
+    public async Task<ActionResult<IEnumerable<TbBloco>>> GetBlocosNomes()
+    {
+        try
+        {
+            var blocos = await _service.GetBlocosNomes();
+            if (blocos == null)
+                return NotFound("Nennhum bloco cadastrado !");
+
+            return Ok(blocos);
+        }
+        catch
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, "Erro ao tentar obter os blocos !");
+        }
+    }
+
     [HttpGet("{id}")]
     public async Task<ActionResult<TbBloco>> GetBloco(int id)
     {

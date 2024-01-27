@@ -24,6 +24,16 @@ public class BlocosService : IBlocosService
             QtdOcupados = _context.TbQuartos.Where(q => q.BloCodigo == x.BloCodigo && q.QuaQtdcamas == 0).Count()
         }).ToListAsync();
     }
+
+    public async Task<IEnumerable<BlocoNome>> GetBlocosNomes()
+    {
+        return await _context.TbBlocos.Select(x => new BlocoNome
+        {
+            BloCodigo = x.BloCodigo,
+            BloNome = x.BloNome
+        }).ToListAsync();
+    }
+
     public async Task<TbBloco> GetBloco(int id)
     {
         return await _context.TbBlocos.FirstOrDefaultAsync(bloco => bloco.BloCodigo == id);

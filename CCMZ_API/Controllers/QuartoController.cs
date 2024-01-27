@@ -16,12 +16,25 @@ public class QuartoController : ControllerBase
         _service = quartosService;
     }
 
-    [HttpGet]
-    public async Task<ActionResult<IEnumerable<TbQuarto>>> GetQuartos() 
+    [HttpGet("blocos/{codigoBloco:int}")]
+    public async Task<ActionResult<IEnumerable<TbQuarto>>> GetQuartos(int codigoBloco) 
     {
         try
         {
-            return Ok(await _service.GetQuartos());
+            return Ok(await _service.GetQuartos(codigoBloco));
+        }
+        catch
+        {
+            return BadRequest("Request Inválido !");
+        }
+    }
+
+    [HttpGet("blocos/{codigoBloco:int}/busca/{busca}")]
+    public async Task<ActionResult<IEnumerable<TbQuarto>>> GetQuartosBusca(int codigoBloco, string busca)
+    {
+        try
+        {
+            return Ok(await _service.GetQuartosBusca(codigoBloco, busca));
         }
         catch
         {

@@ -15,9 +15,20 @@ public class QuartosService : IQuartosService
         _context = context;
     }
 
-    public async Task<IEnumerable<Quartos>> GetQuartos()
+    public async Task<IEnumerable<Quartos>> GetQuartos(int codigoBloco)
     {
-        return await _context.TbQuartos.Select(x => new Quartos
+        return await _context.TbQuartos.Where(q => q.BloCodigo == codigoBloco).Select(x => new Quartos
+        {
+            QuaCodigo = x.QuaCodigo,
+            QuaNome = x.QuaNome,
+            QuaQtdcamas = x.QuaQtdcamas,
+            Bloco = _context.TbBlocos.FirstOrDefault(b => b.BloCodigo == x.BloCodigo).BloNome
+        }).ToListAsync();
+    }
+
+    public async Task<IEnumerable<Quartos>> GetQuartosBusca(int codigoBloco, string busca)
+    {
+        return await _context.TbQuartos.Where(x => x.BloCodigo == codigoBloco && x.QuaNome.Contains(busca)).Select(x => new Quartos
         {
             QuaCodigo = x.QuaCodigo,
             QuaNome = x.QuaNome,
