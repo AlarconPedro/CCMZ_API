@@ -59,8 +59,27 @@ public class QuartoPessoaService : IQuartoPessoaService
 
     public async Task UpdateQuartoPessoa(TbQuartoPessoa quartoPessoa)
     {
+        if (quartoPessoa.PesChave)
+        {
+            _context.TbQuartoPessoas.Update(quartoPessoa);
+            await _context.SaveChangesAsync();
+        } else
+        {
+            var statusQuarto = await _context.TbQuartoPessoas.Where(qp => qp.QuaCodigo == quartoPessoa.QuaCodigo).Select(x => x.PesChave).ToListAsync();
+            if (!statusQuarto.Contains(true))
+            {
+                quartoPessoa.PesChave = true;
+                _context.TbQuartoPessoas.Update(quartoPessoa);
+                await _context.SaveChangesAsync();
+            } else
+            {
+                _context.TbQuartoPessoas.Update(quartoPessoa);
+                await _context.SaveChangesAsync();
+            }
+
+        }
+        // var retorno = await _context.TbQuartoPessoas.Where(x => x.PesCodigo == quartoPessoa.PesCodigo && x.QuaCodigo == quartoPessoa.QuaCodigo).FirstOrDefaultAsync();
         /*_context.Entry(quartoPessoa).State = EntityState.Modified;*/
-        _context.TbQuartoPessoas.Update(quartoPessoa);
-        await _context.SaveChangesAsync();
+       
     }
 }

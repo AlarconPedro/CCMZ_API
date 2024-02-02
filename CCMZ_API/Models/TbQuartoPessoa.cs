@@ -11,9 +11,9 @@ public partial class TbQuartoPessoa
 
     public int? QuaCodigo { get; set; }
 
-    public bool? PesChave { get; set; }
+    public bool PesChave { get; set; }
 
-    public bool? PesCheckin { get; set; }
+    public bool PesCheckin { get; set; }
 
     public virtual TbPessoa? PesCodigoNavigation { get; set; }
 
