@@ -57,6 +57,31 @@ public class QuartoPessoaService : IQuartoPessoaService
             }).ToListAsync();*/
     }
 
+    public async Task<IEnumerable<QuartoPessoas>> GetQuartoPessoasBusca(int codigoEvento, string busca)
+    {
+        return await _context.TbEventoQuartos.Where(eq => eq.EveCodigo == codigoEvento)
+            .Join(_context.TbQuartos, eq => eq.QuaCodigo, q => q.QuaCodigo, (eq, q) => new { eq, q })
+            .Where(eq =>  eq.q.TbQuartoPessoas.Any(x => x.PesCodigoNavigation.PesNome.Contains(busca)))
+            .Select(eq => new QuartoPessoas
+            {
+                BloCodigo = eq.q.BloCodigo,
+                QuaCodigo = eq.q.QuaCodigo,
+                QuaNome = eq.q.QuaNome,
+                Vagas = _context.TbQuartos.Where(x => x.QuaCodigo == eq.q.QuaCodigo).Select(x => x.QuaQtdcamas - x.TbQuartoPessoas.Count).FirstOrDefault(),
+                PessoasQuarto = _context.TbQuartoPessoas
+                .Where(qp => qp.QuaCodigo == eq.q.QuaCodigo)
+                .Select(x => new PessoaCheckin
+                {
+                    PesCodigo = x.PesCodigo,
+                    PesChave = x.PesChave,
+                    QuaCodigo = x.QuaCodigo,
+                    PesCheckin = x.PesCheckin,
+                    QupCodigo = x.QupCodigo,
+                    PesNome = x.PesCodigoNavigation.PesNome,
+                }).ToList()
+            }).ToListAsync();
+    }
+
     public async Task UpdateQuartoPessoa(TbQuartoPessoa quartoPessoa)
     {
         if (quartoPessoa.PesChave)

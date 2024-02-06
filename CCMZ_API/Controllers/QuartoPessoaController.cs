@@ -29,6 +29,19 @@ public class QuartoPessoaController : ControllerBase
         }
     }
 
+    [HttpGet("{codigoEvento:int}/{busca}")]
+    public async Task<ActionResult<IEnumerable<QuartoPessoas>>> GetQuartoPessoasBusca(int codigoEvento, string busca)
+    {
+        try
+        {
+            return Ok(await _service.GetQuartoPessoasBusca(codigoEvento, busca));
+        }
+        catch(Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, $"Request Inválido ! {ex}");
+        }
+    }
+
     [HttpPut]
     public async Task<ActionResult> UpdateQuartoPessoa(TbQuartoPessoa quartoPessoa)
     {
