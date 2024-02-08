@@ -2,6 +2,7 @@ using CCMZ_API;
 using CCMZ_API.Services.Alocacao;
 using CCMZ_API.Services.Blocos;
 using CCMZ_API.Services.Comunidade;
+using CCMZ_API.Services.Dashboard;
 using CCMZ_API.Services.Eventos;
 using CCMZ_API.Services.Pessoas;
 using CCMZ_API.Services.QuartoPessoa;
@@ -19,7 +20,7 @@ builder.Services.AddCors(options =>
         {
             policy.AllowAnyHeader();
             policy.AllowAnyMethod();
-            policy.WithOrigins("http://localhost:3000", "http://localhost:53299");
+            policy.WithOrigins("http://localhost:3000", "http://localhost:59922");
         });
 });
 
@@ -36,6 +37,7 @@ builder.Services.AddScoped<IEventosService, EventosService>();
 builder.Services.AddScoped<IBlocosService, BlocosService>();
 builder.Services.AddScoped<IAlocacaoService, AlocacaoService>();
 builder.Services.AddScoped<IQuartoPessoaService, QuartoPessoaService>();
+builder.Services.AddScoped<IDashboardService, DashboardService>();
 
 builder.Services.AddAuthorization();
 

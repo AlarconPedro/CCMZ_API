@@ -12,6 +12,7 @@ public partial class TbEventoPessoa
     public int? PesCodigo { get; set; }
 
     public bool? EvpPagante { get; set; }
+
     public bool? EvpCobrante { get; set; }
 
     public virtual TbPessoa? PesCodigoNavigation { get; set; }
