@@ -8,4 +8,5 @@ public interface IDashboardService
     Task<int> GetNumeroPessoasAChegar();
     Task<IEnumerable<PessoasAChegar>> GetPessoasAChegar(int codigoEvento);
     Task<QuartoPessoas> GetQuartoPessoaAChegar(int codigoQuarto);
+    Task<int> GetIdEventoAtivo();
 }

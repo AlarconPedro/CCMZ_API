@@ -63,4 +63,8 @@ public class DashboardService : IDashboardService
                  ComNome = x.PesCodigoNavigation.ComCodigoNavigation.ComNome
              }).FirstOrDefaultAsync();*/
     }
+    public async Task<int> GetIdEventoAtivo()
+    {
+        return await _context.TbEventos.Where(x => x.EveDatafim >= DateTime.Now).Select(x => x.EveCodigo).FirstOrDefaultAsync();
+    }
 }
