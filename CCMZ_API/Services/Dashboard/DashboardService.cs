@@ -26,6 +26,7 @@ public class DashboardService : IDashboardService
             {
              PesCodigo = x.PesCodigo,
              PesNome = x.PesCodigoNavigation.PesNome,
+             PesGenero = x.PesCodigoNavigation.PesGenero,
              ComNome = x.PesCodigoNavigation.ComCodigoNavigation.ComNome,
              QuaCodigo = x.QuaCodigo
             }).ToListAsync();
