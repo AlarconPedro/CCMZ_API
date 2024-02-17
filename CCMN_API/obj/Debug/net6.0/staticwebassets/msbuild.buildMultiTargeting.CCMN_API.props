@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\CCMN_API.props" />
+</Project>
