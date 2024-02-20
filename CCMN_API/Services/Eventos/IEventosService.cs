@@ -13,7 +13,7 @@ public interface IEventosService
     Task<TbEvento> GetEvento(int id);
     Task<IEnumerable<BlocoNome>> GetPavilhoes();
 /*    Task<IEnumerable<QuartosNome>> GetQuartos(int codigoEvento, int codigoBloco);*/    
-    Task<IEnumerable<QuartoPavilhao>> GetQuartosPavilhao(int codigoPavilhao);
+    Task<IEnumerable<QuartoPavilhao>> GetQuartosPavilhao(int codigoPavilhao, int codigoEvento);
     Task<IEnumerable<QuartoPavilhao>> GetQuartosAlocados(int codigoPavilhao, int codigoEvento);
     Task<IEnumerable<Hospedes>> GetPessoaEvento(int codigoComunidade);
     Task<IEnumerable<PessoaQuarto>> GetPessoasAlocadas(int codigoComunidade, int codigoEvento);

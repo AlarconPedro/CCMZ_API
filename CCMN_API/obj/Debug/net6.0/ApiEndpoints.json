@@ -783,13 +783,18 @@
   {
     "ContainingType": "CCMZ_API.Controllers.EventoController",
     "Method": "GetQuartosPavilhao",
-    "RelativePath": "api/Evento/quartos/{codigoPavilhao}",
+    "RelativePath": "api/Evento/quartos/{codigoPavilhao}/{codigoEvento}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "codigoPavilhao",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "codigoEvento",
         "Type": "System.Int32",
         "IsRequired": true
       }

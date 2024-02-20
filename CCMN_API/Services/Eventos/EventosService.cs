@@ -42,7 +42,7 @@ public class EventosService : IEventosService
         }).ToListAsync();
     }
 
-    public async Task<IEnumerable<QuartoPavilhao>> GetQuartosPavilhao(int codigoPavilhao)
+    public async Task<IEnumerable<QuartoPavilhao>> GetQuartosPavilhao(int codigoPavilhao, int codigoEvento)
     {
         return await _context.TbQuartos.Where(q => q.BloCodigo == codigoPavilhao)
         /*&& !q.TbEventoQuartos.Any())*/
@@ -51,7 +51,16 @@ public class EventosService : IEventosService
               QuaCodigo = q.QuaCodigo,
               QuaNome = q.QuaNome,
               QuaQtdcamas = q.QuaQtdcamas,
-              QuaQtdcamasdisponiveis = _context.TbQuartos.Where(x => x.QuaCodigo == q.QuaCodigo).Select(x => x.QuaQtdcamas - x.TbQuartoPessoas.Count).FirstOrDefault(),
+              QuaQtdcamasdisponiveis = _context.TbEventoQuartos.Where(eq => eq.QuaCodigo == q.QuaCodigo 
+                    && eq.EveCodigoNavigation.EveCodigo == codigoEvento)
+                    .All(eq => eq.EveCodigoNavigation.EveDatafim >= DateTime.Now)
+                        ? q.QuaQtdcamas  
+                        : q.QuaQtdcamas - q.TbQuartoPessoas.Count,
+              //QuaQtdcamasdisponiveis = q.QuaQtdcamas - q.TbQuartoPessoas.Count,
+              /*QuaQtdcamasdisponiveis = _context.TbQuartos.Where(y => y.QuaCodigo == q.QuaCodigo && y.TbEventoQuartos
+                        .Join(_context.TbEventos, eq => eq.EveCodigo, e => e.EveCodigo, (eq, e) => new { eq, e })
+                        .Where(eq => eq.e.EveDatafim >= DateTime.Now).Any())
+                        .Select(x => x.QuaQtdcamas - x.TbQuartoPessoas.Count).FirstOrDefault(),*/
           }).ToListAsync();
     }
 
@@ -59,7 +68,7 @@ public class EventosService : IEventosService
     {
         return await _context.TbEventoQuartos.Where(eq => eq.EveCodigo == codigoEvento)
             .Join(_context.TbQuartos, eq => eq.QuaCodigo, q => q.QuaCodigo, (eq, q) => new { eq, q })
-            .Where(eq => eq.q.BloCodigo == codigoPavilhao)
+            .Where(eq => eq.q.BloCodigo == codigoPavilhao && eq.eq.EveCodigoNavigation.EveDatafim >= DateTime.Now)
             .Select(eq => new QuartoPavilhao
             {
                 QuaCodigo = eq.q.QuaCodigo,
