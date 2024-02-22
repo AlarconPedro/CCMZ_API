@@ -54,22 +54,40 @@ public class EventosService : IEventosService
 
     public async Task<IEnumerable<QuartoPavilhao>> GetQuartosPavilhao(int codigoPavilhao, int codigoEvento)
     {
+        /* return await _context.TbEventoQuartos.Where(eq => eq.QuaCodigoNavigation.BloCodigo == codigoPavilhao)
+             .Join(_context.TbQuartos, eq => eq.QuaCodigo, q => q.QuaCodigo, (eq, q) => new { eq, q })
+             .Where(eq => eq.eq.EveCodigoNavigation.EveDatafim >= DateTime.Now)
+             .Select(eq => new QuartoPavilhao
+             {
+                 QuaCodigo = eq.q.QuaCodigo,
+                 QuaNome = eq.q.QuaNome,
+                 QuaQtdcamas = eq.q.QuaQtdcamas,
+                 QuaQtdcamasdisponiveis = eq.q.QuaQtdcamas - eq.q.TbQuartoPessoas.Count,
+                 PessoasQuarto = _context.TbQuartoPessoas.Where(qp => qp.QuaCodigo == eq.q.QuaCodigo)
+                 .Join(_context.TbPessoas, p => p.PesCodigo, qp => qp.PesCodigo, (p, qp) => new { p, qp }).Select(x => new PessoasNome
+                 {
+                     PesCodigo = x.qp.PesCodigo,
+                     PesNome = x.qp.PesNome,
+                     PesGenero = x.qp.PesGenero,
+                 }).ToList(),
+             }).ToListAsync();*/
         return await _context.TbQuartos.Where(q => q.BloCodigo == codigoPavilhao)
-        /*&& !q.TbEventoQuartos.Any())*/
+        //&& !q.TbEventoQuartos.Any())
           .Select(q => new QuartoPavilhao
-          {
-              QuaCodigo = q.QuaCodigo,
-              QuaNome = q.QuaNome,
-              QuaQtdcamas = q.QuaQtdcamas,
-              QuaQtdcamasdisponiveis = _context.TbEventoQuartos.Where(eq => eq.QuaCodigo == q.QuaCodigo 
-                    && eq.EveCodigoNavigation.EveCodigo == codigoEvento)
+           {
+                QuaCodigo = q.QuaCodigo,
+                QuaNome = q.QuaNome,
+                QuaQtdcamas = q.QuaQtdcamas,
+                QuaQtdcamasdisponiveis = q.QuaQtdcamas - q.TbQuartoPessoas.Count,
+              //QuaQtdcamasdisponiveis = 
+              /* _context.TbEventoQuartos.Where(eq => eq.QuaCodigo == q.QuaCodigo
+                     && eq.EveCodigoNavigation.EveCodigo == codigoEvento)
                     .All(eq => eq.EveCodigoNavigation.EveDatafim >= DateTime.Now)
-                        ? q.QuaQtdcamas  
-                        : q.QuaQtdcamas - q.TbQuartoPessoas.Count,
-              //QuaQtdcamasdisponiveis = q.QuaQtdcamas - q.TbQuartoPessoas.Count,
-              /*QuaQtdcamasdisponiveis = _context.TbQuartos.Where(y => y.QuaCodigo == q.QuaCodigo && y.TbEventoQuartos
-                        .Join(_context.TbEventos, eq => eq.EveCodigo, e => e.EveCodigo, (eq, e) => new { eq, e })
-                        .Where(eq => eq.e.EveDatafim >= DateTime.Now).Any())
+                        ? q.QuaQtdcamas
+                        : q.QuaQtdcamas - q.TbQuartoPessoas.Count,*/
+              /* QuaQtdcamasdisponiveis = _context.TbQuartos.Where(y => y.QuaCodigo == q.QuaCodigo && y.TbEventoQuartos
+                         .Join(_context.TbEventos, eq => eq.EveCodigo, e => e.EveCodigo, (eq, e) => new { eq, e })
+                         .Where(eq => eq.e.EveDatafim >= DateTime.Now).Any())
                         .Select(x => x.QuaQtdcamas - x.TbQuartoPessoas.Count).FirstOrDefault(),*/
           }).ToListAsync();
     }
