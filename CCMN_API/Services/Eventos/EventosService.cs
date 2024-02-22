@@ -29,6 +29,16 @@ public class EventosService : IEventosService
         }).ToListAsync();
     }
 
+    public async Task<IEnumerable<EventosNome>> GetEventosAtivos()
+    {
+        return await _context.TbEventos.Where(e => e.EveDatafim >= DateTime.Now)
+            .Select(e => new EventosNome
+            {
+                EveCodigo = e.EveCodigo,
+                EveNome = e.EveNome
+            }).ToListAsync();
+    }
+
     public async Task<TbEvento> GetEvento(int id)
     {
         return await _context.TbEventos.FirstOrDefaultAsync(e => e.EveCodigo == id);

@@ -35,6 +35,22 @@ public class EventoController : ControllerBase
         }
     }
 
+    [HttpGet("ativos")]
+    public async Task<ActionResult<IEnumerable<EventosNome>>> GetEventosAtivos()
+    {
+        try
+        {
+            var eventos = await _service.GetEventosAtivos();
+            if (eventos == null)
+                return NotFound("Nenhum evento encontrado !");
+
+            return Ok(eventos);
+        } catch
+        {
+            return BadRequest("Erro ao trazer os eventos !");
+        }
+    }
+
     [HttpGet("nomes")]
     public async Task<ActionResult<IEnumerable<EventosNome>>> GetEventoNome()
     {

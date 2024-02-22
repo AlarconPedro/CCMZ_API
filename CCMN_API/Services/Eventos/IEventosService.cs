@@ -9,6 +9,7 @@ public interface IEventosService
 {
     //GET
     Task<IEnumerable<TbEvento>> GetEventos();
+    Task<IEnumerable<EventosNome>> GetEventosAtivos();
     Task<IEnumerable<EventosNome>> GetEventoNome();
     Task<TbEvento> GetEvento(int id);
     Task<IEnumerable<BlocoNome>> GetPavilhoes();
