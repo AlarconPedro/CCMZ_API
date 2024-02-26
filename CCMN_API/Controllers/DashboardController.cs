@@ -29,6 +29,8 @@ public class DashboardController : ControllerBase
         }
     }
 
+    [HttpGet("pessoasChegas/{codigoEvento:int}")]
+
     [HttpGet("numeroPessoasAChegar")]
     public async Task<IActionResult> GetNumeroPessoasAChegar()
     {
@@ -43,6 +45,20 @@ public class DashboardController : ControllerBase
         }
     }
 
+    [HttpGet("numeroPessoasChegas")]
+    public async Task<IActionResult> GetNumeroPessoasChegas()
+    {
+        try
+        {
+            var numeroPessoasChegas = await _service.GetNumeroPessoasChegas();
+            return Ok(numeroPessoasChegas);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+        }
+    }
+
     [HttpGet("quartoPessoaAChegar/{codigoQuarto:int}")]
     public async Task<ActionResult> GetQuartoPessoaAChegar(int codigoQuarto)
     {
@@ -50,6 +66,20 @@ public class DashboardController : ControllerBase
         {
             var quartoPessoaAChegar = await _service.GetQuartoPessoaAChegar(codigoQuarto);
             return Ok(quartoPessoaAChegar);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+        }
+    }
+
+    [HttpGet("quartoPessoaChegas/{codigoQuarto:int}")]
+    public async Task<ActionResult> GetQuartoPessoaChegas(int codigoQuarto)
+    {
+        try
+        {
+            var quartoPessoaChegas = await _service.GetQuartoPessoaChegas(codigoQuarto);
+            return Ok(quartoPessoaChegas);
         }
         catch (Exception ex)
         {

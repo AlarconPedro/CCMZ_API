@@ -413,6 +413,16 @@
   },
   {
     "ContainingType": "CCMZ_API.Controllers.DashboardController",
+    "Method": "GetNumeroPessoasChegas",
+    "RelativePath": "api/Dashboard/numeroPessoasChegas",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CCMZ_API.Controllers.DashboardController",
     "Method": "GetPessoasAChegar",
     "RelativePath": "api/Dashboard/pessoasAChegar/{codigoEvento}",
     "HttpMethod": "GET",
@@ -429,8 +439,40 @@
   },
   {
     "ContainingType": "CCMZ_API.Controllers.DashboardController",
+    "Method": "GetNumeroPessoasAChegar",
+    "RelativePath": "api/Dashboard/pessoasChegas/{codigoEvento}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "codigoEvento",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CCMZ_API.Controllers.DashboardController",
     "Method": "GetQuartoPessoaAChegar",
     "RelativePath": "api/Dashboard/quartoPessoaAChegar/{codigoQuarto}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "codigoQuarto",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CCMZ_API.Controllers.DashboardController",
+    "Method": "GetQuartoPessoaChegas",
+    "RelativePath": "api/Dashboard/quartoPessoaChegas/{codigoQuarto}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
