@@ -18,7 +18,7 @@ public class DashboardService : IDashboardService
         return await _context.TbQuartoPessoas
             .Join(_context.TbEventoQuartos, eq => eq.QuaCodigo, q => q.QuaCodigo, (eq, q) => new { eq, q })
             .Join(_context.TbEventos, qp => qp.q.EveCodigo, e => e.EveCodigo, (qp, e) => new { qp, e })
-            .Where(x => x.qp.eq.PesCheckin == false && x.qp.q.EveCodigoNavigation.EveDatafim >= DateTime.Now).CountAsync();
+            .Where(x => x.qp.eq.PesCheckin == false && DateTime.Now <= x.qp.q.EveCodigoNavigation.EveDatafim).CountAsync();
 /*            ).Where(x => x.PesCheckin == false).CountAsync();
 */    }
 
@@ -27,7 +27,7 @@ public class DashboardService : IDashboardService
         return await _context.TbQuartoPessoas
             .Join(_context.TbEventoQuartos, eq => eq.QuaCodigo, q => q.QuaCodigo, (eq, q) => new { eq, q })
             .Join(_context.TbEventos, qp => qp.q.EveCodigo, e => e.EveCodigo, (qp, e) => new { qp, e })
-            .Where(x => x.qp.eq.PesCheckin == true && x.qp.q.EveCodigoNavigation.EveDatafim >= DateTime.Now).CountAsync();
+            .Where(x => x.qp.eq.PesCheckin == true && DateTime.Now <= x.qp.q.EveCodigoNavigation.EveDatafim).CountAsync();
     }
 
     public async Task<IEnumerable<PessoasAChegar>> GetPessoasAChegar(int codigoEvento)
