@@ -5,7 +5,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project>
   <PropertyGroup>
     <_PublishTargetUrl>C:\Desenvolvimento\C#\Web API\CCMN_API\CCMN_API\bin\Release\net6.0\publish\</_PublishTargetUrl>
-    <History>True|2024-02-22T18:57:35.3669949Z;True|2024-02-22T15:56:38.7580303-03:00;</History>
+    <History>True|2024-03-02T13:17:28.2303852Z;True|2024-02-22T15:57:35.3669949-03:00;True|2024-02-22T15:56:38.7580303-03:00;</History>
     <LastFailureDetails />
   </PropertyGroup>
 </Project>
