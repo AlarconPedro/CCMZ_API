@@ -20,8 +20,8 @@ builder.Services.AddCors(options =>
         {
             policy.AllowAnyHeader();
             policy.AllowAnyMethod();
-            //policy.WithOrigins("http://localhost:3000", "http://localhost:60446");
-            policy.WithOrigins("http://painel.ccmn.org.br");
+            policy.WithOrigins("http://localhost:3000", "http://localhost:61613");
+            //policy.WithOrigins("http://painel.ccmn.org.br");
         });
 });
 
@@ -52,9 +52,11 @@ var app = builder.Build();
 // Configure the HTTP request pipeline. 
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    
 }
+
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 

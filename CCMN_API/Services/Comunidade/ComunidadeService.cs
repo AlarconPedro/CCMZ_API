@@ -31,7 +31,9 @@ public class ComunidadeService : IComunidadeService
         return await _context.TbComunidades.Select(x => new ComunidadeNome
         {
             ComCodigo = x.ComCodigo,
-            ComNome = x.ComNome
+            ComNome = x.ComNome,
+            ComCidade = x.ComCidade,
+            ComUf = x.ComUf
         }).ToListAsync();
     }
 
