@@ -22,6 +22,7 @@ public class QuartosService : IQuartosService
             QuaCodigo = x.QuaCodigo,
             QuaNome = x.QuaNome,
             QuaQtdcamas = x.QuaQtdcamas,
+            BloCodigo = x.BloCodigo,
             Bloco = _context.TbBlocos.FirstOrDefault(b => b.BloCodigo == x.BloCodigo).BloNome
         }).ToListAsync();
     }
@@ -33,6 +34,7 @@ public class QuartosService : IQuartosService
             QuaCodigo = x.QuaCodigo,
             QuaNome = x.QuaNome,
             QuaQtdcamas = x.QuaQtdcamas,
+            BloCodigo = x.BloCodigo,
             Bloco = _context.TbBlocos.FirstOrDefault(b => b.BloCodigo == x.BloCodigo).BloNome
         }).ToListAsync();
     }
