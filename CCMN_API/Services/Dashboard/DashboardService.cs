@@ -18,7 +18,7 @@ public class DashboardService : IDashboardService
         return await _context.TbQuartoPessoas
             .Join(_context.TbEventoQuartos, eq => eq.QuaCodigo, q => q.QuaCodigo, (eq, q) => new { eq, q })
             .Join(_context.TbEventos, qp => qp.q.EveCodigo, e => e.EveCodigo, (qp, e) => new { qp, e })
-            .Where(x => x.qp.eq.PesCheckin == false && DateTime.Now <= x.qp.q.EveCodigoNavigation.EveDatafim).CountAsync();
+            .Where(x => x.qp.eq.PesCheckin == false && DateTime.Now >= x.qp.q.EveCodigoNavigation.EveDatainicio && DateTime.Now <= x.qp.q.EveCodigoNavigation.EveDatafim).CountAsync();
 /*            ).Where(x => x.PesCheckin == false).CountAsync();
 */    }
 
@@ -27,34 +27,38 @@ public class DashboardService : IDashboardService
         return await _context.TbQuartoPessoas
             .Join(_context.TbEventoQuartos, eq => eq.QuaCodigo, q => q.QuaCodigo, (eq, q) => new { eq, q })
             .Join(_context.TbEventos, qp => qp.q.EveCodigo, e => e.EveCodigo, (qp, e) => new { qp, e })
-            .Where(x => x.qp.eq.PesCheckin == true && DateTime.Now <= x.qp.q.EveCodigoNavigation.EveDatafim).CountAsync();
+            .Where(x => x.qp.eq.PesCheckin == true && DateTime.Now >= x.qp.q.EveCodigoNavigation.EveDatainicio && DateTime.Now <= x.qp.q.EveCodigoNavigation.EveDatafim).CountAsync();
     }
 
     public async Task<IEnumerable<PessoasAChegar>> GetPessoasAChegar(int codigoEvento)
     {
         return await _context.TbQuartoPessoas
-            .Where(x => x.PesCheckin == false)
+            .Join(_context.TbEventoQuartos, eq => eq.QuaCodigo, q => q.QuaCodigo, (eq, q) => new { eq, q })
+            .Join(_context.TbEventos, qp => qp.q.EveCodigo, e => e.EveCodigo, (qp, e) => new { qp, e })
+            .Where(x => x.qp.eq.PesCheckin == false && DateTime.Now >= x.qp.q.EveCodigoNavigation.EveDatainicio && DateTime.Now <= x.qp.q.EveCodigoNavigation.EveDatafim)
             .Select(x => new PessoasAChegar
             {
-             PesCodigo = x.PesCodigo,
-             PesNome = x.PesCodigoNavigation.PesNome,
-             PesGenero = x.PesCodigoNavigation.PesGenero,
-             ComNome = x.PesCodigoNavigation.ComCodigoNavigation.ComNome,
-             QuaCodigo = x.QuaCodigo
+             PesCodigo = x.qp.eq.PesCodigo,
+             PesNome = x.qp.eq.PesCodigoNavigation.PesNome,
+             PesGenero = x.qp.eq.PesCodigoNavigation.PesGenero,
+             ComNome = x.qp.eq.PesCodigoNavigation.ComCodigoNavigation.ComNome,
+             QuaCodigo = x.qp.eq.QuaCodigo
             }).ToListAsync();
     }
 
     public async Task<IEnumerable<PessoasAChegar>> GetPessoasChegas(int codigoEvento)
     {
         return await _context.TbQuartoPessoas
-            .Where(x => x.PesCheckin == true)
+            .Join(_context.TbEventoQuartos, eq => eq.QuaCodigo, q => q.QuaCodigo, (eq, q) => new { eq, q })
+            .Join(_context.TbEventos, qp => qp.q.EveCodigo, e => e.EveCodigo, (qp, e) => new { qp, e })
+            .Where(x => x.qp.eq.PesCheckin == true && DateTime.Now >= x.qp.q.EveCodigoNavigation.EveDatainicio && DateTime.Now <= x.qp.q.EveCodigoNavigation.EveDatafim)
             .Select(x => new PessoasAChegar
             {
-                PesCodigo = x.PesCodigo,
-                PesNome = x.PesCodigoNavigation.PesNome,
-                PesGenero = x.PesCodigoNavigation.PesGenero,
-                ComNome = x.PesCodigoNavigation.ComCodigoNavigation.ComNome,
-                QuaCodigo = x.QuaCodigo
+                PesCodigo = x.qp.eq.PesCodigo,
+                PesNome = x.qp.eq.PesCodigoNavigation.PesNome,
+                PesGenero = x.qp.eq.PesCodigoNavigation.PesGenero,
+                ComNome = x.qp.eq.PesCodigoNavigation.ComCodigoNavigation.ComNome,
+                QuaCodigo = x.qp.eq.QuaCodigo
             }).ToListAsync();
     }
 
@@ -118,6 +122,6 @@ public class DashboardService : IDashboardService
 
     public async Task<int> GetIdEventoAtivo()
     {
-        return await _context.TbEventos.Where(x => x.EveDatafim >= DateTime.Now).Select(x => x.EveCodigo).FirstOrDefaultAsync();
+        return await _context.TbEventos.Where(x => DateTime.Now >= x.EveDatainicio && DateTime.Now <= x.EveDatafim).Select(x => x.EveCodigo).FirstOrDefaultAsync();
     }
 }
