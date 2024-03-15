@@ -19,12 +19,12 @@ public class EventoController : ControllerBase
         _service = service;
     }
 
-    [HttpGet]
-    public async Task<ActionResult<IEnumerable<TbEvento>>> GetEventos()
+    [HttpGet("mes/{mes:int}")]
+    public async Task<ActionResult<IEnumerable<TbEvento>>> GetEventos(int mes)
     {
         try
         {
-            var eventos = await _service.GetEventos();
+            var eventos = await _service.GetEventos(mes);
             if (eventos == null)
                 return NotFound("Nenhum evento encontrado !");
 

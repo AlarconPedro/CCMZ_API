@@ -487,26 +487,6 @@
   },
   {
     "ContainingType": "CCMZ_API.Controllers.EventoController",
-    "Method": "GetEventos",
-    "RelativePath": "api/Evento",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMZ_API.TbEvento, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "CCMZ_API.Controllers.EventoController",
     "Method": "PostEvento",
     "RelativePath": "api/Evento",
     "HttpMethod": "POST",
@@ -636,6 +616,32 @@
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMZ_API.Models.Painel.Pessoas.Hospedes, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CCMZ_API.Controllers.EventoController",
+    "Method": "GetEventos",
+    "RelativePath": "api/Evento/mes/{mes}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "mes",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMZ_API.TbEvento, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

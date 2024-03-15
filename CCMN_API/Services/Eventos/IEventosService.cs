@@ -8,7 +8,7 @@ namespace CCMZ_API.Services.Eventos;
 public interface IEventosService
 {
     //GET
-    Task<IEnumerable<TbEvento>> GetEventos();
+    Task<IEnumerable<TbEvento>> GetEventos(int mes);
     Task<IEnumerable<EventosNome>> GetEventosAtivos();
     Task<IEnumerable<EventosNome>> GetEventoNome();
     Task<TbEvento> GetEvento(int id);

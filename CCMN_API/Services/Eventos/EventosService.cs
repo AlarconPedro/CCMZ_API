@@ -15,9 +15,12 @@ public class EventosService : IEventosService
         _context = context;
     }
 
-    public async Task<IEnumerable<TbEvento>> GetEventos()
+    public async Task<IEnumerable<TbEvento>> GetEventos(int mes)
     {
-        return await _context.TbEventos.ToListAsync();
+        if (mes != 0)
+            return await _context.TbEventos.Where(e => e.EveDatafim.Value.Month == mes).ToListAsync();
+        else
+            return await _context.TbEventos.ToListAsync();
     }
 
     public async Task<IEnumerable<EventosNome>> GetEventoNome()
