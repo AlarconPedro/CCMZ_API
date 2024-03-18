@@ -14,9 +14,16 @@ public class ComunidadeService : IComunidadeService
         _context = context;
     }
 
-    public async Task<IEnumerable<Comunidade>> GetComunidades()
+    public async Task<IEnumerable<string>> GetCidadesComunidades()
     {
-        return await _context.TbComunidades.Select(x => new Comunidade
+        return await _context.TbComunidades.Select(x => x.ComCidade).Distinct().ToListAsync();
+    }
+
+    public async Task<IEnumerable<Comunidade>> GetComunidades(string cidade)
+    {
+        return await _context.TbComunidades
+            .Where(c => cidade != "" ?  c.ComCidade == cidade : true)
+            .Select(x => new Comunidade
         {
             ComCodigo = x.ComCodigo,
             ComCidade = x.ComCidade,

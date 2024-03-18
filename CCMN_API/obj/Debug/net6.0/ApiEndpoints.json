@@ -279,26 +279,6 @@
   },
   {
     "ContainingType": "CCMZ_API.Controllers.ComunidadeController",
-    "Method": "GetComunidades",
-    "RelativePath": "api/Comunidade",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMZ_API.TbComunidade, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "CCMZ_API.Controllers.ComunidadeController",
     "Method": "PostComunidade",
     "RelativePath": "api/Comunidade",
     "HttpMethod": "POST",
@@ -328,6 +308,32 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CCMZ_API.Controllers.ComunidadeController",
+    "Method": "GetComunidades",
+    "RelativePath": "api/Comunidade/{cidade}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cidade",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMZ_API.TbComunidade, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "CCMZ_API.Controllers.ComunidadeController",
@@ -362,6 +368,26 @@
     "ReturnTypes": [
       {
         "Type": "CCMZ_API.TbComunidade",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CCMZ_API.Controllers.ComunidadeController",
+    "Method": "GetCidadesComunidades",
+    "RelativePath": "api/Comunidade/cidades",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

@@ -7,7 +7,8 @@ using CCMZ_API.Models.Painel.Comunidade;
 public interface IComunidadeService
 {
     //GET
-    Task<IEnumerable<Comunidade>> GetComunidades();
+    Task<IEnumerable<string>> GetCidadesComunidades();
+    Task<IEnumerable<Comunidade>> GetComunidades(string cidade);
     Task<IEnumerable<ComunidadeNome>> GetComunidadesNomes();
     Task<TbComunidade> GetComunidade(int id);
     //POST

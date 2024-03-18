@@ -16,12 +16,25 @@ public class ComunidadeController : ControllerBase
         _service = service;
     }
 
-    [HttpGet]
-    public async Task<ActionResult<IEnumerable<TbComunidade>>> GetComunidades()
+    [HttpGet("cidades")]
+    public async Task<ActionResult<IEnumerable<string>>> GetCidadesComunidades()
     {
         try
         {
-            var comunidades = await _service.GetComunidades();
+            var cidades = await _service.GetCidadesComunidades();
+            return Ok(cidades);
+        }catch
+        {
+            return BadRequest("Erro ao trazer as cidades das comunidades !");
+        }
+    }
+
+    [HttpGet("{cidade}")]
+    public async Task<ActionResult<IEnumerable<TbComunidade>>> GetComunidades(string cidade)
+    {
+        try
+        {
+            var comunidades = await _service.GetComunidades(cidade);
             return Ok(comunidades);
         }catch
         {
