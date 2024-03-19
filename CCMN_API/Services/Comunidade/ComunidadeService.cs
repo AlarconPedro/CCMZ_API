@@ -22,7 +22,7 @@ public class ComunidadeService : IComunidadeService
     public async Task<IEnumerable<Comunidade>> GetComunidades(string cidade)
     {
         return await _context.TbComunidades
-            .Where(c => cidade != "Todos" ?  c.ComCidade == cidade : true)
+            .Where(c => cidade != "Todos" ?  c.ComCidade.ToUpper() == cidade.ToUpper() : true)
             .Select(x => new Comunidade
         {
             ComCodigo = x.ComCodigo,

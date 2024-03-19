@@ -71,7 +71,11 @@ public class EventosService : IEventosService
                 QuaCodigo = q.QuaCodigo,
                 QuaNome = q.QuaNome,
                 QuaQtdcamas = q.QuaQtdcamas,
-                QuaQtdcamasdisponiveis = _context.TbQuartos.Where(x => x.QuaCodigo == q.QuaCodigo).Select(x => x.QuaQtdcamas - x.TbQuartoPessoas.Count).FirstOrDefault(),
+                //QuaQtdcamasdisponiveis = q.QuaQtdcamas - q.TbQuartoPessoas.Count,
+                QuaQtdcamasdisponiveis = q.QuaQtdcamas - q.TbQuartoPessoas.Where(x => x.QuaCodigo == q.QuaCodigo)
+                                                                .Join(_context.TbEventoQuartos, qp => qp.QuaCodigo, eq => eq.QuaCodigo, (qp, eq) => new {qp, eq})
+                                                                .Where(x => x.eq.EveCodigoNavigation.EveDatafim < evento.EveDatainicio || x.eq.EveCodigoNavigation.EveDatainicio > evento.EveDatafim)
+                                                                .Count(),
             }).ToListAsync();
        /* return await _context.TbQuartos.Where(q => q.BloCodigo == codigoPavilhao)
         //&& !q.TbEventoQuartos.Any())
