@@ -429,6 +429,26 @@
   },
   {
     "ContainingType": "CCMZ_API.Controllers.DashboardController",
+    "Method": "GetNumeroCamasLivres",
+    "RelativePath": "api/Dashboard/numeroCamasLivres",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CCMZ_API.Controllers.DashboardController",
+    "Method": "GetNumeroCamasOcupadas",
+    "RelativePath": "api/Dashboard/numeroCamasOcupadas",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CCMZ_API.Controllers.DashboardController",
     "Method": "GetNumeroPessoasAChegar",
     "RelativePath": "api/Dashboard/numeroPessoasAChegar",
     "HttpMethod": "GET",
@@ -481,6 +501,22 @@
   },
   {
     "ContainingType": "CCMZ_API.Controllers.DashboardController",
+    "Method": "GetQuartoOcupados",
+    "RelativePath": "api/Dashboard/quartoOcupados/{codigoQuarto}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "codigoQuarto",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CCMZ_API.Controllers.DashboardController",
     "Method": "GetQuartoPessoaAChegar",
     "RelativePath": "api/Dashboard/quartoPessoaAChegar/{codigoQuarto}",
     "HttpMethod": "GET",
@@ -499,6 +535,22 @@
     "ContainingType": "CCMZ_API.Controllers.DashboardController",
     "Method": "GetQuartoPessoaChegas",
     "RelativePath": "api/Dashboard/quartoPessoaChegas/{codigoQuarto}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "codigoQuarto",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CCMZ_API.Controllers.DashboardController",
+    "Method": "GetQuartoVagas",
+    "RelativePath": "api/Dashboard/quartoVagas/{codigoQuarto}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

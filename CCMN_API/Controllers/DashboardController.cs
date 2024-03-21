@@ -59,6 +59,34 @@ public class DashboardController : ControllerBase
         }
     }
 
+    [HttpGet("numeroCamasLivres")]
+    public async Task<IActionResult> GetNumeroCamasLivres()
+    {
+        try
+        {
+            var numeroCamasLivres = await _service.GetNumeroCamasLivres();
+            return Ok(numeroCamasLivres);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+        }
+    }
+
+    [HttpGet("numeroCamasOcupadas")]
+    public async Task<IActionResult> GetNumeroCamasOcupadas()
+    {
+        try
+        {
+            var numeroCamasOcupadas = await _service.GetNumeroCamasOcupadas();
+            return Ok(numeroCamasOcupadas);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+        }
+    }
+
     [HttpGet("quartoPessoaAChegar/{codigoQuarto:int}")]
     public async Task<ActionResult> GetQuartoPessoaAChegar(int codigoQuarto)
     {
@@ -80,6 +108,34 @@ public class DashboardController : ControllerBase
         {
             var quartoPessoaChegas = await _service.GetQuartoPessoaChegas(codigoQuarto);
             return Ok(quartoPessoaChegas);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+        }
+    }
+
+    [HttpGet("quartoVagas/{codigoQuarto:int}")]
+    public async Task<ActionResult> GetQuartoVagas(int codigoQuarto)
+    {
+        try
+        {
+            var quartoVagas = await _service.GetQuartoVagas(codigoQuarto);
+            return Ok(quartoVagas);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+        }
+    }
+
+    [HttpGet("quartoOcupados/{codigoQuarto:int}")]
+    public async Task<ActionResult> GetQuartoOcupados(int codigoQuarto)
+    {
+        try
+        {
+            var quartoOcupados = await _service.GetQuartoOcupados(codigoQuarto);
+            return Ok(quartoOcupados);
         }
         catch (Exception ex)
         {
