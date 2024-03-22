@@ -440,11 +440,17 @@
   {
     "ContainingType": "CCMZ_API.Controllers.DashboardController",
     "Method": "GetNumeroCamasOcupadas",
-    "RelativePath": "api/Dashboard/numeroCamasOcupadas",
+    "RelativePath": "api/Dashboard/numeroCamasOcupadas/{codigoEvento}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "codigoEvento",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {

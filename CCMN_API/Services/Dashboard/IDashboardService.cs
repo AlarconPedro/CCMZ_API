@@ -10,7 +10,7 @@ public interface IDashboardService
     Task<int> GetNumeroPessoasAChegar();
     Task<int> GetNumeroPessoasChegas();
     Task<int> GetNumeroCamasLivres();
-    Task<int> GetNumeroCamasOcupadas();
+    Task<int> GetNumeroCamasOcupadas(int codigoEvento);
     Task<IEnumerable<PessoasAChegar>> GetPessoasAChegar(int codigoEvento);
     Task<IEnumerable<PessoasAChegar>> GetPessoasChegas(int codigoEvento);
     Task<IEnumerable<PessoasAChegar>> GetQuartosLivres(int codigoEvento);

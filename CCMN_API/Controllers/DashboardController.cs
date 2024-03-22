@@ -73,12 +73,12 @@ public class DashboardController : ControllerBase
         }
     }
 
-    [HttpGet("numeroCamasOcupadas")]
-    public async Task<IActionResult> GetNumeroCamasOcupadas()
+    [HttpGet("numeroCamasOcupadas/{codigoEvento:int}")]
+    public async Task<IActionResult> GetNumeroCamasOcupadas(int codigoEvento)
     {
         try
         {
-            var numeroCamasOcupadas = await _service.GetNumeroCamasOcupadas();
+            var numeroCamasOcupadas = await _service.GetNumeroCamasOcupadas(codigoEvento);
             return Ok(numeroCamasOcupadas);
         }
         catch (Exception ex)

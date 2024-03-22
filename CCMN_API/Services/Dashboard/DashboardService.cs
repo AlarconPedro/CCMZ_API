@@ -32,12 +32,16 @@ public class DashboardService : IDashboardService
 
     public async Task<int> GetNumeroCamasLivres()
     {
-        return await _context.TbQuartos.Where(x => x.TbQuartoPessoas.Count == 0).CountAsync();
+        return await _context.TbQuartos
+            .Join(_context.TbEventoQuartos, eq => eq.QuaCodigo, q => q.QuaCodigo, (eq, q) => new { eq, q })
+            .Join(_context.TbEventos, qp => qp.q.EveCodigo, e => e.EveCodigo, (qp, e) => new { qp, e })
+            .Where(x => x.qp.eq.TbQuartoPessoas.Count == 0 && DateTime.Now >= x.qp.q.EveCodigoNavigation.EveDatainicio && DateTime.Now <= x.qp.q.EveCodigoNavigation.EveDatafim).CountAsync();
     }
 
-    public async Task<int> GetNumeroCamasOcupadas()
+    public async Task<int> GetNumeroCamasOcupadas(int codigoEvento)
     {
-        return await _context.TbQuartos.Where(x => x.TbQuartoPessoas.Count > 0).CountAsync();
+        return await _context.TbQuartoPessoas
+            .Where(qp => qp.QuaCodigoNavigation.TbEventoQuartos.Where(x => x.EveCodigo == codigoEvento).FirstOrDefault().EveCodigo == codigoEvento).CountAsync();
     }
 
     public async Task<IEnumerable<PessoasAChegar>> GetPessoasAChegar(int codigoEvento)
@@ -45,7 +49,10 @@ public class DashboardService : IDashboardService
         return await _context.TbQuartoPessoas
             .Join(_context.TbEventoQuartos, eq => eq.QuaCodigo, q => q.QuaCodigo, (eq, q) => new { eq, q })
             .Join(_context.TbEventos, qp => qp.q.EveCodigo, e => e.EveCodigo, (qp, e) => new { qp, e })
-            .Where(x => x.qp.eq.PesCheckin == false && DateTime.Now >= x.qp.q.EveCodigoNavigation.EveDatainicio && DateTime.Now <= x.qp.q.EveCodigoNavigation.EveDatafim)
+            .Where(x => x.qp.eq.PesCheckin == false 
+                && DateTime.Now >= x.qp.q.EveCodigoNavigation.EveDatainicio 
+                && DateTime.Now <= x.qp.q.EveCodigoNavigation.EveDatafim 
+                && x.e.EveCodigo == codigoEvento)
             .Select(x => new PessoasAChegar
             {
              PesCodigo = x.qp.eq.PesCodigo,
@@ -61,7 +68,11 @@ public class DashboardService : IDashboardService
         return await _context.TbQuartoPessoas
             .Join(_context.TbEventoQuartos, eq => eq.QuaCodigo, q => q.QuaCodigo, (eq, q) => new { eq, q })
             .Join(_context.TbEventos, qp => qp.q.EveCodigo, e => e.EveCodigo, (qp, e) => new { qp, e })
-            .Where(x => x.qp.eq.PesCheckin == true && DateTime.Now >= x.qp.q.EveCodigoNavigation.EveDatainicio && DateTime.Now <= x.qp.q.EveCodigoNavigation.EveDatafim)
+            .Where(x => x.qp.eq.PesCheckin == true 
+                && DateTime.Now >= x.qp.q.EveCodigoNavigation.EveDatainicio 
+                && DateTime.Now <= x.qp.q.EveCodigoNavigation.EveDatafim
+                && x.e.EveCodigo == codigoEvento
+                )
             .Select(x => new PessoasAChegar
             {
                 PesCodigo = x.qp.eq.PesCodigo,
@@ -77,7 +88,10 @@ public class DashboardService : IDashboardService
         return await _context.TbQuartoPessoas
             .Join(_context.TbEventoQuartos, eq => eq.QuaCodigo, q => q.QuaCodigo, (eq, q) => new { eq, q })
             .Join(_context.TbEventos, qp => qp.q.EveCodigo, e => e.EveCodigo, (qp, e) => new { qp, e })
-            .Where(x => x.qp.eq.PesCheckin == false && DateTime.Now >= x.qp.q.EveCodigoNavigation.EveDatainicio && DateTime.Now <= x.qp.q.EveCodigoNavigation.EveDatafim)
+            .Where(x => x.qp.eq.PesCheckin == false 
+                && DateTime.Now >= x.qp.q.EveCodigoNavigation.EveDatainicio 
+                && DateTime.Now <= x.qp.q.EveCodigoNavigation.EveDatafim
+                && x.e.EveCodigo == codigoEvento)
             .Select(x => new PessoasAChegar
             {
                 PesCodigo = x.qp.eq.PesCodigo,
@@ -93,7 +107,10 @@ public class DashboardService : IDashboardService
         return await _context.TbQuartoPessoas
             .Join(_context.TbEventoQuartos, eq => eq.QuaCodigo, q => q.QuaCodigo, (eq, q) => new { eq, q })
             .Join(_context.TbEventos, qp => qp.q.EveCodigo, e => e.EveCodigo, (qp, e) => new { qp, e })
-            .Where(x => x.qp.eq.PesCheckin == true && DateTime.Now >= x.qp.q.EveCodigoNavigation.EveDatainicio && DateTime.Now <= x.qp.q.EveCodigoNavigation.EveDatafim)
+            .Where(x => x.qp.eq.PesCheckin == true 
+                && DateTime.Now >= x.qp.q.EveCodigoNavigation.EveDatainicio 
+                && DateTime.Now <= x.qp.q.EveCodigoNavigation.EveDatafim
+                && x.e.EveCodigo == codigoEvento)
             .Select(x => new PessoasAChegar
             {
                 PesCodigo = x.qp.eq.PesCodigo,
