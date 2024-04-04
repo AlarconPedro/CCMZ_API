@@ -121,7 +121,7 @@ public class EventosService : IEventosService
                                                     .Join(_context.TbEventoQuartos, qp => qp.QuaCodigo, eq => eq.QuaCodigo, (qp, eq) => new { qp, eq })
                                                     .Where(x => x.eq.EveCodigoNavigation.EveDatafim < datanicio || x.eq.EveCodigoNavigation.EveDatainicio > datafim)
                                                     .Count(),
-                PessoasQuarto = q.TbQuartoPessoas.Where(x => x.QuaCodigo == q.QuaCodigo)
+                PessoasQuarto = q.TbQuartoPessoas.Where(x => x.QuaCodigo == q.QuaCodigo && q.TbEventoQuartos.Any(eq => eq.EveCodigo == codigoEvento))
                                                     .Join(_context.TbPessoas, qp => qp.PesCodigo, p => p.PesCodigo, (qp, p) => new { qp, p })
                                                     .Select(x => new PessoasNome
                                                     {
@@ -176,9 +176,10 @@ public class EventosService : IEventosService
             }).ToListAsync();
     }
 
-    public async Task<IEnumerable<PessoaQuarto>> GetPessoasQuarto(int codigoQuarto)
+    public async Task<IEnumerable<PessoaQuarto>> GetPessoasQuarto(int codigoQuarto, int codigoEvento)
     {
-        return await _context.TbPessoas.Where(p => p.TbQuartoPessoas.Any(qp => qp.QuaCodigo == codigoQuarto))
+        return await _context.TbPessoas.Where(p => p.TbQuartoPessoas.Any(qp => qp.QuaCodigo == codigoQuarto) 
+                && p.TbEventoPessoas.Any(ep => ep.EveCodigo == codigoEvento))
             .Select(ep => new PessoaQuarto
             {
                 PesCodigo = ep.PesCodigo,

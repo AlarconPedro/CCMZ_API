@@ -163,12 +163,12 @@ public class EventoController : ControllerBase
         }
     }
 
-    [HttpGet("pessoas/quarto/{codigoQuarto:int}")]
-    public async Task<ActionResult<IEnumerable<PessoaQuarto>>> GetPessoasQuarto(int codigoQuarto)
+    [HttpGet("pessoas/quarto/{codigoQuarto:int}/{codigoEvento:int}")]
+    public async Task<ActionResult<IEnumerable<PessoaQuarto>>> GetPessoasQuarto(int codigoQuarto, int codigoEvento)
     {
         try
         {
-            var pessoas = await _service.GetPessoasQuarto(codigoQuarto);
+            var pessoas = await _service.GetPessoasQuarto(codigoQuarto, codigoEvento);
             if (pessoas == null)
                 return NotFound($"Nenhuma pessoa encontrada para o quarto com o código {codigoQuarto} !");
 
