@@ -3,11 +3,13 @@ using CCMZ_API.Models.Painel.Pessoas;
 
 namespace CCMZ_API.Services.Alocacao;
 
+using CCMZ_API.Models.Painel.Comunidade;
+
 public interface IAlocacaoService
 {
     //GET
     Task<IEnumerable<EventosNome>> GetEventos();
-    Task<IEnumerable<ComunidadeNome>> GetComunidades(int codigoEvento);
+    Task<IEnumerable<Comunidade>> GetComunidades(int codigoEvento);
     Task<IEnumerable<PessoasNome>> GetPessoasComunidade(int codigoEvento, int codigoComunidde);
     Task<IEnumerable<BlocoNome>> GetBlocos(int codigoEvento);
     Task<IEnumerable<PessoasAlocadas>> GetPessoasQuarto(int codigoQuarto);

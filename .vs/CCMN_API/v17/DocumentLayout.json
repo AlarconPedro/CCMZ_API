@@ -3,24 +3,36 @@
   "WorkspaceRootPath": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|c:\\desenvolvimento\\c#\\web api\\ccmn_api\\ccmn_api\\services\\eventos\\eventosservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|solutionrelative:ccmn_api\\services\\eventos\\eventosservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|c:\\desenvolvimento\\c#\\web api\\ccmn_api\\ccmn_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|solutionrelative:ccmn_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|c:\\desenvolvimento\\c#\\web api\\ccmn_api\\ccmn_api\\services\\alocacao\\alocacaoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|solutionrelative:ccmn_api\\services\\alocacao\\alocacaoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|c:\\desenvolvimento\\c#\\web api\\ccmn_api\\ccmn_api\\services\\alocacao\\ialocacaoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|solutionrelative:ccmn_api\\services\\alocacao\\ialocacaoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|c:\\desenvolvimento\\c#\\web api\\ccmn_api\\ccmn_api\\services\\comunidade\\comunidadeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|solutionrelative:ccmn_api\\services\\comunidade\\comunidadeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|c:\\desenvolvimento\\c#\\web api\\ccmn_api\\ccmn_api\\services\\eventos\\eventosservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|solutionrelative:ccmn_api\\services\\eventos\\eventosservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|c:\\desenvolvimento\\c#\\web api\\ccmn_api\\ccmn_api\\controllers\\eventocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|solutionrelative:ccmn_api\\controllers\\eventocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|c:\\desenvolvimento\\c#\\web api\\ccmn_api\\ccmn_api\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|solutionrelative:ccmn_api\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|c:\\desenvolvimento\\c#\\web api\\ccmn_api\\ccmn_api\\services\\eventos\\ieventosservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|solutionrelative:ccmn_api\\services\\eventos\\ieventosservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|c:\\desenvolvimento\\c#\\web api\\ccmn_api\\ccmn_api\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|solutionrelative:ccmn_api\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,7 +50,46 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ComunidadeService.cs",
+              "DocumentMoniker": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\Services\\Comunidade\\ComunidadeService.cs",
+              "RelativeDocumentMoniker": "CCMN_API\\Services\\Comunidade\\ComunidadeService.cs",
+              "ToolTip": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\Services\\Comunidade\\ComunidadeService.cs",
+              "RelativeToolTip": "CCMN_API\\Services\\Comunidade\\ComunidadeService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-04T01:52:25.651Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "IAlocacaoService.cs",
+              "DocumentMoniker": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\Services\\Alocacao\\IAlocacaoService.cs",
+              "RelativeDocumentMoniker": "CCMN_API\\Services\\Alocacao\\IAlocacaoService.cs",
+              "ToolTip": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\Services\\Alocacao\\IAlocacaoService.cs",
+              "RelativeToolTip": "CCMN_API\\Services\\Alocacao\\IAlocacaoService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-04T01:49:28.105Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AlocacaoService.cs",
+              "DocumentMoniker": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\Services\\Alocacao\\AlocacaoService.cs",
+              "RelativeDocumentMoniker": "CCMN_API\\Services\\Alocacao\\AlocacaoService.cs",
+              "ToolTip": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\Services\\Alocacao\\AlocacaoService.cs",
+              "RelativeToolTip": "CCMN_API\\Services\\Alocacao\\AlocacaoService.cs",
+              "ViewState": "AQIAACAAAAAAAAAAAAAwwCYAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-04T01:48:04.458Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "EventoController.cs",
               "DocumentMoniker": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\Controllers\\EventoController.cs",
               "RelativeDocumentMoniker": "CCMN_API\\Controllers\\EventoController.cs",
@@ -51,20 +102,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\Program.cs",
               "RelativeDocumentMoniker": "CCMN_API\\Program.cs",
               "ToolTip": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\Program.cs",
               "RelativeToolTip": "CCMN_API\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAABPAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-21T22:51:59.057Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "DashboardController.cs",
               "DocumentMoniker": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\Controllers\\DashboardController.cs",
               "RelativeDocumentMoniker": "CCMN_API\\Controllers\\DashboardController.cs",
@@ -77,20 +128,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "EventosService.cs",
               "DocumentMoniker": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\Services\\Eventos\\EventosService.cs",
               "RelativeDocumentMoniker": "CCMN_API\\Services\\Eventos\\EventosService.cs",
               "ToolTip": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\Services\\Eventos\\EventosService.cs",
               "RelativeToolTip": "CCMN_API\\Services\\Eventos\\EventosService.cs",
-              "ViewState": "AQIAAGIAAAAAAAAAAAAIwHgAAABuAAAA",
+              "ViewState": "AQIAAGIAAAAAAAAAAAAIwIEAAABSAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-21T01:10:18.029Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "IEventosService.cs",
               "DocumentMoniker": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\Services\\Eventos\\IEventosService.cs",
               "RelativeDocumentMoniker": "CCMN_API\\Services\\Eventos\\IEventosService.cs",

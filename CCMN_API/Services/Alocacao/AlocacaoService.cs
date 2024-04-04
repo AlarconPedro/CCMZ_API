@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CCMZ_API.Services.Alocacao;
 
+using CCMZ_API.Models.Painel.Comunidade;
+
 public class AlocacaoService : IAlocacaoService
 {
     private readonly CCMNContext _context;
@@ -36,17 +38,18 @@ public class AlocacaoService : IAlocacaoService
             }).Distinct().ToListAsync();
     }
 
-    public async Task<IEnumerable<ComunidadeNome>> GetComunidades(int codigoEvento)
+    public async Task<IEnumerable<Comunidade>> GetComunidades(int codigoEvento)
     {
         return await _context.TbComunidades.Where(c => c.TbPessoas.Any())
             .Join(_context.TbPessoas, c => c.ComCodigo, p => p.ComCodigo, (c, p) => new { c, p })
             .Join(_context.TbEventoPessoas, x => x.p.PesCodigo, ep => ep.PesCodigo, (x, ep) => new { x, ep })
             .Where(y => y.ep.EveCodigo == codigoEvento && y.x.p.PesCodigo == y.ep.PesCodigo)
-            .Select(c => new ComunidadeNome
+            .Select(c => new Comunidade
             {
                 ComCodigo = c.x.c.ComCodigo,
                 ComNome = c.x.c.ComNome,
-                ComCidade = c.x.c.ComCidade
+                ComCidade = c.x.c.ComCidade,
+                ComUf = c.x.c.ComUf
             }).GroupBy(c => c.ComCodigo).Select(c => c.First()).ToListAsync();
     }
 
