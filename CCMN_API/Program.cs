@@ -20,8 +20,8 @@ builder.Services.AddCors(options =>
         {
             policy.AllowAnyHeader();
             policy.AllowAnyMethod();
-            //policy.WithOrigins("http://localhost:3000", "http://localhost:54101");
-            policy.WithOrigins("http://painel.ccmn.org.br");
+            policy.WithOrigins("http://localhost:3000", "http://localhost:51524");
+            //policy.WithOrigins("http://painel.ccmn.org.br");
         });
 });
 
