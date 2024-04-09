@@ -83,7 +83,7 @@ public class EventosService : IEventosService
             {
                 QuaCodigo = q.QuaCodigo,
                 QuaNome = q.QuaNome,
-                QuaQtdcamas = q.QuaQtdcamas,                                                                                                                                                     .Count(),*/
+                QuaQtdcamas = q.QuaQtdcamas,                                                                                                                                                     
             }).ToListAsync();
 
         /*return await _context.TbQuartos.Where(q => q.BloCodigo == codigoPavilhao && q.TbEventoQuartos.Any(eq => eq.EveCodigo == codigoEvento))
@@ -221,9 +221,10 @@ public class EventosService : IEventosService
 
     public async Task PostQuartos(List<TbEventoQuarto> eventoQuarto, int codigo)
     {
-        await _context.TbEventoQuartos.Where(eq => eq.QuaCodigoNavigation.BloCodigo == codigo).ExecuteDeleteAsync();
+        //await _context.TbEventoQuartos.Where(eq => eq.QuaCodigoNavigation.QuaCodigo == codigo).ExecuteDeleteAsync();
         foreach (var item in eventoQuarto)
         {
+            await _context.TbEventoQuartos.Where(eq => eq.QuaCodigoNavigation.QuaCodigo == item.QuaCodigo).ExecuteDeleteAsync();
             if (item.EvqCodigo == 0)
             {
                 var lastEventoQuarto = await _context.TbEventoQuartos.FirstOrDefaultAsync();
@@ -286,6 +287,12 @@ public class EventosService : IEventosService
     public async Task UpdateEventoPessoa(TbEventoPessoa eventoPessoa)
     {
         _context.TbEventoPessoas.Update(eventoPessoa);
+        await _context.SaveChangesAsync();
+    }
+
+    public async Task RemoveQuartoEvento(int codigoQuarto)
+    {
+        await _context.TbEventoQuartos.Where(eq => eq.QuaCodigo == codigoQuarto).ExecuteDeleteAsync();
         await _context.SaveChangesAsync();
     }
 

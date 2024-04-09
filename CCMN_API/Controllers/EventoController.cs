@@ -306,6 +306,20 @@ public class EventoController : ControllerBase
         }
     }
 
+    [HttpDelete("quarto/{codigoQuarto:int}")]
+    public async Task<ActionResult> RemoveQuartoEvento(int codigoQuarto)
+    {
+        try
+        {
+            await _service.RemoveQuartoEvento(codigoQuarto);
+            return Ok($"Quarto com o id {codigoQuarto} removido com sucesso !");
+        }catch
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError,
+                                              $"Erro ao remover o Quarto com o id {codigoQuarto} !");
+        }
+    }
+    
     [HttpDelete("{idEvento:int}")]
     public async Task<ActionResult> DeleteEvento(int idEvento)
     {
