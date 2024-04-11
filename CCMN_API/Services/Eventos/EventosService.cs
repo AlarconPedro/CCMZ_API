@@ -95,6 +95,7 @@ public class EventosService : IEventosService
                                                            {
                                                                 PesCodigo = p.PesCodigo,
                                                                 PesNome = p.PesNome,
+                                                                PesGenero = p.PesGenero
                                                            }).ToList()
             }).ToListAsync();
     }
