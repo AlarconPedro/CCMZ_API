@@ -68,19 +68,34 @@ public class QuartoPessoaService : IQuartoPessoaService
                 QuaCodigo = eq.q.QuaCodigo,
                 QuaNome = eq.q.QuaNome,
                 BloNome = eq.q.BloCodigoNavigation.BloNome,
-                Vagas = _context.TbQuartos.Where(x => x.QuaCodigo == eq.q.QuaCodigo).Select(x => x.QuaQtdcamas - x.TbQuartoPessoas.Count).FirstOrDefault(),
-                PessoasQuarto = _context.TbQuartoPessoas
-                .Where(qp => qp.QuaCodigo == eq.q.QuaCodigo)
-                .Select(x => new PessoaCheckin
-                {
-                    PesCodigo = x.PesCodigo,
-                    PesChave = x.PesChave,
-                    QuaCodigo = x.QuaCodigo,
-                    PesCheckin = x.PesCheckin,
-                    QupCodigo = x.QupCodigo,
-                    PesNome = x.PesCodigoNavigation.PesNome,
-                }).ToList()
-            }).ToListAsync();
+                Vagas = eq.q.QuaQtdcamas - _context.TbQuartoPessoas.Join(_context.TbPessoas, qp => qp.PesCodigo, p => p.PesCodigo, (qp, p) => new { qp, p })
+														.Join(_context.TbEventoPessoas, x => x.qp.PesCodigo, ep => ep.PesCodigo, (x, ep) => new { x, ep })
+														.Where(x => x.x.qp.QuaCodigo == eq.q.QuaCodigo && x.ep.EveCodigo == codigoEvento).Count(),
+				//_context.TbQuartos.Where(x => x.QuaCodigo == eq.q.QuaCodigo).Select(x => x.QuaQtdcamas - x.TbQuartoPessoas.Count).FirstOrDefault(),
+				PessoasQuarto = _context.TbQuartoPessoas.Join(_context.TbPessoas, qp => qp.PesCodigo, p => p.PesCodigo, (qp, p) => new { qp, p })
+														.Join(_context.TbEventoPessoas, x => x.qp.PesCodigo, ep => ep.PesCodigo, (x, ep) => new { x, ep })
+														.Where(x => x.x.qp.QuaCodigo == eq.q.QuaCodigo && x.ep.EveCodigo == codigoEvento)
+														.Select(x => new PessoaCheckin
+														{
+															PesCodigo = x.x.qp.PesCodigo,
+															PesChave = x.x.qp.PesChave,
+															QuaCodigo = x.x.qp.QuaCodigo,
+															PesCheckin = x.x.qp.PesCheckin,
+															QupCodigo = x.x.qp.QupCodigo,
+															PesNome = x.x.p.PesNome,
+														}).ToList()
+				/* _context.TbQuartoPessoas
+				 .Where(qp => qp.QuaCodigo == eq.q.QuaCodigo)
+				 .Select(x => new PessoaCheckin
+				 {
+					 PesCodigo = x.PesCodigo,
+					 PesChave = x.PesChave,
+					 QuaCodigo = x.QuaCodigo,
+					 PesCheckin = x.PesCheckin,
+					 QupCodigo = x.QupCodigo,
+					 PesNome = x.PesCodigoNavigation.PesNome,
+				 }).ToList()*/
+			}).ToListAsync();
     }
 
     public async Task UpdateQuartoPessoa(TbQuartoPessoa quartoPessoa)

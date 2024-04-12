@@ -7569,19 +7569,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Alarcon\\.nuget\\packages\\": {}
+    "C:\\Users\\Pedro\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\CCMN_API.csproj",
+      "projectUniqueName": "D:\\Desenvolvimento\\C#\\CCMZ_API\\CCMN_API\\CCMN_API.csproj",
       "projectName": "CCMN_API",
-      "projectPath": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\CCMN_API.csproj",
-      "packagesPath": "C:\\Users\\Alarcon\\.nuget\\packages\\",
-      "outputPath": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\obj\\",
+      "projectPath": "D:\\Desenvolvimento\\C#\\CCMZ_API\\CCMN_API\\CCMN_API.csproj",
+      "packagesPath": "C:\\Users\\Pedro\\.nuget\\packages\\",
+      "outputPath": "D:\\Desenvolvimento\\C#\\CCMZ_API\\CCMN_API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Alarcon\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Pedro\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
