@@ -12,5 +12,7 @@ public class PessoaCheckin
 
     public bool? PesCheckin { get; set; }
 
+    public bool? PesNaovem { get; set; }
+
     public string? PesNome { get; set; }
 }

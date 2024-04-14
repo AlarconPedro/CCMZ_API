@@ -7,8 +7,9 @@ using CCMZ_API.Models.Painel.Quartos;
 
 public interface IDashboardService
 {
-    Task<int> GetNumeroPessoasAChegar();
-    Task<int> GetNumeroPessoasChegas();
+    Task<int> GetNumeroPessoasAChegar(int codigoEvento);
+    Task<int> GetNumeroPessoasChegas(int codigoEvento);
+    Task<int> GetNumeroPessoasNaoVem(int codigoEvento);
     Task<int> GetNumeroCamasLivres();
     Task<int> GetNumeroCamasOcupadas(int codigoEvento);
     Task<IEnumerable<PessoasAChegar>> GetPessoasAChegar(int codigoEvento);

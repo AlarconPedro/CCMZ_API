@@ -13,21 +13,29 @@ public class DashboardService : IDashboardService
         _context = context;
     }
 
-    public async Task<int> GetNumeroPessoasAChegar()
+    public async Task<int> GetNumeroPessoasAChegar(int codigoEvento)
     {
         return await _context.TbQuartoPessoas
             .Join(_context.TbEventoQuartos, eq => eq.QuaCodigo, q => q.QuaCodigo, (eq, q) => new { eq, q })
             .Join(_context.TbEventos, qp => qp.q.EveCodigo, e => e.EveCodigo, (qp, e) => new { qp, e })
-            .Where(x => x.qp.eq.PesCheckin == false && DateTime.Now >= x.qp.q.EveCodigoNavigation.EveDatainicio && DateTime.Now <= x.qp.q.EveCodigoNavigation.EveDatafim).CountAsync();
+            .Where(x => x.qp.eq.PesCheckin == false && x.qp.eq.PesNaovem != true && x.e.EveCodigo == codigoEvento).CountAsync();
 /*            ).Where(x => x.PesCheckin == false).CountAsync();
 */    }
 
-    public async Task<int> GetNumeroPessoasChegas()
+    public async Task<int> GetNumeroPessoasChegas(int codigoEvento)
     {
         return await _context.TbQuartoPessoas
             .Join(_context.TbEventoQuartos, eq => eq.QuaCodigo, q => q.QuaCodigo, (eq, q) => new { eq, q })
             .Join(_context.TbEventos, qp => qp.q.EveCodigo, e => e.EveCodigo, (qp, e) => new { qp, e })
-            .Where(x => x.qp.eq.PesCheckin == true && DateTime.Now >= x.qp.q.EveCodigoNavigation.EveDatainicio && DateTime.Now <= x.qp.q.EveCodigoNavigation.EveDatafim).CountAsync();
+            .Where(x => x.qp.eq.PesCheckin == true && x.e.EveCodigo == codigoEvento).CountAsync();
+    }
+
+    public async Task<int> GetNumeroPessoasNaoVem(int codigoEvento)
+    {
+        return await _context.TbQuartoPessoas
+            .Join(_context.TbEventoQuartos, eq => eq.QuaCodigo, q => q.QuaCodigo, (eq, q) => new { eq, q })
+            .Join(_context.TbEventos, qp => qp.q.EveCodigo, e => e.EveCodigo, (qp, e) => new { qp, e })
+            .Where(x => x.qp.eq.PesNaovem == true && x.e.EveCodigo == codigoEvento).CountAsync();
     }
 
     public async Task<int> GetNumeroCamasLivres()

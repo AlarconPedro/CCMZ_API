@@ -1,4 +1,5 @@
 ﻿using CCMZ_API.Services.Dashboard;
+using CCMZ_API.Services.Eventos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,6 +10,7 @@ namespace CCMZ_API.Controllers;
 public class DashboardController : ControllerBase
 {
     private readonly IDashboardService _service;
+    private readonly IEventosService _eventoService;
 
     public DashboardController(IDashboardService dashboardService)
     {
@@ -31,12 +33,12 @@ public class DashboardController : ControllerBase
 
     [HttpGet("pessoasChegas/{codigoEvento:int}")]
 
-    [HttpGet("numeroPessoasAChegar")]
-    public async Task<IActionResult> GetNumeroPessoasAChegar()
+    [HttpGet("numeroPessoasAChegar/{codigoEvento:int}")]
+    public async Task<IActionResult> GetNumeroPessoasAChegar(int codigoEvento)
     {
         try
         {
-            var numeroPessoasAChegar = await _service.GetNumeroPessoasAChegar();
+            var numeroPessoasAChegar = await _service.GetNumeroPessoasAChegar(codigoEvento);
             return Ok(numeroPessoasAChegar);
         }
         catch (Exception ex)
@@ -45,13 +47,27 @@ public class DashboardController : ControllerBase
         }
     }
 
-    [HttpGet("numeroPessoasChegas")]
-    public async Task<IActionResult> GetNumeroPessoasChegas()
+    [HttpGet("numeroPessoasChegas/{codigoEvento:int}")]
+    public async Task<IActionResult> GetNumeroPessoasChegas(int codigoEvento)
     {
         try
         {
-            var numeroPessoasChegas = await _service.GetNumeroPessoasChegas();
+            var numeroPessoasChegas = await _service.GetNumeroPessoasChegas(codigoEvento);
             return Ok(numeroPessoasChegas);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+        }
+    }
+
+    [HttpGet("numeroPessoasNaoVem/{codigoEvento:int}")]
+    public async Task<IActionResult> GetNumeroPessoasNaoVem(int codigoEvento)
+    {
+        try
+        {
+            var numeroPessoasNaoVem = await _service.GetNumeroPessoasNaoVem(codigoEvento);
+            return Ok(numeroPessoasNaoVem);
         }
         catch (Exception ex)
         {
