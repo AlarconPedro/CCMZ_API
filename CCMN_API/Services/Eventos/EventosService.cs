@@ -220,9 +220,14 @@ public class EventosService : IEventosService
 
     public async Task PostPessoas(List<TbEventoPessoa> eventoPessoa, int codigo)
     {
-        await _context.TbEventoPessoas.Where(ep => ep.PesCodigoNavigation.ComCodigo == codigo).ExecuteDeleteAsync();
+        //await _context.TbEventoPessoas.Where(ep => ep.PesCodigoNavigation.ComCodigo == codigo).ExecuteDeleteAsync();
         foreach (var item in eventoPessoa)
         {
+            /*if (item.EvpCodigo != 0)
+            {
+                await _context.TbEventoPessoas.Where(ep => ep.EvpCodigo == item.EvpCodigo).ExecuteDeleteAsync();
+            }
+            else */
             if (item.EvpCodigo == 0)
             {
                 var lastEventoPessoa = await _context.TbEventoPessoas.FirstOrDefaultAsync();
@@ -234,12 +239,13 @@ public class EventosService : IEventosService
                 {
                     item.EvpCodigo = 1;
                 }
+                _context.TbEventoPessoas.Add(item);
             }
             else
             {
                 await UpdateEventoPessoa(item);
             }
-            _context.TbEventoPessoas.Add(item);
+            
             await _context.SaveChangesAsync();
         }
     }

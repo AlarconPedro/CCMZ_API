@@ -259,9 +259,9 @@ public class EventoController : ControllerBase
         {
             await _service.PostPessoas(eventoPessoa, codigo);
             return Ok("Pessoas cadastradas com sucesso !");
-        }catch
+        }catch (Exception ex)
         {
-            return BadRequest("Erro ao cadastrar as pessoas !");
+            return BadRequest($"Erro ao cadastrar as pessoas ! {ex}");
         }
     }
 
