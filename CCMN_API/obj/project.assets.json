@@ -7562,6 +7562,7 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "Microsoft.EntityFrameworkCore >= 7.0.11",
+      "Microsoft.EntityFrameworkCore.Design >= 7.0.11",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.11",
       "Microsoft.EntityFrameworkCore.SqlServer.Design >= 1.1.6",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.11",
@@ -7569,19 +7570,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Pedro\\.nuget\\packages\\": {}
+    "C:\\Users\\Alarcon\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Desenvolvimento\\C#\\CCMZ_API\\CCMN_API\\CCMN_API.csproj",
+      "projectUniqueName": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\CCMN_API.csproj",
       "projectName": "CCMN_API",
-      "projectPath": "D:\\Desenvolvimento\\C#\\CCMZ_API\\CCMN_API\\CCMN_API.csproj",
-      "packagesPath": "C:\\Users\\Pedro\\.nuget\\packages\\",
-      "outputPath": "D:\\Desenvolvimento\\C#\\CCMZ_API\\CCMN_API\\obj\\",
+      "projectPath": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\CCMN_API.csproj",
+      "packagesPath": "C:\\Users\\Alarcon\\.nuget\\packages\\",
+      "outputPath": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Pedro\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Alarcon\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7613,6 +7614,12 @@
         "targetAlias": "net6.0",
         "dependencies": {
           "Microsoft.EntityFrameworkCore": {
+            "target": "Package",
+            "version": "[7.0.11, )"
+          },
+          "Microsoft.EntityFrameworkCore.Design": {
+            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+            "suppressParent": "All",
             "target": "Package",
             "version": "[7.0.11, )"
           },

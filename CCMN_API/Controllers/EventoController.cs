@@ -1,4 +1,5 @@
-﻿using CCMZ_API.Models;
+﻿using CCMN_API.Models.Painel.Pessoas;
+using CCMZ_API.Models;
 using CCMZ_API.Models.Painel.Alocacao;
 using CCMZ_API.Models.Painel.Pessoas;
 using CCMZ_API.Models.Painel.Quartos;
@@ -132,7 +133,7 @@ public class EventoController : ControllerBase
     }
 
     [HttpGet("pessoas/{codigoComunidade:int}")]
-    public async Task<ActionResult<IEnumerable<PessoaQuarto>>> GetPessoaQuartos(int codigoComunidade)
+    public async Task<ActionResult<IEnumerable<PessoaEvento>>> GetEventoPessoas(int codigoComunidade)
     {
         try
         {

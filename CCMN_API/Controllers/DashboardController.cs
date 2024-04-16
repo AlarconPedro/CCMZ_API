@@ -75,6 +75,34 @@ public class DashboardController : ControllerBase
         }
     }
 
+    [HttpGet("numeroPessoasCobrantes/{codigoEvento:int}")]
+    public async Task<IActionResult> GetNumeroPessoasCobrantes(int codigoEvento)
+    {
+        try
+        {
+            var numeroPessoasCobrantes = await _service.GetNumeroPessoasCobrantes(codigoEvento);
+            return Ok(numeroPessoasCobrantes);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+        }
+    }
+
+    [HttpGet("numeroPessoasPagantes/{codigoEvento:int}")]
+    public async Task<IActionResult> GetNumeroPessoasPagantes(int codigoEvento)
+    {
+        try
+        {
+            var numeroPessoasPagantes = await _service.GetNumeroPessoasPagantes(codigoEvento);
+            return Ok(numeroPessoasPagantes);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+        }
+    }
+
     [HttpGet("numeroCamasLivres")]
     public async Task<IActionResult> GetNumeroCamasLivres()
     {
@@ -103,12 +131,12 @@ public class DashboardController : ControllerBase
         }
     }
 
-    [HttpGet("quartoPessoaAChegar/{codigoQuarto:int}")]
-    public async Task<ActionResult> GetQuartoPessoaAChegar(int codigoQuarto)
+    [HttpGet("quartoPessoaAChegar/{codigoQuarto:int}/{codigoEvento:int}")]
+    public async Task<ActionResult> GetQuartoPessoaAChegar(int codigoQuarto, int codigoEvento)
     {
         try
         {
-            var quartoPessoaAChegar = await _service.GetQuartoPessoaAChegar(codigoQuarto);
+            var quartoPessoaAChegar = await _service.GetQuartoPessoaAChegar(codigoQuarto, codigoEvento);
             return Ok(quartoPessoaAChegar);
         }
         catch (Exception ex)
@@ -117,12 +145,12 @@ public class DashboardController : ControllerBase
         }
     }
 
-    [HttpGet("quartoPessoaChegas/{codigoQuarto:int}")]
-    public async Task<ActionResult> GetQuartoPessoaChegas(int codigoQuarto)
+    [HttpGet("quartoPessoaChegas/{codigoQuarto:int}/{codigoEvento:int}")]
+    public async Task<ActionResult> GetQuartoPessoaChegas(int codigoQuarto, int codigoEvento)
     {
         try
         {
-            var quartoPessoaChegas = await _service.GetQuartoPessoaChegas(codigoQuarto);
+            var quartoPessoaChegas = await _service.GetQuartoPessoaChegas(codigoQuarto, codigoEvento);
             return Ok(quartoPessoaChegas);
         }
         catch (Exception ex)

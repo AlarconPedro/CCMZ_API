@@ -1,4 +1,5 @@
-﻿using CCMZ_API.Models;
+﻿using CCMN_API.Models.Painel.Pessoas;
+using CCMZ_API.Models;
 using CCMZ_API.Models.Painel.Alocacao;
 using CCMZ_API.Models.Painel.Pessoas;
 using CCMZ_API.Models.Painel.Quartos;
@@ -100,18 +101,25 @@ public class EventosService : IEventosService
             }).ToListAsync();
     }
 
-    public async Task<IEnumerable<Hospedes>> GetPessoaEvento(int codigoComunidade)
+    public async Task<IEnumerable<PessoaEvento>> GetPessoaEvento(int codigoComunidade)
     {
         return await _context.TbPessoas
             .Where(p => p.ComCodigo == codigoComunidade)
-            .Select(x => new Hospedes
+            .Select(x => new PessoaEvento
             {
-            PesCodigo = x.PesCodigo,
+                EvpPagante = _context.TbEventoPessoas.Where(ep => ep.PesCodigo == x.PesCodigo).Select(ep => ep.EvpPagante).FirstOrDefault(),
+                Comunidade = _context.TbComunidades.Where(c => c.ComCodigo == x.ComCodigo).Select(c => c.ComNome).FirstOrDefault(),
+                EvpCobrante = _context.TbEventoPessoas.Where(ep => ep.PesCodigo == x.PesCodigo).Select(ep => ep.EvpCobrante).FirstOrDefault(),
+                EvpCodigo = _context.TbEventoPessoas.Where(ep => ep.PesCodigo == x.PesCodigo).Select(ep => ep.EvpCodigo).FirstOrDefault(),
+                PesCodigo = x.PesCodigo,
+                PesGenero = x.PesGenero,
+                PesNome = x.PesNome
+           /* PesCodigo = x.PesCodigo,
             PesNome = x.PesNome,
             PesGenero = x.PesGenero,
             Comunidade = _context.TbComunidades.Where(c => c.ComCodigo == x.ComCodigo).Select(c => c.ComNome).FirstOrDefault(),
             Cobrante = _context.TbEventoPessoas.Where(ep => ep.PesCodigo == x.PesCodigo).Select(ep => ep.EvpCobrante).FirstOrDefault(),
-            Pagante = _context.TbEventoPessoas.Where(ep => ep.PesCodigo == x.PesCodigo).Select(ep => ep.EvpPagante).FirstOrDefault()
+            Pagante = _context.TbEventoPessoas.Where(ep => ep.PesCodigo == x.PesCodigo).Select(ep => ep.EvpPagante).FirstOrDefault()*/
         }).ToListAsync();
     }
 

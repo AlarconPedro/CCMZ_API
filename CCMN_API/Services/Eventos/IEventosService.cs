@@ -1,4 +1,5 @@
-﻿using CCMZ_API.Models;
+﻿using CCMN_API.Models.Painel.Pessoas;
+using CCMZ_API.Models;
 using CCMZ_API.Models.Painel.Alocacao;
 using CCMZ_API.Models.Painel.Pessoas;
 using CCMZ_API.Models.Painel.Quartos;
@@ -16,7 +17,7 @@ public interface IEventosService
 /*    Task<IEnumerable<QuartosNome>> GetQuartos(int codigoEvento, int codigoBloco);*/    
     Task<IEnumerable<QuartoPavilhao>> GetQuartosPavilhao(int codigoPavilhao, int codigoEvento);
     Task<IEnumerable<QuartoPavilhao>> GetQuartosAlocados(int codigoPavilhao, int codigoEvento);
-    Task<IEnumerable<Hospedes>> GetPessoaEvento(int codigoComunidade);
+    Task<IEnumerable<PessoaEvento>> GetPessoaEvento(int codigoComunidade);
     Task<IEnumerable<PessoaQuarto>> GetPessoasAlocadas(int codigoComunidade, int codigoEvento);
     Task<IEnumerable<PessoaQuarto>> GetPessoasQuarto(int codigoQuarto, int codigoEvento);
     Task<IEnumerable<ComunidadeNome>> GetComunidades();
