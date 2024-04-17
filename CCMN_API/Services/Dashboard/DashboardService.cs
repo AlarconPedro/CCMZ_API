@@ -15,37 +15,37 @@ public class DashboardService : IDashboardService
 
     public async Task<int> GetNumeroPessoasAChegar(int codigoEvento)
     {
-        return await _context.TbQuartoPessoas
-            .Join(_context.TbEventoQuartos, eq => eq.QuaCodigo, q => q.QuaCodigo, (eq, q) => new { eq, q })
+        return await _context.TbQuartoPessoas.Where(x => x.PesCheckin == false && x.PesNaovem != true && x.PesCodigoNavigation.TbEventoPessoas.Any(eq => eq.EveCodigo == codigoEvento)).CountAsync();
+            /*.Join(_context.TbEventoQuartos, eq => eq.QuaCodigo, q => q.QuaCodigo, (eq, q) => new { eq, q })
             .Join(_context.TbEventos, qp => qp.q.EveCodigo, e => e.EveCodigo, (qp, e) => new { qp, e })
-            .Where(x => x.qp.eq.PesCheckin == false && x.qp.eq.PesNaovem != true && x.e.EveCodigo == codigoEvento).CountAsync();
+            .Where(x => x.qp.eq.PesCheckin == false && x.qp.eq.PesNaovem != true && x.e.EveCodigo == codigoEvento).CountAsync();*/
 /*            ).Where(x => x.PesCheckin == false).CountAsync();
 */    }
 
     public async Task<int> GetNumeroPessoasChegas(int codigoEvento)
     {
-        return await _context.TbQuartoPessoas
-            .Join(_context.TbEventoQuartos, eq => eq.QuaCodigo, q => q.QuaCodigo, (eq, q) => new { eq, q })
+        return await _context.TbQuartoPessoas.Where(x => (x.PesCheckin == true || x.PesChave == true) && x.PesNaovem != true && x.PesCodigoNavigation.TbEventoPessoas.Any(eq => eq.EveCodigo == codigoEvento)).CountAsync();
+           /* .Join(_context.TbEventoQuartos, eq => eq.QuaCodigo, q => q.QuaCodigo, (eq, q) => new { eq, q })
             .Join(_context.TbEventos, qp => qp.q.EveCodigo, e => e.EveCodigo, (qp, e) => new { qp, e })
-            .Where(x => x.qp.eq.PesCheckin == true && x.e.EveCodigo == codigoEvento).CountAsync();
+            .Where(x => x.qp.eq.PesCheckin == true && x.e.EveCodigo == codigoEvento).CountAsync();*/
     }
 
     public async Task<int> GetNumeroPessoasNaoVem(int codigoEvento)
     {
-        return await _context.TbQuartoPessoas
-            .Join(_context.TbEventoQuartos, eq => eq.QuaCodigo, q => q.QuaCodigo, (eq, q) => new { eq, q })
+        return await _context.TbQuartoPessoas.Where(x => x.PesNaovem == true && x.PesCodigoNavigation.TbEventoPessoas.Any(eq => eq.EveCodigo == codigoEvento)).CountAsync();
+            /*.Join(_context.TbEventoQuartos, eq => eq.QuaCodigo, q => q.QuaCodigo, (eq, q) => new { eq, q })
             .Join(_context.TbEventos, qp => qp.q.EveCodigo, e => e.EveCodigo, (qp, e) => new { qp, e })
-            .Where(x => x.qp.eq.PesNaovem == true && x.e.EveCodigo == codigoEvento).CountAsync();
+            .Where(x => x.qp.eq.PesNaovem == true && x.e.EveCodigo == codigoEvento).CountAsync();*/
     }
 
     public async Task<int> GetNumeroPessoasCobrantes(int codigoEvento)
     {
-        return await _context.TbEventoPessoas.Where(x => x.EveCodigo == codigoEvento && x.EvpCobrante == true).CountAsync();
+        return await _context.TbEventoPessoas.Where(x => x.EveCodigo == codigoEvento && x.EvpCobrante == true && x.PesCodigoNavigation.TbQuartoPessoas.Any(qp => qp.PesNaovem) == false).CountAsync();
     }
 
     public async Task<int> GetNumeroPessoasPagantes(int codigoEvento)
     {
-        return await _context.TbEventoPessoas.Where(x => x.EveCodigo == codigoEvento && x.EvpPagante == true).CountAsync();
+        return await _context.TbEventoPessoas.Where(x => x.EveCodigo == codigoEvento && x.EvpPagante == true && x.PesCodigoNavigation.TbQuartoPessoas.Any(qp => qp.PesNaovem) == false).CountAsync();
     }
 
     public async Task<int> GetNumeroCamasLivres()
