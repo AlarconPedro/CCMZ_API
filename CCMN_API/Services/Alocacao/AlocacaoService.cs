@@ -55,9 +55,9 @@ public class AlocacaoService : IAlocacaoService
 
     public async Task<IEnumerable<PessoasNome>> GetPessoasComunidade(int codigoEvento, int codigoComunidade)
     {
-        var listaPessoas = await _context.TbQuartoPessoas.ToListAsync();
+        //var listaPessoas = await _context.TbQuartoPessoas.ToListAsync();
         return await _context.TbPessoas
-            .Where(p => p.ComCodigo == codigoComunidade && !p.TbQuartoPessoas.Any())
+            .Where(p => p.ComCodigo == codigoComunidade && !p.TbQuartoPessoas.Any(qp => qp.PesCodigo == p.PesCodigo))
             .Join(_context.TbEventoPessoas, p => p.PesCodigo, ep => ep.PesCodigo, (p, ep) => new {p, ep})
             .Where(y => y.ep.EveCodigo == codigoEvento)
             .Select(x => new PessoasNome
