@@ -35,7 +35,7 @@ public class EventosService : IEventosService
 
     public async Task<IEnumerable<EventosNome>> GetEventosAtivos()
     {
-        return await _context.TbEventos.Where(e => e.EveDatafim >= DateTime.Now)
+        return await _context.TbEventos.Where(e => e.EveDatafim.Value.AddDays(1) >= DateTime.Now)
             .Select(e => new EventosNome
             {
                 EveCodigo = e.EveCodigo,

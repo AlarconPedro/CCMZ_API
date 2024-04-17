@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CCMN_API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+29715c48c63920829d00347f37e926453f9744a1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+08fde3e667edc284be8dba4df2bcc96afae24dee")]
 [assembly: System.Reflection.AssemblyProductAttribute("CCMN_API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CCMN_API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

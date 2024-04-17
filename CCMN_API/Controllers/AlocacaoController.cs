@@ -63,7 +63,10 @@ public class AlocacaoController : ControllerBase
         try
         {
             var pessoas = await _service.GetPessoasComunidade(codigoEvento, codigoComunidade);
-            return Ok(pessoas);
+            if (pessoas != null)
+                return Ok(pessoas);
+
+            return NotFound("Nenhuma pessoa encontrada !");
         }
         catch (Exception e)
         {
