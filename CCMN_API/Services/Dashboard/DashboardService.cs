@@ -67,10 +67,7 @@ public class DashboardService : IDashboardService
         return await _context.TbQuartoPessoas
             .Join(_context.TbEventoQuartos, eq => eq.QuaCodigo, q => q.QuaCodigo, (eq, q) => new { eq, q })
             .Join(_context.TbEventos, qp => qp.q.EveCodigo, e => e.EveCodigo, (qp, e) => new { qp, e })
-            .Where(x => x.qp.eq.PesCheckin == false 
-                && DateTime.Now >= x.qp.q.EveCodigoNavigation.EveDatainicio 
-                && DateTime.Now <= x.qp.q.EveCodigoNavigation.EveDatafim 
-                && x.e.EveCodigo == codigoEvento)
+            .Where(x => x.qp.eq.PesCheckin == false && x.e.EveCodigo == codigoEvento)
             .Select(x => new PessoasAChegar
             {
              PesCodigo = x.qp.eq.PesCodigo,
@@ -86,10 +83,7 @@ public class DashboardService : IDashboardService
         return await _context.TbQuartoPessoas
             .Join(_context.TbEventoQuartos, eq => eq.QuaCodigo, q => q.QuaCodigo, (eq, q) => new { eq, q })
             .Join(_context.TbEventos, qp => qp.q.EveCodigo, e => e.EveCodigo, (qp, e) => new { qp, e })
-            .Where(x => x.qp.eq.PesCheckin == true 
-                && DateTime.Now >= x.qp.q.EveCodigoNavigation.EveDatainicio 
-                && DateTime.Now <= x.qp.q.EveCodigoNavigation.EveDatafim
-                && x.e.EveCodigo == codigoEvento
+            .Where(x => x.qp.eq.PesCheckin == true && x.e.EveCodigo == codigoEvento
                 )
             .Select(x => new PessoasAChegar
             {
@@ -98,6 +92,19 @@ public class DashboardService : IDashboardService
                 PesGenero = x.qp.eq.PesCodigoNavigation.PesGenero,
                 ComNome = x.qp.eq.PesCodigoNavigation.ComCodigoNavigation.ComNome,
                 QuaCodigo = x.qp.eq.QuaCodigo
+            }).ToListAsync();
+    }
+
+    public async Task<IEnumerable<PessoasAChegar>> GetPessoasNaoVem(int codigoEvento)
+    {
+        return await _context.TbQuartoPessoas.Where(qp => (qp.PesNaovem == true) && (qp.PesChave == false && qp.PesCheckin == false) && qp.QuaCodigoNavigation.TbEventoQuartos.Any(eq => eq.EveCodigo == codigoEvento))
+            .Select(x => new PessoasAChegar
+            {
+                PesCodigo = x.PesCodigo,
+                PesNome = x.PesCodigoNavigation.PesNome,
+                PesGenero = x.PesCodigoNavigation.PesGenero,
+                ComNome = x.PesCodigoNavigation.ComCodigoNavigation.ComNome,
+                QuaCodigo = x.QuaCodigo,
             }).ToListAsync();
     }
 
