@@ -16,10 +16,12 @@ public interface IDashboardService
     Task<int> GetNumeroCamasOcupadas(int codigoEvento);
     Task<IEnumerable<PessoasAChegar>> GetPessoasAChegar(int codigoEvento);
     Task<IEnumerable<PessoasAChegar>> GetPessoasChegas(int codigoEvento);
+    Task<IEnumerable<PessoasAChegar>> GetPessoasNaoVem(int codigoEvento);
     Task<IEnumerable<PessoasAChegar>> GetQuartosLivres(int codigoEvento);
     Task<IEnumerable<PessoasAChegar>> GetQuartosOcupados(int codigoEvento);
     Task<QuartoPessoas> GetQuartoPessoaAChegar(int codigoQuarto, int codigoEvento);
     Task<QuartoPessoas> GetQuartoPessoaChegas(int codigoQuarto, int codigoEvento);
+    //Task<QuartoPessoas> GetQuartoPessoaNaoVem(int codigoQuarto, int codigoEvento);
     Task<QuartoPessoas> GetQuartoVagas(int codigoQuarto);
     Task<QuartoPessoas> GetQuartoOcupados(int codigoQuarto);
     Task<int> GetIdEventoAtivo();

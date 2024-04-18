@@ -32,6 +32,32 @@ public class DashboardController : ControllerBase
     }
 
     [HttpGet("pessoasChegas/{codigoEvento:int}")]
+    public async Task<ActionResult> GetPessoasChegas(int codigoEvento)
+    {
+        try
+        {
+            var pessoasChegas = await _service.GetPessoasChegas(codigoEvento);
+            return Ok(pessoasChegas);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+        }
+    }
+
+    [HttpGet("pessoasNaoVem/{codigoEvento:int}")]
+    public async Task<ActionResult> GetPessoasNaoVem(int codigoEvento)
+    {
+        try
+        {
+            var pessoasNaoVem = await _service.GetPessoasNaoVem(codigoEvento);
+            return Ok(pessoasNaoVem);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+        }
+    }
 
     [HttpGet("numeroPessoasAChegar/{codigoEvento:int}")]
     public async Task<IActionResult> GetNumeroPessoasAChegar(int codigoEvento)
