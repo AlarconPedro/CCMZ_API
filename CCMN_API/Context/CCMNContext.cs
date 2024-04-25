@@ -166,6 +166,13 @@ public partial class CCMNContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("EVE_NOME");
+            entity.Property(e => e.EveTipoCobranca)
+                .HasMaxLength(1)
+                .IsUnicode(false)
+                .HasColumnName("EVE_TIPO_COBRANCA");
+            entity.Property(e => e.EveValor)
+                .HasColumnType("decimal(18, 0)")
+                .HasColumnName("EVE_VALOR");
         });
 
         modelBuilder.Entity<TbEventoPessoa>(entity =>

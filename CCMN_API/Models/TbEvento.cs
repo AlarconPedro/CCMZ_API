@@ -13,5 +13,9 @@ public partial class TbEvento
 
     public DateTime? EveDatafim { get; set; }
 
+    public decimal? EveValor { get; set; }
+
+    public string? EveTipoCobranca { get; set; }
+
     public virtual ICollection<TbEventoQuarto> TbEventoQuartos { get; set; } = new List<TbEventoQuarto>();
 }
