@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using CCMN_API;
 using CCMZ_API.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -25,6 +26,10 @@ public partial class CCMNContext : DbContext
     public virtual DbSet<TbCasai> TbCasais { get; set; }
 
     public virtual DbSet<TbComunidade> TbComunidades { get; set; }
+
+    public virtual DbSet<TbDespesaComunidadeEvento> TbDespesaComunidadeEventos { get; set; }
+
+    public virtual DbSet<TbDespesaEvento> TbDespesaEventos { get; set; }
 
     public virtual DbSet<TbEvento> TbEventos { get; set; }
 
@@ -99,6 +104,47 @@ public partial class CCMNContext : DbContext
                 .HasMaxLength(2)
                 .IsUnicode(false)
                 .HasColumnName("COM_UF");
+        });
+
+        modelBuilder.Entity<TbDespesaComunidadeEvento>(entity =>
+        {
+            entity.HasKey(e => e.DceCodigo);
+
+            entity.ToTable("TB_DESPESA_COMUNIDADE_EVENTO");
+
+            entity.Property(e => e.DceCodigo)
+                .ValueGeneratedNever()
+                .HasColumnName("DCE_CODIGO");
+            entity.Property(e => e.ComCodigo).HasColumnName("COM_CODIGO");
+            entity.Property(e => e.DceNome)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("DCE_NOME");
+            entity.Property(e => e.DceQuantiadde).HasColumnName("DCE_QUANTIADDE");
+            entity.Property(e => e.DceValor)
+                .HasColumnType("decimal(18, 0)")
+                .HasColumnName("DCE_VALOR");
+            entity.Property(e => e.EveCodigo).HasColumnName("EVE_CODIGO");
+        });
+
+        modelBuilder.Entity<TbDespesaEvento>(entity =>
+        {
+            entity.HasKey(e => e.DseCodigo);
+
+            entity.ToTable("TB_DESPESA_EVENTO");
+
+            entity.Property(e => e.DseCodigo)
+                .ValueGeneratedNever()
+                .HasColumnName("DSE_CODIGO");
+            entity.Property(e => e.DseNome)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("DSE_NOME");
+            entity.Property(e => e.DseQuantidade).HasColumnName("DSE_QUANTIDADE");
+            entity.Property(e => e.DseValor)
+                .HasColumnType("decimal(18, 0)")
+                .HasColumnName("DSE_VALOR");
+            entity.Property(e => e.EveCodigo).HasColumnName("EVE_CODIGO");
         });
 
         modelBuilder.Entity<TbEvento>(entity =>
