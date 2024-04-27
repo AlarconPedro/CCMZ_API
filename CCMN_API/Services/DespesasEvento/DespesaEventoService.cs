@@ -1,6 +1,10 @@
-﻿namespace CCMN_API.Services.DespesasEvento
+﻿
+namespace CCMN_API.Services.DespesasEvento;
+
+public class DespesaEventoService : IDespesaEventoService
 {
-    public class DespesaEventoService
+    public Task<TbDespesaEvento> GetDespesaEvento(int codigoEvento)
     {
+        throw new NotImplementedException();
     }
 }

@@ -1,6 +1,6 @@
-﻿namespace CCMN_API.Services.DespesasEvento
+﻿namespace CCMN_API.Services.DespesasEvento;
+
+public interface IDespesaEventoService
 {
-    public interface IDespesaEventoService
-    {
-    }
+    Task<TbDespesaEvento> GetDespesaEvento(int codigoEvento);
 }

@@ -1,6 +1,5 @@
-﻿namespace CCMN_API.Services.DespesasComunidade
+﻿namespace CCMN_API.Services.DespesasComunidade;
+
+public interface IDespesaComunidadeService
 {
-    public interface IDespesaComunidadeService
-    {
-    }
 }
