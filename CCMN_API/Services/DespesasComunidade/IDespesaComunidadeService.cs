@@ -1,5 +1,10 @@
-﻿namespace CCMN_API.Services.DespesasComunidade;
+﻿using CCMN_API.Models.Painel.EventoDespesas;
+
+namespace CCMN_API.Services.DespesasComunidade;
 
 public interface IDespesaComunidadeService
 {
+    Task<TbDespesaComunidadeEvento> GetDespesasComunidade(int codigoEvento, int codigoComunidade);
+
+    Task<PessoasPagantesCobrantes> GetCobrantesPagantes(int codigoEvento, int codigoComunidade);
 }

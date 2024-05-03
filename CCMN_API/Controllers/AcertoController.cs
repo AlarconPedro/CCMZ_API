@@ -56,4 +56,30 @@ public class AcertoController : ControllerBase
 
         return Ok(cobrantesPagantes);
     }
+
+    [HttpGet("comunidade/despesas/{codigoEvento}/{codigoComunidade}")]
+    public async Task<IActionResult> GetDespesasComunidade(int codigoEvento, int codigoComunidade)
+    {
+        var despesasComunidade = await _comunidadeService.GetDespesasComunidade(codigoEvento, codigoComunidade);
+
+        if (despesasComunidade == null)
+        {
+            return NotFound("Nenhuma Despesa Cadastrada na Comunidade !");
+        }
+
+        return Ok(despesasComunidade);
+    }
+
+    [HttpGet("comunidade/pessoas/{codigoEvento}/{codigoComunidade}")]
+    public async Task<IActionResult> GetCobrantesPagantes(int codigoEvento, int codigoComunidade)
+    {
+        var cobrantesPagantes = await _comunidadeService.GetCobrantesPagantes(codigoEvento, codigoComunidade);
+
+        if (cobrantesPagantes == null)
+        {
+            return NotFound("Nenhuma Pessoa Cadastrada na Comunidade !");
+        }
+
+        return Ok(cobrantesPagantes);
+    }
 }
