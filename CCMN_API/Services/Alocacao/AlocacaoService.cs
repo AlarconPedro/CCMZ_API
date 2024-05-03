@@ -100,7 +100,8 @@ public class AlocacaoService : IAlocacaoService
     {
         if (quartoPessoa.QupCodigo == 0)
         {
-            var lastQuartoPessoa = await _context.TbQuartoPessoas.OrderByDescending(qp => qp.QupCodigo).FirstOrDefaultAsync();
+            //var lastQuartoPessoa = await _context.TbQuartoPessoas.OrderByDescending(qp => qp.QupCodigo).FirstOrDefaultAsync();
+            var lastQuartoPessoa = await _context.TbQuartoPessoas.FirstOrDefaultAsync();
             if (lastQuartoPessoa != null)
             {
                 quartoPessoa.QupCodigo = await _context.TbQuartoPessoas.MaxAsync(qp => qp.QupCodigo) + 1;
