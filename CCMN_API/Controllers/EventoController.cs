@@ -75,9 +75,10 @@ public class EventoController : ControllerBase
         {
             var evento = await _service.GetEvento(id);
             if (evento != null)
-                return NotFound($"Nennhum evento encontrado com o id {id} !");
+                return Ok(evento);
 
-            return Ok(evento);
+            return NotFound($"Nennhum evento encontrado com o id {id} !");
+            
         } catch
         {
             return BadRequest("Erro ao trazer o evento !");
