@@ -121,7 +121,8 @@
               "RelativeToolTip": "CCMN_API\\Services\\Eventos\\EventosService.cs",
               "ViewState": "AQIAABoAAAAAAAAAAAA9wDQAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-03T21:20:54.656Z"
+              "WhenOpened": "2024-05-03T21:20:54.656Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -145,7 +146,8 @@
               "RelativeToolTip": "CCMN_API\\Services\\DespesasEvento\\DespesaEventoService.cs",
               "ViewState": "AQIAAAkAAAAAAAAAAAAAABkAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-25T00:18:20.32Z"
+              "WhenOpened": "2024-04-25T00:18:20.32Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -182,7 +184,8 @@
               "RelativeToolTip": "CCMN_API\\Services\\DespesasComunidade\\DespesaComunidadeService.cs",
               "ViewState": "AQIAAA0AAAAAAAAAAADwvyQAAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-25T00:17:39.101Z"
+              "WhenOpened": "2024-04-25T00:17:39.101Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
