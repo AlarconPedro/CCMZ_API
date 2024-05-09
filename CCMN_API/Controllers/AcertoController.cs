@@ -18,8 +18,21 @@ public class AcertoController : ControllerBase
         _comunidadeService = comunidadeService;
     }
 
+    [HttpGet("evento/comunidades/{codigoEvento}")]
+    public async Task<ActionResult> GetComunidadesEvento(int codigoEvento)
+    {
+        var comunidadesEvento = await _eventoService.GetComunidadesEvento(codigoEvento);
+
+        if (comunidadesEvento == null)
+        {
+            return NotFound("Nenhuma Comunidade Cadastrada no Evento !");
+        }
+
+        return Ok(comunidadesEvento);
+    }
+
     [HttpGet("evento/custo/{codigoEvento}")]
-    public async Task<IActionResult> GetEventoCusto(int codigoEvento)
+    public async Task<ActionResult> GetEventoCusto(int codigoEvento)
     {
         var eventoCusto = await _eventoService.GetEventoCusto(codigoEvento);
 

@@ -2,6 +2,7 @@
 using CCMN_API.Models.Painel.Evento;
 using CCMN_API.Models.Painel.EventoDespesas;
 using CCMZ_API;
+using CCMZ_API.Models.Painel.Alocacao;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
@@ -28,6 +29,15 @@ public class DespesaEventoService : IDespesaEventoService
     public async Task<TbDespesaEvento> GetDespesasEvento(int codigoEvento)
     {
         return await _context.TbDespesaEventos.Where(x => x.EveCodigo == codigoEvento).FirstOrDefaultAsync();
+    }
+
+    public async Task<IEnumerable<ComunidadeNome>> GetComunidadesEvento(int codigoEvento)
+    {
+        return await _context.TbEventoPessoas.Where(x => x.EveCodigo == codigoEvento).Select(x => new ComunidadeNome
+        {
+            ComCodigo = x.PesCodigoNavigation.ComCodigoNavigation.ComCodigo,
+            ComNome = x.PesCodigoNavigation.ComCodigoNavigation.ComNome
+        }).Distinct().ToListAsync();
     }
 
     public async Task<EventoCusto> GetEventoCusto(int codigoEvento)
