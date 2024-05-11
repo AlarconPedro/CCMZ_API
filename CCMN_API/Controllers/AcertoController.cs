@@ -18,6 +18,7 @@ public class AcertoController : ControllerBase
         _comunidadeService = comunidadeService;
     }
 
+    //GET
     [HttpGet("evento/comunidades/{codigoEvento}")]
     public async Task<ActionResult> GetComunidadesEvento(int codigoEvento)
     {
@@ -94,5 +95,23 @@ public class AcertoController : ControllerBase
         }
 
         return Ok(cobrantesPagantes);
+    }
+
+    //POST
+    [HttpPost("evento/despesas")]
+    public async Task<IActionResult> AddDespesaEvento(TbDespesaEvento despesaEvento)
+    {
+        await _eventoService.AddDespesaEvento(despesaEvento);
+
+        return Ok("Despesa Cadastrada com Sucesso !");
+    }
+
+    //PUT
+    [HttpPut("evento/despesas")]
+    public async Task<IActionResult> UpdateDespesaEvento(TbDespesaEvento despesaEvento)
+    {
+        await _eventoService.UpdateDespesaEvento(despesaEvento);
+
+        return Ok("Despesa Atualizada com Sucesso !");
     }
 }

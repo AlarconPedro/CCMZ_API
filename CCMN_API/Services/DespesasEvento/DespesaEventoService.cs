@@ -48,4 +48,15 @@ public class DespesaEventoService : IDespesaEventoService
             EveTipoCobranca = x.EveTipoCobranca
         }).FirstOrDefaultAsync();
     }
+
+    public async Task AddDespesaEvento(TbDespesaEvento despesaEvento)
+    {
+        _context.TbDespesaEventos.Add(despesaEvento);
+        await _context.SaveChangesAsync();
+    }
+        
+    public async Task UpdateDespesaEvento(TbDespesaEvento despesaEvento)
+    {
+        _context.Entry(despesaEvento).State = EntityState.Modified;
+        await _context.SaveChangesAsync();    }
 }
