@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CCMZ_API;
+using System;
 using System.Collections.Generic;
 
 namespace CCMN_API;
@@ -16,4 +17,7 @@ public partial class TbDespesaComunidadeEvento
     public int? DceQuantiadde { get; set; }
 
     public decimal? DceValor { get; set; }
+
+    public virtual TbEvento? EveCodigoNavigation { get; set; }
+
 }
