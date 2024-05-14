@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CCMZ_API;
+namespace CCMN_API;
 
 public partial class TbComunidade
 {
@@ -12,6 +12,8 @@ public partial class TbComunidade
     public string? ComCidade { get; set; }
 
     public string? ComUf { get; set; }
+
+    public virtual ICollection<TbDespesaComunidadeEvento> TbDespesaComunidadeEventos { get; set; } = new List<TbDespesaComunidadeEvento>();
 
     public virtual ICollection<TbPessoa> TbPessoas { get; set; } = new List<TbPessoa>();
 }

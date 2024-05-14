@@ -1,8 +1,7 @@
-﻿using CCMN_API;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
-namespace CCMZ_API;
+namespace CCMN_API;
 
 public partial class TbEvento
 {
@@ -18,10 +17,11 @@ public partial class TbEvento
 
     public string? EveTipoCobranca { get; set; }
 
-    public virtual ICollection<TbEventoQuarto> TbEventoQuartos { get; set; } = new List<TbEventoQuarto>();
-
-    public virtual ICollection<TbEventoPessoa> TbEventoPessoas { get; set; } = new List<TbEventoPessoa>();
+    public virtual ICollection<TbDespesaComunidadeEvento> TbDespesaComunidadeEventos { get; set; } = new List<TbDespesaComunidadeEvento>();
 
     public virtual ICollection<TbDespesaEvento> TbDespesaEventos { get; set; } = new List<TbDespesaEvento>();
 
+    public virtual ICollection<TbEventoPessoa> TbEventoPessoas { get; set; } = new List<TbEventoPessoa>();
+
+    public virtual ICollection<TbEventoQuarto> TbEventoQuartos { get; set; } = new List<TbEventoQuarto>();
 }

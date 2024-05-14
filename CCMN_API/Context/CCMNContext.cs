@@ -125,6 +125,14 @@ public partial class CCMNContext : DbContext
                 .HasColumnType("decimal(18, 0)")
                 .HasColumnName("DCE_VALOR");
             entity.Property(e => e.EveCodigo).HasColumnName("EVE_CODIGO");
+
+            entity.HasOne(d => d.ComCodigoNavigation).WithMany(p => p.TbDespesaComunidadeEventos)
+                .HasForeignKey(d => d.ComCodigo)
+                .HasConstraintName("ComunidadeEventoDespesa");
+
+            entity.HasOne(d => d.EveCodigoNavigation).WithMany(p => p.TbDespesaComunidadeEventos)
+                .HasForeignKey(d => d.EveCodigo)
+                .HasConstraintName("DespesasEvento");
         });
 
         modelBuilder.Entity<TbDespesaEvento>(entity =>
@@ -156,6 +164,7 @@ public partial class CCMNContext : DbContext
                 .HasForeignKey(d => d.EveCodigo)
                 .HasConstraintName("FK_TB_DESPESA_EVENTO_TB_EVENTOS");
         });
+
         modelBuilder.Entity<TbEvento>(entity =>
         {
             entity.HasKey(e => e.EveCodigo);
@@ -194,13 +203,17 @@ public partial class CCMNContext : DbContext
                 .ValueGeneratedNever()
                 .HasColumnName("EVP_CODIGO");
             entity.Property(e => e.EveCodigo).HasColumnName("EVE_CODIGO");
-            entity.Property(e => e.PesCodigo).HasColumnName("PES_CODIGO");
-            entity.Property(e => e.EvpPagante).HasColumnName("EVP_PAGANTE");
             entity.Property(e => e.EvpCobrante).HasColumnName("EVP_COBRANTE");
+            entity.Property(e => e.EvpPagante).HasColumnName("EVP_PAGANTE");
+            entity.Property(e => e.PesCodigo).HasColumnName("PES_CODIGO");
+
+            entity.HasOne(d => d.EveCodigoNavigation).WithMany(p => p.TbEventoPessoas)
+                .HasForeignKey(d => d.EveCodigo)
+                .HasConstraintName("Evento");
 
             entity.HasOne(d => d.PesCodigoNavigation).WithMany(p => p.TbEventoPessoas)
                 .HasForeignKey(d => d.PesCodigo)
-                .HasConstraintName("FK_TB_EVENTO_PESSOAS_TB_EVENTOS");
+                .HasConstraintName("Pessoa");
         });
 
         modelBuilder.Entity<TbEventoQuarto>(entity =>
@@ -294,11 +307,11 @@ public partial class CCMNContext : DbContext
             entity.Property(e => e.QupCodigo)
                 .ValueGeneratedNever()
                 .HasColumnName("QUP_CODIGO");
-            entity.Property(e => e.PesCodigo).HasColumnName("PES_CODIGO");
-            entity.Property(e => e.QuaCodigo).HasColumnName("QUA_CODIGO");
             entity.Property(e => e.PesChave).HasColumnName("PES_CHAVE");
             entity.Property(e => e.PesCheckin).HasColumnName("PES_CHECKIN");
+            entity.Property(e => e.PesCodigo).HasColumnName("PES_CODIGO");
             entity.Property(e => e.PesNaovem).HasColumnName("PES_NAOVEM");
+            entity.Property(e => e.QuaCodigo).HasColumnName("QUA_CODIGO");
 
             entity.HasOne(d => d.PesCodigoNavigation).WithMany(p => p.TbQuartoPessoas)
                 .HasForeignKey(d => d.PesCodigo)

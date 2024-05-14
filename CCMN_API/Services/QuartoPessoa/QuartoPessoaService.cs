@@ -1,4 +1,5 @@
-﻿using CCMZ_API.Models.Painel.QuartoPessoa;
+﻿using CCMN_API;
+using CCMZ_API.Models.Painel.QuartoPessoa;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 

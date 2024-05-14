@@ -1,4 +1,5 @@
-﻿using CCMN_API.Models.Painel.Pessoas;
+﻿using CCMN_API;
+using CCMN_API.Models.Painel.Pessoas;
 using CCMZ_API.Models;
 using CCMZ_API.Models.Painel.Alocacao;
 using CCMZ_API.Models.Painel.Pessoas;
@@ -133,12 +134,12 @@ public class EventoController : ControllerBase
         }
     }
 
-    [HttpGet("pessoas/{codigoComunidade:int}")]
-    public async Task<ActionResult<IEnumerable<PessoaEvento>>> GetEventoPessoas(int codigoComunidade)
+    [HttpGet("pessoas/{codigoComunidade:int}/{codigoEvento:int}")]
+    public async Task<ActionResult<IEnumerable<PessoaEvento>>> GetEventoPessoas(int codigoComunidade, int codigoEvento)
     {
         try
         {
-            var pessoas = await _service.GetPessoaEvento(codigoComunidade);
+            var pessoas = await _service.GetPessoaEvento(codigoComunidade, codigoEvento);
             if (pessoas == null)
                 return NotFound($"Nenhuma pessoa encontrada para a comunidade com o código {codigoComunidade} !");
 
@@ -253,12 +254,12 @@ public class EventoController : ControllerBase
         }
     }
 
-    [HttpPost("pessoas/{codigo:int}")]
-    public async Task<ActionResult> PostPessoas(List<TbEventoPessoa> eventoPessoa, int codigo)
+    [HttpPost("pessoas")]
+    public async Task<ActionResult> PostPessoas(List<TbEventoPessoa> eventoPessoa)
     {
         try
         {
-            await _service.PostPessoas(eventoPessoa, codigo);
+            await _service.PostPessoas(eventoPessoa);
             return Ok("Pessoas cadastradas com sucesso !");
         }catch (Exception ex)
         {

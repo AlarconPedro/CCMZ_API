@@ -1,4 +1,5 @@
-﻿using CCMN_API.Models.Painel.Pessoas;
+﻿using CCMN_API;
+using CCMN_API.Models.Painel.Pessoas;
 using CCMZ_API.Models;
 using CCMZ_API.Models.Painel.Alocacao;
 using CCMZ_API.Models.Painel.Pessoas;
@@ -88,11 +89,11 @@ public class EventosService : IEventosService
                 QuaQtdcamasdisponiveis = q.QuaQtdcamas - _context.TbPessoas.Where(p => p.TbQuartoPessoas
                                                            .Where(qp => qp.QuaCodigo == q.QuaCodigo && p.TbEventoPessoas
                                                            .Where(eq => eq.EveCodigo == codigoEvento).FirstOrDefault() != null)
-                                                           .FirstOrDefault() != null).Count(),
+                                                           .FirstOrDefault() != null && p.TbEventoPessoas.Where(eq => eq.EveCodigo == codigoEvento).FirstOrDefault() != null).Count(),
                 PessoasQuarto = _context.TbPessoas.Where(p => p.TbQuartoPessoas
                                                   .Where(qp => qp.QuaCodigo == q.QuaCodigo && p.TbEventoPessoas
                                                            .Where(eq => eq.EveCodigo == codigoEvento).FirstOrDefault() != null)
-                                                           .FirstOrDefault() != null).Select(p => new PessoasNome
+                                                           .FirstOrDefault() != null && p.TbEventoPessoas.Where(eq => eq.EveCodigo == codigoEvento).FirstOrDefault() != null).Select(p => new PessoasNome
                                                            {
                                                                 PesCodigo = p.PesCodigo,
                                                                 PesNome = p.PesNome,
@@ -101,16 +102,16 @@ public class EventosService : IEventosService
             }).ToListAsync();
     }
 
-    public async Task<IEnumerable<PessoaEvento>> GetPessoaEvento(int codigoComunidade)
+    public async Task<IEnumerable<PessoaEvento>> GetPessoaEvento(int codigoComunidade, int codigoEvento)
     {
         return await _context.TbPessoas
             .Where(p => p.ComCodigo == codigoComunidade)
             .Select(x => new PessoaEvento
             {
-                EvpPagante = _context.TbEventoPessoas.Where(ep => ep.PesCodigo == x.PesCodigo).Select(ep => ep.EvpPagante).FirstOrDefault(),
+                EvpPagante = _context.TbEventoPessoas.Where(ep => ep.PesCodigo == x.PesCodigo && ep.EveCodigo == codigoEvento).Select(ep => ep.EvpPagante).FirstOrDefault(),
                 Comunidade = _context.TbComunidades.Where(c => c.ComCodigo == x.ComCodigo).Select(c => c.ComNome).FirstOrDefault(),
-                EvpCobrante = _context.TbEventoPessoas.Where(ep => ep.PesCodigo == x.PesCodigo).Select(ep => ep.EvpCobrante).FirstOrDefault(),
-                EvpCodigo = _context.TbEventoPessoas.Where(ep => ep.PesCodigo == x.PesCodigo).Select(ep => ep.EvpCodigo).FirstOrDefault(),
+                EvpCobrante = _context.TbEventoPessoas.Where(ep => ep.PesCodigo == x.PesCodigo && ep.EveCodigo == codigoEvento).Select(ep => ep.EvpCobrante).FirstOrDefault(),
+                EvpCodigo = _context.TbEventoPessoas.Where(ep => ep.PesCodigo == x.PesCodigo && ep.EveCodigo == codigoEvento).Select(ep => ep.EvpCodigo).FirstOrDefault(),
                 PesCodigo = x.PesCodigo,
                 PesGenero = x.PesGenero,
                 PesNome = x.PesNome
@@ -218,7 +219,7 @@ public class EventosService : IEventosService
         }
     }
 
-    public async Task PostPessoas(List<TbEventoPessoa> eventoPessoa, int codigo)
+    public async Task PostPessoas(List<TbEventoPessoa> eventoPessoa)
     {
         //await _context.TbEventoPessoas.Where(ep => ep.PesCodigoNavigation.ComCodigo == codigo).ExecuteDeleteAsync();
         foreach (var item in eventoPessoa)

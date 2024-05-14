@@ -3,6 +3,7 @@ using CCMZ_API.Models.Painel.Pessoas;
 
 namespace CCMZ_API.Services.Alocacao;
 
+using CCMN_API;
 using CCMZ_API.Models.Painel.Comunidade;
 
 public interface IAlocacaoService

@@ -59,4 +59,14 @@ public class DespesaEventoService : IDespesaEventoService
     {
         _context.Entry(despesaEvento).State = EntityState.Modified;
         await _context.SaveChangesAsync();    }
+
+    Task<TbDespesaEvento> IDespesaEventoService.AddDespesaEvento(TbDespesaEvento despesaEvento)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task<TbDespesaEvento> IDespesaEventoService.UpdateDespesaEvento(TbDespesaEvento despesaEvento)
+    {
+        throw new NotImplementedException();
+    }
 }

@@ -1,7 +1,7 @@
-﻿    using System;
+﻿using System;
 using System.Collections.Generic;
 
-namespace CCMZ_API;
+namespace CCMN_API;
 
 public partial class TbQuarto
 {

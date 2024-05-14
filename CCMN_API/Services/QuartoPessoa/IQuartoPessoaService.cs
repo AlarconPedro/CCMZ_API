@@ -1,4 +1,5 @@
-﻿using CCMZ_API.Models.Painel.QuartoPessoa;
+﻿using CCMN_API;
+using CCMZ_API.Models.Painel.QuartoPessoa;
 
 namespace CCMZ_API.Services.QuartoPessoa;
 

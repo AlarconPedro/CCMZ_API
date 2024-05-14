@@ -1,4 +1,5 @@
-﻿using CCMZ_API.Models.Painel.QuartoPessoa;
+﻿using CCMN_API;
+using CCMZ_API.Models.Painel.QuartoPessoa;
 using CCMZ_API.Services.QuartoPessoa;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CCMZ_API.Services.Alocacao;
 
+using CCMN_API;
 using CCMZ_API.Models.Painel.Comunidade;
 
 public class AlocacaoService : IAlocacaoService

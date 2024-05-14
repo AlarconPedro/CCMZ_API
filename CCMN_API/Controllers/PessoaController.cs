@@ -1,4 +1,5 @@
-﻿using CCMZ_API.Models;
+﻿using CCMN_API;
+using CCMZ_API.Models;
 using CCMZ_API.Models.Painel.Pessoas;
 using CCMZ_API.Services.Pessoas;
 using Microsoft.AspNetCore.Http;

@@ -1,4 +1,6 @@
 ﻿namespace CCMZ_API.Services.Pessoas;
+
+using CCMN_API;
 using CCMZ_API.Models;
 using CCMZ_API.Models.Painel.Pessoas;
 

@@ -2,6 +2,7 @@
 
 namespace CCMZ_API.Services.Blocos;
 
+using CCMN_API;
 using CCMZ_API.Models.Painel.Bloco;
 
 public interface IBlocosService
