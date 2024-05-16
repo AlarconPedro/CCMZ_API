@@ -97,13 +97,55 @@ public class AcertoController : ControllerBase
         return Ok(cobrantesPagantes);
     }
 
+    [HttpGet("evento/despesas/cozinha/{codigoEvento}")]
+    public async Task<ActionResult> GetValorCozinha(int codigoEvento)
+    {
+        var valorCozinha = await _eventoService.GetValorCozinha(codigoEvento);
+
+        if (valorCozinha == 0)
+        {
+            return NotFound("Nenhuma Despesa de Cozinha Cadastrada no Evento !");
+        }
+
+        return Ok(valorCozinha);
+    }
+
+    [HttpGet("evento/despesas/hostiaria/{codigoEvento}")]
+    public async Task<ActionResult> GetValorHostiaria(int codigoEvento)
+    {
+        var valorHostiaria = await _eventoService.GetValorHostiaria(codigoEvento);
+
+        if (valorHostiaria == 0)
+        {
+            return NotFound("Nenhuma Despesa de Hostiaria Cadastrada no Evento !");
+        }
+
+        return Ok(valorHostiaria);
+    }
+
     //POST
     [HttpPost("evento/despesas")]
-    public async Task<IActionResult> AddDespesaEvento(TbDespesaEvento despesaEvento)
+    public async Task<ActionResult> AddDespesaEvento(TbDespesaEvento despesaEvento)
     {
         await _eventoService.AddDespesaEvento(despesaEvento);
 
         return Ok("Despesa Cadastrada com Sucesso !");
+    }
+
+    [HttpPost("evento/despesas/cozinha")]
+    public async Task<IActionResult> AddDespesaCozinha(int codigoEvento, decimal valor)
+    {
+        await _eventoService.AddDespesaCozinha(codigoEvento, valor);
+
+        return Ok("Despesa de Cozinha Cadastrada com Sucesso !");
+    }
+
+    [HttpPost("evento/despesas/hostiaria")]
+    public async Task<IActionResult> AddDespesaHostiaria(int codigoEvento, decimal valor)
+    {
+        await _eventoService.AddDespesaHostiaria(codigoEvento, valor);
+
+        return Ok("Despesa de Hostiaria Cadastrada com Sucesso !");
     }
 
     //PUT
@@ -113,5 +155,21 @@ public class AcertoController : ControllerBase
         await _eventoService.UpdateDespesaEvento(despesaEvento);
 
         return Ok("Despesa Atualizada com Sucesso !");
+    }
+
+    [HttpPut("evento/despesas/cozinha")]
+    public async Task<IActionResult> UpdateDespesaCozinha(int codigoEvento, decimal valor)
+    {
+        await _eventoService.UpdateDespesaCozinha(codigoEvento, valor);
+
+        return Ok("Despesa de Cozinha Atualizada com Sucesso !");
+    }
+
+    [HttpPut("evento/despesas/hostiaria")]
+    public async Task<IActionResult> UpdateDespesaHostiaria(int codigoEvento, decimal valor)
+    {
+        await _eventoService.UpdateDespesaHostiaria(codigoEvento, valor);
+
+        return Ok("Despesa de Hostiaria Atualizada com Sucesso !");
     }
 }

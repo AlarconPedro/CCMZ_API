@@ -15,9 +15,9 @@ public partial class TbDespesaEvento
 
     public decimal? DseValor { get; set; }
 
-    public decimal? DseCozinha { get; set; }
+    public decimal DseCozinha { get; set; }
 
-    public decimal? DseHostiaria { get; set; }
+    public decimal DseHostiaria { get; set; }
 
     public virtual TbEvento? EveCodigoNavigation { get; set; }
 }
