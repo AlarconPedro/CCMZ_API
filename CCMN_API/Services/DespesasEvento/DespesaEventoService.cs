@@ -1,4 +1,5 @@
 ﻿
+using CCMN_API.Models.Painel.Acerto;
 using CCMN_API.Models.Painel.Evento;
 using CCMN_API.Models.Painel.EventoDespesas;
 using CCMZ_API;
@@ -26,19 +27,34 @@ public class DespesaEventoService : IDespesaEventoService
         }).FirstOrDefaultAsync();
     }
 
+    public async Task<IEnumerable<ComunidadeEventoDados>> GetComunidadesDados(int codigoEvento)
+    {
+        return await _context.TbEventoPessoas.Where(x => x.EveCodigo == codigoEvento).Select(x => new ComunidadeEventoDados
+        {
+            ComCodigo = x.PesCodigoNavigation.ComCodigoNavigation.ComCodigo,
+            ComNome = x.PesCodigoNavigation.ComCodigoNavigation.ComNome,
+            PagantesCobrantes = new PessoasPagantesCobrantes
+            {
+                Cobrantes = _context.TbEventoPessoas.Where(x => x.EveCodigo == codigoEvento && x.PesCodigoNavigation.ComCodigo == x.PesCodigoNavigation.ComCodigoNavigation.ComCodigo && x.EvpCobrante == true && x.PesCodigoNavigation.TbQuartoPessoas.Any(qp => qp.PesNaovem) == false).Count(),
+                Pagantes = _context.TbEventoPessoas.Where(x => x.EveCodigo == codigoEvento && x.PesCodigoNavigation.ComCodigo == x.PesCodigoNavigation.ComCodigoNavigation.ComCodigo && x.EvpPagante == true && x.PesCodigoNavigation.TbQuartoPessoas.Any(qp => qp.PesNaovem) == false).Count(),
+            }
+        }).Distinct().ToListAsync();
+    }
+
     public async Task<TbDespesaEvento> GetDespesasEvento(int codigoEvento)
     {
         return await _context.TbDespesaEventos.Where(x => x.EveCodigo == codigoEvento).FirstOrDefaultAsync();
     }
 
-    public async Task<IEnumerable<ComunidadeNome>> GetComunidadesEvento(int codigoEvento)
+    /*public async Task<IEnumerable<ComunidadeNome>> GetComunidadesEvento(int codigoEvento)
     {
         return await _context.TbEventoPessoas.Where(x => x.EveCodigo == codigoEvento).Select(x => new ComunidadeNome
         {
             ComCodigo = x.PesCodigoNavigation.ComCodigoNavigation.ComCodigo,
-            ComNome = x.PesCodigoNavigation.ComCodigoNavigation.ComNome
+            ComNome = x.PesCodigoNavigation.ComCodigoNavigation.ComNome,
+            ComCidade = x.PesCodigoNavigation.ComCodigoNavigation.ComCidade,
         }).Distinct().ToListAsync();
-    }
+    }*/
 
     public async Task<EventoCusto> GetEventoCusto(int codigoEvento)
     {
@@ -74,21 +90,20 @@ public class DespesaEventoService : IDespesaEventoService
             _context.TbDespesaEventos.Update(despesa);
         } else
         {
+            TbDespesaEvento despesaEvento = new TbDespesaEvento();
+
             var ultimaDespesa = await _context.TbDespesaEventos.FirstOrDefaultAsync();
             if (ultimaDespesa != null)
             {
-                despesa.DseCodigo = await _context.TbDespesaEventos.MaxAsync(x => x.DseCodigo) + 1;
+                despesaEvento.DseCodigo = await _context.TbDespesaEventos.MaxAsync(x => x.DseCodigo) + 1;
             }
             else
             {
-                despesa.DseCodigo = 1;
+                despesaEvento.DseCodigo = 1;
             }
-            _context.TbDespesaEventos.Add(new TbDespesaEvento
-            {
-                DseCodigo = despesa.DseCodigo,
-                EveCodigo = codigoEvento,
-                DseCozinha = valor
-            });
+            despesaEvento.EveCodigo = codigoEvento;
+            despesaEvento.DseHostiaria = valor;
+            _context.TbDespesaEventos.Add(despesaEvento);
         }
        
         await _context.SaveChangesAsync();
@@ -101,23 +116,19 @@ public class DespesaEventoService : IDespesaEventoService
         {
             despesa.DseHostiaria = valor;
             _context.TbDespesaEventos.Update(despesa);
-        }
-        else
-        {
+        } else {
+            TbDespesaEvento despesaEvento = new TbDespesaEvento();
             var ultimaDespesa = await _context.TbDespesaEventos.FirstOrDefaultAsync();
             if (ultimaDespesa != null)
             {
-               despesa.DseCodigo = await _context.TbDespesaEventos.MaxAsync(x => x.DseCodigo) + 1;
+                despesaEvento.DseCodigo = await _context.TbDespesaEventos.MaxAsync(x => x.DseCodigo) + 1;
             } else
             {
-                despesa.DseCodigo = 1;
+                despesaEvento.DseCodigo = 1;
             }
-            _context.TbDespesaEventos.Add(new TbDespesaEvento
-            {
-                DseCodigo = despesa.DseCodigo,
-                EveCodigo = codigoEvento,
-                DseHostiaria = valor
-            });
+            despesaEvento.EveCodigo = codigoEvento;
+            despesaEvento.DseHostiaria = valor;
+            _context.TbDespesaEventos.Add(despesaEvento);
         }
 
         await _context.SaveChangesAsync();

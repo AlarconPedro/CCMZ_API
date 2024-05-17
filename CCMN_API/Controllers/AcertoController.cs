@@ -19,7 +19,7 @@ public class AcertoController : ControllerBase
     }
 
     //GET
-    [HttpGet("evento/comunidades/{codigoEvento}")]
+    /*[HttpGet("evento/comunidades/{codigoEvento}")]
     public async Task<ActionResult> GetComunidadesEvento(int codigoEvento)
     {
         var comunidadesEvento = await _eventoService.GetComunidadesEvento(codigoEvento);
@@ -30,6 +30,20 @@ public class AcertoController : ControllerBase
         }
 
         return Ok(comunidadesEvento);
+    }*/
+
+    //[HttpGet("evento/comunidades/dados/{codigoEvento}")]
+    [HttpGet("evento/comunidades/{codigoEvento}")]
+    public async Task<ActionResult> GetComunidadesDados(int codigoEvento)
+    {
+        var comunidadesDados = await _eventoService.GetComunidadesDados(codigoEvento);
+
+        if (comunidadesDados == null)
+        {
+            return NotFound("Nenhuma Comunidade Cadastrada no Evento !");
+        }
+
+        return Ok(comunidadesDados);
     }
 
     [HttpGet("evento/custo/{codigoEvento}")]
