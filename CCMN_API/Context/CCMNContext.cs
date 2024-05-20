@@ -144,12 +144,6 @@ public partial class CCMNContext : DbContext
             entity.Property(e => e.DseCodigo)
                 .ValueGeneratedNever()
                 .HasColumnName("DSE_CODIGO");
-            entity.Property(e => e.DseCozinha)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("DSE_COZINHA");
-            entity.Property(e => e.DseHostiaria)
-                .HasColumnType("decimal(18, 0)")
-                .HasColumnName("DSE_HOSTIARIA");
             entity.Property(e => e.DseNome)
                 .HasMaxLength(50)
                 .IsUnicode(false)
@@ -174,6 +168,12 @@ public partial class CCMNContext : DbContext
             entity.Property(e => e.EveCodigo)
                 .ValueGeneratedNever()
                 .HasColumnName("EVE_CODIGO");
+            entity.Property(e => e.DseCozinha)
+                .HasColumnType("decimal(18, 0)")
+                .HasColumnName("DSE_COZINHA");
+            entity.Property(e => e.DseHostiaria)
+                .HasColumnType("decimal(18, 0)")
+                .HasColumnName("DSE_HOSTIARIA");
             entity.Property(e => e.EveDatafim)
                 .HasColumnType("datetime")
                 .HasColumnName("EVE_DATAFIM");

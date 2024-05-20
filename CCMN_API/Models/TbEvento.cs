@@ -17,6 +17,10 @@ public partial class TbEvento
 
     public string? EveTipoCobranca { get; set; }
 
+    public decimal? DseHostiaria { get; set; }
+
+    public decimal? DseCozinha { get; set; }
+
     public virtual ICollection<TbDespesaComunidadeEvento> TbDespesaComunidadeEventos { get; set; } = new List<TbDespesaComunidadeEvento>();
 
     public virtual ICollection<TbDespesaEvento> TbDespesaEventos { get; set; } = new List<TbDespesaEvento>();

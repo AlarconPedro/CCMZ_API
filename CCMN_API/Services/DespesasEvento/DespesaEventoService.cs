@@ -67,12 +67,27 @@ public class DespesaEventoService : IDespesaEventoService
 
     public async Task<decimal> GetValorCozinha(int codigoEvento)
     {
-        return await _context.TbDespesaEventos.Where(x => x.EveCodigo == codigoEvento).Select(x => x.DseCozinha).FirstOrDefaultAsync();
+        var retorno = await _context.TbEventos.Where(x => x.EveCodigo == codigoEvento).Select(x => x.DseCozinha).FirstOrDefaultAsync();
+        if (retorno != null)
+        {
+            return (decimal)retorno;
+        } else
+        {
+            return 0;
+        }
     }
 
     public async Task<decimal> GetValorHostiaria(int codigoEvento)
     {
-        return await _context.TbDespesaEventos.Where(x => x.EveCodigo == codigoEvento).Select(x => x.DseHostiaria).FirstOrDefaultAsync();
+        var retorno = await _context.TbEventos.Where(x => x.EveCodigo == codigoEvento).Select(x => x.DseHostiaria).FirstOrDefaultAsync();
+        if (retorno != null)
+        {
+            return (decimal)retorno;
+        }
+        else
+        {
+            return 0;
+        }
     }
 
     public async Task AddDespesaEvento(TbDespesaEvento despesaEvento)
@@ -83,52 +98,22 @@ public class DespesaEventoService : IDespesaEventoService
 
     public async Task AddDespesaCozinha(int codigoEvento, decimal valor)
     {
-        var despesa = await _context.TbDespesaEventos.Where(x => x.EveCodigo == codigoEvento).FirstOrDefaultAsync();
+        var despesa = await _context.TbEventos.Where(x => x.EveCodigo == codigoEvento).FirstOrDefaultAsync();
         if (despesa != null)
         {
             despesa.DseCozinha = valor;
-            _context.TbDespesaEventos.Update(despesa);
-        } else
-        {
-            TbDespesaEvento despesaEvento = new TbDespesaEvento();
-
-            var ultimaDespesa = await _context.TbDespesaEventos.FirstOrDefaultAsync();
-            if (ultimaDespesa != null)
-            {
-                despesaEvento.DseCodigo = await _context.TbDespesaEventos.MaxAsync(x => x.DseCodigo) + 1;
-            }
-            else
-            {
-                despesaEvento.DseCodigo = 1;
-            }
-            despesaEvento.EveCodigo = codigoEvento;
-            despesaEvento.DseHostiaria = valor;
-            _context.TbDespesaEventos.Add(despesaEvento);
+            _context.TbEventos.Update(despesa);
         }
-       
         await _context.SaveChangesAsync();
     }
 
     public async Task AddDespesaHostiaria(int codigoEvento, decimal valor)
     {
-        var despesa = await _context.TbDespesaEventos.Where(x => x.EveCodigo == codigoEvento).FirstOrDefaultAsync();
+        var despesa = await _context.TbEventos.Where(x => x.EveCodigo == codigoEvento).FirstOrDefaultAsync();
         if (despesa != null)
         {
             despesa.DseHostiaria = valor;
-            _context.TbDespesaEventos.Update(despesa);
-        } else {
-            TbDespesaEvento despesaEvento = new TbDespesaEvento();
-            var ultimaDespesa = await _context.TbDespesaEventos.FirstOrDefaultAsync();
-            if (ultimaDespesa != null)
-            {
-                despesaEvento.DseCodigo = await _context.TbDespesaEventos.MaxAsync(x => x.DseCodigo) + 1;
-            } else
-            {
-                despesaEvento.DseCodigo = 1;
-            }
-            despesaEvento.EveCodigo = codigoEvento;
-            despesaEvento.DseHostiaria = valor;
-            _context.TbDespesaEventos.Add(despesaEvento);
+            _context.TbEventos.Update(despesa);
         }
 
         await _context.SaveChangesAsync();
@@ -142,22 +127,22 @@ public class DespesaEventoService : IDespesaEventoService
 
     public async Task UpdateDespesaCozinha(int codigoEvento, decimal valor)
     {
-        var despesa = await _context.TbDespesaEventos.Where(x => x.EveCodigo == codigoEvento).FirstOrDefaultAsync();
+        var despesa = await _context.TbEventos.Where(x => x.EveCodigo == codigoEvento).FirstOrDefaultAsync();
         if (despesa != null)
         {
             despesa.DseCozinha = valor;
-            _context.TbDespesaEventos.Update(despesa);
+            _context.TbEventos.Update(despesa);
             await _context.SaveChangesAsync();
         }
     }
 
     public async Task UpdateDespesaHostiaria(int codigoEvento, decimal valor)
     {
-        var despesa = await _context.TbDespesaEventos.Where(x => x.EveCodigo == codigoEvento).FirstOrDefaultAsync();
+        var despesa = await _context.TbEventos.Where(x => x.EveCodigo == codigoEvento).FirstOrDefaultAsync();
         if (despesa != null)
         {
             despesa.DseHostiaria = valor;
-            _context.TbDespesaEventos.Update(despesa);
+            _context.TbEventos.Update(despesa);
             await _context.SaveChangesAsync();
         }
     }
