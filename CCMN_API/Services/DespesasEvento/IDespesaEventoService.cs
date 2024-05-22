@@ -8,7 +8,7 @@ namespace CCMN_API.Services.DespesasEvento;
 public interface IDespesaEventoService
 {
     //GET
-    Task<TbDespesaEvento> GetDespesasEvento(int codigoEvento);
+    Task<IEnumerable<TbDespesaEvento>> GetDespesasEvento(int codigoEvento);
     Task<EventoCusto> GetEventoCusto(int codigoEvento);
    /* Task<IEnumerable<ComunidadeNome>> GetComunidadesEvento(int codigoEvento);*/
     Task<IEnumerable<ComunidadeEventoDados>> GetComunidadesDados(int codigoEvento);

@@ -35,15 +35,15 @@ public class DespesaEventoService : IDespesaEventoService
             ComNome = x.PesCodigoNavigation.ComCodigoNavigation.ComNome,
             PagantesCobrantes = new PessoasPagantesCobrantes
             {
-                Cobrantes = _context.TbEventoPessoas.Where(x => x.EveCodigo == codigoEvento && x.PesCodigoNavigation.ComCodigo == x.PesCodigoNavigation.ComCodigoNavigation.ComCodigo && x.EvpCobrante == true && x.PesCodigoNavigation.TbQuartoPessoas.Any(qp => qp.PesNaovem) == false).Count(),
-                Pagantes = _context.TbEventoPessoas.Where(x => x.EveCodigo == codigoEvento && x.PesCodigoNavigation.ComCodigo == x.PesCodigoNavigation.ComCodigoNavigation.ComCodigo && x.EvpPagante == true && x.PesCodigoNavigation.TbQuartoPessoas.Any(qp => qp.PesNaovem) == false).Count(),
+                Cobrantes = _context.TbEventoPessoas.Where(ep => ep.EveCodigo == codigoEvento && ep.PesCodigoNavigation.ComCodigo == x.PesCodigoNavigation.ComCodigoNavigation.ComCodigo && x.EvpCobrante == true && x.PesCodigoNavigation.TbQuartoPessoas.Any(qp => qp.PesNaovem) == false).Count(),
+                Pagantes = _context.TbEventoPessoas.Where(ep => ep.EveCodigo == codigoEvento && ep.PesCodigoNavigation.ComCodigo == x.PesCodigoNavigation.ComCodigoNavigation.ComCodigo && x.EvpPagante == true && x.PesCodigoNavigation.TbQuartoPessoas.Any(qp => qp.PesNaovem) == false).Count(),
             }
         }).Distinct().ToListAsync();
     }
 
-    public async Task<TbDespesaEvento> GetDespesasEvento(int codigoEvento)
+    public async Task<IEnumerable<TbDespesaEvento>> GetDespesasEvento(int codigoEvento)
     {
-        return await _context.TbDespesaEventos.Where(x => x.EveCodigo == codigoEvento).FirstOrDefaultAsync();
+        return await _context.TbDespesaEventos.Where(x => x.EveCodigo == codigoEvento).ToListAsync();
     }
 
     /*public async Task<IEnumerable<ComunidadeNome>> GetComunidadesEvento(int codigoEvento)
@@ -92,6 +92,14 @@ public class DespesaEventoService : IDespesaEventoService
 
     public async Task AddDespesaEvento(TbDespesaEvento despesaEvento)
     {
+        var despesa = await _context.TbDespesaEventos.FirstOrDefaultAsync();
+        if (despesa != null)
+        {
+            despesaEvento.DseCodigo = await _context.TbDespesaEventos.MaxAsync(x => x.DseCodigo) + 1;
+        } else
+        {
+            despesaEvento.DseCodigo = 1;
+        }
         _context.TbDespesaEventos.Add(despesaEvento);
         await _context.SaveChangesAsync();
     }
