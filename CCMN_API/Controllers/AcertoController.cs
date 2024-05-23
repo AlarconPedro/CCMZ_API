@@ -162,6 +162,14 @@ public class AcertoController : ControllerBase
         return Ok("Despesa de Hostiaria Cadastrada com Sucesso !");
     }
 
+    [HttpPost("comunidade/despesas")]
+    public async Task<ActionResult> AddDespesaComunidade(TbDespesaComunidadeEvento despesaComunidade)
+    {
+        await _comunidadeService.AddDespesaComunidade(despesaComunidade);
+
+        return Ok("Despesa Cadastrada com Sucesso !");
+    }
+
     //PUT
     [HttpPut("evento/despesas")]
     public async Task<IActionResult> UpdateDespesaEvento(TbDespesaEvento despesaEvento)

@@ -32,6 +32,7 @@ public interface IEventosService
     Task UpdateEventoQuarto(TbEventoQuarto eventoQuarto);
     Task UpdateEventoPessoa(TbEventoPessoa eventoPessoa);
     //DELETE
+    Task DeleteEventoPessoas(List<TbEventoPessoa> evento);
     Task DeleteEvento(TbEvento evento);
     Task RemoveQuartoEvento(int codigoQuarto);
 }

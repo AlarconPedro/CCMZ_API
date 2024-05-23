@@ -322,7 +322,22 @@ public class EventoController : ControllerBase
                                               $"Erro ao remover o Quarto com o id {codigoQuarto} !");
         }
     }
-    
+
+    [HttpDelete("pessoas")]
+    public async Task<ActionResult> DeleteEventoPessoas(List<TbEventoPessoa> evento)
+    {
+        try
+        {
+            await _service.DeleteEventoPessoas(evento);
+            return Ok("Pessoas deletadas com sucesso !");
+        }
+        catch
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError,
+                                              $"Erro ao deletar as Pessoas !");
+        }
+    }
+
     [HttpDelete("{idEvento:int}")]
     public async Task<ActionResult> DeleteEvento(int idEvento)
     {
@@ -334,7 +349,8 @@ public class EventoController : ControllerBase
 
             await _service.DeleteEvento(eventoToDelete);
             return Ok($"Evento com o id {idEvento} deletado com sucesso!");
-        }catch
+        }
+        catch
         {
             return StatusCode(StatusCodes.Status500InternalServerError,
                                $"Erro ao deletar o Evento com o id {idEvento} !");

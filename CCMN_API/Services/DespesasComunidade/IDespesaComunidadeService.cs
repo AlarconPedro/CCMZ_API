@@ -7,4 +7,6 @@ public interface IDespesaComunidadeService
     Task<TbDespesaComunidadeEvento> GetDespesasComunidade(int codigoEvento, int codigoComunidade);
 
     Task<PessoasPagantesCobrantes> GetCobrantesPagantes(int codigoEvento, int codigoComunidade);
+
+    Task AddDespesaComunidade(TbDespesaComunidadeEvento despesaComunidade);
 }

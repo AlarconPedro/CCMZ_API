@@ -36,4 +36,18 @@ public class DespesaComunidadeService : IDespesaComunidadeService
                 DceValor = x.DceValor,
             }).FirstOrDefaultAsync();
     }
+
+    public async Task AddDespesaComunidade(TbDespesaComunidadeEvento despesaComunidade)
+    {
+        var despesas = await _context.TbDespesaComunidadeEventos.FirstOrDefaultAsync();
+        if (despesas != null)
+        {
+            despesas.DceCodigo = await _context.TbDespesaComunidadeEventos.MaxAsync(x => x.DceCodigo) + 1;
+        } else
+        {
+            despesas.DceCodigo = 1;
+        }
+        _context.TbDespesaComunidadeEventos.Add(despesaComunidade);
+        await _context.SaveChangesAsync();
+    }
 }

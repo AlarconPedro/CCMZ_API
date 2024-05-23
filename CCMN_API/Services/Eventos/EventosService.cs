@@ -269,6 +269,12 @@ public class EventosService : IEventosService
         await _context.SaveChangesAsync();
     }
 
+    public async Task DeleteEventoPessoas(List<TbEventoPessoa> evento)
+    {
+        _context.TbEventoPessoas.RemoveRange(evento);
+        await _context.SaveChangesAsync();
+    }
+
     public async Task RemoveQuartoEvento(int codigoQuarto)
     {
         await _context.TbEventoQuartos.Where(eq => eq.QuaCodigo == codigoQuarto).ExecuteDeleteAsync();
@@ -280,4 +286,9 @@ public class EventosService : IEventosService
         _context.TbEventos.Remove(evento);
         await _context.SaveChangesAsync();
     }
+/*
+    public Task DeletePessoasEvento(TbEvento evento)
+    {
+        throw new NotImplementedException();
+    }*/
 }
