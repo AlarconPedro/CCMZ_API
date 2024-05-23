@@ -43,6 +43,8 @@ public partial class CCMNContext : DbContext
 
     public virtual DbSet<TbQuartoPessoa> TbQuartoPessoas { get; set; }
 
+    public virtual DbSet<TbUsuario> TbUsuarios { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => optionsBuilder.UseSqlServer(Configuration.GetConnectionString("CCMNConnection"));
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -321,6 +323,33 @@ public partial class CCMNContext : DbContext
                 .HasForeignKey(d => d.QuaCodigo)
                 .HasConstraintName("FK_TB_QUARTO_PESSOAS_TB_QUARTOS");
         });
+
+        modelBuilder.Entity<TbUsuario>(entity =>
+        {
+            entity.HasKey(e => e.UsuCodigo);
+
+            entity.ToTable("TB_USUARIOS");
+
+            entity.Property(e => e.UsuCodigo)
+                .ValueGeneratedNever()
+                .HasColumnName("USU_CODIGO");
+            entity.Property(e => e.UsuAcessoEstoque).HasColumnName("USU_ACESSO_ESTOQUE");
+            entity.Property(e => e.UsuAcessoFinanceiro).HasColumnName("USU_ACESSO_FINANCEIRO");
+            entity.Property(e => e.UsuAcessoHospedagem).HasColumnName("USU_ACESSO_HOSPEDAGEM");
+            entity.Property(e => e.UsuCodigoFirebase)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("USU_CODIGO_FIREBASE");
+            entity.Property(e => e.UsuEmail)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("USU_EMAIL");
+            entity.Property(e => e.UsuSenha)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("USU_SENHA");
+        });
+
 
         OnModelCreatingPartial(modelBuilder);
     }
