@@ -1,5 +1,6 @@
 using CCMN_API.Services.DespesasComunidade;
 using CCMN_API.Services.DespesasEvento;
+using CCMN_API.Services.Usuarios;
 using CCMZ_API;
 using CCMZ_API.Services.Alocacao;
 using CCMZ_API.Services.Blocos;
@@ -22,7 +23,7 @@ builder.Services.AddCors(options =>
         {
             policy.AllowAnyHeader();
             policy.AllowAnyMethod();
-            policy.WithOrigins("http://localhost:3000", "http://localhost:53625");
+            policy.WithOrigins("http://localhost:3000", "http://localhost:56491");
             //policy.WithOrigins("http://painel.ccmn.org.br");
         });
 });
@@ -43,6 +44,7 @@ builder.Services.AddScoped<IQuartoPessoaService, QuartoPessoaService>();
 builder.Services.AddScoped<IDashboardService, DashboardService>();
 builder.Services.AddScoped<IDespesaEventoService, DespesaEventoService>();
 builder.Services.AddScoped<IDespesaComunidadeService, DespesaComunidadeService>();
+builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 
 builder.Services.AddAuthorization();
 
