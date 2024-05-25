@@ -21,4 +21,11 @@ public class UsuarioController : ControllerBase
         var retorno = await _service.LoginSistema(codigoFirebase);
         return Ok(retorno);
     }
+
+    [HttpPost]
+    public async Task<ActionResult> CadastrarUsuario(TbUsuario usuario)
+    {
+        await _service.CadastrarUsuario(usuario);
+        return Ok("Cadastrado com Sucesso !");
+    }
 }

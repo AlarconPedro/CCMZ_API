@@ -3,4 +3,6 @@
 public interface IUsuarioService
 {
     Task<TbUsuario> LoginSistema(string codigoFirebase);
+
+    Task CadastrarUsuario(TbUsuario usuario);
 }

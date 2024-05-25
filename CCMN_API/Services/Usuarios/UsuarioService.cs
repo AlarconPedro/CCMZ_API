@@ -17,4 +17,10 @@ public class UsuarioService : IUsuarioService
     {
         return await _context.TbUsuarios.FirstOrDefaultAsync(u => u.UsuCodigoFirebase == codigoFirebase);
     }
+
+    public async Task CadastrarUsuario(TbUsuario usuario)
+    {
+        _context.TbUsuarios.Add(usuario);
+        await _context.SaveChangesAsync();
+    }
 }
