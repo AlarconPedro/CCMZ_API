@@ -22,10 +22,24 @@ public class UsuarioController : ControllerBase
         return Ok(retorno);
     }
 
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<TbUsuario>>> GetUsuarios()
+    {
+        var retorno = await _service.GetUsuarios();
+        return Ok(retorno);
+    }
+
     [HttpPost]
     public async Task<ActionResult> CadastrarUsuario(TbUsuario usuario)
     {
         await _service.CadastrarUsuario(usuario);
         return Ok("Cadastrado com Sucesso !");
+    }
+
+    [HttpPut]
+    public async Task<ActionResult> AtualizarUsuario(TbUsuario usuario)
+    {
+        await _service.AtualizarUsuario(usuario);
+        return Ok("Atualizado com Sucesso !");
     }
 }

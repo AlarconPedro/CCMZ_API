@@ -18,6 +18,11 @@ public class UsuarioService : IUsuarioService
         return await _context.TbUsuarios.FirstOrDefaultAsync(u => u.UsuCodigoFirebase == codigoFirebase);
     }
 
+    public async Task<IEnumerable<TbUsuario>> GetUsuarios()
+    {
+        return await _context.TbUsuarios.ToListAsync();
+    }
+
     public async Task CadastrarUsuario(TbUsuario usuario)
     {
         var ultimoUsuario = await _context.TbUsuarios.FirstOrDefaultAsync();
@@ -29,6 +34,12 @@ public class UsuarioService : IUsuarioService
             usuario.UsuCodigo = 1;
         }
         _context.TbUsuarios.Add(usuario);
+        await _context.SaveChangesAsync();
+    }
+
+    public async Task AtualizarUsuario(TbUsuario usuario)
+    {
+        _context.TbUsuarios.Update(usuario);
         await _context.SaveChangesAsync();
     }
 }
