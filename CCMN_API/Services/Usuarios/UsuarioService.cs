@@ -42,4 +42,12 @@ public class UsuarioService : IUsuarioService
         _context.TbUsuarios.Update(usuario);
         await _context.SaveChangesAsync();
     }
+
+    public async Task DeletarUsuario(int codigoUsuario)
+    {
+        var usuario = await _context.TbUsuarios.FindAsync(codigoUsuario);
+        if (usuario != null)
+        _context.TbUsuarios.Remove(usuario);
+        await _context.SaveChangesAsync();
+    }
 }

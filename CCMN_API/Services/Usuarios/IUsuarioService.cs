@@ -8,4 +8,6 @@ public interface IUsuarioService
     Task CadastrarUsuario(TbUsuario usuario);
 
     Task AtualizarUsuario(TbUsuario usuario);
+
+    Task DeletarUsuario(int codigoUsuario);
 }

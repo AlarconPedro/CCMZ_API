@@ -42,4 +42,11 @@ public class UsuarioController : ControllerBase
         await _service.AtualizarUsuario(usuario);
         return Ok("Atualizado com Sucesso !");
     }
+
+    [HttpDelete("{codigoUsuario:int}")]
+    public async Task<ActionResult> DeletarUsuario(int codigoUsuario)
+    {
+        await _service.DeletarUsuario(codigoUsuario);
+        return Ok("Deletado com Sucesso !");
+    }
 }

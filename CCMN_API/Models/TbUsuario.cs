@@ -7,6 +7,8 @@ public partial class TbUsuario
 {
     public int UsuCodigo { get; set; }
 
+    public string? UsuNome { get; set; }
+
     public string? UsuEmail { get; set; }
 
     public string? UsuSenha { get; set; }

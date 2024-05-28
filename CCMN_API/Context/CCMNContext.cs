@@ -344,6 +344,10 @@ public partial class CCMNContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("USU_EMAIL");
+            entity.Property(e => e.UsuNome)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("USU_NOME");
             entity.Property(e => e.UsuSenha)
                 .HasMaxLength(50)
                 .IsUnicode(false)
