@@ -58,8 +58,7 @@
               "RelativeToolTip": "CCMN_API\\Controllers\\UsuarioController.cs",
               "ViewState": "AQIAABIAAAAAAAAAAAAzwCYAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-25T15:57:20.667Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-25T15:57:20.667Z"
             },
             {
               "$type": "Document",
@@ -71,8 +70,7 @@
               "RelativeToolTip": "CCMN_API\\Services\\Usuarios\\UsuarioService.cs",
               "ViewState": "AQIAABMAAAAAAAAAAAAQwB8AAAAOAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-25T16:23:23.3Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-25T16:23:23.3Z"
             },
             {
               "$type": "Document",
@@ -84,8 +82,7 @@
               "RelativeToolTip": "CCMN_API\\Services\\Usuarios\\IUsuarioService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-26T14:54:56.013Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-26T14:54:56.013Z"
             },
             {
               "$type": "Document",
@@ -95,7 +92,7 @@
               "RelativeDocumentMoniker": "CCMN_API\\Program.cs",
               "ToolTip": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\Program.cs",
               "RelativeToolTip": "CCMN_API\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-25T14:01:31.001Z",
               "EditorCaption": ""
