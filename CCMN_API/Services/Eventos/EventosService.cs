@@ -281,6 +281,15 @@ public class EventosService : IEventosService
         await _context.SaveChangesAsync();
     }
 
+    public async Task RemoverPessoasEvento(List<int> codigoPessoas, int codigoEvento)
+    {
+        foreach (var item in codigoPessoas)
+        {
+            await _context.TbEventoPessoas.Where(ep => ep.PesCodigo == item && ep.EveCodigo == codigoEvento).ExecuteDeleteAsync();
+        }
+        await _context.SaveChangesAsync();
+    }
+
     public async Task DeleteEvento(TbEvento evento)
     {
         _context.TbEventos.Remove(evento);

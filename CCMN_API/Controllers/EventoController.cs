@@ -356,4 +356,19 @@ public class EventoController : ControllerBase
                                $"Erro ao deletar o Evento com o id {idEvento} !");
         }
     }
+
+    [HttpDelete("pessoas/{codigoEvento:int}")]
+    public async Task<ActionResult> RemoverPessoasEvento(List<int> codigoPessoas, int codigoEvento)
+    {
+        try
+        {
+            await _service.RemoverPessoasEvento(codigoPessoas, codigoEvento);
+            return Ok("Pessoas removidas com sucesso !");
+        }
+        catch
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError,
+                                              $"Erro ao remover as Pessoas !");
+        }
+    }
 }
