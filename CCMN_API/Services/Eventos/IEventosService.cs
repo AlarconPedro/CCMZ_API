@@ -2,6 +2,7 @@
 using CCMN_API.Models.Painel.Pessoas;
 using CCMZ_API.Models;
 using CCMZ_API.Models.Painel.Alocacao;
+using CCMZ_API.Models.Painel.Evento;
 using CCMZ_API.Models.Painel.Pessoas;
 using CCMZ_API.Models.Painel.Quartos;
 

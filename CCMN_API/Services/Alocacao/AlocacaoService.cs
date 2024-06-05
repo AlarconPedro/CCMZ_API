@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 namespace CCMZ_API.Services.Alocacao;
 
 using CCMN_API;
+using CCMN_API.Models.Painel.Evento;
 using CCMZ_API.Models.Painel.Comunidade;
 
 public class AlocacaoService : IAlocacaoService
@@ -16,16 +17,18 @@ public class AlocacaoService : IAlocacaoService
         _context = context;
     }
 
-    public async Task<IEnumerable<EventosNome>> GetEventos(int filtro)
+    public async Task<IEnumerable<EventoDadosBasicos>> GetEventos(int filtro)
     {
         return await _context.TbEventos.Where(e => filtro == 1 ? (e.EveDatafim.Value.AddDays(1) >= DateTime.Now) 
                                                  : filtro == 2 ? (e.EveDatafim.Value <= DateTime.Now) 
                                                  : true)
-            .Select(e => new EventosNome
-        {
-            EveCodigo = e.EveCodigo,
-            EveNome = e.EveNome
-        }).ToListAsync();
+            .Select(e => new EventoDadosBasicos
+            {
+                EveCodigo = e.EveCodigo,
+                EveNome = e.EveNome,
+                EveDatafim = e.EveDatafim,
+                EveDatainicio = e.EveDatainicio
+            }).ToListAsync();
     }
 
     public async Task<IEnumerable<BlocoNome>> GetBlocos(int codigoEvento)
