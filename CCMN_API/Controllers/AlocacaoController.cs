@@ -16,12 +16,12 @@ public class AlocacaoController : ControllerBase
         _service = alocacaoService;
     }
 
-    [HttpGet("eventos")]
-    public async Task<ActionResult> GetEventos()
+    [HttpGet("eventos/{filtro:int}")]
+    public async Task<ActionResult> GetEventos(int filtro)
     {
         try
         {
-            var eventos = await _service.GetEventos();
+            var eventos = await _service.GetEventos(filtro);
             return Ok(eventos);
         }
         catch (Exception e)

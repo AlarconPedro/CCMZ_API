@@ -16,9 +16,12 @@ public class AlocacaoService : IAlocacaoService
         _context = context;
     }
 
-    public async Task<IEnumerable<EventosNome>> GetEventos()
+    public async Task<IEnumerable<EventosNome>> GetEventos(int filtro)
     {
-        return await _context.TbEventos.Select(e => new EventosNome
+        return await _context.TbEventos.Where(e => filtro == 1 ? (e.EveDatafim.Value.AddDays(1) >= DateTime.Now) 
+                                                 : filtro == 2 ? (e.EveDatafim.Value <= DateTime.Now) 
+                                                 : true)
+            .Select(e => new EventosNome
         {
             EveCodigo = e.EveCodigo,
             EveNome = e.EveNome
