@@ -8,11 +8,11 @@ namespace CCMZ_API.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class QuartoPessoaController : ControllerBase
+public class CheckinController : ControllerBase
 {
-    private readonly IQuartoPessoaService _service;
+    private readonly ICheckinService _service;
 
-    public QuartoPessoaController(IQuartoPessoaService quartoPessoa)
+    public CheckinController(ICheckinService quartoPessoa)
     {
         _service = quartoPessoa;
     }

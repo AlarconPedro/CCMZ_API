@@ -23,7 +23,7 @@ builder.Services.AddCors(options =>
         {
             policy.AllowAnyHeader();
             policy.AllowAnyMethod();
-            policy.WithOrigins("http://localhost:3000", "http://localhost:58132");
+            policy.WithOrigins("http://localhost:3000", "http://localhost:52883");
             //policy.WithOrigins("http://painel.ccmn.org.br");
         });
 });
@@ -40,7 +40,7 @@ builder.Services.AddScoped<IComunidadeService, ComunidadeService>();
 builder.Services.AddScoped<IEventosService, EventosService>();
 builder.Services.AddScoped<IBlocosService, BlocosService>();
 builder.Services.AddScoped<IAlocacaoService, AlocacaoService>();
-builder.Services.AddScoped<IQuartoPessoaService, QuartoPessoaService>();
+builder.Services.AddScoped<ICheckinService, CheckinService>();
 builder.Services.AddScoped<IDashboardService, DashboardService>();
 builder.Services.AddScoped<IDespesaEventoService, DespesaEventoService>();
 builder.Services.AddScoped<IDespesaComunidadeService, DespesaComunidadeService>();

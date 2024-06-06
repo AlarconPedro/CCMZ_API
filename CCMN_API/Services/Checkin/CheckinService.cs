@@ -5,11 +5,11 @@ using System.Linq;
 
 namespace CCMZ_API.Services.QuartoPessoa;
 
-public class QuartoPessoaService : IQuartoPessoaService
+public class CheckinService : ICheckinService
 {
     private readonly CCMNContext _context;
 
-    public QuartoPessoaService(CCMNContext context)
+    public CheckinService(CCMNContext context)
     {
         _context = context;
     }
