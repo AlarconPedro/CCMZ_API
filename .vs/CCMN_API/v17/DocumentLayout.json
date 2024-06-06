@@ -7,16 +7,20 @@
       "RelativeMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|solutionrelative:ccmn_api\\services\\checkin\\checkinservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|c:\\desenvolvimento\\c#\\web api\\ccmn_api\\ccmn_api\\models\\painel\\quartopessoa\\quartopessoas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|solutionrelative:ccmn_api\\models\\painel\\quartopessoa\\quartopessoas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|c:\\desenvolvimento\\c#\\web api\\ccmn_api\\ccmn_api\\models\\painel\\checkin\\quartoscheckinevento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|solutionrelative:ccmn_api\\models\\painel\\checkin\\quartoscheckinevento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|c:\\desenvolvimento\\c#\\web api\\ccmn_api\\ccmn_api\\controllers\\checkincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|solutionrelative:ccmn_api\\controllers\\checkincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|c:\\desenvolvimento\\c#\\web api\\ccmn_api\\ccmn_api\\models\\painel\\quartopessoa\\pessoacheckin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|solutionrelative:ccmn_api\\models\\painel\\quartopessoa\\pessoacheckin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|c:\\desenvolvimento\\c#\\web api\\ccmn_api\\ccmn_api\\models\\painel\\quartopessoa\\quartopessoas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|solutionrelative:ccmn_api\\models\\painel\\quartopessoa\\quartopessoas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|c:\\desenvolvimento\\c#\\web api\\ccmn_api\\ccmn_api\\services\\checkin\\icheckinservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -38,24 +42,37 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "CheckinController.cs",
+              "DocumentMoniker": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\Controllers\\CheckinController.cs",
+              "RelativeDocumentMoniker": "CCMN_API\\Controllers\\CheckinController.cs",
+              "ToolTip": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\Controllers\\CheckinController.cs",
+              "RelativeToolTip": "CCMN_API\\Controllers\\CheckinController.cs",
+              "ViewState": "AQIAABMAAAAAAAAAAAAgwBUAAABDAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-06T01:30:45.184Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "QuartosCheckinEvento.cs",
               "DocumentMoniker": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\Models\\Painel\\Checkin\\QuartosCheckinEvento.cs",
               "RelativeDocumentMoniker": "CCMN_API\\Models\\Painel\\Checkin\\QuartosCheckinEvento.cs",
               "ToolTip": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\Models\\Painel\\Checkin\\QuartosCheckinEvento.cs",
               "RelativeToolTip": "CCMN_API\\Models\\Painel\\Checkin\\QuartosCheckinEvento.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAgAAAAdAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAQAAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-06T00:13:24.263Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "QuartoPessoas.cs",
               "DocumentMoniker": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\Models\\Painel\\QuartoPessoa\\QuartoPessoas.cs",
               "RelativeDocumentMoniker": "CCMN_API\\Models\\Painel\\QuartoPessoa\\QuartoPessoas.cs",
@@ -87,14 +104,14 @@
               "RelativeDocumentMoniker": "CCMN_API\\Services\\Checkin\\CheckinService.cs",
               "ToolTip": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\Services\\Checkin\\CheckinService.cs",
               "RelativeToolTip": "CCMN_API\\Services\\Checkin\\CheckinService.cs",
-              "ViewState": "AQIAABYAAAAAAAAAAAAqwDMAAAAyAAAA",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAxwDMAAAA4AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-06T00:14:21.834Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "ICheckinService.cs",
               "DocumentMoniker": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\Services\\Checkin\\ICheckinService.cs",
               "RelativeDocumentMoniker": "CCMN_API\\Services\\Checkin\\ICheckinService.cs",
@@ -111,7 +128,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\Program.cs",
               "RelativeDocumentMoniker": "CCMN_API\\Program.cs",
@@ -124,7 +141,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\appsettings.json",
               "RelativeDocumentMoniker": "CCMN_API\\appsettings.json",

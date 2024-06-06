@@ -1,4 +1,5 @@
 ﻿using CCMN_API;
+using CCMN_API.Models.Painel.Checkin;
 using CCMZ_API.Models.Painel.QuartoPessoa;
 using CCMZ_API.Services.QuartoPessoa;
 using Microsoft.AspNetCore.Http;
@@ -18,7 +19,7 @@ public class CheckinController : ControllerBase
     }
 
     [HttpGet("{codigoEvento:int}")]
-    public async Task<ActionResult<IEnumerable<QuartoPessoas>>> GetQuartoCheckin(int codigoEvento)
+    public async Task<ActionResult<IEnumerable<QuartosCheckinEvento>>> GetQuartoCheckin(int codigoEvento)
     {
         try
         {

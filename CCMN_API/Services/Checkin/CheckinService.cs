@@ -50,8 +50,9 @@ public class CheckinService : ICheckinService
                                 }).ToList(),
             }).ToListAsync();
         return retorno.DistinctBy(d => d.BloNome);
+        //return retorno.DistinctBy(d => d.BloNome);
         /*return await _context.TbEventoQuartos.Where(eq => eq.EveCodigo == codigoEvento)
-            .Join(_context.TbQuartos, eq => eq.QuaCodigo, q => q.QuaCodigo, (eq, q) => new { eq, q })
+            .Join(_context.TbQuartos, eq => eq.QuaCodigo, q => q.QuaCodigo,DistinctBy(d => d.BloNome) (eq, q) => new { eq, q })
             .Where(eq => eq.q.BloCodigo == codigoBloco)
             .Select(eq => new QuartoPessoas
             {
