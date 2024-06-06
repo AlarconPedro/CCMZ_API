@@ -17,12 +17,12 @@ public class CheckinController : ControllerBase
         _service = quartoPessoa;
     }
 
-    [HttpGet("{codigoBloco:int}/{codigoEvento:int}")]
-    public async Task<ActionResult<IEnumerable<QuartoPessoas>>> GetQuartoPessoas(int codigoBloco, int codigoEvento)
+    [HttpGet("{codigoEvento:int}")]
+    public async Task<ActionResult<IEnumerable<QuartoPessoas>>> GetQuartoCheckin(int codigoEvento)
     {
         try
         {
-            return Ok(await _service.GetQuartoPessoas(codigoBloco, codigoEvento));
+            return Ok(await _service.GetQuartoCheckin(codigoEvento));
         }
         catch(Exception ex)
         {
