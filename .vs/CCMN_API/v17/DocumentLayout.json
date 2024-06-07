@@ -42,8 +42,12 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 5,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 2,
@@ -54,8 +58,7 @@
               "RelativeToolTip": "CCMN_API\\Controllers\\CheckinController.cs",
               "ViewState": "AQIAABMAAAAAAAAAAAAgwBUAAABDAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-06T01:30:45.184Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-06T01:30:45.184Z"
             },
             {
               "$type": "Document",
@@ -67,8 +70,7 @@
               "RelativeToolTip": "CCMN_API\\Models\\Painel\\Checkin\\QuartosCheckinEvento.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAqwAQAAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-06T00:13:24.263Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-06T00:13:24.263Z"
             },
             {
               "$type": "Document",
@@ -80,8 +82,7 @@
               "RelativeToolTip": "CCMN_API\\Models\\Painel\\QuartoPessoa\\QuartoPessoas.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAqwA4AAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-06T00:39:05.52Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-06T00:39:05.52Z"
             },
             {
               "$type": "Document",
@@ -93,8 +94,7 @@
               "RelativeToolTip": "CCMN_API\\Models\\Painel\\QuartoPessoa\\PessoaCheckin.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-06T00:50:33.432Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-06T00:50:33.432Z"
             },
             {
               "$type": "Document",
@@ -104,7 +104,7 @@
               "RelativeDocumentMoniker": "CCMN_API\\Services\\Checkin\\CheckinService.cs",
               "ToolTip": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\Services\\Checkin\\CheckinService.cs",
               "RelativeToolTip": "CCMN_API\\Services\\Checkin\\CheckinService.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAxwDMAAAA4AAAA",
+              "ViewState": "AQIAACsAAAAAAAAAAAAgwEwAAAAwAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-06T00:14:21.834Z",
               "EditorCaption": ""
@@ -119,12 +119,7 @@
               "RelativeToolTip": "CCMN_API\\Services\\Checkin\\ICheckinService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAA8AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-06T00:14:24.817Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+              "WhenOpened": "2024-06-06T00:14:24.817Z"
             },
             {
               "$type": "Document",
@@ -136,8 +131,7 @@
               "RelativeToolTip": "CCMN_API\\Program.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAB8AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-25T14:01:31.001Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-25T14:01:31.001Z"
             },
             {
               "$type": "Document",
