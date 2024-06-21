@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using CCMN_API;
+using CCMN_API.Models;
 using CCMZ_API.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -27,6 +28,8 @@ public partial class CCMNContext : DbContext
 
     public virtual DbSet<TbComunidade> TbComunidades { get; set; }
 
+    public virtual DbSet<TbCategoria> TbCategorias { get; set; }
+
     public virtual DbSet<TbDespesaComunidadeEvento> TbDespesaComunidadeEventos { get; set; }
 
     public virtual DbSet<TbDespesaEvento> TbDespesaEventos { get; set; }
@@ -36,6 +39,10 @@ public partial class CCMNContext : DbContext
     public virtual DbSet<TbEventoPessoa> TbEventoPessoas { get; set; }
 
     public virtual DbSet<TbEventoQuarto> TbEventoQuartos { get; set; }
+
+    public virtual DbSet<TbFornecedore> TbFornecedores { get; set; }
+
+    public virtual DbSet<TbMovimentoProduto> TbMovimentoProdutos { get; set; }
 
     public virtual DbSet<TbPessoa> TbPessoas { get; set; }
 
@@ -83,6 +90,21 @@ public partial class CCMNContext : DbContext
             entity.HasOne(d => d.CasEsposoNavigation).WithMany(p => p.TbCasaiCasEsposoNavigations)
                 .HasForeignKey(d => d.CasEsposo)
                 .HasConstraintName("FK_ESPOSO");
+        });
+
+        modelBuilder.Entity<TbCategoria>(entity =>
+        {
+            entity.HasKey(e => e.CatCodigo);
+
+            entity.ToTable("TB_CATEGORIAS");
+
+            entity.Property(e => e.CatCodigo)
+                .ValueGeneratedNever()
+                .HasColumnName("CAT_CODIGO");
+            entity.Property(e => e.CatNome)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("CAT_NOME");
         });
 
         modelBuilder.Entity<TbComunidade>(entity =>
@@ -239,6 +261,45 @@ public partial class CCMNContext : DbContext
                 .HasConstraintName("FK_TB_EVENTO_QUARTOS_TB_QUARTOS");
         });
 
+        modelBuilder.Entity<TbFornecedore>(entity =>
+        {
+            entity.HasKey(e => e.ForCodigo);
+
+            entity.ToTable("TB_FORNECEDORES");
+
+            entity.Property(e => e.ForCodigo)
+                .ValueGeneratedNever()
+                .HasColumnName("FOR_CODIGO");
+            entity.Property(e => e.ForNome)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("FOR_NOME");
+        });
+
+        modelBuilder.Entity<TbMovimentoProduto>(entity =>
+        {
+            entity.HasKey(e => e.MovCodigo).HasName("PK_TB_MOVIMENTO_ESTOQUE");
+
+            entity.ToTable("TB_MOVIMENTO_PRODUTOS");
+
+            entity.Property(e => e.MovCodigo)
+                .ValueGeneratedNever()
+                .HasColumnName("MOV_CODIGO");
+            entity.Property(e => e.MovData)
+                .HasColumnType("datetime")
+                .HasColumnName("MOV_DATA");
+            entity.Property(e => e.MovQuantidade).HasColumnName("MOV_QUANTIDADE");
+            entity.Property(e => e.MovTipo)
+                .HasMaxLength(1)
+                .IsUnicode(false)
+                .HasColumnName("MOV_TIPO");
+            entity.Property(e => e.ProCodigo).HasColumnName("PRO_CODIGO");
+
+            entity.HasOne(d => d.ProCodigoNavigation).WithMany(p => p.TbMovimentoProdutos)
+                .HasForeignKey(d => d.ProCodigo)
+                .HasConstraintName("MOVIMENTO_PRODUTO");
+        });
+
         modelBuilder.Entity<TbPessoa>(entity =>
         {
             entity.HasKey(e => e.PesCodigo);
@@ -277,6 +338,45 @@ public partial class CCMNContext : DbContext
             entity.HasOne(d => d.ComCodigoNavigation).WithMany(p => p.TbPessoas)
                 .HasForeignKey(d => d.ComCodigo)
                 .HasConstraintName("FK_TB_PESSOAS_TB_COMUNIDADE");
+        });
+
+        modelBuilder.Entity<TbProduto>(entity =>
+        {
+            entity.HasKey(e => e.ProCodigo);
+
+            entity.ToTable("TB_PRODUTOS");
+
+            entity.Property(e => e.ProCodigo)
+                .ValueGeneratedNever()
+                .HasColumnName("PRO_CODIGO");
+            entity.Property(e => e.CatCodigo).HasColumnName("CAT_CODIGO");
+            entity.Property(e => e.ProCodBarras)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("PRO_COD_BARRAS");
+            entity.Property(e => e.ProDescricao)
+                .HasColumnType("text")
+                .HasColumnName("PRO_DESCRICAO");
+            entity.Property(e => e.ProMedida)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("PRO_MEDIDA");
+            entity.Property(e => e.ProNome)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("PRO_NOME");
+            entity.Property(e => e.ProQuantidade).HasColumnName("PRO_QUANTIDADE");
+            entity.Property(e => e.ProUniMedida)
+                .HasMaxLength(2)
+                .IsUnicode(false)
+                .HasColumnName("PRO_UNI_MEDIDA");
+            entity.Property(e => e.ProValor)
+                .HasColumnType("decimal(18, 0)")
+                .HasColumnName("PRO_VALOR");
+
+            entity.HasOne(d => d.CatCodigoNavigation).WithMany(p => p.TbProdutos)
+                .HasForeignKey(d => d.CatCodigo)
+                .HasConstraintName("CATEGORIA");
         });
 
         modelBuilder.Entity<TbQuarto>(entity =>
