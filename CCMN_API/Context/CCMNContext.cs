@@ -46,6 +46,8 @@ public partial class CCMNContext : DbContext
 
     public virtual DbSet<TbPessoa> TbPessoas { get; set; }
 
+    public virtual DbSet<TbProduto> TbProdutos { get; set; }
+
     public virtual DbSet<TbQuarto> TbQuartos { get; set; }
 
     public virtual DbSet<TbQuartoPessoa> TbQuartoPessoas { get; set; }
