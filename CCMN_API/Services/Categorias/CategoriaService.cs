@@ -25,6 +25,14 @@ public class CategoriaService : ICategoriaService
 
     public async Task AddCategoria(TbCategoria categoria)
     {
+        var categoriaExistente = await _context.TbCategorias.FirstOrDefaultAsync();
+        if (categoriaExistente != null)
+        {
+            categoria.CatCodigo = await _context.TbCategorias.MaxAsync(c => c.CatCodigo) + 1;
+        } else
+        {
+            categoria.CatCodigo = 1;
+        }
         _context.TbCategorias.Add(categoria);
         await _context.SaveChangesAsync();
     }

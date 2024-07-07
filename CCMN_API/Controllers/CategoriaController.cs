@@ -29,9 +29,18 @@ public class CategoriaController : ControllerBase
     }
 
     [HttpPost]
-    public async Task AddCategoria(TbCategoria categoria)
+    public async Task<ActionResult> AddCategoria(TbCategoria categoria)
     {
-        await _service.AddCategoria(categoria);
+        try
+        {
+            await _service.AddCategoria(categoria);
+            return Ok("Categoria Cadastrada com Sucesso !");
+        }
+        catch
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, "Erro ao Cadastrar Categoria !");
+        }
+        
     }
 
     [HttpPut]
