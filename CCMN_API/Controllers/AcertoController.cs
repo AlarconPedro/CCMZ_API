@@ -1,4 +1,5 @@
-﻿using CCMN_API.Services.DespesasComunidade;
+﻿using CCMN_API.Models;
+using CCMN_API.Services.DespesasComunidade;
 using CCMN_API.Services.DespesasEvento;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

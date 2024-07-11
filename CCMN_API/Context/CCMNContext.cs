@@ -40,6 +40,8 @@ public partial class CCMNContext : DbContext
 
     public virtual DbSet<TbEventoQuarto> TbEventoQuartos { get; set; }
 
+    public virtual DbSet<TbFormulario> TbFormularios { get; set; }
+
     public virtual DbSet<TbFornecedore> TbFornecedores { get; set; }
 
     public virtual DbSet<TbMovimentoProduto> TbMovimentoProdutos { get; set; }
@@ -263,6 +265,43 @@ public partial class CCMNContext : DbContext
                 .HasConstraintName("FK_TB_EVENTO_QUARTOS_TB_QUARTOS");
         });
 
+        modelBuilder.Entity<TbFormulario>(entity =>
+        {
+            entity.HasKey(e => e.ForCodigo);
+
+            entity.ToTable("TB_FORMULARIOS");
+
+            entity.Property(e => e.ForCodigo)
+                .ValueGeneratedNever()
+                .HasColumnName("FOR_CODIGO");
+            entity.Property(e => e.ComCodigo).HasColumnName("COM_CODIGO");
+            entity.Property(e => e.EveCodigo).HasColumnName("EVE_CODIGO");
+            entity.Property(e => e.ForDatacriacao)
+                .HasColumnType("datetime")
+                .HasColumnName("FOR_DATACRIACAO");
+            entity.Property(e => e.ForEndereco)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("FOR_ENDERECO");
+            entity.Property(e => e.ForNome)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("FOR_NOME");
+            entity.Property(e => e.ForStatus).HasColumnName("FOR_STATUS");
+            entity.Property(e => e.ForTipo)
+                .HasMaxLength(1)
+                .IsUnicode(false)
+                .HasColumnName("FOR_TIPO");
+
+            entity.HasOne(d => d.ComCodigoNavigation).WithMany(p => p.TbFormularios)
+                .HasForeignKey(d => d.ComCodigo)
+                .HasConstraintName("ComunidadeFormulario");
+
+            entity.HasOne(d => d.EveCodigoNavigation).WithMany(p => p.TbFormularios)
+                .HasForeignKey(d => d.EveCodigo)
+                .HasConstraintName("EventoFomulario");
+        });
+
         modelBuilder.Entity<TbFornecedore>(entity =>
         {
             entity.HasKey(e => e.ForCodigo);
@@ -447,7 +486,7 @@ public partial class CCMNContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("USU_EMAIL");
             entity.Property(e => e.UsuNome)
-                .HasMaxLength(50)
+                .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("USU_NOME");
             entity.Property(e => e.UsuSenha)
@@ -455,7 +494,6 @@ public partial class CCMNContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("USU_SENHA");
         });
-
 
         OnModelCreatingPartial(modelBuilder);
     }

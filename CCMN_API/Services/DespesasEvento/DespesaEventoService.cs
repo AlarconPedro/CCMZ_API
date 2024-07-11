@@ -1,4 +1,5 @@
 ﻿
+using CCMN_API.Models;
 using CCMN_API.Models.Painel.Acerto;
 using CCMN_API.Models.Painel.Evento;
 using CCMN_API.Models.Painel.EventoDespesas;

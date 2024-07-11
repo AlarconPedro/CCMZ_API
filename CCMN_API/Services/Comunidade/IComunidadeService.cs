@@ -2,7 +2,7 @@
 
 namespace CCMZ_API.Services.Comunidade;
 
-using CCMN_API;
+using CCMN_API.Models;
 using CCMZ_API.Models.Painel.Comunidade;
 
 public interface IComunidadeService

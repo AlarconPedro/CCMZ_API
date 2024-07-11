@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CCMN_API;
+namespace CCMN_API.Models;
 
 public partial class TbComunidade
 {
@@ -14,6 +14,8 @@ public partial class TbComunidade
     public string? ComUf { get; set; }
 
     public virtual ICollection<TbDespesaComunidadeEvento> TbDespesaComunidadeEventos { get; set; } = new List<TbDespesaComunidadeEvento>();
+
+    public virtual ICollection<TbFormulario> TbFormularios { get; set; } = new List<TbFormulario>();
 
     public virtual ICollection<TbPessoa> TbPessoas { get; set; } = new List<TbPessoa>();
 }

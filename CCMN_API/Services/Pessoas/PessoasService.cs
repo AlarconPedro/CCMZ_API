@@ -1,6 +1,6 @@
 ﻿namespace CCMZ_API.Services.Pessoas;
 
-using CCMN_API;
+using CCMN_API.Models;
 using CCMZ_API.Models;
 using CCMZ_API.Models.Painel.Pessoas;
 using Microsoft.EntityFrameworkCore;

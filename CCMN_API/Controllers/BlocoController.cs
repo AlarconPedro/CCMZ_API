@@ -1,4 +1,4 @@
-﻿using CCMN_API;
+﻿using CCMN_API.Models;
 using CCMZ_API.Models;
 using CCMZ_API.Services.Blocos;
 using Microsoft.AspNetCore.Http;

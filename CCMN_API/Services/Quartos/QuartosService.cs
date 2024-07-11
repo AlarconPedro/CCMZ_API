@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CCMZ_API.Services.Quartos;
 
-using CCMN_API;
+using CCMN_API.Models;
 using CCMZ_API.Models.Painel.Quartos;
 
 public class QuartosService : IQuartosService

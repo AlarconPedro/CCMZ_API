@@ -1,4 +1,5 @@
-﻿using CCMN_API.Services.Usuarios;
+﻿using CCMN_API.Models;
+using CCMN_API.Services.Usuarios;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

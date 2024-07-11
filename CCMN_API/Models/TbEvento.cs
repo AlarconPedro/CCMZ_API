@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CCMN_API;
+namespace CCMN_API.Models;
 
 public partial class TbEvento
 {
@@ -28,4 +28,6 @@ public partial class TbEvento
     public virtual ICollection<TbEventoPessoa> TbEventoPessoas { get; set; } = new List<TbEventoPessoa>();
 
     public virtual ICollection<TbEventoQuarto> TbEventoQuartos { get; set; } = new List<TbEventoQuarto>();
+
+    public virtual ICollection<TbFormulario> TbFormularios { get; set; } = new List<TbFormulario>();
 }

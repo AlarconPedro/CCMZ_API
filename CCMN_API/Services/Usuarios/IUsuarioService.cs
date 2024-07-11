@@ -1,4 +1,6 @@
-﻿namespace CCMN_API.Services.Usuarios;
+﻿using CCMN_API.Models;
+
+namespace CCMN_API.Services.Usuarios;
 
 public interface IUsuarioService
 {

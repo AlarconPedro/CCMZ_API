@@ -1,4 +1,4 @@
-﻿using CCMN_API;
+﻿using CCMN_API.Models;
 using CCMZ_API.Models;
 using CCMZ_API.Services.Comunidade;
 using Microsoft.AspNetCore.Http;

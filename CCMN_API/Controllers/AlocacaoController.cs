@@ -1,4 +1,4 @@
-﻿using CCMN_API;
+﻿using CCMN_API.Models;
 using CCMZ_API.Services.Alocacao;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
