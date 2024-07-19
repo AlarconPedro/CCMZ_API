@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CCMZ_API.Services.Alocacao;
 
+using CCMN_API;
 using CCMN_API.Models;
 using CCMN_API.Models.Painel.Evento;
 using CCMZ_API.Models.Painel.Comunidade;

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CCMN_API;
+namespace CCMN_API.Models;
 
 public partial class TbUsuario
 {

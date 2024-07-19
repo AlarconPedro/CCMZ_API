@@ -1,4 +1,5 @@
-﻿using CCMN_API.Models;
+﻿using CCMN_API;
+using CCMN_API.Models;
 using CCMN_API.Models.Painel.Checkin;
 using CCMZ_API.Models.Painel.QuartoPessoa;
 using Microsoft.EntityFrameworkCore;

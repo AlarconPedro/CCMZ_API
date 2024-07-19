@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CCMN_API.Models;
+using System;
 using System.Collections.Generic;
 
 namespace CCMN_API;

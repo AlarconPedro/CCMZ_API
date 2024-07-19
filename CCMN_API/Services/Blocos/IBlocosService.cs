@@ -1,8 +1,6 @@
-﻿using CCMZ_API.Models;
+﻿namespace CCMZ_API.Services.Blocos;
 
-namespace CCMZ_API.Services.Blocos;
-
-using CCMN_API.Models;
+using CCMN_API;
 using CCMZ_API.Models.Painel.Bloco;
 
 public interface IBlocosService

@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CCMZ_API.Services.Blocos;
 
+using CCMN_API;
 using CCMN_API.Models;
 using CCMZ_API.Models.Painel.Bloco;
 
