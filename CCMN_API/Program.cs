@@ -2,6 +2,7 @@ using CCMN_API.Services.Categorias;
 using CCMN_API.Services.DespesasComunidade;
 using CCMN_API.Services.DespesasEvento;
 using CCMN_API.Services.MovimentoProdutos;
+using CCMN_API.Services.Produtos;
 using CCMN_API.Services.Usuarios;
 using CCMZ_API;
 using CCMZ_API.Services.Alocacao;
@@ -12,6 +13,7 @@ using CCMZ_API.Services.Eventos;
 using CCMZ_API.Services.Pessoas;
 using CCMZ_API.Services.QuartoPessoa;
 using CCMZ_API.Services.Quartos;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var PainelCCMN = "PainelCCMN";
@@ -25,7 +27,7 @@ builder.Services.AddCors(options =>
         {
             policy.AllowAnyHeader();
             policy.AllowAnyMethod();
-            policy.WithOrigins("http://localhost:3000", "http://localhost:51749");
+            policy.WithOrigins("http://localhost:60809");
             //policy.WithOrigins("http://painel.ccmn.org.br");
         });
 });
@@ -49,6 +51,8 @@ builder.Services.AddScoped<IDespesaComunidadeService, DespesaComunidadeService>(
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 builder.Services.AddScoped<ICategoriaService, CategoriaService>();
 builder.Services.AddScoped<IMovimentoEstoqueServicecs, MovimentoEstoqueService>();
+builder.Services.AddScoped<IProdutoService, ProdutoService>();
+builder.Services.AddScoped<IMovimentoEstoqueServicecs, MovimentoEstoqueService>();
 
 builder.Services.AddAuthorization();
 
@@ -62,11 +66,9 @@ var app = builder.Build();
 // Configure the HTTP request pipeline. 
 if (app.Environment.IsDevelopment())
 {
-    
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
-
-app.UseSwagger();
-app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 

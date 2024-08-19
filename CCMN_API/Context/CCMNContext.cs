@@ -40,6 +40,18 @@ public partial class CCMNContext : DbContext
 
     public virtual DbSet<TbEventoQuarto> TbEventoQuartos { get; set; }
 
+    public virtual DbSet<TbParticipantesCupon> TbParticipantesCupons { get; set; }
+
+    public virtual DbSet<TbPromoco> TbPromocoes { get; set; }
+
+    public virtual DbSet<TbPromocoesCupon> TbPromocoesCupons { get; set; }
+
+    public virtual DbSet<TbPromocoesParticipante> TbPromocoesParticipantes { get; set; }
+
+    public virtual DbSet<TbPromocoesPremio> TbPromocoesPremios { get; set; }
+
+    public virtual DbSet<TbPromocoesSorteio> TbPromocoesSorteios { get; set; }
+
     public virtual DbSet<TbFormulario> TbFormularios { get; set; }
 
     public virtual DbSet<TbFornecedore> TbFornecedores { get; set; }
@@ -341,6 +353,27 @@ public partial class CCMNContext : DbContext
                 .HasConstraintName("MOVIMENTO_PRODUTO");
         });
 
+        modelBuilder.Entity<TbParticipantesCupon>(entity =>
+        {
+            entity.HasKey(e => e.ParcupCodigo);
+
+            entity.ToTable("TB_PARTICIPANTES_CUPONS");
+
+            entity.Property(e => e.ParcupCodigo)
+                .ValueGeneratedNever()
+                .HasColumnName("PARCUP_CODIGO");
+            entity.Property(e => e.CupCodigo).HasColumnName("CUP_CODIGO");
+            entity.Property(e => e.ParCodigo).HasColumnName("PAR_CODIGO");
+
+            entity.HasOne(d => d.CupCodigoNavigation).WithMany(p => p.TbParticipantesCupons)
+                .HasForeignKey(d => d.CupCodigo)
+                .HasConstraintName("CUPONS");
+
+            entity.HasOne(d => d.ParCodigoNavigation).WithMany(p => p.TbParticipantesCupons)
+                .HasForeignKey(d => d.ParCodigo)
+                .HasConstraintName("PARTICIPANTES");
+        });
+
         modelBuilder.Entity<TbPessoa>(entity =>
         {
             entity.HasKey(e => e.PesCodigo);
@@ -418,6 +451,153 @@ public partial class CCMNContext : DbContext
             entity.HasOne(d => d.CatCodigoNavigation).WithMany(p => p.TbProdutos)
                 .HasForeignKey(d => d.CatCodigo)
                 .HasConstraintName("CATEGORIA");
+        });
+
+        modelBuilder.Entity<TbPromoco>(entity =>
+        {
+            entity.HasKey(e => e.ProCodigo).HasName("PK_TB_PROMOCAO");
+
+            entity.ToTable("TB_PROMOCOES");
+
+            entity.Property(e => e.ProCodigo).HasColumnName("PRO_CODIGO");
+            entity.Property(e => e.ProDatafim)
+                .HasColumnType("datetime")
+                .HasColumnName("PRO_DATAFIM");
+            entity.Property(e => e.ProDatainicio)
+                .HasColumnType("datetime")
+                .HasColumnName("PRO_DATAINICIO");
+            entity.Property(e => e.ProDescricao)
+                .HasColumnType("text")
+                .HasColumnName("PRO_DESCRICAO");
+            entity.Property(e => e.ProNome)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("PRO_NOME");
+        });
+
+        modelBuilder.Entity<TbPromocoesCupon>(entity =>
+        {
+            entity.HasKey(e => e.CupCodigo).HasName("PK_TB_CUPOM");
+
+            entity.ToTable("TB_PROMOCOES_CUPONS");
+
+            entity.Property(e => e.CupCodigo).HasColumnName("CUP_CODIGO");
+            entity.Property(e => e.CupNumero)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("CUP_NUMERO");
+            entity.Property(e => e.CupSorteado).HasColumnName("CUP_SORTEADO");
+            entity.Property(e => e.CupVendido).HasColumnName("CUP_VENDIDO");
+            entity.Property(e => e.ParCodigo).HasColumnName("PAR_CODIGO");
+            entity.Property(e => e.ProCodigo).HasColumnName("PRO_CODIGO");
+
+            entity.HasOne(d => d.ParCodigoNavigation).WithMany(p => p.TbPromocoesCupons)
+                .HasForeignKey(d => d.ParCodigo)
+                .HasConstraintName("FK_TB_PROMOCOES_CUPONS_TB_PROMOCOES_PARTICIPANTES");
+
+            entity.HasOne(d => d.ProCodigoNavigation).WithMany(p => p.TbPromocoesCupons)
+                .HasForeignKey(d => d.ProCodigo)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_TB_CUPOM_TB_PROMOCAO");
+        });
+
+        modelBuilder.Entity<TbPromocoesParticipante>(entity =>
+        {
+            entity.HasKey(e => e.ParCodigo);
+
+            entity.ToTable("TB_PROMOCOES_PARTICIPANTES");
+
+            entity.Property(e => e.ParCodigo).HasColumnName("PAR_CODIGO");
+            entity.Property(e => e.ParCidade)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("PAR_CIDADE");
+            entity.Property(e => e.ParCpf)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("PAR_CPF");
+            entity.Property(e => e.ParDatanasc)
+                .HasColumnType("date")
+                .HasColumnName("PAR_DATANASC");
+            entity.Property(e => e.ParEmail)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("PAR_EMAIL");
+            entity.Property(e => e.ParEndereco)
+                .HasMaxLength(150)
+                .IsUnicode(false)
+                .HasColumnName("PAR_ENDERECO");
+            entity.Property(e => e.ParFone)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("PAR_FONE");
+            entity.Property(e => e.ParNome)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("PAR_NOME");
+            entity.Property(e => e.ParUf)
+                .HasMaxLength(2)
+                .IsUnicode(false)
+                .HasColumnName("PAR_UF");
+            entity.Property(e => e.ProCodigo).HasColumnName("PRO_CODIGO");
+
+            entity.HasOne(d => d.ProCodigoNavigation).WithMany(p => p.TbPromocoesParticipantes)
+                .HasForeignKey(d => d.ProCodigo)
+                .HasConstraintName("FK_TB_PROMOCOES_PARTICIPANTES_TB_PROMOCOES");
+        });
+
+        modelBuilder.Entity<TbPromocoesPremio>(entity =>
+        {
+            entity.HasKey(e => e.PreCodigo);
+
+            entity.ToTable("TB_PROMOCOES_PREMIOS");
+
+            entity.Property(e => e.PreCodigo).HasColumnName("PRE_CODIGO");
+            entity.Property(e => e.PreDescricao)
+                .HasMaxLength(10)
+                .IsFixedLength()
+                .HasColumnName("PRE_DESCRICAO");
+            entity.Property(e => e.PreNome)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("PRE_NOME");
+            entity.Property(e => e.ProCodigo).HasColumnName("PRO_CODIGO");
+
+            entity.HasOne(d => d.ProCodigoNavigation).WithMany(p => p.TbPromocoesPremios)
+                .HasForeignKey(d => d.ProCodigo)
+                .HasConstraintName("FK_TB_PROMOCOES_PREMIOS_TB_PROMOCOES");
+        });
+
+        modelBuilder.Entity<TbPromocoesSorteio>(entity =>
+        {
+            entity.HasKey(e => e.SorCodigo);
+
+            entity.ToTable("TB_PROMOCOES_SORTEIO");
+
+            entity.Property(e => e.SorCodigo).HasColumnName("SOR_CODIGO");
+            entity.Property(e => e.CupCodigo).HasColumnName("CUP_CODIGO");
+            entity.Property(e => e.ParCodigo).HasColumnName("PAR_CODIGO");
+            entity.Property(e => e.PreCodigo).HasColumnName("PRE_CODIGO");
+            entity.Property(e => e.ProCodigo).HasColumnName("PRO_CODIGO");
+            entity.Property(e => e.SorData)
+                .HasColumnType("datetime")
+                .HasColumnName("SOR_DATA");
+
+            entity.HasOne(d => d.CupCodigoNavigation).WithMany(p => p.TbPromocoesSorteios)
+                .HasForeignKey(d => d.CupCodigo)
+                .HasConstraintName("FK_TB_PROMOCOES_SORTEIO_TB_PROMOCOES_CUPONS");
+
+            entity.HasOne(d => d.ParCodigoNavigation).WithMany(p => p.TbPromocoesSorteios)
+                .HasForeignKey(d => d.ParCodigo)
+                .HasConstraintName("FK_TB_PROMOCOES_SORTEIO_TB_PROMOCOES_PARTICIPANTES");
+
+            entity.HasOne(d => d.PreCodigoNavigation).WithMany(p => p.TbPromocoesSorteios)
+                .HasForeignKey(d => d.PreCodigo)
+                .HasConstraintName("FK_TB_PROMOCOES_SORTEIO_TB_PROMOCOES_PREMIOS");
+
+            entity.HasOne(d => d.ProCodigoNavigation).WithMany(p => p.TbPromocoesSorteios)
+                .HasForeignKey(d => d.ProCodigo)
+                .HasConstraintName("FK_TB_PROMOCOES_SORTEIO_TB_PROMOCOES");
         });
 
         modelBuilder.Entity<TbQuarto>(entity =>

@@ -25,6 +25,14 @@ public class ProdutoService : IProdutoService
 
     public async Task AddProduto(TbProduto produto)
     {
+        var produtoExistente = await _context.TbProdutos.FirstOrDefaultAsync();
+        if (produtoExistente != null)
+        {
+            produto.ProCodigo = await _context.TbProdutos.MaxAsync(p => p.ProCodigo) + 1;
+        } else
+        {
+            produto.ProCodigo = 1;
+        }
         _context.TbProdutos.Add(produto);
         await _context.SaveChangesAsync();
     }
