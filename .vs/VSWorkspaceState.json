@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\CCMN_API"
   ],
-  "SelectedNode": "\\CCMZ_API.sln",
+  "SelectedNode": "\\CCMN_API\\Program.cs",
   "PreviewInSolutionExplorer": false
 }
