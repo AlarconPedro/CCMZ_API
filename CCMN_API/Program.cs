@@ -3,6 +3,7 @@ using CCMN_API.Services.DespesasComunidade;
 using CCMN_API.Services.DespesasEvento;
 using CCMN_API.Services.MovimentoProdutos;
 using CCMN_API.Services.Produtos;
+using CCMN_API.Services.Promocoes;
 using CCMN_API.Services.Usuarios;
 using CCMZ_API;
 using CCMZ_API.Services.Alocacao;
@@ -27,7 +28,7 @@ builder.Services.AddCors(options =>
         {
             policy.AllowAnyHeader();
             policy.AllowAnyMethod();
-            policy.WithOrigins("http://localhost:50482");
+            policy.WithOrigins("http://localhost:54376");
             //policy.WithOrigins("http://painel.ccmn.org.br");
         });
 });
@@ -53,6 +54,7 @@ builder.Services.AddScoped<ICategoriaService, CategoriaService>();
 builder.Services.AddScoped<IMovimentoEstoqueServicecs, MovimentoEstoqueService>();
 builder.Services.AddScoped<IProdutoService, ProdutoService>();
 builder.Services.AddScoped<IMovimentoEstoqueServicecs, MovimentoEstoqueService>();
+builder.Services.AddScoped<IPromocoesService, PromocoesService>();
 
 builder.Services.AddAuthorization();
 
