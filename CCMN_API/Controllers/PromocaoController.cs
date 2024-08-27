@@ -35,4 +35,44 @@ public class PromocaoController : ControllerBase
             return StatusCode(StatusCodes.Status500InternalServerError, "Erro ao buscar Promoções !");
         }
     }
+
+    [HttpGet("participantes/{codigoPromocao}")]
+    public async Task<ActionResult<IEnumerable<ListarParticipantes>>> GetParticipantes(int codigoPromocao)
+    {
+        try
+        {
+            var retorno = await _service.GetParticipantes(codigoPromocao);
+            if (retorno != null)
+            {
+                return Ok(retorno);
+            } else
+            {
+                return NotFound("Nenhum Participante encontrado !");
+            }
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, "Erro ao buscar Participantes !");
+        }
+    }
+
+    [HttpGet("sorteios")]
+    public async Task<ActionResult<IEnumerable<ListarSorteios>>> GetSorteios()
+    {
+        try
+        {
+            var retorno = await _service.GetSorteios();
+            if (retorno != null)
+            {
+                return Ok(retorno);
+            } else
+            {
+                return NotFound("Nenhum Sorteio encontrado !");
+            }
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, "Erro ao buscar Sorteios !");
+        }
+    }
 }

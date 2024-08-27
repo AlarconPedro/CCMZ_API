@@ -6,4 +6,5 @@ public interface IPromocoesService
 {
     Task<IEnumerable<ListarPromocoes>> GetPromocoes();
     Task<IEnumerable<ListarParticipantes>> GetParticipantes(int codigoPromocao);
+    Task<IEnumerable<ListarSorteios>> GetSorteios();
 }
