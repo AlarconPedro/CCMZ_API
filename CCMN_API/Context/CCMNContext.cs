@@ -72,6 +72,9 @@ public partial class CCMNContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        //Add Collate pt-br
+        modelBuilder.UseCollation("SQL_Latin1_General_CP1_CI_AS");
+
         modelBuilder.Entity<TbBloco>(entity =>
         {
             entity.HasKey(e => e.BloCodigo);

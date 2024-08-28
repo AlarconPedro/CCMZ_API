@@ -123,20 +123,19 @@ public class CheckinService : ICheckinService
     public async Task<IEnumerable<QuartoPessoas>> GetQuartoPessoasBusca(int codigoEvento, string busca)
     {
         return await _context.TbEventoQuartos.Where(eq => eq.EveCodigo == codigoEvento)
-            .Join(_context.TbQuartos, eq => eq.QuaCodigo, q => q.QuaCodigo, (eq, q) => new { eq, q })
-            .Where(eq =>  eq.q.TbQuartoPessoas.Any(x => x.PesCodigoNavigation.PesNome.Contains(busca)))
+            .Where(eq =>  eq.QuaCodigoNavigation.TbQuartoPessoas.Any(x => x.PesCodigoNavigation.PesNome.Contains(busca)))
             .Select(eq => new QuartoPessoas
             {
-                BloCodigo = eq.q.BloCodigo,
-                QuaCodigo = eq.q.QuaCodigo,
-                QuaNome = eq.q.QuaNome,
-                BloNome = eq.q.BloCodigoNavigation.BloNome,
-                Vagas = eq.q.QuaQtdcamas - _context.TbQuartoPessoas.Join(_context.TbPessoas, qp => qp.PesCodigo, p => p.PesCodigo, (qp, p) => new { qp, p })
+                BloCodigo = eq.QuaCodigoNavigation.BloCodigo,
+                QuaCodigo = eq.QuaCodigo,
+                QuaNome = eq.QuaCodigoNavigation.QuaNome,
+                BloNome = eq.QuaCodigoNavigation.BloCodigoNavigation.BloNome,
+                Vagas = eq.QuaCodigoNavigation.QuaQtdcamas - _context.TbQuartoPessoas.Join(_context.TbPessoas, qp => qp.PesCodigo, p => p.PesCodigo, (qp, p) => new { qp, p })
                                                         .Join(_context.TbEventoPessoas, x => x.qp.PesCodigo, ep => ep.PesCodigo, (x, ep) => new { x, ep })
-                                                        .Where(x => x.x.qp.QuaCodigo == eq.q.QuaCodigo && x.ep.EveCodigo == codigoEvento).Count(),
+                                                        .Where(x => x.x.qp.QuaCodigo == eq.QuaCodigo && x.ep.EveCodigo == codigoEvento).Count(),
                 PessoasQuarto = _context.TbQuartoPessoas.Join(_context.TbPessoas, qp => qp.PesCodigo, p => p.PesCodigo, (qp, p) => new { qp, p })
                                                         .Join(_context.TbEventoPessoas, x => x.qp.PesCodigo, ep => ep.PesCodigo, (x, ep) => new { x, ep })
-                                                        .Where(x => x.x.qp.QuaCodigo == eq.q.QuaCodigo && x.ep.EveCodigo == codigoEvento)
+                                                        .Where(x => x.x.qp.QuaCodigo == eq.QuaCodigo && x.ep.EveCodigo == codigoEvento)
                                                         .Select(x => new PessoaCheckin
                                                         {
                                                             PesCodigo = x.x.qp.PesCodigo,
