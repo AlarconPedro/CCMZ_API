@@ -28,8 +28,8 @@ builder.Services.AddCors(options =>
         {
             policy.AllowAnyHeader();
             policy.AllowAnyMethod();
-            //olicy.WithOrigins("http://localhost:65095");
-            policy.WithOrigins("http://painel.ccmn.org.br");
+            policy.WithOrigins("http://localhost:49472");
+            //policy.WithOrigins("http://painel.ccmn.org.br");
         });
 });
 

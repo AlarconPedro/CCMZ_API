@@ -16,6 +16,7 @@ public class PromocaoController : ControllerBase
         _service = Service;
     }
 
+    //GET
     [HttpGet]
     public async Task<ActionResult<IEnumerable<ListarPromocoes>>> GetPromocoes()
     {
@@ -73,6 +74,217 @@ public class PromocaoController : ControllerBase
         catch (Exception ex)
         {
             return StatusCode(StatusCodes.Status500InternalServerError, "Erro ao buscar Sorteios !");
+        }
+    }
+
+    [HttpGet("participante/dados/{cpfParticipantes}")]
+    public async Task<ActionResult<TbPromocoesParticipante>> GetDadosParticipantes(string cpfParticipantes)
+    {
+        try
+        {
+            var retorno = await _service.GetDadosParticipantes(cpfParticipantes);
+            if (retorno != null)
+            {
+                return Ok(retorno);
+            } else
+            {
+                return NotFound("Nenhum Participante encontrado !");
+            }
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, "Erro ao buscar Participantes !");
+        }
+    }
+
+    [HttpGet("cupons/{codigoParticipante}")]
+    public async Task<ActionResult<IEnumerable<TbPromocoesCupon>>> GetCuponsParticipante(int codigoParticipante)
+    {
+        try
+        {
+            var retorno = await _service.GetCuponsParticipante(codigoParticipante);
+            if (retorno != null)
+            {
+                return Ok(retorno);
+            } else
+            {
+                return NotFound("Nenhum Cupom encontrado !");
+            }
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, "Erro ao buscar Cupons !");
+        }
+    }
+
+    //POST
+    [HttpPost("participante")]
+    public async Task<ActionResult> AddParticipantes(TbPromocoesParticipante participantes)
+    {
+        try
+        {
+            await _service.AddParticipantes(participantes);
+            return Ok("Participante adicionado com sucesso !");
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, "Erro ao adicionar Participante !");
+        }
+    }
+
+    [HttpPost("cupons")]
+    public async Task<ActionResult> AddCupons(TbPromocoesCupon cupons)
+    {
+        try
+        {
+            await _service.AddCupons(cupons);
+            return Ok("Cupom adicionado com sucesso !");
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, "Erro ao adicionar Cupom !");
+        }
+    }
+
+    [HttpPost("sorteios")]
+    public async Task<ActionResult> AddSorteios(TbPromocoesSorteio sorteios)
+    {
+        try
+        {
+            await _service.AddSorteios(sorteios);
+            return Ok("Sorteio adicionado com sucesso !");
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, "Erro ao adicionar Sorteio !");
+        }
+    }
+
+    [HttpPost("promocoes")]
+    public async Task<ActionResult> AddPromocoes(TbPromoco promocoes)
+    {
+        try
+        {
+            await _service.AddPromocoes(promocoes);
+            return Ok("Promoção adicionada com sucesso !");
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, "Erro ao adicionar Promoção !");
+        }
+    }
+
+    //PUT
+    [HttpPut("participantes")]
+    public async Task<ActionResult> UpdateParticipantes(TbPromocoesParticipante participantes)
+    {
+        try
+        {
+            await _service.UpdateParticipantes(participantes);
+            return Ok("Participante atualizado com sucesso !");
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, "Erro ao atualizar Participante !");
+        }
+    }
+
+    [HttpPut("cupons")]
+    public async Task<ActionResult> UpdateCupons(TbPromocoesCupon cupons)
+    {
+        try
+        {
+            await _service.UpdateCupons(cupons);
+            return Ok("Cupom atualizado com sucesso !");
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, "Erro ao atualizar Cupom !");
+        }
+    }
+
+    [HttpPut("sorteios")]
+    public async Task<ActionResult> UpdateSorteios(TbPromocoesSorteio sorteios)
+    {
+        try
+        {
+            await _service.UpdateSorteios(sorteios);
+            return Ok("Sorteio atualizado com sucesso !");
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, "Erro ao atualizar Sorteio !");
+        }
+    }
+
+    [HttpPut("promocoes")]
+    public async Task<ActionResult> UpdatePromocoes(TbPromoco promocoes)
+    {
+        try
+        {
+            await _service.UpdatePromocoes(promocoes);
+            return Ok("Promoção atualizada com sucesso !");
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, "Erro ao atualizar Promoção !");
+        }
+    }
+
+    //DELETE
+    [HttpDelete("participantes/{codigoParticipante}")]
+    public async Task<ActionResult> DeleteParticipantes(int codigoParticipante)
+    {
+        try
+        {
+            await _service.DeleteParticipantes(codigoParticipante);
+            return Ok("Participante deletado com sucesso !");
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, "Erro ao deletar Participante !");
+        }
+    }
+
+    [HttpDelete("cupons/{codigoCupom}")]
+    public async Task<ActionResult> DeleteCupons(int codigoCupom)
+    {
+        try
+        {
+            await _service.DeleteCupons(codigoCupom);
+            return Ok("Cupom deletado com sucesso !");
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, "Erro ao deletar Cupom !");
+        }
+    }
+
+    [HttpDelete("sorteios/{codigoSorteio}")]
+    public async Task<ActionResult> DeleteSorteios(int codigoSorteio)
+    {
+        try
+        {
+            await _service.DeleteSorteios(codigoSorteio);
+            return Ok("Sorteio deletado com sucesso !");
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, "Erro ao deletar Sorteio !");
+        }
+    }
+
+    [HttpDelete("promocoes/{codigoPromocao}")]
+    public async Task<ActionResult> DeletePromocoes(int codigoPromocao)
+    {
+        try
+        {
+            await _service.DeletePromocoes(codigoPromocao);
+            return Ok("Promoção deletada com sucesso !");
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, "Erro ao deletar Promoção !");
         }
     }
 }
