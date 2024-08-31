@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|c:\\desenvolvimento\\c#\\web api\\ccmn_api\\ccmn_api\\controllers\\promocaocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|solutionrelative:ccmn_api\\controllers\\promocaocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|c:\\desenvolvimento\\c#\\web api\\ccmn_api\\ccmn_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|solutionrelative:ccmn_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|c:\\desenvolvimento\\c#\\web api\\ccmn_api\\ccmn_api\\services\\promocoes\\promocoesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|solutionrelative:ccmn_api\\services\\promocoes\\promocoesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|c:\\desenvolvimento\\c#\\web api\\ccmn_api\\ccmn_api\\controllers\\promocaocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|solutionrelative:ccmn_api\\controllers\\promocaocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|c:\\desenvolvimento\\c#\\web api\\ccmn_api\\ccmn_api\\services\\promocoes\\ipromocoesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -17,10 +21,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|c:\\desenvolvimento\\c#\\web api\\ccmn_api\\ccmn_api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|solutionrelative:ccmn_api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|c:\\desenvolvimento\\c#\\web api\\ccmn_api\\ccmn_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|solutionrelative:ccmn_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|c:\\desenvolvimento\\c#\\web api\\ccmn_api\\ccmn_api\\models\\tbpromocoescupon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -38,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,16 +46,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "PromocaoController.cs",
               "DocumentMoniker": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\Controllers\\PromocaoController.cs",
               "RelativeDocumentMoniker": "CCMN_API\\Controllers\\PromocaoController.cs",
               "ToolTip": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\Controllers\\PromocaoController.cs",
               "RelativeToolTip": "CCMN_API\\Controllers\\PromocaoController.cs",
-              "ViewState": "AQIAAHkAAAAAAAAAAAAywJAAAAAQAAAA",
+              "ViewState": "AQIAAE4AAAAAAAAAAAAkwG0AAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-30T22:58:44.599Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-30T22:58:44.599Z"
             },
             {
               "$type": "Document",
@@ -65,14 +64,14 @@
               "RelativeDocumentMoniker": "CCMN_API\\Services\\Promocoes\\PromocoesService.cs",
               "ToolTip": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\Services\\Promocoes\\PromocoesService.cs",
               "RelativeToolTip": "CCMN_API\\Services\\Promocoes\\PromocoesService.cs",
-              "ViewState": "AQIAAD8AAAAAAAAAAAAmwGUAAAA1AAAA",
+              "ViewState": "AQIAAD4AAAAAAAAAAAA8wF4AAAA1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-30T22:58:44.632Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "IPromocoesService.cs",
               "DocumentMoniker": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\Services\\Promocoes\\IPromocoesService.cs",
               "RelativeDocumentMoniker": "CCMN_API\\Services\\Promocoes\\IPromocoesService.cs",
@@ -80,12 +79,11 @@
               "RelativeToolTip": "CCMN_API\\Services\\Promocoes\\IPromocoesService.cs",
               "ViewState": "AQIAAAQAAAAAAAAAAAAqwBIAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-30T22:58:44.636Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-30T22:58:44.636Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\Program.cs",
               "RelativeDocumentMoniker": "CCMN_API\\Program.cs",
@@ -98,7 +96,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\appsettings.json",
               "RelativeDocumentMoniker": "CCMN_API\\appsettings.json",
@@ -106,8 +104,7 @@
               "RelativeToolTip": "CCMN_API\\appsettings.json",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-08-30T22:58:44.644Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-30T22:58:44.644Z"
             },
             {
               "$type": "Document",
