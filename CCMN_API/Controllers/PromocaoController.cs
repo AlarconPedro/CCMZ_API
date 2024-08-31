@@ -119,12 +119,12 @@ public class PromocaoController : ControllerBase
 
     //POST
     [HttpPost("participante")]
-    public async Task<ActionResult> AddParticipantes(TbPromocoesParticipante participantes)
+    public async Task<ActionResult<TbPromocoesParticipante>> AddParticipantes(TbPromocoesParticipante participantes)
     {
         try
         {
-            await _service.AddParticipantes(participantes);
-            return Ok("Participante adicionado com sucesso !");
+            var codigoParticipante = await _service.AddParticipantes(participantes);
+            return Ok(codigoParticipante);
         }
         catch (Exception ex)
         {

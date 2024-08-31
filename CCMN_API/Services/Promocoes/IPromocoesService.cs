@@ -12,7 +12,7 @@ public interface IPromocoesService
     Task<TbPromocoesParticipante> GetDadosParticipantes(string cpfParticipantes);
 
     //POST
-    Task AddParticipantes(TbPromocoesParticipante participantes);
+    Task<TbPromocoesParticipante> AddParticipantes(TbPromocoesParticipante participantes);
     Task<(bool, string)> AddCupons(TbPromocoesCupon cupons);
     Task AddSorteios(TbPromocoesSorteio sorteios);
     Task AddPromocoes(TbPromoco promocoes);

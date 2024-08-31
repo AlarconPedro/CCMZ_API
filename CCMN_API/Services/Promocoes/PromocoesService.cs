@@ -60,12 +60,12 @@ public class PromocoesService : IPromocoesService
     }
 
     //POST
-    public async Task AddParticipantes(TbPromocoesParticipante participantes)
+    public async Task<TbPromocoesParticipante> AddParticipantes(TbPromocoesParticipante participantes)
     {
         var pessoaCadastrada = await _context.TbPromocoesParticipantes.Where(p => p.ParCpf == participantes.ParCpf).FirstOrDefaultAsync();
         if (pessoaCadastrada != null)
         {
-            return;
+            return pessoaCadastrada;
         } else
         {
             var result = await _context.TbPromocoesParticipantes.FirstOrDefaultAsync();
@@ -79,6 +79,7 @@ public class PromocoesService : IPromocoesService
             }
             _context.TbPromocoesParticipantes.Add(participantes);
             await _context.SaveChangesAsync();
+            return participantes;
         }
        
     }
