@@ -137,8 +137,13 @@ public class PromocaoController : ControllerBase
     {
         try
         {
-            await _service.AddCupons(cupons);
-            return Ok("Cupom adicionado com sucesso !");
+            var retorno = await _service.AddCupons(cupons);
+            if (retorno.Item1)
+                return Ok(retorno.Item2);
+            else if (retorno.Item1 == false && retorno.Item2 == "Nenhum Cupom Encontrado !")
+                return NotFound("Cupom não encontrado !");
+            else
+                return BadRequest(retorno.Item2);
         }
         catch (Exception ex)
         {

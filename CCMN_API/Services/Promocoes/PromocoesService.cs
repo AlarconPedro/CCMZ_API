@@ -56,38 +56,49 @@ public class PromocoesService : IPromocoesService
 
     public async Task<IEnumerable<TbPromocoesCupon>> GetCuponsParticipante(int codigoParticipante)
     {
-        return await _context.TbPromocoesCupons
-            .Where(p => p.ParCodigo == codigoParticipante)
-            .ToListAsync();
+        return await _context.TbPromocoesCupons.Where(p => p.ParCodigo == codigoParticipante).ToListAsync();
     }
 
     //POST
     public async Task AddParticipantes(TbPromocoesParticipante participantes)
     {
-        var result = await _context.TbPromocoesParticipantes.FirstOrDefaultAsync();
-        if (result != null)
+        var pessoaCadastrada = await _context.TbPromocoesParticipantes.Where(p => p.ParCpf == participantes.ParCpf).FirstOrDefaultAsync();
+        if (pessoaCadastrada != null)
         {
-            participantes.ParCodigo = await _context.TbPromocoesParticipantes.MaxAsync(p => p.ParCodigo) + 1;
+            return;
         } else
         {
-            participantes.ParCodigo = 1;
+            var result = await _context.TbPromocoesParticipantes.FirstOrDefaultAsync();
+            if (result != null)
+            {
+                participantes.ParCodigo = await _context.TbPromocoesParticipantes.MaxAsync(p => p.ParCodigo) + 1;
+            }
+            else
+            {
+                participantes.ParCodigo = 1;
+            }
+            _context.TbPromocoesParticipantes.Add(participantes);
+            await _context.SaveChangesAsync();
         }
-        _context.TbPromocoesParticipantes.Add(participantes);
-        await _context.SaveChangesAsync();
+       
     }
 
-    public async Task AddCupons(TbPromocoesCupon cupons)
+    public async Task<(bool, string)> AddCupons(TbPromocoesCupon cupons)
     {
-        var result = await _context.TbPromocoesCupons.FirstOrDefaultAsync();
-        if (result != null)
-        {
-            cupons.CupCodigo = await _context.TbPromocoesCupons.MaxAsync(p => p.CupCodigo) + 1;
+        var cupom = await _context.TbPromocoesCupons.Where(pc => pc.CupNumero == cupons.CupNumero).FirstOrDefaultAsync();
+        if (cupom != null) {
+            if (cupom.CupVendido ?? false){
+                return (false, "Cupom já Lançado !");
+            } 
+            cupom.ParCodigo = cupons.ParCodigo;
+            cupom.CupVendido = true;
+            _context.TbPromocoesCupons.Update(cupom);
+            await _context.SaveChangesAsync();
+            return (true, "Cupom Cadastrado com Sucesso !");
         } else
         {
-            cupons.CupCodigo = 1;
+            return (false, "Nenhum Cupom Encontrado !");
         }
-        _context.TbPromocoesCupons.Add(cupons);
-        await _context.SaveChangesAsync();
     }
         
     public async Task AddSorteios(TbPromocoesSorteio sorteios)
