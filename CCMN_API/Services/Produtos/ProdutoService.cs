@@ -35,7 +35,9 @@ public class ProdutoService : IProdutoService
         }
         _context.TbProdutos.Add(produto);
         await _context.SaveChangesAsync();
+        await RegistraMovimento("E");
     }
+
     public async Task UpdateProduto(TbProduto produto)
     {
         _context.TbProdutos.Update(produto);
@@ -45,6 +47,29 @@ public class ProdutoService : IProdutoService
     {
         _context.TbProdutos.Where(p => p.ProCodigo == codigoProduto).ExecuteDeleteAsync();
         await _context.SaveChangesAsync();
+        await RegistraMovimento("S");
     }
 
+    private async Task RegistraMovimento(string tipoMovimento)
+    {
+        var existe = await _context.TbMovimentoProdutos.FirstOrDefaultAsync();
+        if (existe == null)
+        {
+            _context.TbMovimentoProdutos.Add(new TbMovimentoProduto
+            {
+                MovCodigo = 1,
+                MovTipo = tipoMovimento,
+                MovData = DateTime.Now
+            });
+        } else {
+            _context.TbMovimentoProdutos.Add(new TbMovimentoProduto
+            {
+                MovCodigo = await _context.TbMovimentoProdutos.MaxAsync(m => m.MovCodigo) + 1,
+                MovTipo = tipoMovimento,
+                MovData = DateTime.Now
+            });
+        }
+        
+        await _context.SaveChangesAsync();
+    }
 }
