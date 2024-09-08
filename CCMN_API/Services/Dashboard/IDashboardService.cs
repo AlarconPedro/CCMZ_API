@@ -1,9 +1,7 @@
-﻿using CCMZ_API.Models.Painel.Dashboard;
-using CCMZ_API.Models.Painel.QuartoPessoa;
+﻿namespace CCMZ_API.Services.Dashboard;
 
-namespace CCMZ_API.Services.Dashboard;
-
-using CCMZ_API.Models.Painel.Quartos;
+using CCMN_API.Models.Painel.Hospedagem.Dashboard;
+using CCMN_API.Models.Painel.Hospedagem.QuartoPessoa;
 
 public interface IDashboardService
 {

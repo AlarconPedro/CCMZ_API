@@ -1,8 +1,7 @@
 ﻿using CCMN_API.Models;
-using CCMN_API.Models.Painel.Acerto;
-using CCMN_API.Models.Painel.Evento;
-using CCMN_API.Models.Painel.EventoDespesas;
-using CCMZ_API.Models.Painel.Alocacao;
+using CCMN_API.Models.Painel.Hospedagem.Acerto;
+using CCMN_API.Models.Painel.Hospedagem.Evento;
+using CCMN_API.Models.Painel.Hospedagem.EventoDespesas;
 
 namespace CCMN_API.Services.DespesasEvento;
 

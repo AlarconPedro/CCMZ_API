@@ -1,4 +1,4 @@
-﻿using CCMN_API.Models.Painel.Promocao;
+﻿using CCMN_API.Models.Painel.Hospedagem.Promocao;
 using CCMZ_API;
 using Microsoft.EntityFrameworkCore;
 

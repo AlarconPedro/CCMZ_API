@@ -1,4 +1,5 @@
 ﻿using CCMN_API.Models;
+using CCMN_API.Models.Painel.Estoque;
 using CCMZ_API;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,9 +14,17 @@ namespace CCMN_API.Services.MovimentoProdutos
             _context = context;
         }
 
-        public async Task<IEnumerable<TbMovimentoProduto>> GetMovimentosEstoque()
+        public async Task<IEnumerable<MovimentoEstoque>> GetMovimentosEstoque()
         {
-            return await _context.TbMovimentoProdutos.ToListAsync();
+            return await _context.TbMovimentoProdutos.Select(x => new MovimentoEstoque
+            {
+               MovCodigo = x.MovCodigo,
+               MovData = x.MovData,
+               MovTipo = x.MovTipo,
+               MovQuantidade = x.MovQuantidade,
+               ProCodigo = x.ProCodigo,
+               ProNome = x.ProCodigoNavigation.ProNome,
+            }).ToListAsync();
         }
         public async Task<TbMovimentoProduto> GetMovimentoEstoque(int codigoMovimento)
         {

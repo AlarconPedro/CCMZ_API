@@ -1,4 +1,4 @@
-﻿using CCMN_API.Models.Painel.Promocao;
+﻿using CCMN_API.Models.Painel.Hospedagem.Promocao;
 
 namespace CCMN_API.Services.Promocoes;
 

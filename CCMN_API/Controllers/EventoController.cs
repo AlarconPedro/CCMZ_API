@@ -1,11 +1,10 @@
 ﻿using CCMN_API;
 using CCMN_API.Models;
-using CCMN_API.Models.Painel.Pessoas;
+using CCMN_API.Models.Painel.Hospedagem.Alocacao;
+using CCMN_API.Models.Painel.Hospedagem.Evento;
+using CCMN_API.Models.Painel.Hospedagem.Pessoas;
+using CCMN_API.Models.Painel.Hospedagem.Quartos;
 using CCMZ_API.Models;
-using CCMZ_API.Models.Painel.Alocacao;
-using CCMZ_API.Models.Painel.Evento;
-using CCMZ_API.Models.Painel.Pessoas;
-using CCMZ_API.Models.Painel.Quartos;
 using CCMZ_API.Services.Eventos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

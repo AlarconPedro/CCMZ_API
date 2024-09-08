@@ -1,12 +1,11 @@
-﻿using CCMZ_API.Models.Painel.Alocacao;
-using CCMZ_API.Models.Painel.Pessoas;
-
-namespace CCMZ_API.Services.Alocacao;
+﻿namespace CCMZ_API.Services.Alocacao;
 
 using CCMN_API;
 using CCMN_API.Models;
-using CCMN_API.Models.Painel.Evento;
-using CCMZ_API.Models.Painel.Comunidade;
+using CCMN_API.Models.Painel.Hospedagem.Bloco;
+using CCMN_API.Models.Painel.Hospedagem.Comunidade;
+using CCMN_API.Models.Painel.Hospedagem.Evento;
+using CCMN_API.Models.Painel.Hospedagem.Pessoas;
 
 public interface IAlocacaoService
 {

@@ -1,7 +1,7 @@
 ﻿using CCMN_API;
 using CCMN_API.Models;
-using CCMN_API.Models.Painel.Checkin;
-using CCMZ_API.Models.Painel.QuartoPessoa;
+using CCMN_API.Models.Painel.Hospedagem.Checkin;
+using CCMN_API.Models.Painel.Hospedagem.QuartoPessoa;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 

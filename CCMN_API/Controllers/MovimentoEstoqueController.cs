@@ -1,4 +1,5 @@
 ﻿using CCMN_API.Models;
+using CCMN_API.Models.Painel.Estoque;
 using CCMN_API.Services.MovimentoProdutos;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,7 +18,7 @@ public class MovimentoEstoqueController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IEnumerable<TbMovimentoProduto>> GetMovimentosEstoque()
+    public async Task<IEnumerable<MovimentoEstoque>> GetMovimentosEstoque()
     {
         return await _service.GetMovimentosEstoque();
     }

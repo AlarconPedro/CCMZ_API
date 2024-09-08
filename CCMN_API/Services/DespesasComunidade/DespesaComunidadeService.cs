@@ -1,5 +1,5 @@
 ﻿using CCMN_API.Models;
-using CCMN_API.Models.Painel.EventoDespesas;
+using CCMN_API.Models.Painel.Hospedagem.EventoDespesas;
 using CCMZ_API;
 using Microsoft.EntityFrameworkCore;
 

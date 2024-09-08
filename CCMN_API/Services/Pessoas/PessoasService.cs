@@ -2,8 +2,8 @@
 
 using CCMN_API;
 using CCMN_API.Models;
+using CCMN_API.Models.Painel.Hospedagem.Pessoas;
 using CCMZ_API.Models;
-using CCMZ_API.Models.Painel.Pessoas;
 using Microsoft.EntityFrameworkCore;
 
 public class PessoasService : IPessoasService

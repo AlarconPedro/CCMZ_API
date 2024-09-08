@@ -1,4 +1,4 @@
-﻿using CCMN_API.Models.Painel.Promocao;
+﻿using CCMN_API.Models.Painel.Hospedagem.Promocao;
 using CCMN_API.Services.Promocoes;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

@@ -1,5 +1,5 @@
-﻿using CCMZ_API.Models.Painel.Dashboard;
-using CCMZ_API.Models.Painel.QuartoPessoa;
+﻿using CCMN_API.Models.Painel.Hospedagem.Dashboard;
+using CCMN_API.Models.Painel.Hospedagem.QuartoPessoa;
 using Microsoft.EntityFrameworkCore;
 
 namespace CCMZ_API.Services.Dashboard;
