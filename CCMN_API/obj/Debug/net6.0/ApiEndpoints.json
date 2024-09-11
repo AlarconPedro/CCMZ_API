@@ -1,5 +1,275 @@
 [
   {
+    "ContainingType": "CCMN_API.Controllers.AcertoController",
+    "Method": "AddDespesaComunidade",
+    "RelativePath": "api/Acerto/comunidade/despesas",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "despesaComunidade",
+        "Type": "CCMN_API.Models.TbDespesaComunidadeEvento",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.AcertoController",
+    "Method": "GetDespesasComunidade",
+    "RelativePath": "api/Acerto/comunidade/despesas/{codigoEvento}/{codigoComunidade}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "codigoEvento",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "codigoComunidade",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.AcertoController",
+    "Method": "GetCobrantesPagantes",
+    "RelativePath": "api/Acerto/comunidade/pessoas/{codigoEvento}/{codigoComunidade}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "codigoEvento",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "codigoComunidade",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.AcertoController",
+    "Method": "GetComunidadesDados",
+    "RelativePath": "api/Acerto/evento/comunidades/{codigoEvento}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "codigoEvento",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.AcertoController",
+    "Method": "GetEventoCusto",
+    "RelativePath": "api/Acerto/evento/custo/{codigoEvento}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "codigoEvento",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.AcertoController",
+    "Method": "AddDespesaEvento",
+    "RelativePath": "api/Acerto/evento/despesas",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "despesaEvento",
+        "Type": "CCMN_API.TbDespesaEvento",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.AcertoController",
+    "Method": "UpdateDespesaEvento",
+    "RelativePath": "api/Acerto/evento/despesas",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "despesaEvento",
+        "Type": "CCMN_API.TbDespesaEvento",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.AcertoController",
+    "Method": "GetDespesasEvento",
+    "RelativePath": "api/Acerto/evento/despesas/{codigoEvento}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "codigoEvento",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.AcertoController",
+    "Method": "AddDespesaCozinha",
+    "RelativePath": "api/Acerto/evento/despesas/cozinha",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "codigoEvento",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "valor",
+        "Type": "System.Decimal",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.AcertoController",
+    "Method": "UpdateDespesaCozinha",
+    "RelativePath": "api/Acerto/evento/despesas/cozinha",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "codigoEvento",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "valor",
+        "Type": "System.Decimal",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.AcertoController",
+    "Method": "GetValorCozinha",
+    "RelativePath": "api/Acerto/evento/despesas/cozinha/{codigoEvento}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "codigoEvento",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.AcertoController",
+    "Method": "AddDespesaHostiaria",
+    "RelativePath": "api/Acerto/evento/despesas/hostiaria",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "codigoEvento",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "valor",
+        "Type": "System.Decimal",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.AcertoController",
+    "Method": "UpdateDespesaHostiaria",
+    "RelativePath": "api/Acerto/evento/despesas/hostiaria",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "codigoEvento",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "valor",
+        "Type": "System.Decimal",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.AcertoController",
+    "Method": "GetValorHostiaria",
+    "RelativePath": "api/Acerto/evento/despesas/hostiaria/{codigoEvento}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "codigoEvento",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.AcertoController",
+    "Method": "GetCobrantesPagantes",
+    "RelativePath": "api/Acerto/evento/pessoas/{codigoEvento}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "codigoEvento",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "CCMZ_API.Controllers.AlocacaoController",
     "Method": "GetBlocos",
     "RelativePath": "api/Alocacao/blocos/{codigoEvento}",
@@ -34,11 +304,17 @@
   {
     "ContainingType": "CCMZ_API.Controllers.AlocacaoController",
     "Method": "GetEventos",
-    "RelativePath": "api/Alocacao/eventos",
+    "RelativePath": "api/Alocacao/eventos/{filtro}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "filtro",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -51,7 +327,7 @@
     "Parameters": [
       {
         "Name": "quartoPessoa",
-        "Type": "CCMZ_API.TbQuartoPessoa",
+        "Type": "CCMN_API.TbQuartoPessoa",
         "IsRequired": true
       }
     ],
@@ -67,7 +343,7 @@
     "Parameters": [
       {
         "Name": "quartoPessoa",
-        "Type": "CCMZ_API.TbQuartoPessoa",
+        "Type": "CCMN_API.TbQuartoPessoa",
         "IsRequired": true
       }
     ],
@@ -173,7 +449,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMZ_API.TbBloco, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMN_API.TbBloco, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -193,7 +469,7 @@
     "Parameters": [
       {
         "Name": "bloco",
-        "Type": "CCMZ_API.TbBloco",
+        "Type": "CCMN_API.TbBloco",
         "IsRequired": true
       }
     ],
@@ -209,7 +485,7 @@
     "Parameters": [
       {
         "Name": "bloco",
-        "Type": "CCMZ_API.TbBloco",
+        "Type": "CCMN_API.TbBloco",
         "IsRequired": true
       }
     ],
@@ -231,7 +507,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "CCMZ_API.TbBloco",
+        "Type": "CCMN_API.TbBloco",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -267,7 +543,186 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMZ_API.TbBloco, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMN_API.TbBloco, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.CategoriaController",
+    "Method": "GetCategorias",
+    "RelativePath": "api/Categoria",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMN_API.Models.TbCategoria, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.CategoriaController",
+    "Method": "AddCategoria",
+    "RelativePath": "api/Categoria",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "categoria",
+        "Type": "CCMN_API.Models.TbCategoria",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.CategoriaController",
+    "Method": "UpdateCategoria",
+    "RelativePath": "api/Categoria",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "categoria",
+        "Type": "CCMN_API.Models.TbCategoria",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.CategoriaController",
+    "Method": "GetCategoria",
+    "RelativePath": "api/Categoria/{codigoCategoria}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "codigoCategoria",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CCMN_API.Models.TbCategoria",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.CategoriaController",
+    "Method": "DeleteCategoria",
+    "RelativePath": "api/Categoria/{codigoCategoria}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "codigoCategoria",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CCMZ_API.Controllers.CheckinController",
+    "Method": "UpdateQuartoPessoa",
+    "RelativePath": "api/Checkin",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "quartoPessoa",
+        "Type": "CCMN_API.TbQuartoPessoa",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CCMZ_API.Controllers.CheckinController",
+    "Method": "GetQuartoCheckin",
+    "RelativePath": "api/Checkin/{codigoEvento}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "codigoEvento",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMN_API.Models.Painel.Hospedagem.Checkin.QuartosCheckinEvento, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CCMZ_API.Controllers.CheckinController",
+    "Method": "GetQuartoPessoasBusca",
+    "RelativePath": "api/Checkin/{codigoEvento}/{busca}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "codigoEvento",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "busca",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMN_API.Models.Painel.Hospedagem.QuartoPessoa.QuartoPessoas, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -287,7 +742,7 @@
     "Parameters": [
       {
         "Name": "comunidade",
-        "Type": "CCMZ_API.TbComunidade",
+        "Type": "CCMN_API.Models.TbComunidade",
         "IsRequired": true
       }
     ],
@@ -303,7 +758,7 @@
     "Parameters": [
       {
         "Name": "comunidade",
-        "Type": "CCMZ_API.TbComunidade",
+        "Type": "CCMN_API.Models.TbComunidade",
         "IsRequired": true
       }
     ],
@@ -325,7 +780,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMZ_API.TbComunidade, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMN_API.Models.TbComunidade, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -367,7 +822,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "CCMZ_API.TbComunidade",
+        "Type": "CCMN_API.Models.TbComunidade",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -407,7 +862,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMZ_API.TbComunidade, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMN_API.Models.TbComunidade, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -456,21 +911,81 @@
   {
     "ContainingType": "CCMZ_API.Controllers.DashboardController",
     "Method": "GetNumeroPessoasAChegar",
-    "RelativePath": "api/Dashboard/numeroPessoasAChegar",
+    "RelativePath": "api/Dashboard/numeroPessoasAChegar/{codigoEvento}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "codigoEvento",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
     "ContainingType": "CCMZ_API.Controllers.DashboardController",
     "Method": "GetNumeroPessoasChegas",
-    "RelativePath": "api/Dashboard/numeroPessoasChegas",
+    "RelativePath": "api/Dashboard/numeroPessoasChegas/{codigoEvento}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "codigoEvento",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CCMZ_API.Controllers.DashboardController",
+    "Method": "GetNumeroPessoasCobrantes",
+    "RelativePath": "api/Dashboard/numeroPessoasCobrantes/{codigoEvento}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "codigoEvento",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CCMZ_API.Controllers.DashboardController",
+    "Method": "GetNumeroPessoasNaoVem",
+    "RelativePath": "api/Dashboard/numeroPessoasNaoVem/{codigoEvento}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "codigoEvento",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CCMZ_API.Controllers.DashboardController",
+    "Method": "GetNumeroPessoasPagantes",
+    "RelativePath": "api/Dashboard/numeroPessoasPagantes/{codigoEvento}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "codigoEvento",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -491,7 +1006,7 @@
   },
   {
     "ContainingType": "CCMZ_API.Controllers.DashboardController",
-    "Method": "GetNumeroPessoasAChegar",
+    "Method": "GetPessoasChegas",
     "RelativePath": "api/Dashboard/pessoasChegas/{codigoEvento}",
     "HttpMethod": "GET",
     "IsController": true,
@@ -499,7 +1014,23 @@
     "Parameters": [
       {
         "Name": "codigoEvento",
-        "Type": "",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CCMZ_API.Controllers.DashboardController",
+    "Method": "GetPessoasNaoVem",
+    "RelativePath": "api/Dashboard/pessoasNaoVem/{codigoEvento}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "codigoEvento",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
@@ -524,13 +1055,18 @@
   {
     "ContainingType": "CCMZ_API.Controllers.DashboardController",
     "Method": "GetQuartoPessoaAChegar",
-    "RelativePath": "api/Dashboard/quartoPessoaAChegar/{codigoQuarto}",
+    "RelativePath": "api/Dashboard/quartoPessoaAChegar/{codigoQuarto}/{codigoEvento}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "codigoQuarto",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "codigoEvento",
         "Type": "System.Int32",
         "IsRequired": true
       }
@@ -540,13 +1076,18 @@
   {
     "ContainingType": "CCMZ_API.Controllers.DashboardController",
     "Method": "GetQuartoPessoaChegas",
-    "RelativePath": "api/Dashboard/quartoPessoaChegas/{codigoQuarto}",
+    "RelativePath": "api/Dashboard/quartoPessoaChegas/{codigoQuarto}/{codigoEvento}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "codigoQuarto",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "codigoEvento",
         "Type": "System.Int32",
         "IsRequired": true
       }
@@ -579,7 +1120,7 @@
     "Parameters": [
       {
         "Name": "evento",
-        "Type": "CCMZ_API.TbEvento",
+        "Type": "CCMN_API.Models.TbEvento",
         "IsRequired": true
       }
     ],
@@ -595,7 +1136,7 @@
     "Parameters": [
       {
         "Name": "evento",
-        "Type": "CCMZ_API.TbEvento",
+        "Type": "CCMN_API.Models.TbEvento",
         "IsRequired": true
       }
     ],
@@ -617,7 +1158,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "CCMZ_API.TbEvento",
+        "Type": "CCMN_API.Models.TbEvento",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -653,7 +1194,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMZ_API.Models.Painel.Alocacao.EventosNome, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMN_API.Models.Painel.Hospedagem.Evento.EventosNome, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -673,7 +1214,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMZ_API.Models.Painel.Alocacao.ComunidadeNome, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMN_API.Models.Painel.Hospedagem.Alocacao.ComunidadeNome, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -699,7 +1240,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMZ_API.Models.Painel.Pessoas.Hospedes, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMN_API.Models.Painel.Hospedagem.Pessoas.Hospedes, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -725,7 +1266,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMZ_API.TbEvento, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMN_API.Models.TbEvento, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -745,7 +1286,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMZ_API.Models.Painel.Alocacao.EventosNome, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMN_API.Models.Painel.Hospedagem.Evento.EventosNome, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -765,7 +1306,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMZ_API.Models.Painel.Alocacao.BlocoNome, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMN_API.Models.Painel.Hospedagem.Alocacao.BlocoNome, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -774,6 +1315,22 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "CCMZ_API.Controllers.EventoController",
+    "Method": "PostPessoas",
+    "RelativePath": "api/Evento/pessoas",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "eventoPessoa",
+        "Type": "System.Collections.Generic.List\u00601[[CCMN_API.TbEventoPessoa, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "CCMZ_API.Controllers.EventoController",
@@ -785,7 +1342,7 @@
     "Parameters": [
       {
         "Name": "eventoPessoa",
-        "Type": "CCMZ_API.TbEventoPessoa",
+        "Type": "CCMN_API.TbEventoPessoa",
         "IsRequired": true
       }
     ],
@@ -793,20 +1350,15 @@
   },
   {
     "ContainingType": "CCMZ_API.Controllers.EventoController",
-    "Method": "PostPessoas",
-    "RelativePath": "api/Evento/pessoas/{codigo}",
-    "HttpMethod": "POST",
+    "Method": "DeleteEventoPessoas",
+    "RelativePath": "api/Evento/pessoas",
+    "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "eventoPessoa",
-        "Type": "System.Collections.Generic.List\u00601[[CCMZ_API.TbEventoPessoa, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "IsRequired": true
-      },
-      {
-        "Name": "codigo",
-        "Type": "System.Int32",
+        "Name": "evento",
+        "Type": "System.Collections.Generic.List\u00601[[CCMN_API.TbEventoPessoa, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "IsRequired": true
       }
     ],
@@ -814,8 +1366,8 @@
   },
   {
     "ContainingType": "CCMZ_API.Controllers.EventoController",
-    "Method": "GetPessoaQuartos",
-    "RelativePath": "api/Evento/pessoas/{codigoComunidade}",
+    "Method": "GetEventoPessoas",
+    "RelativePath": "api/Evento/pessoas/{codigoComunidade}/{codigoEvento}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -824,11 +1376,16 @@
         "Name": "codigoComunidade",
         "Type": "System.Int32",
         "IsRequired": true
+      },
+      {
+        "Name": "codigoEvento",
+        "Type": "System.Int32",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMZ_API.Models.Painel.Pessoas.PessoaQuarto, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMN_API.Models.Painel.Hospedagem.Pessoas.PessoaEvento, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -837,6 +1394,27 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "CCMZ_API.Controllers.EventoController",
+    "Method": "RemoverPessoasEvento",
+    "RelativePath": "api/Evento/pessoas/{codigoEvento}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "codigoPessoas",
+        "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": true
+      },
+      {
+        "Name": "codigoEvento",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "CCMZ_API.Controllers.EventoController",
@@ -859,7 +1437,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMZ_API.Models.Painel.Pessoas.PessoaQuarto, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMN_API.Models.Painel.Hospedagem.Pessoas.PessoaQuarto, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -872,7 +1450,7 @@
   {
     "ContainingType": "CCMZ_API.Controllers.EventoController",
     "Method": "GetPessoasQuarto",
-    "RelativePath": "api/Evento/pessoas/quarto/{codigoQuarto}",
+    "RelativePath": "api/Evento/pessoas/quarto/{codigoQuarto}/{codigoEvento}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -881,11 +1459,16 @@
         "Name": "codigoQuarto",
         "Type": "System.Int32",
         "IsRequired": true
+      },
+      {
+        "Name": "codigoEvento",
+        "Type": "System.Int32",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMZ_API.Models.Painel.Pessoas.PessoaQuarto, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMN_API.Models.Painel.Hospedagem.Pessoas.PessoaQuarto, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -897,6 +1480,22 @@
   },
   {
     "ContainingType": "CCMZ_API.Controllers.EventoController",
+    "Method": "RemoveQuartoEvento",
+    "RelativePath": "api/Evento/quarto/{codigoQuarto}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "codigoQuarto",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CCMZ_API.Controllers.EventoController",
     "Method": "UpdateEventoQuarto",
     "RelativePath": "api/Evento/quartos",
     "HttpMethod": "PUT",
@@ -905,7 +1504,7 @@
     "Parameters": [
       {
         "Name": "eventoQuarto",
-        "Type": "CCMZ_API.TbEventoQuarto",
+        "Type": "CCMN_API.TbEventoQuarto",
         "IsRequired": true
       }
     ],
@@ -921,7 +1520,7 @@
     "Parameters": [
       {
         "Name": "eventoQuarto",
-        "Type": "System.Collections.Generic.List\u00601[[CCMZ_API.TbEventoQuarto, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.List\u00601[[CCMN_API.TbEventoQuarto, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "IsRequired": true
       },
       {
@@ -953,7 +1552,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMZ_API.Models.Painel.Quartos.QuartoPavilhao, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMN_API.Models.Painel.Hospedagem.Quartos.QuartoPavilhao, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -984,12 +1583,124 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMZ_API.Models.Painel.Quartos.QuartoPavilhao, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMN_API.Models.Painel.Hospedagem.Quartos.QuartoPavilhao, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
           "text/json"
         ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.MovimentoEstoqueController",
+    "Method": "GetMovimentosEstoque",
+    "RelativePath": "api/MovimentoEstoque",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMN_API.Models.Painel.Estoque.MovimentoEstoque, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.MovimentoEstoqueController",
+    "Method": "AddMovimento",
+    "RelativePath": "api/MovimentoEstoque",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "movimentoEstoque",
+        "Type": "CCMN_API.Models.TbMovimentoProduto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.MovimentoEstoqueController",
+    "Method": "UpdateMovimento",
+    "RelativePath": "api/MovimentoEstoque",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "movimentoEstoque",
+        "Type": "CCMN_API.Models.TbMovimentoProduto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.MovimentoEstoqueController",
+    "Method": "GetMovimentoEstoque",
+    "RelativePath": "api/MovimentoEstoque/{codigoMovimento}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "codigoMovimento",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CCMN_API.Models.TbMovimentoProduto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.MovimentoEstoqueController",
+    "Method": "DeleteMovimento",
+    "RelativePath": "api/MovimentoEstoque/{codigoMovimento}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "codigoMovimento",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
         "StatusCode": 200
       }
     ]
@@ -1004,7 +1715,7 @@
     "Parameters": [
       {
         "Name": "tbPessoa",
-        "Type": "CCMZ_API.TbPessoa",
+        "Type": "CCMN_API.TbPessoa",
         "IsRequired": true
       }
     ],
@@ -1020,7 +1731,7 @@
     "Parameters": [
       {
         "Name": "tbPessoa",
-        "Type": "CCMZ_API.TbPessoa",
+        "Type": "CCMN_API.TbPessoa",
         "IsRequired": true
       }
     ],
@@ -1042,7 +1753,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "CCMZ_API.TbPessoa",
+        "Type": "CCMN_API.TbPessoa",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1084,7 +1795,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMZ_API.Models.Painel.Pessoas.Pessoas, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMN_API.Models.Painel.Hospedagem.Pessoas.Pessoas, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1115,7 +1826,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMZ_API.Models.Painel.Pessoas.Pessoas, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMN_API.Models.Painel.Hospedagem.Pessoas.Pessoas, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1141,7 +1852,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "CCMZ_API.Models.Painel.Pessoas.PessoaDetalhes",
+        "Type": "CCMN_API.Models.Painel.Hospedagem.Pessoas.PessoaDetalhes",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1150,6 +1861,438 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.ProdutoController",
+    "Method": "GetProdutos",
+    "RelativePath": "api/Produto",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMN_API.Models.TbProduto, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.ProdutoController",
+    "Method": "AddProduto",
+    "RelativePath": "api/Produto",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "produto",
+        "Type": "CCMN_API.Models.TbProduto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.ProdutoController",
+    "Method": "UpdateProduto",
+    "RelativePath": "api/Produto",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "produto",
+        "Type": "CCMN_API.Models.TbProduto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.ProdutoController",
+    "Method": "GetProduto",
+    "RelativePath": "api/Produto/{codigoProduto}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "codigoProduto",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CCMN_API.Models.TbProduto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.ProdutoController",
+    "Method": "DeleteProduto",
+    "RelativePath": "api/Produto/{codigoProduto}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "codigoProduto",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.PromocaoController",
+    "Method": "GetPromocoes",
+    "RelativePath": "api/Promocao",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMN_API.Models.Painel.Hospedagem.Promocao.ListarPromocoes, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.PromocaoController",
+    "Method": "AddCupons",
+    "RelativePath": "api/Promocao/cupons",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cupons",
+        "Type": "CCMN_API.TbPromocoesCupon",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.PromocaoController",
+    "Method": "UpdateCupons",
+    "RelativePath": "api/Promocao/cupons",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cupons",
+        "Type": "CCMN_API.TbPromocoesCupon",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.PromocaoController",
+    "Method": "DeleteCupons",
+    "RelativePath": "api/Promocao/cupons/{codigoCupom}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "codigoCupom",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.PromocaoController",
+    "Method": "GetCuponsParticipante",
+    "RelativePath": "api/Promocao/cupons/{codigoParticipante}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "codigoParticipante",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMN_API.TbPromocoesCupon, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.PromocaoController",
+    "Method": "AddParticipantes",
+    "RelativePath": "api/Promocao/participante",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "participantes",
+        "Type": "CCMN_API.TbPromocoesParticipante",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CCMN_API.TbPromocoesParticipante",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.PromocaoController",
+    "Method": "GetDadosParticipantes",
+    "RelativePath": "api/Promocao/participante/dados/{cpfParticipantes}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cpfParticipantes",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CCMN_API.TbPromocoesParticipante",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.PromocaoController",
+    "Method": "UpdateParticipantes",
+    "RelativePath": "api/Promocao/participantes",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "participantes",
+        "Type": "CCMN_API.TbPromocoesParticipante",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.PromocaoController",
+    "Method": "DeleteParticipantes",
+    "RelativePath": "api/Promocao/participantes/{codigoParticipante}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "codigoParticipante",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.PromocaoController",
+    "Method": "GetParticipantes",
+    "RelativePath": "api/Promocao/participantes/{codigoPromocao}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "codigoPromocao",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMN_API.Models.Painel.Hospedagem.Promocao.ListarParticipantes, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.PromocaoController",
+    "Method": "AddPromocoes",
+    "RelativePath": "api/Promocao/promocoes",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "promocoes",
+        "Type": "CCMN_API.TbPromoco",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.PromocaoController",
+    "Method": "UpdatePromocoes",
+    "RelativePath": "api/Promocao/promocoes",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "promocoes",
+        "Type": "CCMN_API.TbPromoco",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.PromocaoController",
+    "Method": "DeletePromocoes",
+    "RelativePath": "api/Promocao/promocoes/{codigoPromocao}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "codigoPromocao",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.PromocaoController",
+    "Method": "GetSorteios",
+    "RelativePath": "api/Promocao/sorteios",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMN_API.Models.Painel.Hospedagem.Promocao.ListarSorteios, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.PromocaoController",
+    "Method": "AddSorteios",
+    "RelativePath": "api/Promocao/sorteios",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sorteios",
+        "Type": "CCMN_API.TbPromocoesSorteio",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.PromocaoController",
+    "Method": "UpdateSorteios",
+    "RelativePath": "api/Promocao/sorteios",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sorteios",
+        "Type": "CCMN_API.TbPromocoesSorteio",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.PromocaoController",
+    "Method": "DeleteSorteios",
+    "RelativePath": "api/Promocao/sorteios/{codigoSorteio}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "codigoSorteio",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "CCMZ_API.Controllers.QuartoController",
@@ -1161,7 +2304,7 @@
     "Parameters": [
       {
         "Name": "tbQuarto",
-        "Type": "CCMZ_API.TbQuarto",
+        "Type": "CCMN_API.TbQuarto",
         "IsRequired": true
       }
     ],
@@ -1177,7 +2320,7 @@
     "Parameters": [
       {
         "Name": "tbQuarto",
-        "Type": "CCMZ_API.TbQuarto",
+        "Type": "CCMN_API.TbQuarto",
         "IsRequired": true
       }
     ],
@@ -1199,7 +2342,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "CCMZ_API.TbQuarto",
+        "Type": "CCMN_API.TbQuarto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1241,7 +2384,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMZ_API.TbQuarto, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMN_API.TbQuarto, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1272,7 +2415,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMZ_API.TbQuarto, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMN_API.TbQuarto, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1283,43 +2426,74 @@
     ]
   },
   {
-    "ContainingType": "CCMZ_API.Controllers.QuartoPessoaController",
-    "Method": "UpdateQuartoPessoa",
-    "RelativePath": "api/QuartoPessoa",
-    "HttpMethod": "PUT",
+    "ContainingType": "CCMN_API.Controllers.UsuarioController",
+    "Method": "GetUsuarios",
+    "RelativePath": "api/Usuario",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMN_API.Models.TbUsuario, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.UsuarioController",
+    "Method": "CadastrarUsuario",
+    "RelativePath": "api/Usuario",
+    "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "quartoPessoa",
-        "Type": "CCMZ_API.TbQuartoPessoa",
+        "Name": "usuario",
+        "Type": "CCMN_API.Models.TbUsuario",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "CCMZ_API.Controllers.QuartoPessoaController",
-    "Method": "GetQuartoPessoas",
-    "RelativePath": "api/QuartoPessoa/{codigoBloco}/{codigoEvento}",
+    "ContainingType": "CCMN_API.Controllers.UsuarioController",
+    "Method": "AtualizarUsuario",
+    "RelativePath": "api/Usuario",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "usuario",
+        "Type": "CCMN_API.Models.TbUsuario",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.UsuarioController",
+    "Method": "LoginSistema",
+    "RelativePath": "api/Usuario/{codigoFirebase}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "codigoBloco",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "codigoEvento",
-        "Type": "System.Int32",
+        "Name": "codigoFirebase",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMZ_API.Models.Painel.QuartoPessoa.QuartoPessoas, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "CCMN_API.Models.TbUsuario",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1330,34 +2504,19 @@
     ]
   },
   {
-    "ContainingType": "CCMZ_API.Controllers.QuartoPessoaController",
-    "Method": "GetQuartoPessoasBusca",
-    "RelativePath": "api/QuartoPessoa/{codigoEvento}/{busca}",
-    "HttpMethod": "GET",
+    "ContainingType": "CCMN_API.Controllers.UsuarioController",
+    "Method": "DeletarUsuario",
+    "RelativePath": "api/Usuario/{codigoUsuario}",
+    "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "codigoEvento",
+        "Name": "codigoUsuario",
         "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "busca",
-        "Type": "System.String",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMZ_API.Models.Painel.QuartoPessoa.QuartoPessoas, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   }
 ]
