@@ -29,8 +29,8 @@ builder.Services.AddCors(options =>
             policy.AllowAnyHeader();
             policy.AllowAnyMethod();
             //policy.WithOrigins("http://localhost:56000");
-            policy.WithOrigins("http://localhost:54414");
-            //policy.WithOrigins("http://painel.ccmn.org.br", "http://acao.ccmn.org.br");
+            policy.WithOrigins("http://localhost:50613");
+            //policy.WithOrigins("http://painel.ccmn.org.br", "http://acao.ccmn.org.br", "https://acao.ccmn.org.br");
         });
 });
 
