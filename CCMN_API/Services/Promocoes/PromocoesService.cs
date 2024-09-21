@@ -1,4 +1,5 @@
 ﻿using CCMN_API.Models.Painel.Hospedagem.Promocao;
+using CCMN_API.Models.Painel.Promocao;
 using CCMZ_API;
 using Microsoft.EntityFrameworkCore;
 
@@ -22,6 +23,22 @@ public class PromocoesService : IPromocoesService
             {
                 codigo = p.ParCodigo,
                 nome = p.ParNome,
+            }).ToListAsync();
+    }
+
+    public async Task<IEnumerable<ListarGanhadorCupom>> GetGanhador(string codigoCupom)
+    {
+        return await _context.TbPromocoesCupons
+            .Where(p => p.CupNumero == codigoCupom)
+            .Select(p => new ListarGanhadorCupom
+            {
+                CupCodigo = p.CupCodigo,
+                CupNumero = p.CupNumero,
+                ParCidade = p.ParCodigoNavigation.ParCidade,
+                ParCodigo = p.ParCodigoNavigation.ParCodigo,
+                ParFone = p.ParCodigoNavigation.ParFone,
+                ParNome = p.ParCodigoNavigation.ParNome,
+                ParUf = p.ParCodigoNavigation.ParUf,
             }).ToListAsync();
     }
 

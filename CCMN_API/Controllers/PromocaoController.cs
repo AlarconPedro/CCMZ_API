@@ -1,4 +1,5 @@
 ﻿using CCMN_API.Models.Painel.Hospedagem.Promocao;
+using CCMN_API.Models.Painel.Promocao;
 using CCMN_API.Services.Promocoes;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -34,6 +35,27 @@ public class PromocaoController : ControllerBase
         catch (Exception ex)
         {
             return StatusCode(StatusCodes.Status500InternalServerError, "Erro ao buscar Promoções !");
+        }
+    }
+
+    [HttpGet("ganhador/{codigoCupom}")]
+    public async Task<ActionResult<IEnumerable<ListarGanhadorCupom>>> GetGanhador(string codigoCupom)
+    {
+        try
+        {
+            var retorno = await _service.GetGanhador(codigoCupom);
+            if (retorno != null)
+            {
+                return Ok(retorno);
+            }
+            else
+            {
+                return NotFound("Nenhum Ganhador encontrado !");
+            }
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, "Erro ao buscar Ganhador !");
         }
     }
 
