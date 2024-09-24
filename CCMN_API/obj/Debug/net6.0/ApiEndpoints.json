@@ -2071,11 +2071,16 @@
   {
     "ContainingType": "CCMN_API.Controllers.PromocaoController",
     "Method": "GetGanhador",
-    "RelativePath": "api/Promocao/ganhador/{codigoCupom}",
+    "RelativePath": "api/Promocao/ganhador/{filtro}/{codigoCupom}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
+      {
+        "Name": "filtro",
+        "Type": "System.String",
+        "IsRequired": true
+      },
       {
         "Name": "codigoCupom",
         "Type": "System.String",

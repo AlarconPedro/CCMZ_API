@@ -14,6 +14,12 @@ public class ListarGanhadorCupom
 
     public int CupCodigo { get; set; }
 
-    public string CupNumero { get; set; } = null!;
+    public bool? CupSorteado { get; set; }
+
+    public bool? CupVendido { get; set; }
+
+    public string CupNumero { get; set; }
+
+    public int QtdCupons { get; set; }
 
 }

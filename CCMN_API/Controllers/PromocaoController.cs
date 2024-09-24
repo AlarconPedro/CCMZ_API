@@ -38,12 +38,12 @@ public class PromocaoController : ControllerBase
         }
     }
 
-    [HttpGet("ganhador/{codigoCupom}")]
-    public async Task<ActionResult<IEnumerable<ListarGanhadorCupom>>> GetGanhador(string codigoCupom)
+    [HttpGet("ganhador/{filtro}/{codigoCupom}")]
+    public async Task<ActionResult<IEnumerable<ListarGanhadorCupom>>> GetGanhador(string filtro, string? codigoCupom)
     {
         try
         {
-            var retorno = await _service.GetGanhador(codigoCupom);
+            var retorno = await _service.GetGanhador(filtro, codigoCupom);
             if (retorno != null)
             {
                 return Ok(retorno);

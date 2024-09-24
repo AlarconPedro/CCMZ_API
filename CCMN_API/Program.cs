@@ -14,7 +14,6 @@ using CCMZ_API.Services.Eventos;
 using CCMZ_API.Services.Pessoas;
 using CCMZ_API.Services.QuartoPessoa;
 using CCMZ_API.Services.Quartos;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var PainelCCMN = "PainelCCMN";
@@ -29,7 +28,7 @@ builder.Services.AddCors(options =>
             policy.AllowAnyHeader();
             policy.AllowAnyMethod();
             //policy.WithOrigins("http://localhost:56000");
-            policy.WithOrigins("http://localhost:61213");
+            policy.WithOrigins("http://localhost:58059");
             //policy.WithOrigins("http://painel.ccmn.org.br", "http://acao.ccmn.org.br", "https://acao.ccmn.org.br");
         });
 });

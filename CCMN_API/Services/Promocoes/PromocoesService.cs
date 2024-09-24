@@ -2,6 +2,7 @@
 using CCMN_API.Models.Painel.Promocao;
 using CCMZ_API;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 namespace CCMN_API.Services.Promocoes;
 
@@ -26,11 +27,19 @@ public class PromocoesService : IPromocoesService
             }).ToListAsync();
     }
 
-    public async Task<IEnumerable<ListarGanhadorCupom>> GetGanhador(string codigoCupom)
+    public async Task<IEnumerable<ListarGanhadorCupom>> GetGanhador(string filtro, string? codigoCupom)
     {
-        return await _context.TbPromocoesCupons
-            .Where(p => p.CupNumero == codigoCupom)
-            .Select(p => new ListarGanhadorCupom
+        List<TbPromocoesCupon> dados = await _context.TbPromocoesCupons
+            .Where(p => !codigoCupom.IsNullOrEmpty() ? 
+                (p.CupNumero == codigoCupom) 
+                    : true && 
+                filtro.Equals("T") ? 
+                    true : 
+                    filtro.Equals("V") ? 
+                        (p.CupVendido == true) : 
+                        filtro.Equals("S") ? 
+                        (p.CupSorteado == true) : true ).ToListAsync();
+            return dados.Select(p => new ListarGanhadorCupom
             {
                 CupCodigo = p.CupCodigo,
                 CupNumero = p.CupNumero,
@@ -39,7 +48,10 @@ public class PromocoesService : IPromocoesService
                 ParFone = p.ParCodigoNavigation.ParFone,
                 ParNome = p.ParCodigoNavigation.ParNome,
                 ParUf = p.ParCodigoNavigation.ParUf,
-            }).ToListAsync();
+                CupSorteado = p.CupSorteado,
+                CupVendido = p.CupVendido,
+                QtdCupons = dados.Count
+            }).ToList();
     }
 
     public async Task<IEnumerable<ListarPromocoes>> GetPromocoes()
