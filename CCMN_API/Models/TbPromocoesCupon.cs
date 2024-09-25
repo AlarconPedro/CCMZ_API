@@ -19,7 +19,7 @@ public partial class TbPromocoesCupon
 
     public virtual TbPromocoesParticipante? ParCodigoNavigation { get; set; }
 
-    public virtual TbPromoco? ProCodigoNavigation { get; set; } = null!;
+    public virtual TbPromoco? ProCodigoNavigation { get; set; }
 
     public virtual ICollection<TbParticipantesCupon> TbParticipantesCupons { get; set; } = new List<TbParticipantesCupon>();
 

@@ -38,12 +38,12 @@ public class PromocaoController : ControllerBase
         }
     }
 
-    [HttpGet("ganhador/{filtro}/{codigoCupom}")]
-    public async Task<ActionResult<IEnumerable<ListarGanhadorCupom>>> GetGanhador(string filtro, string? codigoCupom)
+    [HttpGet("ganhador/{filtro}/{skip:int}/{take:int}")]
+    public async Task<ActionResult<IEnumerable<ListarGanhadorCupom>>> GetGanhador(string filtro, int skip, int take, string? codigoCupom = "")
     {
         try
         {
-            var retorno = await _service.GetGanhador(filtro, codigoCupom);
+            var retorno = await _service.GetGanhador(filtro, skip, take, codigoCupom);
             if (retorno != null)
             {
                 return Ok(retorno);
@@ -55,7 +55,7 @@ public class PromocaoController : ControllerBase
         }
         catch (Exception ex)
         {
-            return StatusCode(StatusCodes.Status500InternalServerError, "Erro ao buscar Ganhador !");
+            return StatusCode(StatusCodes.Status500InternalServerError, "Erro ao buscar Ganhador !" + ex.Message);
         }
     }
 
