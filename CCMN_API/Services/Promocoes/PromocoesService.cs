@@ -30,37 +30,64 @@ public class PromocoesService : IPromocoesService
 
     public async Task<IEnumerable<ListarGanhadorCupom>> GetGanhador(string filtro, int skip, int take, string? codigoCupom)
     {
-        if (skip < take || !codigoCupom.IsNullOrEmpty()) {
-            dados.Clear();
-            dados = await _context.TbPromocoesCupons
-               .Where(p => codigoCupom.IsNullOrEmpty() 
-                        ? true 
-                        : p.CupNumero == codigoCupom &&
-                        filtro.Equals("T") ?
-                            true :
-                            filtro.Equals("V") ?
-                                (p.CupVendido == true) :
-                                filtro.Equals("S") ?
-                                (p.CupSorteado == true) : true)
-               .Select(x => new ListarGanhadorCupom
-               {
-                   CupCodigo = x.CupCodigo,
-                   CupNumero = x.CupNumero,
-                   ParCidade = x.ParCodigoNavigation.ParCidade ?? "",
-                   ParCodigo = x.ParCodigo ?? 0,
-                   ParFone = x.ParCodigoNavigation.ParFone ?? "",
-                   ParNome = x.ParCodigoNavigation.ParNome ?? "",
-                   ParUf = x.ParCodigoNavigation.ParUf ?? "",
-                   CupSorteado = x.CupSorteado,
-                   CupVendido = x.CupVendido,
-               }).ToListAsync();
+        if (skip < take) {
+            if (codigoCupom.IsNullOrEmpty())
+            {
+                dados.Clear();
+                dados = await _context.TbPromocoesCupons
+                   .Where(p => filtro.Equals("T") ?
+                                true :
+                                filtro.Equals("V") ?
+                                    (p.CupVendido == true) :
+                                    filtro.Equals("S") ?
+                                    (p.CupSorteado == true) : true)
+                   .Select(x => new ListarGanhadorCupom
+                   {
+                       CupCodigo = x.CupCodigo,
+                       CupNumero = x.CupNumero,
+                       ParCidade = x.ParCodigoNavigation.ParCidade ?? "",
+                       ParCodigo = x.ParCodigo ?? 0,
+                       ParFone = x.ParCodigoNavigation.ParFone ?? "",
+                       ParNome = x.ParCodigoNavigation.ParNome ?? "",
+                       ParUf = x.ParCodigoNavigation.ParUf ?? "",
+                       CupSorteado = x.CupSorteado,
+                       CupVendido = x.CupVendido,
+                   }).ToListAsync();
 
-            if (!dados.IsNullOrEmpty())
-                foreach (var item in dados) {
+                foreach (var item in dados)
+                {
                     dados[0].QtdCupons = dados.Count();
                 }
+
+                return dados.Skip(skip).Take(take);
+            } else
+            {
+                dados.Clear();
+                dados = await _context.TbPromocoesCupons
+                   .Where(p => p.CupNumero.Contains(codigoCupom))
+                   .Select(x => new ListarGanhadorCupom
+                   {
+                       CupCodigo = x.CupCodigo,
+                       CupNumero = x.CupNumero,
+                       ParCidade = x.ParCodigoNavigation.ParCidade ?? "",
+                       ParCodigo = x.ParCodigo ?? 0,
+                       ParFone = x.ParCodigoNavigation.ParFone ?? "",
+                       ParNome = x.ParCodigoNavigation.ParNome ?? "",
+                       ParUf = x.ParCodigoNavigation.ParUf ?? "",
+                       CupSorteado = x.CupSorteado,
+                       CupVendido = x.CupVendido,
+                   }).ToListAsync();
+
+                foreach (var item in dados)
+                {
+                    dados[0].QtdCupons = dados.Count();
+                }
+
+                return dados;
+            }
+
         }
-        
+
         return dados.Skip(skip).Take(take);
     }
 

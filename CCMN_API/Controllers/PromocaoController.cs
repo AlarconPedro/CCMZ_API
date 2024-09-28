@@ -39,7 +39,7 @@ public class PromocaoController : ControllerBase
     }
 
     [HttpGet("ganhador/{filtro}/{skip:int}/{take:int}")]
-    public async Task<ActionResult<IEnumerable<ListarGanhadorCupom>>> GetGanhador(string filtro, int skip, int take, string? codigoCupom = "")
+    public async Task<ActionResult<IEnumerable<ListarGanhadorCupom>>> GetGanhador(string filtro, int skip, int take, string? codigoCupom)
     {
         try
         {

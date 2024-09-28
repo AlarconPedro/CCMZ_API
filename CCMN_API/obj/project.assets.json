@@ -7570,19 +7570,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Pedro\\.nuget\\packages\\": {}
+    "C:\\Users\\Alarcon\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Desenvolvimento\\Projetos\\CCMZ_API\\CCMN_API\\CCMN_API.csproj",
+      "projectUniqueName": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\CCMN_API.csproj",
       "projectName": "CCMN_API",
-      "projectPath": "D:\\Desenvolvimento\\Projetos\\CCMZ_API\\CCMN_API\\CCMN_API.csproj",
-      "packagesPath": "C:\\Users\\Pedro\\.nuget\\packages\\",
-      "outputPath": "D:\\Desenvolvimento\\Projetos\\CCMZ_API\\CCMN_API\\obj\\",
+      "projectPath": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\CCMN_API.csproj",
+      "packagesPath": "C:\\Users\\Alarcon\\.nuget\\packages\\",
+      "outputPath": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Pedro\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Alarcon\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7590,6 +7590,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -7661,7 +7662,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }
