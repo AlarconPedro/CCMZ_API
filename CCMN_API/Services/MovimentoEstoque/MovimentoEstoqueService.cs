@@ -32,6 +32,14 @@ namespace CCMN_API.Services.MovimentoProdutos
         }
         public async Task AddMovimento(TbMovimentoProduto movimentoEstoque)
         {
+            var ultimoMovimento = _context.TbMovimentoProdutos.FirstOrDefault();
+            if (ultimoMovimento != null)
+            {
+                movimentoEstoque.MovCodigo = await _context.TbMovimentoProdutos.MaxAsync(m => m.MovCodigo) + 1;
+            } else
+            {
+                movimentoEstoque.MovCodigo = 1;
+            }
             _context.TbMovimentoProdutos.Add(movimentoEstoque);
             await _context.SaveChangesAsync();
         }
