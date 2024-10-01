@@ -5,6 +5,7 @@ using CCMN_API.Models;
 using CCMN_API.Models.Painel.Hospedagem.Pessoas;
 using CCMZ_API.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 public class PessoasService : IPessoasService
 {
@@ -15,9 +16,12 @@ public class PessoasService : IPessoasService
         _context = context;
     }
 
-    public async Task<IEnumerable<Pessoas>> GetPessoas(int codigoComunidade)
+    public async Task<IEnumerable<Pessoas>> GetPessoas(int codigoComunidade, string cidade)
     {
-        return await _context.TbPessoas.Where(p => p.ComCodigo == codigoComunidade).Select(x => new Pessoas
+        return await _context.TbPessoas.Where(p => !cidade.IsNullOrEmpty() 
+            ? (p.ComCodigoNavigation.ComCidade.Equals(cidade) && (codigoComunidade > 0 
+            ? p.ComCodigo == codigoComunidade : true)) : (p.ComCodigo == codigoComunidade))
+        .Select(x => new Pessoas
         {
             PesCodigo = x.PesCodigo,
             PesNome = x.PesNome,
@@ -30,6 +34,12 @@ public class PessoasService : IPessoasService
 /*            PesObservacao = x.PesObservacao*/        
         }).ToListAsync();
     }
+
+    //public async Task<IEnumerable<string>> GetCidades()
+    //{
+    //    //return await _context.TbPessoas.Select(x => x.ComCodigo).Distinct().Join(_context.TbComunidades, p => p, c => c.ComCodigo, (p, c) => c.ComCidade).Distinct().ToListAsync();
+    //    return await _context.TbComunidades.Select(c =>  c.ComCidade ).Distinct().ToListAsync();
+    //}
 
     public async Task<IEnumerable<Pessoas>> GetPessoasBusca(int codigoComunidade, string busca)
     {

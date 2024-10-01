@@ -19,12 +19,12 @@ public class PessoaController : ControllerBase
         _service = pessoasService;
     }
 
-    [HttpGet("comunidade/{codigoComunidade:int}")]
-    public async Task<ActionResult<IEnumerable<Pessoas>>> GetPessoas(int codigoComunidade)
+    [HttpGet("comunidade/{codigoComunidade:int}/{cidade}")]
+    public async Task<ActionResult<IEnumerable<Pessoas>>> GetPessoas(int codigoComunidade, string cidade)
     {
         try
         {
-            var pessoas =  await _service.GetPessoas(codigoComunidade);
+            var pessoas =  await _service.GetPessoas(codigoComunidade, cidade);
             return Ok(pessoas);
         }
         catch
@@ -32,6 +32,20 @@ public class PessoaController : ControllerBase
             return BadRequest("Erro ao trazer as pessoas !");
         }
     }
+
+    //[HttpGet("cidades")]
+    //public async Task<ActionResult<IEnumerable<string>>> GetCidades()
+    //{
+    //    try
+    //    {
+    //        var cidades = await _service.GetCidades();
+    //        return Ok(cidades);
+    //    }
+    //    catch
+    //    {
+    //        return BadRequest("Erro ao trazer as cidades !");
+    //    }
+    //}
 
     [HttpGet("comunidade/{codigoComunidade:int}/busca/{busca}")]
     public async Task<ActionResult<IEnumerable<Pessoas>>> GetPessoasBusca(int codigoComunidade, string busca)
