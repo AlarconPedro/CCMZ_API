@@ -1,5 +1,6 @@
 ﻿using CCMN_API;
 using CCMN_API.Models;
+using CCMN_API.Models.Painel.Hospedagem.Alocacao;
 using CCMN_API.Models.Painel.Hospedagem.Pessoas;
 using CCMZ_API.Models;
 using CCMZ_API.Services.Pessoas;
@@ -33,19 +34,33 @@ public class PessoaController : ControllerBase
         }
     }
 
-    //[HttpGet("cidades")]
-    //public async Task<ActionResult<IEnumerable<string>>> GetCidades()
-    //{
-    //    try
-    //    {
-    //        var cidades = await _service.GetCidades();
-    //        return Ok(cidades);
-    //    }
-    //    catch
-    //    {
-    //        return BadRequest("Erro ao trazer as cidades !");
-    //    }
-    //}
+    [HttpGet("cidades")]
+    public async Task<ActionResult<IEnumerable<string>>> GetCidades()
+    {
+        try
+        {
+            var cidades = await _service.GetCidades();
+            return Ok(cidades);
+        }
+        catch
+        {
+            return BadRequest("Erro ao trazer as cidades !");
+        }
+    }
+
+    [HttpGet("comunidades/{cidade}")]
+    public async Task<ActionResult<IEnumerable<ComunidadeNome>>> GetComunidadesNomes(string cidade)
+    {
+        try
+        {
+            var comunidades = await _service.GetComunidadesNomes(cidade);
+            return Ok(comunidades);
+        }
+        catch
+        {
+            return BadRequest("Erro ao trazer as comunidades !");
+        }
+    }
 
     [HttpGet("comunidade/{codigoComunidade:int}/busca/{busca}")]
     public async Task<ActionResult<IEnumerable<Pessoas>>> GetPessoasBusca(int codigoComunidade, string busca)

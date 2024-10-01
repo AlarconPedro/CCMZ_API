@@ -2,6 +2,7 @@
 
 using CCMN_API;
 using CCMN_API.Models;
+using CCMN_API.Models.Painel.Hospedagem.Alocacao;
 using CCMN_API.Models.Painel.Hospedagem.Pessoas;
 using CCMZ_API.Models;
 using Microsoft.EntityFrameworkCore;
@@ -18,7 +19,7 @@ public class PessoasService : IPessoasService
 
     public async Task<IEnumerable<Pessoas>> GetPessoas(int codigoComunidade, string cidade)
     {
-        return await _context.TbPessoas.Where(p => !cidade.IsNullOrEmpty() 
+        return await _context.TbPessoas.Where(p => !cidade.Equals("Todos") 
             ? (p.ComCodigoNavigation.ComCidade.Equals(cidade) && (codigoComunidade > 0 
             ? p.ComCodigo == codigoComunidade : true)) : (p.ComCodigo == codigoComunidade))
         .Select(x => new Pessoas
@@ -35,11 +36,21 @@ public class PessoasService : IPessoasService
         }).ToListAsync();
     }
 
-    //public async Task<IEnumerable<string>> GetCidades()
-    //{
-    //    //return await _context.TbPessoas.Select(x => x.ComCodigo).Distinct().Join(_context.TbComunidades, p => p, c => c.ComCodigo, (p, c) => c.ComCidade).Distinct().ToListAsync();
-    //    return await _context.TbComunidades.Select(c =>  c.ComCidade ).Distinct().ToListAsync();
-    //}
+    public async Task<IEnumerable<string>> GetCidades()
+    {
+        //return await _context.TbPessoas.Select(x => x.ComCodigo).Distinct().Join(_context.TbComunidades, p => p, c => c.ComCodigo, (p, c) => c.ComCidade).Distinct().ToListAsync();
+        return await _context.TbComunidades.Select(c =>  c.ComCidade ).Distinct().ToListAsync();
+    }
+
+    public async Task<IEnumerable<ComunidadeNome>> GetComunidadesNomes(string cidade)
+    {
+        return await _context.TbComunidades.Where(c => cidade.Equals("Todos") ? true : c.ComNome.Equals(cidade)).Select(x => new ComunidadeNome
+        {
+            ComCodigo = x.ComCodigo,
+            ComNome = x.ComNome,
+            ComCidade = x.ComCidade,
+        }).ToListAsync();
+    }
 
     public async Task<IEnumerable<Pessoas>> GetPessoasBusca(int codigoComunidade, string busca)
     {
