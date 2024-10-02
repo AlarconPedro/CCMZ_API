@@ -1,5 +1,6 @@
 ﻿using CCMN_API.Models;
 using CCMN_API.Models.Painel.Estoque;
+using CCMN_API.Services.Produtos;
 using CCMZ_API;
 using Microsoft.EntityFrameworkCore;
 
@@ -30,18 +31,34 @@ namespace CCMN_API.Services.MovimentoProdutos
         {
             return await _context.TbMovimentoProdutos.FirstOrDefaultAsync(m => m.MovCodigo == codigoMovimento);
         }
-        public async Task AddMovimento(TbMovimentoProduto movimentoEstoque)
+        public async Task<(int, string)> AddMovimento(TbMovimentoProduto movimentoEstoque)
         {
-            var ultimoMovimento = _context.TbMovimentoProdutos.FirstOrDefault();
-            if (ultimoMovimento != null)
-            {
-                movimentoEstoque.MovCodigo = await _context.TbMovimentoProdutos.MaxAsync(m => m.MovCodigo) + 1;
+            var produto = await _context.TbProdutos.FirstOrDefaultAsync(p => p.ProCodigo == movimentoEstoque.ProCodigo);
+            if (produto.ProQuantidade >= movimentoEstoque.MovQuantidade) {
+                if (movimentoEstoque.MovTipo.Equals("S"))
+                    produto.ProQuantidade -= movimentoEstoque.MovQuantidade;
+                else
+                    produto.ProQuantidade += movimentoEstoque.MovQuantidade;
+                var ultimoMovimento = _context.TbMovimentoProdutos.FirstOrDefault();
+                if (ultimoMovimento != null)
+                {
+                    movimentoEstoque.MovCodigo = await _context.TbMovimentoProdutos.MaxAsync(m => m.MovCodigo) + 1;
+                }
+                else
+                {
+                    movimentoEstoque.MovCodigo = 1;
+                }
+                _context.TbMovimentoProdutos.Add(movimentoEstoque);
+                await _context.SaveChangesAsync();
+
+                _context.TbProdutos.Update(produto);
+                await _context.SaveChangesAsync();
+
+                return (200, "Movimento de estoque Efetuado !");
             } else
             {
-                movimentoEstoque.MovCodigo = 1;
+                return (400 ,"Quantidade insuficiente em estoque !");
             }
-            _context.TbMovimentoProdutos.Add(movimentoEstoque);
-            await _context.SaveChangesAsync();
         }
         public async Task UpdateMovimento(TbMovimentoProduto movimentoEstoque)
         {

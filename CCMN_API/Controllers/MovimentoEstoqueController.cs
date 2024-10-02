@@ -30,9 +30,13 @@ public class MovimentoEstoqueController : ControllerBase
     }
 
     [HttpPost]
-    public async Task AddMovimento(TbMovimentoProduto movimentoEstoque)
+    public async Task<(int, string)> AddMovimento(TbMovimentoProduto movimentoEstoque)
     {
-        await _service.AddMovimento(movimentoEstoque);
+        (int, string) retorno = await _service.AddMovimento(movimentoEstoque);
+        if (retorno.Item1 == 200)
+            return (200, "Movimento de estoque Efetuado !");
+        else
+            return (400, "Quantidade insuficiente em estoque !");
     }
 
     [HttpPut]
