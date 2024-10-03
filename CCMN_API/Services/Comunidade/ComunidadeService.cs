@@ -34,9 +34,9 @@ public class ComunidadeService : IComunidadeService
         }).ToListAsync();
     }
 
-    public async Task<IEnumerable<ComunidadeNome>> GetComunidadesNomes()
+    public async Task<IEnumerable<ComunidadesNome>> GetComunidadesNomes()
     {
-        return await _context.TbComunidades.Select(x => new ComunidadeNome
+        return await _context.TbComunidades.Select(x => new ComunidadesNome
         {
             ComCodigo = x.ComCodigo,
             ComNome = x.ComNome,

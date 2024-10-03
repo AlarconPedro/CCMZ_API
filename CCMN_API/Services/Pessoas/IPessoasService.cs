@@ -3,6 +3,7 @@
 using CCMN_API;
 using CCMN_API.Models;
 using CCMN_API.Models.Painel.Hospedagem.Alocacao;
+using CCMN_API.Models.Painel.Hospedagem.Comunidade;
 using CCMN_API.Models.Painel.Hospedagem.Pessoas;
 using CCMZ_API.Models;
 
@@ -11,7 +12,7 @@ public interface IPessoasService
     //GET
     Task<IEnumerable<Pessoas>> GetPessoas(int codigoComunidade, string cidade);
     Task<IEnumerable<string>> GetCidades();
-    Task<IEnumerable<ComunidadeNome>> GetComunidadesNomes(string cidade);
+    Task<IEnumerable<ComunidadesNome>> GetComunidadesNomes(string cidade);
     Task<IEnumerable<Pessoas>> GetPessoasBusca(int codigoComunidade, string busca);
     Task<TbPessoa> GetPessoaId(int idPessoa);
     Task<bool> GetPessoaPodeExcluir(int idPessoa);

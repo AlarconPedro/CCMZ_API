@@ -3,6 +3,7 @@
 using CCMN_API;
 using CCMN_API.Models;
 using CCMN_API.Models.Painel.Hospedagem.Alocacao;
+using CCMN_API.Models.Painel.Hospedagem.Comunidade;
 using CCMN_API.Models.Painel.Hospedagem.Pessoas;
 using CCMZ_API.Models;
 using Microsoft.EntityFrameworkCore;
@@ -19,9 +20,12 @@ public class PessoasService : IPessoasService
 
     public async Task<IEnumerable<Pessoas>> GetPessoas(int codigoComunidade, string cidade)
     {
-        return await _context.TbPessoas.Where(p => !cidade.Equals("Todos") 
-            ? (p.ComCodigoNavigation.ComCidade.Equals(cidade) && (codigoComunidade > 0 
-            ? p.ComCodigo == codigoComunidade : true)) : (p.ComCodigo == codigoComunidade))
+        return await _context.TbPessoas.Where(p => (codigoComunidade > 0 
+            ? (p.ComCodigo == codigoComunidade) 
+            : true)
+            && cidade.Equals("Todos") 
+                ? true 
+                : (p.ComCodigoNavigation.ComCidade.Contains(cidade)))
         .Select(x => new Pessoas
         {
             PesCodigo = x.PesCodigo,
@@ -42,13 +46,16 @@ public class PessoasService : IPessoasService
         return await _context.TbComunidades.Select(c =>  c.ComCidade ).Distinct().ToListAsync();
     }
 
-    public async Task<IEnumerable<ComunidadeNome>> GetComunidadesNomes(string cidade)
+    public async Task<IEnumerable<ComunidadesNome>> GetComunidadesNomes(string cidade)
     {
-        return await _context.TbComunidades.Where(c => cidade.Equals("Todos") ? true : c.ComNome.Equals(cidade)).Select(x => new ComunidadeNome
+        return await _context.TbComunidades.Where(c => cidade.Equals("Todos") 
+        ? true 
+        : c.ComNome.Contains(cidade)).Select(x => new ComunidadesNome
         {
             ComCodigo = x.ComCodigo,
             ComNome = x.ComNome,
             ComCidade = x.ComCidade,
+            ComUf = x.ComUf
         }).ToListAsync();
     }
 

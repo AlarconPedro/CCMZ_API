@@ -10,7 +10,7 @@ public interface IComunidadeService
     //GET
     Task<IEnumerable<string>> GetCidadesComunidades();
     Task<IEnumerable<Comunidade>> GetComunidades(string cidade);
-    Task<IEnumerable<ComunidadeNome>> GetComunidadesNomes();
+    Task<IEnumerable<ComunidadesNome>> GetComunidadesNomes();
     Task<TbComunidade> GetComunidade(int id);
     //POST
     Task PostComunidade(TbComunidade comunidade);

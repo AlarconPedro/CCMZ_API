@@ -1,6 +1,6 @@
 ﻿namespace CCMN_API.Models.Painel.Hospedagem.Comunidade;
 
-public class ComunidadeNome
+public class ComunidadesNome
 {
     public int ComCodigo { get; set; }
     public string? ComNome { get; set; }
