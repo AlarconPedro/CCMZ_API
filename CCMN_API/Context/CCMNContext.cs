@@ -434,6 +434,9 @@ public partial class CCMNContext : DbContext
             entity.Property(e => e.ProDescricao)
                 .HasColumnType("text")
                 .HasColumnName("PRO_DESCRICAO");
+            entity.Property(e => e.ProImagem)
+                .IsUnicode(false)
+                .HasColumnName("PRO_IMAGEM");
             entity.Property(e => e.ProMedida)
                 .HasMaxLength(100)
                 .IsUnicode(false)
@@ -443,6 +446,7 @@ public partial class CCMNContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("PRO_NOME");
             entity.Property(e => e.ProQuantidade).HasColumnName("PRO_QUANTIDADE");
+            entity.Property(e => e.ProQuantidadeMin).HasColumnName("PRO_QUANTIDADE_MIN");
             entity.Property(e => e.ProUniMedida)
                 .HasMaxLength(2)
                 .IsUnicode(false)

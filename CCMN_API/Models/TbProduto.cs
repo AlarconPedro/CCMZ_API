@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CCMN_API.Models;
+namespace CCMN_API;
 
 public partial class TbProduto
 {
@@ -19,9 +19,13 @@ public partial class TbProduto
 
     public int? ProQuantidade { get; set; }
 
+    public int? ProQuantidadeMin { get; set; }
+
     public int? CatCodigo { get; set; }
 
     public string? ProDescricao { get; set; }
+
+    public string? ProImagem { get; set; }
 
     public virtual TbCategoria? CatCodigoNavigation { get; set; }
 
