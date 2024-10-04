@@ -43,6 +43,13 @@ public class ProdutoController : ControllerBase
     [HttpDelete("{codigoProduto}")]
     public async Task DeleteProduto(int codigoProduto)
     {
-        await _service.DeleteProduto(codigoProduto);
+        try
+        {
+            await _service.DeleteProduto(codigoProduto);
+        }catch (Exception ex)
+        {
+            Response.StatusCode = StatusCodes.Status500InternalServerError;
+            await Response.WriteAsync(ex.Message);
+        }
     }
 }

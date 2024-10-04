@@ -1881,7 +1881,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMN_API.Models.Painel.Hospedagem.Alocacao.ComunidadeNome, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMN_API.Models.Painel.Hospedagem.Comunidade.ComunidadesNome, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1927,7 +1927,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMN_API.Models.TbProduto, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMN_API.TbProduto, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -1947,7 +1947,7 @@
     "Parameters": [
       {
         "Name": "produto",
-        "Type": "CCMN_API.Models.TbProduto",
+        "Type": "CCMN_API.TbProduto",
         "IsRequired": true
       }
     ],
@@ -1969,7 +1969,7 @@
     "Parameters": [
       {
         "Name": "produto",
-        "Type": "CCMN_API.Models.TbProduto",
+        "Type": "CCMN_API.TbProduto",
         "IsRequired": true
       }
     ],
@@ -1997,7 +1997,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "CCMN_API.Models.TbProduto",
+        "Type": "CCMN_API.TbProduto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -2520,6 +2520,16 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.RelatorioController",
+    "Method": "GetProdutosAcabando",
+    "RelativePath": "api/Relatorio/ProdutosAcabando",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "CCMN_API.Controllers.UsuarioController",

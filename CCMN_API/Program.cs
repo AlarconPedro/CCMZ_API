@@ -4,6 +4,7 @@ using CCMN_API.Services.DespesasEvento;
 using CCMN_API.Services.MovimentoProdutos;
 using CCMN_API.Services.Produtos;
 using CCMN_API.Services.Promocoes;
+using CCMN_API.Services.Relatorios;
 using CCMN_API.Services.Usuarios;
 using CCMZ_API;
 using CCMZ_API.Services.Alocacao;
@@ -29,7 +30,7 @@ builder.Services.AddCors(options =>
             policy.AllowAnyMethod();
             policy.AllowAnyOrigin();
             //policy.WithOrigins("http://localhost:56000");
-            policy.WithOrigins("http://localhost:51347");
+            policy.WithOrigins("http://localhost:64166");
             //policy.WithOrigins("http://painel.ccmn.org.br", "https://painel.ccmn.org.br", "http://acao.ccmn.org.br", "https://acao.ccmn.org.br");
         });
 });
@@ -56,6 +57,7 @@ builder.Services.AddScoped<IMovimentoEstoqueServicecs, MovimentoEstoqueService>(
 builder.Services.AddScoped<IProdutoService, ProdutoService>();
 builder.Services.AddScoped<IMovimentoEstoqueServicecs, MovimentoEstoqueService>();
 builder.Services.AddScoped<IPromocoesService, PromocoesService>();
+builder.Services.AddScoped<IRelatoriosService, RelatoriosService>();
 
 builder.Services.AddAuthorization();
 

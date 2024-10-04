@@ -43,14 +43,14 @@ public class PessoasService : IPessoasService
     public async Task<IEnumerable<string>> GetCidades()
     {
         //return await _context.TbPessoas.Select(x => x.ComCodigo).Distinct().Join(_context.TbComunidades, p => p, c => c.ComCodigo, (p, c) => c.ComCidade).Distinct().ToListAsync();
-        return await _context.TbComunidades.Select(c =>  c.ComCidade ).Distinct().ToListAsync();
+        return await _context.TbComunidades.Select(c =>  c.ComCidade).Distinct().ToListAsync();
     }
 
     public async Task<IEnumerable<ComunidadesNome>> GetComunidadesNomes(string cidade)
     {
         return await _context.TbComunidades.Where(c => cidade.Equals("Todos") 
         ? true 
-        : c.ComNome.Contains(cidade)).Select(x => new ComunidadesNome
+        : c.ComCidade.Contains(cidade)).Select(x => new ComunidadesNome
         {
             ComCodigo = x.ComCodigo,
             ComNome = x.ComNome,

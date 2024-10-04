@@ -1,29 +1,33 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\Desenvolvimento\\Projetos\\CCMZ_API\\",
+  "WorkspaceRootPath": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|d:\\desenvolvimento\\projetos\\ccmz_api\\ccmn_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|c:\\desenvolvimento\\c#\\web api\\ccmn_api\\ccmn_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|solutionrelative:ccmn_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|d:\\desenvolvimento\\projetos\\ccmz_api\\ccmn_api\\services\\pessoas\\pessoasservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|solutionrelative:ccmn_api\\services\\pessoas\\pessoasservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|c:\\desenvolvimento\\c#\\web api\\ccmn_api\\ccmn_api\\models\\painel\\relatorio\\relatorioprodutosacabando.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|solutionrelative:ccmn_api\\models\\painel\\relatorio\\relatorioprodutosacabando.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|d:\\desenvolvimento\\projetos\\ccmz_api\\ccmn_api\\services\\comunidade\\comunidadeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|solutionrelative:ccmn_api\\services\\comunidade\\comunidadeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|c:\\desenvolvimento\\c#\\web api\\ccmn_api\\ccmn_api\\services\\relatorios\\relatoriosservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|solutionrelative:ccmn_api\\services\\relatorios\\relatoriosservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|d:\\desenvolvimento\\projetos\\ccmz_api\\ccmn_api\\controllers\\pessoacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|solutionrelative:ccmn_api\\controllers\\pessoacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|c:\\desenvolvimento\\c#\\web api\\ccmn_api\\ccmn_api\\controllers\\relatoriocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|solutionrelative:ccmn_api\\controllers\\relatoriocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|d:\\desenvolvimento\\projetos\\ccmz_api\\ccmn_api\\services\\pessoas\\ipessoasservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|solutionrelative:ccmn_api\\services\\pessoas\\ipessoasservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|c:\\desenvolvimento\\c#\\web api\\ccmn_api\\ccmn_api\\services\\relatorios\\irelatoriosservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|solutionrelative:ccmn_api\\services\\relatorios\\irelatoriosservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|d:\\desenvolvimento\\projetos\\ccmz_api\\ccmn_api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|c:\\desenvolvimento\\c#\\web api\\ccmn_api\\ccmn_api\\models\\tbproduto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|solutionrelative:ccmn_api\\models\\tbproduto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|c:\\desenvolvimento\\c#\\web api\\ccmn_api\\ccmn_api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{66EDB321-28F0-4A00-BC1A-E7C38FA0C44E}|CCMN_API\\CCMN_API.csproj|solutionrelative:ccmn_api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
@@ -34,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,80 +46,93 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ComunidadeService.cs",
-              "DocumentMoniker": "D:\\Desenvolvimento\\Projetos\\CCMZ_API\\CCMN_API\\Services\\Comunidade\\ComunidadeService.cs",
-              "RelativeDocumentMoniker": "CCMN_API\\Services\\Comunidade\\ComunidadeService.cs",
-              "ToolTip": "D:\\Desenvolvimento\\Projetos\\CCMZ_API\\CCMN_API\\Services\\Comunidade\\ComunidadeService.cs",
-              "RelativeToolTip": "CCMN_API\\Services\\Comunidade\\ComunidadeService.cs",
-              "ViewState": "AQIAABEAAAAAAAAAAAAgwCsAAAAbAAAA",
+              "DocumentIndex": 5,
+              "Title": "TbProduto.cs",
+              "DocumentMoniker": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\Models\\TbProduto.cs",
+              "RelativeDocumentMoniker": "CCMN_API\\Models\\TbProduto.cs",
+              "ToolTip": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\Models\\TbProduto.cs",
+              "RelativeToolTip": "CCMN_API\\Models\\TbProduto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-03T20:21:57.216Z",
+              "WhenOpened": "2024-10-04T15:01:09.298Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "PessoasService.cs",
-              "DocumentMoniker": "D:\\Desenvolvimento\\Projetos\\CCMZ_API\\CCMN_API\\Services\\Pessoas\\PessoasService.cs",
-              "RelativeDocumentMoniker": "CCMN_API\\Services\\Pessoas\\PessoasService.cs",
-              "ToolTip": "D:\\Desenvolvimento\\Projetos\\CCMZ_API\\CCMN_API\\Services\\Pessoas\\PessoasService.cs",
-              "RelativeToolTip": "CCMN_API\\Services\\Pessoas\\PessoasService.cs",
-              "ViewState": "AQIAACoAAAAAAAAAAAAAAD4AAAAFAAAA",
+              "Title": "RelatorioProdutosAcabando.cs",
+              "DocumentMoniker": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\Models\\Painel\\Relatorio\\RelatorioProdutosAcabando.cs",
+              "RelativeDocumentMoniker": "CCMN_API\\Models\\Painel\\Relatorio\\RelatorioProdutosAcabando.cs",
+              "ToolTip": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\Models\\Painel\\Relatorio\\RelatorioProdutosAcabando.cs",
+              "RelativeToolTip": "CCMN_API\\Models\\Painel\\Relatorio\\RelatorioProdutosAcabando.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-30T23:39:07.1Z",
+              "WhenOpened": "2024-10-04T14:58:24.799Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "PessoaController.cs",
-              "DocumentMoniker": "D:\\Desenvolvimento\\Projetos\\CCMZ_API\\CCMN_API\\Controllers\\PessoaController.cs",
-              "RelativeDocumentMoniker": "CCMN_API\\Controllers\\PessoaController.cs",
-              "ToolTip": "D:\\Desenvolvimento\\Projetos\\CCMZ_API\\CCMN_API\\Controllers\\PessoaController.cs",
-              "RelativeToolTip": "CCMN_API\\Controllers\\PessoaController.cs",
-              "ViewState": "AQIAACUAAAAAAAAAAADgvzQAAAA6AAAA",
+              "Title": "RelatorioController.cs",
+              "DocumentMoniker": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\Controllers\\RelatorioController.cs",
+              "RelativeDocumentMoniker": "CCMN_API\\Controllers\\RelatorioController.cs",
+              "ToolTip": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\Controllers\\RelatorioController.cs",
+              "RelativeToolTip": "CCMN_API\\Controllers\\RelatorioController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-30T23:47:37.105Z",
+              "WhenOpened": "2024-10-04T14:56:52.931Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Desenvolvimento\\Projetos\\CCMZ_API\\CCMN_API\\Program.cs",
-              "RelativeDocumentMoniker": "CCMN_API\\Program.cs",
-              "ToolTip": "D:\\Desenvolvimento\\Projetos\\CCMZ_API\\CCMN_API\\Program.cs",
-              "RelativeToolTip": "CCMN_API\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB8AAAA2AAAA",
+              "DocumentIndex": 2,
+              "Title": "RelatoriosService.cs",
+              "DocumentMoniker": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\Services\\Relatorios\\RelatoriosService.cs",
+              "RelativeDocumentMoniker": "CCMN_API\\Services\\Relatorios\\RelatoriosService.cs",
+              "ToolTip": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\Services\\Relatorios\\RelatoriosService.cs",
+              "RelativeToolTip": "CCMN_API\\Services\\Relatorios\\RelatoriosService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-30T22:58:44.64Z",
+              "WhenOpened": "2024-10-04T14:54:54.906Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "IPessoasService.cs",
-              "DocumentMoniker": "D:\\Desenvolvimento\\Projetos\\CCMZ_API\\CCMN_API\\Services\\Pessoas\\IPessoasService.cs",
-              "RelativeDocumentMoniker": "CCMN_API\\Services\\Pessoas\\IPessoasService.cs",
-              "ToolTip": "D:\\Desenvolvimento\\Projetos\\CCMZ_API\\CCMN_API\\Services\\Pessoas\\IPessoasService.cs",
-              "RelativeToolTip": "CCMN_API\\Services\\Pessoas\\IPessoasService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAgAAAA",
+              "Title": "IRelatoriosService.cs",
+              "DocumentMoniker": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\Services\\Relatorios\\IRelatoriosService.cs",
+              "RelativeDocumentMoniker": "CCMN_API\\Services\\Relatorios\\IRelatoriosService.cs",
+              "ToolTip": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\Services\\Relatorios\\IRelatoriosService.cs",
+              "RelativeToolTip": "CCMN_API\\Services\\Relatorios\\IRelatoriosService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-30T23:39:06.54Z",
+              "WhenOpened": "2024-10-04T14:54:42.982Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\Desenvolvimento\\Projetos\\CCMZ_API\\CCMN_API\\appsettings.json",
+              "DocumentMoniker": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\appsettings.json",
               "RelativeDocumentMoniker": "CCMN_API\\appsettings.json",
-              "ToolTip": "D:\\Desenvolvimento\\Projetos\\CCMZ_API\\CCMN_API\\appsettings.json",
+              "ToolTip": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\appsettings.json",
               "RelativeToolTip": "CCMN_API\\appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2024-08-30T22:58:44.644Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\Program.cs",
+              "RelativeDocumentMoniker": "CCMN_API\\Program.cs",
+              "ToolTip": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\Program.cs",
+              "RelativeToolTip": "CCMN_API\\Program.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAACAAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-30T22:58:44.64Z",
+              "EditorCaption": ""
             }
           ]
         }
