@@ -12,7 +12,7 @@ public class ListarGanhadorCupom
 
     public string? ParUf { get; set; }
 
-    public int CupCodigo { get; set; }
+    public int? CupCodigo { get; set; }
 
     public bool? CupSorteado { get; set; }
 

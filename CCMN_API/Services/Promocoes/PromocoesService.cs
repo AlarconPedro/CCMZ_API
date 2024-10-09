@@ -125,6 +125,48 @@ public class PromocoesService : IPromocoesService
         return await _context.TbPromocoesCupons.Where(p => p.ParCodigo == codigoParticipante).ToListAsync();
     }
 
+    public async Task<(int, ListarGanhadorCupom)> SortearCupom(string cupom)
+    {
+        var cupons = await _context.TbPromocoesCupons.Where(p => p.CupNumero == cupom).FirstOrDefaultAsync();
+        if (cupons != null)
+        {
+            if (cupons.CupSorteado ?? false)
+            {
+                return (400, null);
+            } else
+            {
+                if (cupons.ParCodigo > 0 || cupons.ParCodigo != null)
+                {
+                    cupons.CupSorteado = true;
+                    _context.TbPromocoesCupons.Update(cupons);
+                    await _context.SaveChangesAsync();
+                    return (200, await _context.TbParticipantesCupons
+                           .Where(pc => pc.CupCodigo.Equals(cupons.CupCodigo))
+                           .Select(xx => new ListarGanhadorCupom
+                           {
+                               ParCidade = xx.ParCodigoNavigation.ParCidade,
+                               ParCodigo = xx.ParCodigoNavigation.ParCodigo,
+                               CupCodigo = xx.CupCodigo,
+                               CupNumero = xx.CupCodigoNavigation.CupNumero,
+                               CupSorteado = xx.CupCodigoNavigation.CupSorteado,
+                               ParFone = xx.ParCodigoNavigation.ParFone,
+                               ParNome = xx.ParCodigoNavigation.ParNome,
+                               ParUf = xx.ParCodigoNavigation.ParUf,
+                               CupVendido = xx.CupCodigoNavigation.CupVendido,
+                           }).FirstOrDefaultAsync());
+                    
+                }
+                else
+                {
+                    return (401, null);
+                }
+            }
+        } else
+        {
+            return (404, null);
+        }
+    }
+
     //POST
     public async Task<TbPromocoesParticipante> AddParticipantes(TbPromocoesParticipante participantes)
     {

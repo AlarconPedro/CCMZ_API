@@ -139,6 +139,36 @@ public class PromocaoController : ControllerBase
         }
     }
 
+    [HttpGet("sortear/cupom/{cupom}")]
+    public async Task<ActionResult<(int, ListarGanhadorCupom)>> SortearCupom(string cupom)
+    {
+        try
+        {
+            var retorno = await _service.SortearCupom(cupom);
+            if (retorno.Item1.Equals(200))
+            {
+                return Ok(retorno);
+            }
+            else if (retorno.Item1.Equals(404))
+            {
+                return NotFound("Nenhum Cupom encontrado !");
+            } else if (retorno.Item1.Equals(400))
+            {
+                return BadRequest("Cupom já sorteado !");
+            } else if (retorno.Item1.Equals(401))
+            {
+                return StatusCode(StatusCodes.Status401Unauthorized, "Cupom não vendido !");
+            } else
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Erro ao sortear Cupom !");
+            }
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, "Erro ao sortear Cupom !");
+        }
+    }
+
     //POST
     [HttpPost("participante")]
     public async Task<ActionResult<TbPromocoesParticipante>> AddParticipantes(TbPromocoesParticipante participantes)

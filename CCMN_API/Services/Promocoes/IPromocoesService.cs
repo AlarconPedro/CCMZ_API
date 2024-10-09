@@ -12,6 +12,7 @@ public interface IPromocoesService
     Task<IEnumerable<ListarSorteios>> GetSorteios();
     Task<IEnumerable<TbPromocoesCupon>> GetCuponsParticipante(int codigoParticipante);
     Task<TbPromocoesParticipante> GetDadosParticipantes(string cpfParticipantes);
+    Task<(int, ListarGanhadorCupom)> SortearCupom(string cupom);
 
     //POST
     Task<TbPromocoesParticipante> AddParticipantes(TbPromocoesParticipante participantes);
