@@ -25,6 +25,8 @@ public class PromocoesService : IPromocoesService
             {
                 codigo = p.ParCodigo,
                 nome = p.ParNome,
+                cpf = p.ParCpf,
+                telefone = p.ParFone
             }).ToListAsync();
     }
 
