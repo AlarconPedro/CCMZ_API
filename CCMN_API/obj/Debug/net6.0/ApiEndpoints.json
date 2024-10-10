@@ -2324,6 +2324,32 @@
   },
   {
     "ContainingType": "CCMN_API.Controllers.PromocaoController",
+    "Method": "SortearCupom",
+    "RelativePath": "api/Promocao/sortear/cupom/{cupom}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cupom",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CCMN_API.Models.Painel.Promocao.ListarGanhadorCupom",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.PromocaoController",
     "Method": "GetSorteios",
     "RelativePath": "api/Promocao/sorteios",
     "HttpMethod": "GET",

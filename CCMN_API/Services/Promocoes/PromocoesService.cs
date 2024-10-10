@@ -140,20 +140,21 @@ public class PromocoesService : IPromocoesService
                     cupons.CupSorteado = true;
                     _context.TbPromocoesCupons.Update(cupons);
                     await _context.SaveChangesAsync();
-                    return (200, await _context.TbParticipantesCupons
-                           .Where(pc => pc.CupCodigo.Equals(cupons.CupCodigo))
+                    var dados = await _context.TbPromocoesParticipantes
+                           .Where(pc => pc.TbPromocoesCupons.Any(p => p.CupCodigo == cupons.CupCodigo))
                            .Select(xx => new ListarGanhadorCupom
                            {
-                               ParCidade = xx.ParCodigoNavigation.ParCidade,
-                               ParCodigo = xx.ParCodigoNavigation.ParCodigo,
-                               CupCodigo = xx.CupCodigo,
-                               CupNumero = xx.CupCodigoNavigation.CupNumero,
-                               CupSorteado = xx.CupCodigoNavigation.CupSorteado,
-                               ParFone = xx.ParCodigoNavigation.ParFone,
-                               ParNome = xx.ParCodigoNavigation.ParNome,
-                               ParUf = xx.ParCodigoNavigation.ParUf,
-                               CupVendido = xx.CupCodigoNavigation.CupVendido,
-                           }).FirstOrDefaultAsync());
+                               ParCidade = xx.ParCidade,
+                               ParCodigo = xx.ParCodigo,
+                               CupCodigo = cupons.CupCodigo,
+                               CupNumero = cupons.CupNumero,
+                               CupSorteado = cupons.CupSorteado,
+                               ParFone = xx.ParFone,
+                               ParNome = xx.ParNome,
+                               ParUf = xx.ParUf,
+                               CupVendido = cupons.CupVendido,
+                           }).FirstOrDefaultAsync();
+                    return (200, dados);
                     
                 }
                 else

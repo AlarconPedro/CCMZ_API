@@ -140,14 +140,14 @@ public class PromocaoController : ControllerBase
     }
 
     [HttpGet("sortear/cupom/{cupom}")]
-    public async Task<ActionResult<(int, ListarGanhadorCupom)>> SortearCupom(string cupom)
+    public async Task<ActionResult<ListarGanhadorCupom>> SortearCupom(string cupom)
     {
         try
         {
             var retorno = await _service.SortearCupom(cupom);
             if (retorno.Item1.Equals(200))
             {
-                return Ok(retorno);
+                return Ok(retorno.Item2);
             }
             else if (retorno.Item1.Equals(404))
             {
