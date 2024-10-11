@@ -251,7 +251,7 @@ public class PromocaoController : ControllerBase
         }
         catch (Exception ex)
         {
-            return StatusCode(StatusCodes.Status500InternalServerError, "Erro ao adicionar Prêmio !");
+            return StatusCode(StatusCodes.Status500InternalServerError, "Erro ao adicionar Prêmio !" + ex.Message);
         }
     }   
 
@@ -366,6 +366,20 @@ public class PromocaoController : ControllerBase
         catch (Exception ex)
         {
             return StatusCode(StatusCodes.Status500InternalServerError, "Erro ao deletar Sorteio !");
+        }
+    }
+
+    [HttpDelete("premios/{codigoPremio}")]
+    public async Task<ActionResult> DeletePremio(int codigoPremio)
+    {
+        try
+        {
+            await _service.DeletePremio(codigoPremio);
+            return Ok("Prêmio deletado com sucesso !");
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, "Erro ao deletar Prêmio !");
         }
     }
 

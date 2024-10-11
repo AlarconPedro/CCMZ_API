@@ -2282,6 +2282,38 @@
   },
   {
     "ContainingType": "CCMN_API.Controllers.PromocaoController",
+    "Method": "AddPremios",
+    "RelativePath": "api/Promocao/premios",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "premios",
+        "Type": "CCMN_API.TbPromocoesPremio",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.PromocaoController",
+    "Method": "DeletePremio",
+    "RelativePath": "api/Promocao/premios/{codigoPremio}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "codigoPremio",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.PromocaoController",
     "Method": "GetPremios",
     "RelativePath": "api/Promocao/premios/{codigoPromocao}",
     "HttpMethod": "GET",

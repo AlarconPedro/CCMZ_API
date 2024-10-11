@@ -240,16 +240,25 @@ public class PromocoesService : IPromocoesService
 
     public async Task AddPremios(TbPromocoesPremio premios)
     {
-        var result = await _context.TbPromocoesPremios.FirstOrDefaultAsync();
-        if (result != null)
+        if (premios.PreCodigo > 0)
         {
-            premios.PreCodigo = await _context.TbPromocoesPremios.MaxAsync(p => p.PreCodigo) + 1;
-        } else
-        {
-            premios.PreCodigo = 1;
+            _context.TbPromocoesPremios.Update(premios);
+            await _context.SaveChangesAsync();
         }
-        _context.TbPromocoesPremios.Add(premios);
-        await _context.SaveChangesAsync();
+        else
+        {
+            var result = await _context.TbPromocoesPremios.AsNoTracking().FirstOrDefaultAsync();
+            if (result != null)
+            {
+                premios.PreCodigo = await _context.TbPromocoesPremios.MaxAsync(p => p.PreCodigo) + 1;
+            }
+            else
+            {
+                premios.PreCodigo = 1;
+            }
+            _context.TbPromocoesPremios.Add(premios);
+            await _context.SaveChangesAsync();
+        }
     }
         
     public async Task AddSorteios(TbPromocoesSorteio sorteios)
@@ -317,6 +326,13 @@ public class PromocoesService : IPromocoesService
     {
         var cupons = await _context.TbPromocoesCupons.FindAsync(codigoCupom);
         _context.TbPromocoesCupons.Remove(cupons);
+        await _context.SaveChangesAsync();
+    }
+
+    public async Task DeletePremio(int codigoPremio)
+    {
+        var premios = await _context.TbPromocoesPremios.FindAsync(codigoPremio);
+        _context.TbPromocoesPremios.Remove(premios);
         await _context.SaveChangesAsync();
     }
 

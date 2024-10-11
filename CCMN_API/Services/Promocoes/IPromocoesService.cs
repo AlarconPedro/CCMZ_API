@@ -31,6 +31,7 @@ public interface IPromocoesService
     //DELETE
     Task DeleteParticipantes(int codigoParticipante);
     Task DeleteCupons(int codigoCupom);
+    Task DeletePremio(int codigoPremio);
     Task DeleteSorteios(int codigoSorteio);
     Task DeletePromocoes(int codigoPromocao);
 }
