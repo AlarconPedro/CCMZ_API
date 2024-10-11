@@ -10,13 +10,15 @@ public interface IPromocoesService
     Task<IEnumerable<ListarGanhadorCupom>> GetGanhador(string filtro, int skip, int take, string? codigoCupom);
     Task<IEnumerable<ListarParticipantes>> GetParticipantes(int codigoPromocao);
     Task<IEnumerable<ListarSorteios>> GetSorteios();
+    Task<IEnumerable<ListarPremios>> GetPremios(int codigoPromocao);
     Task<IEnumerable<TbPromocoesCupon>> GetCuponsParticipante(int codigoParticipante);
     Task<TbPromocoesParticipante> GetDadosParticipantes(string cpfParticipantes);
-    Task<(int, ListarGanhadorCupom)> SortearCupom(string cupom);
+    Task<(int, ListarGanhadorCupom)> SortearCupom(string cupom, int codigoSorteio);
 
     //POST
     Task<TbPromocoesParticipante> AddParticipantes(TbPromocoesParticipante participantes);
     Task<(bool, string)> AddCupons(TbPromocoesCupon cupons);
+    Task AddPremios(TbPromocoesPremio premios);
     Task AddSorteios(TbPromocoesSorteio sorteios);
     Task AddPromocoes(TbPromoco promocoes);
 

@@ -2032,11 +2032,17 @@
   {
     "ContainingType": "CCMN_API.Controllers.PromocaoController",
     "Method": "GetPromocoes",
-    "RelativePath": "api/Promocao",
+    "RelativePath": "api/Promocao/{filtro}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "filtro",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMN_API.Models.Painel.Hospedagem.Promocao.ListarPromocoes, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
@@ -2276,6 +2282,32 @@
   },
   {
     "ContainingType": "CCMN_API.Controllers.PromocaoController",
+    "Method": "GetPremios",
+    "RelativePath": "api/Promocao/premios/{codigoPromocao}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "codigoPromocao",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMN_API.TbPromocoesPremio, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.PromocaoController",
     "Method": "AddPromocoes",
     "RelativePath": "api/Promocao/promocoes",
     "HttpMethod": "POST",
@@ -2334,11 +2366,16 @@
         "Name": "cupom",
         "Type": "System.String",
         "IsRequired": true
+      },
+      {
+        "Name": "codigoSorteio",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "System.ValueTuple\u00602[[System.Int32, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[CCMN_API.Models.Painel.Promocao.ListarGanhadorCupom, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "CCMN_API.Models.Painel.Promocao.ListarGanhadorCupom",
         "MediaTypes": [
           "text/plain",
           "application/json",

@@ -99,6 +99,27 @@ public class PromocaoController : ControllerBase
         }
     }
 
+    [HttpGet("premios/{codigoPromocao}")]
+    public async Task<ActionResult<IEnumerable<TbPromocoesPremio>>> GetPremios(int codigoPromocao)
+    {
+        try
+        {
+            var retorno = await _service.GetPremios(codigoPromocao);
+            if (retorno != null)
+            {
+                return Ok(retorno);
+            }
+            else
+            {
+                return NotFound("Nenhum Prêmio encontrado !");
+            }
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, "Erro ao buscar Prêmios !");
+        }
+    }
+
     [HttpGet("participante/dados/{cpfParticipantes}")]
     public async Task<ActionResult<TbPromocoesParticipante>> GetDadosParticipantes(string cpfParticipantes)
     {
@@ -140,11 +161,11 @@ public class PromocaoController : ControllerBase
     }
 
     [HttpGet("sortear/cupom/{cupom}")]
-    public async Task<ActionResult<ListarGanhadorCupom>> SortearCupom(string cupom)
+    public async Task<ActionResult<ListarGanhadorCupom>> SortearCupom(string cupom, int codigoSorteio)
     {
         try
         {
-            var retorno = await _service.SortearCupom(cupom);
+            var retorno = await _service.SortearCupom(cupom, codigoSorteio);
             if (retorno.Item1.Equals(200))
             {
                 return Ok(retorno.Item2);
@@ -152,7 +173,10 @@ public class PromocaoController : ControllerBase
             else if (retorno.Item1.Equals(404))
             {
                 return NotFound("Nenhum Cupom encontrado !");
-            } else if (retorno.Item1.Equals(400))
+            } else if (retorno.Item1.Equals(405))
+            {
+                return BadRequest("Nenhum sorteio registrado !");
+            }else if (retorno.Item1.Equals(400))
             {
                 return BadRequest("Cupom já sorteado !");
             } else if (retorno.Item1.Equals(401))
@@ -216,6 +240,20 @@ public class PromocaoController : ControllerBase
             return StatusCode(StatusCodes.Status500InternalServerError, "Erro ao adicionar Sorteio !");
         }
     }
+
+    [HttpPost("premios")]
+    public async Task<ActionResult> AddPremios(TbPromocoesPremio premios)
+    {
+        try
+        {
+            await _service.AddPremios(premios);
+            return Ok("Prêmio adicionado com sucesso !");
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError, "Erro ao adicionar Prêmio !");
+        }
+    }   
 
     [HttpPost("promocoes")]
     public async Task<ActionResult> AddPromocoes(TbPromoco promocoes)
