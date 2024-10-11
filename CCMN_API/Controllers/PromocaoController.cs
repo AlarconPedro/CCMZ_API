@@ -18,12 +18,12 @@ public class PromocaoController : ControllerBase
     }
 
     //GET
-    [HttpGet]
-    public async Task<ActionResult<IEnumerable<ListarPromocoes>>> GetPromocoes()
+    [HttpGet("{filtro}")]
+    public async Task<ActionResult<IEnumerable<ListarPromocoes>>> GetPromocoes(string filtro)
     {
         try
         {
-            var retorno = await _service.GetPromocoes();
+            var retorno = await _service.GetPromocoes(filtro);
             if (retorno != null)
             {
                 return Ok(retorno);

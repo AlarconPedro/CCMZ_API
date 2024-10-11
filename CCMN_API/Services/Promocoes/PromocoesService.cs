@@ -93,9 +93,13 @@ public class PromocoesService : IPromocoesService
         return dados.Skip(skip).Take(take);
     }
 
-    public async Task<IEnumerable<ListarPromocoes>> GetPromocoes()
+    public async Task<IEnumerable<ListarPromocoes>> GetPromocoes(string filtro)
     {
         return await _context.TbPromocoes
+            .Where(p => filtro.Equals("V") 
+                ? p.ProDatafim >= DateTime.Now 
+                : filtro.Equals("E") 
+                    ? p.ProDatafim < DateTime.Now : true)
             .Select(p => new ListarPromocoes
             {
                 ProCodigo = p.ProCodigo,

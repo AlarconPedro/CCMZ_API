@@ -6,7 +6,7 @@ namespace CCMN_API.Services.Promocoes;
 public interface IPromocoesService
 {
     //GET
-    Task<IEnumerable<ListarPromocoes>> GetPromocoes();
+    Task<IEnumerable<ListarPromocoes>> GetPromocoes(string filtro);
     Task<IEnumerable<ListarGanhadorCupom>> GetGanhador(string filtro, int skip, int take, string? codigoCupom);
     Task<IEnumerable<ListarParticipantes>> GetParticipantes(int codigoPromocao);
     Task<IEnumerable<ListarSorteios>> GetSorteios();

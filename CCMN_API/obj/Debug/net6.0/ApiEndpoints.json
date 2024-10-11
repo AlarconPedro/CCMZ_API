@@ -2032,11 +2032,17 @@
   {
     "ContainingType": "CCMN_API.Controllers.PromocaoController",
     "Method": "GetPromocoes",
-    "RelativePath": "api/Promocao",
+    "RelativePath": "api/Promocao/{filtro}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "filtro",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMN_API.Models.Painel.Hospedagem.Promocao.ListarPromocoes, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
