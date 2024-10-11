@@ -369,7 +369,7 @@ public class PromocaoController : ControllerBase
         }
     }
 
-    [HttpDelete("premios/{codigoPremio}")]
+    [HttpDelete("premio/{codigoPremio}")]
     public async Task<ActionResult> DeletePremio(int codigoPremio)
     {
         try
