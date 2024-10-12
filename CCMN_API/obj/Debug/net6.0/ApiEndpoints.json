@@ -2282,6 +2282,64 @@
   },
   {
     "ContainingType": "CCMN_API.Controllers.PromocaoController",
+    "Method": "DeletePremio",
+    "RelativePath": "api/Promocao/premio/{codigoPremio}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "codigoPremio",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.PromocaoController",
+    "Method": "AddPremios",
+    "RelativePath": "api/Promocao/premios",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "premios",
+        "Type": "CCMN_API.TbPromocoesPremio",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.PromocaoController",
+    "Method": "GetPremios",
+    "RelativePath": "api/Promocao/premios/{codigoPromocao}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "codigoPromocao",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CCMN_API.TbPromocoesPremio, CCMN_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CCMN_API.Controllers.PromocaoController",
     "Method": "AddPromocoes",
     "RelativePath": "api/Promocao/promocoes",
     "HttpMethod": "POST",
@@ -2331,7 +2389,7 @@
   {
     "ContainingType": "CCMN_API.Controllers.PromocaoController",
     "Method": "SortearCupom",
-    "RelativePath": "api/Promocao/sortear/cupom/{cupom}",
+    "RelativePath": "api/Promocao/sortear/cupom/{cupom}/{codigoSorteio}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -2339,6 +2397,11 @@
       {
         "Name": "cupom",
         "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "codigoSorteio",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],

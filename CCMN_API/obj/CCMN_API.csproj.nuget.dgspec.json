@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Desenvolvimento\\Projetos\\CCMZ_API\\CCMN_API\\CCMN_API.csproj": {}
+    "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\CCMN_API.csproj": {}
   },
   "projects": {
-    "D:\\Desenvolvimento\\Projetos\\CCMZ_API\\CCMN_API\\CCMN_API.csproj": {
+    "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\CCMN_API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Desenvolvimento\\Projetos\\CCMZ_API\\CCMN_API\\CCMN_API.csproj",
+        "projectUniqueName": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\CCMN_API.csproj",
         "projectName": "CCMN_API",
-        "projectPath": "D:\\Desenvolvimento\\Projetos\\CCMZ_API\\CCMN_API\\CCMN_API.csproj",
-        "packagesPath": "C:\\Users\\Pedro\\.nuget\\packages\\",
-        "outputPath": "D:\\Desenvolvimento\\Projetos\\CCMZ_API\\CCMN_API\\obj\\",
+        "projectPath": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\CCMN_API.csproj",
+        "packagesPath": "C:\\Users\\Alarcon\\.nuget\\packages\\",
+        "outputPath": "C:\\Desenvolvimento\\C#\\Web API\\CCMN_API\\CCMN_API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Pedro\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Alarcon\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -86,24 +86,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[6.0.33, 6.0.33]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[6.0.33, 6.0.33]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[6.0.33, 6.0.33]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[6.0.33, 6.0.33]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -112,7 +94,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     }

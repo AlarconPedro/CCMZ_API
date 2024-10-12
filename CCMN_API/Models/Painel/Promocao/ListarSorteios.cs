@@ -6,11 +6,11 @@ public class ListarSorteios
 
     public DateTime? SorData { get; set; }
 
-    public int? ParCodigo { get; set; }
+    public string? PreNome { get; set; }
 
     public int? PreCodigo { get; set; }
 
-    public int? CupCodigo { get; set; }
+    public string? ParNome { get; set; }
 
-    public int? ProCodigo { get; set; }
+    public string? CupNumero { get; set; }
 }

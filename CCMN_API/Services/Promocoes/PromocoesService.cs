@@ -112,13 +112,13 @@ public class PromocoesService : IPromocoesService
     public async Task<IEnumerable<ListarSorteios>> GetSorteios()
     {
         return await _context.TbPromocoesSorteios.Select(p => new ListarSorteios {
-                CupCodigo = p.CupCodigo,
-                ParCodigo = p.ParCodigo,
-                ProCodigo = p.ProCodigo,
-                PreCodigo = p.PreCodigo,
-                SorCodigo = p.SorCodigo,
-                SorData = p.SorData,
-            }).ToListAsync();
+            PreCodigo = p.PreCodigo,
+            SorCodigo = p.SorCodigo,
+            SorData = p.SorData,
+            CupNumero = p.CupCodigoNavigation.CupNumero,
+            ParNome = p.ParCodigoNavigation.ParNome,
+            PreNome = p.PreCodigoNavigation.PreNome,
+        }).ToListAsync();
     }
 
     public async Task<IEnumerable<ListarPremios>> GetPremios(int codigoPromocao)
@@ -131,8 +131,7 @@ public class PromocoesService : IPromocoesService
                 PreNome = x.PreNome,
                 ProCodigo = x.ProCodigo,
                 ProNome = x.ProCodigoNavigation.ProNome
-            })
-            .ToListAsync();
+            }).ToListAsync();
     }
 
     public async Task<TbPromocoesParticipante> GetDadosParticipantes(string cpfParticipantes)

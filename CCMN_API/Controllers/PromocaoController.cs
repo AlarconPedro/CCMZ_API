@@ -160,7 +160,7 @@ public class PromocaoController : ControllerBase
         }
     }
 
-    [HttpGet("sortear/cupom/{cupom}")]
+    [HttpGet("sortear/cupom/{cupom}/{codigoSorteio}")]
     public async Task<ActionResult<ListarGanhadorCupom>> SortearCupom(string cupom, int codigoSorteio)
     {
         try

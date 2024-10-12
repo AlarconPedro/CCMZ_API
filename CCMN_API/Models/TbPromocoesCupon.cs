@@ -7,7 +7,7 @@ public partial class TbPromocoesCupon
 {
     public int CupCodigo { get; set; }
 
-    public string CupNumero { get; set; } = null!;
+    public string? CupNumero { get; set; }
 
     public int ProCodigo { get; set; }
 
