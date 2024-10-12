@@ -7,7 +7,7 @@ public interface IPromocoesService
 {
     //GET
     Task<IEnumerable<ListarPromocoes>> GetPromocoes(string filtro);
-    Task<IEnumerable<ListarGanhadorCupom>> GetGanhador(string filtro, int skip, int take, string? codigoCupom);
+    Task<IEnumerable<ListarGanhadorCupom>> GetCupons(string filtro, int skip, int take, string? codigoCupom);
     Task<IEnumerable<ListarParticipantes>> GetParticipantes(int codigoPromocao);
     Task<IEnumerable<ListarSorteios>> GetSorteios();
     Task<IEnumerable<ListarPremios>> GetPremios(int codigoPromocao);

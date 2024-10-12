@@ -30,7 +30,7 @@ public class PromocoesService : IPromocoesService
             }).ToListAsync();
     }
 
-    public async Task<IEnumerable<ListarGanhadorCupom>> GetGanhador(string filtro, int skip, int take, string? codigoCupom)
+    public async Task<IEnumerable<ListarGanhadorCupom>> GetCupons(string filtro, int skip, int take, string? codigoCupom)
     {
         if (skip < take) {
             if (codigoCupom.IsNullOrEmpty())

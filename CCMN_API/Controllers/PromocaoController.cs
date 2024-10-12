@@ -43,7 +43,7 @@ public class PromocaoController : ControllerBase
     {
         try
         {
-            var retorno = await _service.GetGanhador(filtro, skip, take, codigoCupom);
+            var retorno = await _service.GetCupons(filtro, skip, take, codigoCupom);
             if (retorno != null)
             {
                 return Ok(retorno);
