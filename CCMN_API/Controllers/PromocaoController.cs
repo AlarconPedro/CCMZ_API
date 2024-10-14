@@ -38,12 +38,12 @@ public class PromocaoController : ControllerBase
         }
     }
 
-    [HttpGet("ganhador/{filtro}/{skip:int}/{take:int}")]
-    public async Task<ActionResult<IEnumerable<ListarGanhadorCupom>>> GetGanhador(string filtro, int skip, int take, string? codigoCupom)
+    [HttpGet("cupons/{filtro}/{busca}/{skip:int}/{take:int}")]
+    public async Task<ActionResult<IEnumerable<ListarGanhadorCupom>>> GetCupons(string filtro, int skip, int take, string? busca)
     {
         try
         {
-            var retorno = await _service.GetCupons(filtro, skip, take, codigoCupom);
+            var retorno = await _service.GetCupons(filtro, skip, take, busca);
             if (retorno != null)
             {
                 return Ok(retorno);
@@ -59,12 +59,12 @@ public class PromocaoController : ControllerBase
         }
     }
 
-    [HttpGet("participantes/{codigoPromocao}")]
-    public async Task<ActionResult<IEnumerable<ListarParticipantes>>> GetParticipantes(int codigoPromocao)
+    [HttpGet("participantes/{codigoPromocao}/{busca}")]
+    public async Task<ActionResult<IEnumerable<ListarParticipantes>>> GetParticipantes(int codigoPromocao, string busca)
     {
         try
         {
-            var retorno = await _service.GetParticipantes(codigoPromocao);
+            var retorno = await _service.GetParticipantes(codigoPromocao, busca);
             if (retorno != null)
             {
                 return Ok(retorno);

@@ -2131,8 +2131,8 @@
   },
   {
     "ContainingType": "CCMN_API.Controllers.PromocaoController",
-    "Method": "GetGanhador",
-    "RelativePath": "api/Promocao/ganhador/{filtro}/{skip}/{take}",
+    "Method": "GetCupons",
+    "RelativePath": "api/Promocao/cupons/{filtro}/{busca}/{skip}/{take}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -2153,9 +2153,9 @@
         "IsRequired": true
       },
       {
-        "Name": "codigoCupom",
+        "Name": "busca",
         "Type": "System.String",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
     "ReturnTypes": [
@@ -2257,7 +2257,7 @@
   {
     "ContainingType": "CCMN_API.Controllers.PromocaoController",
     "Method": "GetParticipantes",
-    "RelativePath": "api/Promocao/participantes/{codigoPromocao}",
+    "RelativePath": "api/Promocao/participantes/{codigoPromocao}/{busca}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -2265,6 +2265,11 @@
       {
         "Name": "codigoPromocao",
         "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "busca",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],
@@ -2389,7 +2394,7 @@
   {
     "ContainingType": "CCMN_API.Controllers.PromocaoController",
     "Method": "SortearCupom",
-    "RelativePath": "api/Promocao/sortear/cupom/{cupom}",
+    "RelativePath": "api/Promocao/sortear/cupom/{cupom}/{codigoSorteio}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -2402,7 +2407,7 @@
       {
         "Name": "codigoSorteio",
         "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
     "ReturnTypes": [

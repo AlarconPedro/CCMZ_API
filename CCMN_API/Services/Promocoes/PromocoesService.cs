@@ -17,10 +17,13 @@ public class PromocoesService : IPromocoesService
     }
 
     //GET
-    public async Task<IEnumerable<ListarParticipantes>> GetParticipantes(int codigoPromocao)
+    public async Task<IEnumerable<ListarParticipantes>> GetParticipantes(int codigoPromocao, string busca)
     {
         return await _context.TbPromocoesParticipantes
-            .Where(p => p.ProCodigo == codigoPromocao)
+            .Where(p => p.ProCodigo == codigoPromocao 
+                && (busca.IsNullOrEmpty() 
+                    ? true 
+                    : p.ProCodigoNavigation.TbPromocoesParticipantes.Any(pp => pp.ParNome.Equals(busca))))
             .Select(p => new ListarParticipantes
             {
                 codigo = p.ParCodigo,
@@ -30,10 +33,10 @@ public class PromocoesService : IPromocoesService
             }).ToListAsync();
     }
 
-    public async Task<IEnumerable<ListarGanhadorCupom>> GetCupons(string filtro, int skip, int take, string? codigoCupom)
+    public async Task<IEnumerable<ListarGanhadorCupom>> GetCupons(string filtro, int skip, int take, string? busca)
     {
         if (skip < take) {
-            if (codigoCupom.IsNullOrEmpty())
+            if (busca.IsNullOrEmpty())
             {
                 dados.Clear();
                 dados = await _context.TbPromocoesCupons
@@ -66,7 +69,7 @@ public class PromocoesService : IPromocoesService
             {
                 dados.Clear();
                 dados = await _context.TbPromocoesCupons
-                   .Where(p => p.CupNumero.Contains(codigoCupom))
+                   .Where(p => p.CupNumero.Contains(busca) || p.ParCodigoNavigation.ParNome.Contains(busca))
                    .Select(x => new ListarGanhadorCupom
                    {
                        CupCodigo = x.CupCodigo,
