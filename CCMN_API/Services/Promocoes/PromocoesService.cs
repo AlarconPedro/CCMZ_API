@@ -21,9 +21,9 @@ public class PromocoesService : IPromocoesService
     {
         return await _context.TbPromocoesParticipantes
             .Where(p => p.ProCodigo == codigoPromocao 
-                && (busca.IsNullOrEmpty() 
-                    ? true 
-                    : p.ProCodigoNavigation.TbPromocoesParticipantes.Any(pp => pp.ParNome.Equals(busca))))
+                && (busca.Equals("T")
+                    ? true
+                    : p.ParNome.Contains(busca)))
             .Select(p => new ListarParticipantes
             {
                 codigo = p.ParCodigo,

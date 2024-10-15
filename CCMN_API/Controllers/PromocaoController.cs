@@ -38,7 +38,7 @@ public class PromocaoController : ControllerBase
         }
     }
 
-    [HttpGet("cupons/{filtro}/{busca}/{skip:int}/{take:int}")]
+    [HttpGet("cupons/{filtro}/{skip:int}/{take:int}")]
     public async Task<ActionResult<IEnumerable<ListarGanhadorCupom>>> GetCupons(string filtro, int skip, int take, string? busca)
     {
         try
