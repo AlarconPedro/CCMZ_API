@@ -8,6 +8,7 @@ using CCMN_API.Models.Painel.Hospedagem.Bloco;
 using CCMN_API.Models.Painel.Hospedagem.Comunidade;
 using CCMN_API.Models.Painel.Hospedagem.Evento;
 using CCMN_API.Models.Painel.Hospedagem.Pessoas;
+using Microsoft.IdentityModel.Tokens;
 
 public class AlocacaoService : IAlocacaoService
 {
@@ -66,7 +67,7 @@ public class AlocacaoService : IAlocacaoService
         //var listaPessoas = await _context.TbQuartoPessoas.ToListAsync();
         return await _context.TbPessoas
             .Where(p => p.ComCodigo == codigoComunidade && !p.TbQuartoPessoas.Any(qp => qp.PesCodigo == p.PesCodigo))
-            .Join(_context.TbEventoPessoas, p => p.PesCodigo, ep => ep.PesCodigo, (p, ep) => new {p, ep})
+            .Join(_context.TbEventoPessoas, p => p.PesCodigo, ep => ep.PesCodigo, (p, ep) => new { p, ep })
             .Where(y => y.ep.EveCodigo == codigoEvento)
             .Select(x => new PessoasNome
             {
@@ -74,6 +75,26 @@ public class AlocacaoService : IAlocacaoService
                 PesNome = x.p.PesNome,
                 PesGenero = x.p.PesGenero,
             }).ToListAsync();
+        /* List<int?> pessoas = await _context.TbEventoPessoas
+                     .Where(ep => ep.EveCodigo.Equals(codigoEvento))
+                     .Select(xx => xx.PesCodigo).ToListAsync();
+
+         List<int?> pessoasAlocadas = await _context.TbEventoQuartos
+             .Where(eq => eq.EveCodigoNavigation.EveCodigo.Equals(codigoEvento))
+             .Join(_context.TbQuartoPessoas, eq => eq.QuaCodigo, qp => qp.QuaCodigo, (eq, qp) => new { eq, qp })
+             .Select(x => x.qp.PesCodigo).Distinct().ToListAsync();
+         *//* List<int?> pessoasAlocadas = _context.TbEventoQuartos
+              .Where(eq => eq.EveCodigo.Equals(codigoEvento))
+              .Join(_context.TbQuartoPessoas, eq => eq.QuaCodigo, qp => qp.QuaCodigo, (eq, qp) => new { eq, qp })
+              .Select(x => x.qp.PesCodigo).Distinct().ToList();*//*
+         pessoas.AddRange(pessoasAlocadas);
+         return await _context.TbQuartoPessoas
+             .Where(qp => qp.PesCodigoNavigation.ComCodigo.Equals(codigoComunidade) && pessoas.Contains(qp.PesCodigo).Equals(false))
+             .Select(x => new PessoasNome { 
+                 PesCodigo = x.PesCodigo,
+                 PesNome = x.PesCodigoNavigation.PesNome,
+                 PesGenero = x.PesCodigoNavigation.PesGenero,
+             }).ToListAsync();*/
     }
 
     public async Task<IEnumerable<PessoasAlocadas>> GetPessoasQuarto(int codigoQuarto)

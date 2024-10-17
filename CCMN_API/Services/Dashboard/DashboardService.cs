@@ -64,18 +64,31 @@ public class DashboardService : IDashboardService
 
     public async Task<IEnumerable<PessoasAChegar>> GetPessoasAChegar(int codigoEvento)
     {
-        return await _context.TbQuartoPessoas
+        return await _context.TbPessoas
+            .Join(_context.TbQuartoPessoas, p => p.PesCodigo, qp => qp.PesCodigo, (p, qp) => new { p, qp })
+            .Join(_context.TbEventoPessoas, x => x.qp.PesCodigo, ep => ep.PesCodigo, (x, ep) => new { x, ep })
+            .Where(xx => xx.ep.EveCodigo.Equals(codigoEvento) && xx.x.qp.PesCheckin.Equals(false))
+            .Select(y => new PessoasAChegar
+            {
+                ComNome = y.x.p.ComCodigoNavigation.ComNome,
+                PesCodigo = y.x.p.PesCodigo,
+                PesGenero = y.x.p.PesGenero,
+                PesNome = y.x.p.PesNome,
+                QuaCodigo = y.x.qp.QuaCodigo,
+            }).ToListAsync();
+
+        /*return await _context.TbQuartoPessoas
             .Join(_context.TbEventoQuartos, eq => eq.QuaCodigo, q => q.QuaCodigo, (eq, q) => new { eq, q })
             .Join(_context.TbEventos, qp => qp.q.EveCodigo, e => e.EveCodigo, (qp, e) => new { qp, e })
             .Where(x => x.qp.eq.PesCheckin == false && x.e.EveCodigo == codigoEvento)
             .Select(x => new PessoasAChegar
             {
-             PesCodigo = x.qp.eq.PesCodigo,
-             PesNome = x.qp.eq.PesCodigoNavigation.PesNome,
-             PesGenero = x.qp.eq.PesCodigoNavigation.PesGenero,
-             ComNome = x.qp.eq.PesCodigoNavigation.ComCodigoNavigation.ComNome,
-             QuaCodigo = x.qp.eq.QuaCodigo
-            }).ToListAsync();
+                PesCodigo = x.qp.eq.PesCodigo,
+                PesNome = x.qp.eq.PesCodigoNavigation.PesNome,
+                PesGenero = x.qp.eq.PesCodigoNavigation.PesGenero,
+                ComNome = x.qp.eq.PesCodigoNavigation.ComCodigoNavigation.ComNome,
+                QuaCodigo = x.qp.eq.QuaCodigo
+            }).ToListAsync();*/
     }
 
     public async Task<IEnumerable<PessoasAChegar>> GetPessoasChegas(int codigoEvento)

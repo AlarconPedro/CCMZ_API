@@ -77,11 +77,57 @@ public class EventosService : IEventosService
 
     public async Task<IEnumerable<QuartoPavilhao>> GetQuartosAlocados(int codigoPavilhao, int codigoEvento)
     {
-    /*    var evento = await _context.TbEventos.Where(e => e.EveCodigo == codigoEvento).FirstOrDefaultAsync();
-        var datanicio = evento.EveDatainicio;
-        var datafim = evento.EveDatafim;*/
+        /*    var evento = await _context.TbEventos.Where(e => e.EveCodigo == codigoEvento).FirstOrDefaultAsync();
+            var datanicio = evento.EveDatainicio;
+            var datafim = evento.EveDatafim;*/
 
-        return await _context.TbQuartos.Where(q => q.BloCodigo == codigoPavilhao && q.TbEventoQuartos.Where(eq => eq.EveCodigo == codigoEvento).FirstOrDefault() != null)
+        /*return await _context.TbQuartoPessoas
+            .Where(qp => qp.QuaCodigoNavigation.BloCodigo == codigoPavilhao 
+                && qp.QuaCodigoNavigation.EveCodigoNavigation.EveCodigo.Equals(codigoEvento))
+            .Select(qp => new QuartoPavilhao
+            {
+                QuaCodigo = qp.QuaCodigo,
+                QuaNome = qp.QuaCodigoNavigation.QuaNome,
+                QuaQtdcamas = qp.QuaCodigoNavigation.QuaQtdcamas,
+                QuaQtdcamasdisponiveis = qp.QuaCodigoNavigation.QuaQtdcamas - _context.TbPessoas.Where(p => p.TbQuartoPessoas
+                                                           .Where(qp => qp.QuaCodigo == qp.QuaCodigo && p.TbEventoPessoas
+                                                           .Where(eq => eq.EveCodigo == codigoEvento).FirstOrDefault() != null)
+                                                           .FirstOrDefault() != null && p.TbEventoPessoas.Where(eq => eq.EveCodigo == codigoEvento).FirstOrDefault() != null).Count(),
+                PessoasQuarto = _context.TbPessoas.Where(p => p.TbQuartoPessoas
+                                                  .Where(qp => qp.QuaCodigo == qp.QuaCodigo && p.TbEventoPessoas
+                                                           .Where(eq => eq.EveCodigo == codigoEvento).FirstOrDefault() != null)
+                                                           .FirstOrDefault() != null && p.TbEventoPessoas.Where(eq => eq.EveCodigo == codigoEvento).FirstOrDefault() != null).Select(p => new PessoasNome
+                                                           {
+                                                               PesCodigo = p.PesCodigo,
+                                                               PesNome = p.PesNome,
+                                                               PesGenero = p.PesGenero
+                                                           }).ToList()
+            }).ToListAsync();*/
+
+        return await _context.TbQuartos
+            .Where(q => q.BloCodigo == codigoPavilhao 
+                && q.TbEventoQuartos.Where(eq => eq.EveCodigo == codigoEvento).FirstOrDefault() != null)
+            .Select(q => new QuartoPavilhao
+            {
+                QuaCodigo = q.QuaCodigo,
+                QuaNome = q.QuaNome,
+                QuaQtdcamas = q.QuaQtdcamas,
+                QuaQtdcamasdisponiveis = q.QuaQtdcamas - _context.TbPessoas.Where(p => p.TbQuartoPessoas
+                                                           .Where(qp => qp.QuaCodigo == q.QuaCodigo && p.TbEventoPessoas
+                                                           .Where(eq => eq.EveCodigo == codigoEvento).FirstOrDefault() != null)
+                                                           .FirstOrDefault() != null && p.TbEventoPessoas.Where(eq => eq.EveCodigo == codigoEvento).FirstOrDefault() != null).Count(),
+                PessoasQuarto = _context.TbPessoas.Where(p => p.TbQuartoPessoas
+                                                  .Where(qp => qp.QuaCodigo == q.QuaCodigo && p.TbEventoPessoas
+                                                           .Where(eq => eq.EveCodigo == codigoEvento).FirstOrDefault() != null)
+                                                           .FirstOrDefault() != null && p.TbEventoPessoas.Where(eq => eq.EveCodigo == codigoEvento).FirstOrDefault() != null).Select(p => new PessoasNome
+                                                           {
+                                                               PesCodigo = p.PesCodigo,
+                                                               PesNome = p.PesNome,
+                                                               PesGenero = p.PesGenero
+                                                           }).ToList()
+            }).ToListAsync();
+
+        /*return await _context.TbQuartos.Where(q => q.BloCodigo == codigoPavilhao && q.TbEventoQuartos.Where(eq => eq.EveCodigo == codigoEvento).FirstOrDefault() != null)
             .Select(q => new QuartoPavilhao
             {
                 QuaCodigo = q.QuaCodigo,
@@ -100,7 +146,7 @@ public class EventosService : IEventosService
                                                                 PesNome = p.PesNome,
                                                                 PesGenero = p.PesGenero
                                                            }).ToList()
-            }).ToListAsync();
+            }).ToListAsync();*/
     }
 
     public async Task<IEnumerable<PessoaEvento>> GetPessoaEvento(int codigoComunidade, int codigoEvento)
@@ -139,6 +185,15 @@ public class EventosService : IEventosService
 
     public async Task<IEnumerable<PessoaQuarto>> GetPessoasQuarto(int codigoQuarto, int codigoEvento)
     {
+        //return await _context.TbQuartoPessoas.Where(qp => qp.QuaCodigo.Equals(codigoQuarto)
+        //    && qp.PesCodigoNavigation.TbEventoPessoas
+        //        .Where(ep => ep.EveCodigo.Equals(codigoEvento))
+        //        .FirstOrDefault() != null)
+        //    .Select(x => new PessoaQuarto
+        //    {
+        //        PesCodigo = x.PesCodigo,
+        //        PesNome = x.PesCodigoNavigation.PesNome,
+        //    }).ToListAsync();
         return await _context.TbPessoas.Where(p => p.TbQuartoPessoas.Where(qp => qp.QuaCodigo == codigoQuarto).FirstOrDefault() != null
                 && p.TbEventoPessoas.Where(ep => ep.EveCodigo == codigoEvento).FirstOrDefault() != null)
             .Select(ep => new PessoaQuarto

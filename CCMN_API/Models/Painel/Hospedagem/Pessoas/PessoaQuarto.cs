@@ -2,6 +2,6 @@
 
 public class PessoaQuarto
 {
-    public int PesCodigo { get; set; }
+    public int? PesCodigo { get; set; }
     public string? PesNome { get; set; }
 }
